@@ -109,7 +109,7 @@ public class SettingsDialog extends javax.swing.JDialog
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("String Weights/Phrase:");
 
-        txtWeights.setText("$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\\\|()1{}[]?-_+~<>i!lI;:,\\\"^`'. ");
+        txtWeights.setText("$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ");
         txtWeights.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnCancel.setText("Cancel");
