@@ -102,7 +102,7 @@ public class MainWindow extends javax.swing.JFrame
         btnSaveImageMatrix.setFocusable(false);
         btnSaveImageMatrix.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSaveImageMatrix.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        tbMain.add(btnSaveImageMatrix);
+        //tbMain.add(btnSaveImageMatrix);
         btnSaveImageMatrix.getAccessibleContext().setAccessibleDescription("");
 
         tbMain.add(jSeparator1);
