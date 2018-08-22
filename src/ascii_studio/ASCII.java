@@ -197,7 +197,7 @@ public class ASCII
                 Color clr = new Color(img.getRGB(x, y));
                 
                 // Get string associated with the pixel
-                String str = "";
+                String str;
                 if (usingPhrase)
                 {
                     if (phrasePos >= weights.length)

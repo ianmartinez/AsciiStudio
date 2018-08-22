@@ -1,2 +1,0 @@
-ascii_studio.AboutDialog
-ascii_studio.ImagePanel

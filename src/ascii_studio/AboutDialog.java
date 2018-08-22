@@ -41,7 +41,7 @@ public class AboutDialog extends javax.swing.JDialog
         setResizable(false);
 		
     	pnlIcon = new ImagePanel(rs.getResourceImage("92.png"));
-        lblProgName.setText("ASCII Studio 3.0");
+        lblProgName.setText("ASCII Studio 3.1");
 
         javax.swing.GroupLayout pnlIconLayout = new javax.swing.GroupLayout(pnlIcon);
         pnlIcon.setLayout(pnlIconLayout);
@@ -56,14 +56,14 @@ public class AboutDialog extends javax.swing.JDialog
         btnOK.addActionListener((java.awt.event.ActionEvent evt) ->  btnOKActionPerformed(evt));
 
         txtLicense.setEditable(false);
-        txtLicense.setText("Copyright (C) 2016-2017, Ian Martinez\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.");
+        txtLicense.setText("Copyright (C) 2016-2018, Ian Martinez \nWebsite: ianmtz.com\nGitHub: github.com/ianmartinez\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.");
         txtLicense.setCaretPosition(0);
         jScrollPane1.setViewportView(txtLicense);
 
         jTabbedPane1.addTab("License", jScrollPane1);
 
         txtChangelog.setEditable(false);
-        txtChangelog.setText("Version 3.0 (1/23/17)\n   - ASCII Converter changed to ASCII Studio\n   - Better looks on high DPI displays\n   - Hue/Saturation Editor\nVersion 2.0 (10/12/16)\n   - Code cleanup\n   - Migrate from JCreator to NetBeans\n   - Fixed off by 1 bug in ASCII renderer\n   - Updated Icons\n   - Export to Image using a phrase\nVersion 1.1 (5/17/16)\n   - Redesigned UI\n   - Progress bars in console\n   - Small bug fixes\n   - Fixed bug where characters where off by 1\n   - Files now open when they're converted\nVersion 1.0 (5/15/16)\n   - Initial release");
+        txtChangelog.setText("Version 3.1 (8/21/18)\n   - New icon\n   \nVersion 3.0 (1/23/17)\n   - ASCII Converter changed to ASCII Studio\n   - Better looks on high DPI displays\n   - Hue/Saturation Editor\n   \nVersion 2.0 (10/12/16)\n   - Code cleanup\n   - Migrate from JCreator to NetBeans\n   - Fixed off by 1 bug in ASCII renderer\n   - Updated Icons\n   - Export to Image using a phrase\n   \nVersion 1.1 (5/17/16)\n   - Redesigned UI\n   - Progress bars in console\n   - Small bug fixes\n   - Fixed bug where characters where off by 1\n   - Files now open when they're converted\n   \nVersion 1.0 (5/15/16)\n   - Initial release");
         jScrollPane2.setViewportView(txtChangelog);
 
         jTabbedPane1.addTab("Changelog", jScrollPane2);
