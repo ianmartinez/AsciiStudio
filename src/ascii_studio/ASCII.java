@@ -111,10 +111,10 @@ public class ASCII
         return weights[lum];
     }
 
+    private int phrasePos = 0;
     public String getRow(BufferedImage img, int y) 
     {
         String val = "";
-        int phrasePos = 0;
         for (int x = 0; x < img.getWidth(); x++)
         {
             if (usingPhrase)
@@ -191,7 +191,6 @@ public class ASCII
         renderGraphics.fillRect(0,0,renderImage.getWidth(),renderImage.getHeight());
         for (int y = 0; y < img.getHeight(); y+=ratio) 
         {
-            int phrasePos = 0;
             for (int x = 0; x < img.getWidth(); x++)
             {
                 Color clr = new Color(img.getRGB(x, y));

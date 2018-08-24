@@ -58,7 +58,7 @@ public class MainWindow extends javax.swing.JFrame
         txtPreview = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ASCII Studio 3.0");
+        setTitle("ASCII Studio 3.2");
 
         tbMain.setFloatable(false);
         tbMain.setRollover(true);
@@ -188,7 +188,7 @@ public class MainWindow extends javax.swing.JFrame
     	
      	try 
      	{
-            System.out.println("--->\tASCII Converter 2.0 by Ian Martinez\t<---");
+            System.out.println("--->\tASCII Studio 3.2 by Ian Martinez\t<---");
             System.out.print("Available UIs:\t");
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) 
                 System.out.print(info.getName() + "; ");
