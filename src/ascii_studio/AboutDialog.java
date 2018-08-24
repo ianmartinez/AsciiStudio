@@ -63,7 +63,7 @@ public class AboutDialog extends javax.swing.JDialog
         jTabbedPane1.addTab("License", jScrollPane1);
 
         txtChangelog.setEditable(false);
-        txtChangelog.setText("Version 3.2 (8/23/18)\n   - Phrases can now span multiple lines\nVersion 3.1 (8/21/18)\n   - New icon\n   \nVersion 3.0 (1/23/17)\n   - ASCII Converter changed to ASCII Studio\n   - Better looks on high DPI displays\n   - Hue/Saturation Editor\n   \nVersion 2.0 (10/12/16)\n   - Code cleanup\n   - Migrate from JCreator to NetBeans\n   - Fixed off by 1 bug in ASCII renderer\n   - Updated Icons\n   - Export to Image using a phrase\n   \nVersion 1.1 (5/17/16)\n   - Redesigned UI\n   - Progress bars in console\n   - Small bug fixes\n   - Fixed bug where characters where off by 1\n   - Files now open when they're converted\n   \nVersion 1.0 (5/15/16)\n   - Initial release");
+        txtChangelog.setText("Version 3.2 (8/23/18)\n   - Phrases can now span multiple lines\n\nVersion 3.1 (8/21/18)\n   - New icon\n   \nVersion 3.0 (1/23/17)\n   - ASCII Converter changed to ASCII Studio\n   - Better looks on high DPI displays\n   - Hue/Saturation Editor\n   \nVersion 2.0 (10/12/16)\n   - Code cleanup\n   - Migrate from JCreator to NetBeans\n   - Fixed off by 1 bug in ASCII renderer\n   - Updated Icons\n   - Export to Image using a phrase\n   \nVersion 1.1 (5/17/16)\n   - Redesigned UI\n   - Progress bars in console\n   - Small bug fixes\n   - Fixed bug where characters where off by 1\n   - Files now open when they're converted\n   \nVersion 1.0 (5/15/16)\n   - Initial release");
         jScrollPane2.setViewportView(txtChangelog);
 
         jTabbedPane1.addTab("Changelog", jScrollPane2);
