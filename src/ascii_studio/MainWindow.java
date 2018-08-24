@@ -469,6 +469,7 @@ public class MainWindow extends javax.swing.JFrame
                     {
                         updateTitleWithFrame(outPath,f,g.getFrameCount());
                         System.out.println("Processing frame " + (f+1) + "/" + g.getFrameCount());
+                        a.phrasePos = 0;
                         BufferedImage render = a.getFullImage(g.getFrame(f));
                         g2.setFrame(f,render);
                     }

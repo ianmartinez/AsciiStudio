@@ -27,6 +27,7 @@ public class ASCII
     public void SetUsingPhrase(boolean bool) {usingPhrase = bool;}
     public Font getFont() {return font;}
     public void setFont(Font f) {font=f;}
+    public int phrasePos = 0;
 
     public static String getProgress(int value,int maxValue,int width) 
     {
@@ -111,7 +112,6 @@ public class ASCII
         return weights[lum];
     }
 
-    private int phrasePos = 0;
     public String getRow(BufferedImage img, int y) 
     {
         String val = "";
