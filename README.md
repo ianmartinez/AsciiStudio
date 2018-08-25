@@ -1,8 +1,8 @@
 # ASCII-Studio
 A program that converts both still and animated images into ASCII art, in full color and with the ability to choose custom weights and fonts.
 
-![Screenshot](https://github.com/ianmartinez/ASCII-Studio/raw/master/Screenshot.png)
-![Settings](https://github.com/ianmartinez/ASCII-Studio/raw/master/Settings.png)
+![Screenshot](https://github.com/ianmartinez/ASCII-Studio/raw/master/Screenshot.jpg)
+![Settings](https://github.com/ianmartinez/ASCII-Studio/raw/master/Settings.jpg)
 
 ## Created with ASCII Studio
 ![Day Night Cycle](https://github.com/ianmartinez/ASCII-Studio/raw/master/creations/Day%20night.gif)
