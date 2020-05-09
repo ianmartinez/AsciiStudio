@@ -1,5 +1,5 @@
 # ASCII-Studio
-A program that converts both still and animated images into ASCII art, in full color and with the ability to choose custom weights and fonts.
+A program that converts both still and animated images into ASCII art, in full color and with the ability to choose custom weights and fonts. It is currently in the process of being re-written as a C# Eto.Forms app. 
 
 ![Screenshot](https://github.com/ianmartinez/ASCII-Studio/raw/master/Screenshot.jpg)
 ![Settings](https://github.com/ianmartinez/ASCII-Studio/raw/master/Settings.jpg)
