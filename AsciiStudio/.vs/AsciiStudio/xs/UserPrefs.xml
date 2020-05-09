@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{E7090174-71D1-4412-9C54-AD50D65AA9D8}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="AsciiStudio.Mac/Program.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AsciiStudio" expanded="True" selected="True">
+            <Node name="AsciiStudio.Mac" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True">
+                  <Node name="Eto.Platform.Mac64" expanded="True">
+                    <Node name="Eto.Forms" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="ProjectDependencies" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="AsciiStudio.WinForms" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.AsciiStudio.Mac PreferredExecutionTarget="netcoreapp3.1" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

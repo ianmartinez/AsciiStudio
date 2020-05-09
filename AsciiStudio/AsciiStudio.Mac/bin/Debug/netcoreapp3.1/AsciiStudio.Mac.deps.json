@@ -1,0 +1,88 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "AsciiStudio.Mac/1.0.0": {
+        "dependencies": {
+          "AsciiStudio": "1.0.0",
+          "Eto.Platform.Mac64": "2.5.0"
+        },
+        "runtime": {
+          "AsciiStudio.Mac.dll": {}
+        }
+      },
+      "Eto.Forms/2.5.0": {
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Eto.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.7354.32680"
+          }
+        }
+      },
+      "Eto.Platform.Mac64/2.5.0": {
+        "dependencies": {
+          "Eto.Forms": "2.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Eto.Mac64.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.7354.32698"
+          },
+          "lib/netstandard2.0/MonoMac.dll": {
+            "assemblyVersion": "0.0.1.0",
+            "fileVersion": "0.0.1.0"
+          }
+        }
+      },
+      "System.ComponentModel.Annotations/4.7.0": {},
+      "AsciiStudio/1.0.0": {
+        "dependencies": {
+          "Eto.Forms": "2.5.0"
+        },
+        "runtime": {
+          "AsciiStudio.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AsciiStudio.Mac/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Eto.Forms/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7BZBtN2Zg5qzwIwtBAPUp4fU529M7kD6J4WiXYM0/T58+H2ZBzYYk89+FTSE178TwhkDnP0EE6zeqmbla4zS4Q==",
+      "path": "eto.forms/2.5.0",
+      "hashPath": "eto.forms.2.5.0.nupkg.sha512"
+    },
+    "Eto.Platform.Mac64/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-APIK4D6GjYlGy4ZbJFlweDLcqIJJ4mNYpVwCxqed5o+eYJap58KJ2DwLOm4OtTT38jdYbsSouR7MRg+mOfAv6g==",
+      "path": "eto.platform.mac64/2.5.0",
+      "hashPath": "eto.platform.mac64.2.5.0.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0YFqjhp/mYkDGpU0Ye1GjE53HMp9UVfGN7seGpAMttAC0C40v5gw598jCgpbBLMmCo0E5YRLBv5Z2doypO49ZQ==",
+      "path": "system.componentmodel.annotations/4.7.0",
+      "hashPath": "system.componentmodel.annotations.4.7.0.nupkg.sha512"
+    },
+    "AsciiStudio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

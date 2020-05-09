@@ -1,0 +1,17 @@
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/AsciiStudio.Mac.deps.json
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/AsciiStudio.Mac.runtimeconfig.json
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/AsciiStudio.Mac.runtimeconfig.dev.json
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/AsciiStudio.Mac.dll
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/AsciiStudio.Mac.pdb
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/Eto.dll
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/Eto.Mac64.dll
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/MonoMac.dll
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/AsciiStudio.dll
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/bin/Debug/netcoreapp3.1/AsciiStudio.pdb
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/obj/Debug/netcoreapp3.1/AsciiStudio.Mac.csproj.CoreCompileInputs.cache
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/obj/Debug/netcoreapp3.1/AsciiStudio.Mac.AssemblyInfoInputs.cache
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/obj/Debug/netcoreapp3.1/AsciiStudio.Mac.AssemblyInfo.cs
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/obj/Debug/netcoreapp3.1/AsciiStudio.Mac.csproj.CopyComplete
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/obj/Debug/netcoreapp3.1/AsciiStudio.Mac.dll
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/obj/Debug/netcoreapp3.1/AsciiStudio.Mac.pdb
+/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio.Mac/obj/Debug/netcoreapp3.1/AsciiStudio.Mac.genruntimeconfig.cache
