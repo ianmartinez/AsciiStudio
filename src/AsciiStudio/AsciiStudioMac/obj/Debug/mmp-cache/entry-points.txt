@@ -1,0 +1,984 @@
+Function=SystemNative_ConvertErrorPlatformToPal
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=SystemNative_ConvertErrorPalToPlatform
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=SystemNative_StrErrorR
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=SystemNative_GetNonCryptographicallySecureRandomBytes
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_OpenDir
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_GetReadDirRBufferSize
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_ReadDirR
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_CloseDir
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_ReadLink
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_FStat2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_Stat2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_LStat2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_Symlink
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_ChMod
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_CopyFile
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_GetEGid
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_GetEUid
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_LChflags
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_LChflagsCanSetHiddenFlag
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_Link
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_MkDir
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_Rename
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_RmDir
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_UTime
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_UTimes
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_Unlink
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=xamarin_timezone_get_local_name
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=xamarin_timezone_get_names
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=xamarin_timezone_get_data
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/mscorlib.dll
+Function=SystemNative_GetDomainSocketSizes
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.Core.dll
+Function=NetSecurityNative_ReleaseGssBuffer
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_DisplayMinorStatus
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_DisplayMajorStatus
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_ImportUserName
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_ImportPrincipalName
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_ReleaseName
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_InitiateCredSpNego
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_InitiateCredWithPassword
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_ReleaseCred
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_InitSecContext
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_InitSecContextEx
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_AcceptSecContext
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_DeleteSecContext
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_GetUser
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_Wrap
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=NetSecurityNative_Unwrap
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=mono_pal_init
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/mono/Xamarin.Mac/System.dll
+Function=xamarin_find_protocol_wrapper_type
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_get_block_descriptor
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix3_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix3_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix3_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix3_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4x3_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4x3_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4x3_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4x3_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_nfloat_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_nfloat_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr_IntPtr_UInt32
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr_IntPtr_UInt32
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr_IntPtr_UInt64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr_IntPtr_UInt64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr_nint_nint_nint_UInt32
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr_nint_nint_nint_UInt32
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr_nint_nint_nint_UInt64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr_nint_nint_nint_UInt64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr_UInt32_nint_UInt32
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr_UInt32_nint_UInt32
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr_UInt64_nint_UInt64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr_UInt64_nint_UInt64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix3_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix3_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix3_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix3_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Matrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Matrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NMatrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NMatrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2i_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2i_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector2i_int_int_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector2i_int_int_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector2i_int_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector2i_int_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_Vector2_Vector2_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_Vector2_Vector2_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_Vector2_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_Vector2_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKTriangle_objc_msgSend_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKTriangle_objc_msgSendSuper_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKTriangle_objc_msgSend_stret_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKTriangle_objc_msgSendSuper_stret_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__float_objc_msgSend_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__float_objc_msgSendSuper_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector3d
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector3d
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Vector2d_Vector2d_Vector2i_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Vector2d_Vector2d_Vector2i_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__float_objc_msgSend_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__float_objc_msgSendSuper_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_float_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_float_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKBox_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKBox_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKBox_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKBox_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_GKBox_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_GKBox_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_GKBox
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_GKBox
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_GKBox
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_GKBox
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSend_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSendSuper_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_stret_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_stret_nuint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_GKQuad_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_GKQuad_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_GKQuad
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_GKQuad
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_GKQuad
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_GKQuad
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKQuad_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKQuad_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKQuad_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__GKQuad_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_IntPtr_Vector2_Vector2_int
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_IntPtr_Vector2_Vector2_int
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_IntPtr_Vector2_Vector2_Int64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_IntPtr_Vector2_Vector2_Int64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_IntPtr_Vector2_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_IntPtr_Vector2_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector2_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector2_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSAxisAlignedBoundingBox_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSAxisAlignedBoundingBox_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSAxisAlignedBoundingBox_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSAxisAlignedBoundingBox_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSImageHistogramInfo_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSImageHistogramInfo_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSImageHistogramInfo_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MPSImageHistogramInfo_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_ref_MPSImageHistogramInfo
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_ref_MPSImageHistogramInfo
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NMatrix4_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NMatrix4_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NMatrix4d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NMatrix4d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Quaternion_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Quaternion_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Quaterniond_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Quaterniond_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaterniond_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaterniond_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaterniond_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaterniond_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector2_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector2_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector2d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector2d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2d_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NVector3_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NVector3_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NVector3d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NVector3d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3d_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3d_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3d_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3d_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector4_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector4_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector4d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector4d_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4d_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4d_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4d_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4d_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4d_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NMatrix4d
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NMatrix4d
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NVector3_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NVector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NVector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix4_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_MDLAxisAlignedBoundingBox_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_MDLAxisAlignedBoundingBox_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector3_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector3_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_Vector2i_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_Vector2i_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_stret_Vector2i_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_stret_Vector2i_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_bool_IntPtr_Vector2i_nint_nuint_int_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_bool_IntPtr_Vector2i_nint_nuint_int_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_bool_IntPtr_Vector2i_nint_nuint_Int64_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_bool_IntPtr_Vector2i_nint_nuint_Int64_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_IntPtr_Vector2i_int_int_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_IntPtr_Vector2i_int_int_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_IntPtr_Vector2i_int_Int64_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_IntPtr_Vector2i_int_Int64_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_float_IntPtr_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_float_IntPtr_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_IntPtr_IntPtr_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt32_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt32_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt64_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt64_Vector2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt32_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt32_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt64_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt64_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt32_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt32_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt64_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt64_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt32_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt32_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt64_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt64_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt32_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt32_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_UInt64_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_UInt64_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector3i_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector3i_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector3i_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector3i_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_bool_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_bool_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_bool_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_bool_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_bool_bool_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_bool_bool_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_bool_bool_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_bool_bool_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_int_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_int_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_int_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_int_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector2i_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector2i_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_bool_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_bool_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_int_UInt32_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_int_UInt32_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector3i_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector3i_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_Vector3i_Int64_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_Vector3i_Int64_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector2_Vector2i_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector2_Vector2i_int_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector2_Vector2i_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector2_Vector2i_Int64_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_nuint_nuint_int_bool_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_nuint_nuint_int_bool_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector3_nuint_nuint_Int64_bool_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector3_nuint_nuint_Int64_bool_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_Vector2_nuint_nuint_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_Vector2_nuint_nuint_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_Vector2_nuint_nuint_Int64_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_Vector2_nuint_nuint_Int64_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_Vector2_nuint_nuint_nuint_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_Vector2_nuint_nuint_nuint_int_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_Vector2_nuint_nuint_nuint_Int64_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_Vector2_nuint_nuint_nuint_Int64_bool_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__bool_objc_msgSend_Vector2i_nint_float_IntPtr_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__bool_objc_msgSendSuper_Vector2i_nint_float_IntPtr_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__bool_objc_msgSend_Vector2i_IntPtr_IntPtr_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__bool_objc_msgSendSuper_Vector2i_IntPtr_IntPtr_IntPtr_IntPtr
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_IntPtr_Vector2i_int
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_IntPtr_Vector2i_int
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_IntPtr_Vector2i_Int64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_IntPtr_Vector2i_Int64
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_IntPtr_Vector2i_int_int_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_IntPtr_Vector2i_int_int_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_float_IntPtr_Vector2i_int_Int64_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_float_IntPtr_Vector2i_int_Int64_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_int_Vector2i_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_int_Vector2i_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Int64_Vector2i_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Int64_Vector2i_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_int_Vector2i_float_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_int_Vector2i_float_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Int64_Vector2i_float_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Int64_Vector2i_float_float_float_float_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_IntPtr_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_IntPtr_Vector2i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_IntPtr_Vector2i_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_IntPtr_Vector2i_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Matrix4_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Matrix4_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_NMatrix4_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_NMatrix4_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSend_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSendSuper_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSend_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSendSuper_stret_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector3_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector3_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Matrix4_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Matrix4_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSend_IntPtr_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSendSuper_IntPtr_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSend_stret_IntPtr_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Matrix4_objc_msgSendSuper_stret_IntPtr_Double
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLVoxelIndexExtent2_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLVoxelIndexExtent2_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLVoxelIndexExtent2_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLVoxelIndexExtent2_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_MDLAxisAlignedBoundingBox_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_MDLAxisAlignedBoundingBox_float
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__bool_objc_msgSend_Vector4i_bool_bool_bool_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__bool_objc_msgSendSuper_Vector4i_bool_bool_bool_bool
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_MDLVoxelIndexExtent2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_MDLVoxelIndexExtent2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4i_objc_msgSend_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4i_objc_msgSendSuper_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4i_objc_msgSend_stret_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector4i_objc_msgSendSuper_stret_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_stret_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_stret_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSend_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSendSuper_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSend_stret_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__MDLAxisAlignedBoundingBox_objc_msgSendSuper_stret_Vector4i
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSend_stret_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector3_objc_msgSendSuper_stret_Vector3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_vector_float3__Vector4_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_vector_float3__Vector4_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_vector_float3__Vector4_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_vector_float3__Vector4_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_vector_float3__void_objc_msgSend_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_vector_float3__void_objc_msgSendSuper_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Quaternion_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_Quaternion
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_Quaternion
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix2_objc_msgSend
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix2_objc_msgSendSuper
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix2_objc_msgSend_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__NMatrix2_objc_msgSendSuper_stret
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSend_NMatrix2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__void_objc_msgSendSuper_NMatrix2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Vector4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Matrix2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Matrix2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_NMatrix2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_NMatrix2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Matrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Matrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_NMatrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_NMatrix3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_Matrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSend_IntPtr_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__IntPtr_objc_msgSendSuper_IntPtr_NMatrix4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSend_nint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_simd__Vector2_objc_msgSendSuper_nint
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_CGPoint__VNNormalizedFaceBoundingBoxPointForLandmarkPoint_Vector2_CGRect_nuint_nuint_string
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_CGPoint__VNImagePointForFaceLandmarkPoint_Vector2_CGRect_nuint_nuint_string
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_os_log
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_1
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_2
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_3
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_4
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_5
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_6
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_7
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_8
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_localized_string_format_9
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_init_nsthread
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=xamarin_encode_CGAffineTransform
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.16.0.13/lib/x86_64/mobile/Xamarin.Mac.dll
+Function=mono_pmip
+Function=xamarin_dyn_objc_msgSend
+Function=xamarin_dyn_objc_msgSendSuper
+Function=xamarin_dyn_objc_msgSend_stret
+Function=xamarin_dyn_objc_msgSendSuper_stret

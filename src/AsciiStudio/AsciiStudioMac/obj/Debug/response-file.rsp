@@ -1,0 +1,16 @@
+/debug
+/output:/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioMac/bin/Debug/
+"/name:ASCII Studio"
+ /profile:Xamarin.Mac,Version=v2.0,Profile=Mobile
+ /arch:x86_64
+ --http-message-handler=HttpClientHandler
+ /minos=10.14
+ /nolink
+/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/mscorlib.dll
+/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/System.Core.dll
+/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/System.dll
+/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/Facades/System.Drawing.Common.dll
+/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/Xamarin.Mac.dll
+"/root-assembly:/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioMac/bin/Debug/ASCII Studio.exe"
+/sdkroot:/Applications/Xcode.app/Contents/Developer
+--cache:/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioMac/obj/Debug/mmp-cache

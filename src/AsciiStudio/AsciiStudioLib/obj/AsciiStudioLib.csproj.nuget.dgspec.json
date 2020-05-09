@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioLib/AsciiStudioLib.csproj": {}
+  },
+  "projects": {
+    "/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioLib/AsciiStudioLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioLib/AsciiStudioLib.csproj",
+        "projectName": "AsciiStudioLib",
+        "projectPath": "/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioLib/AsciiStudioLib.csproj",
+        "packagesPath": "/Users/ianmartinez/.nuget/packages/",
+        "outputPath": "/Users/ianmartinez/GitHub/ASCII-Studio/src/AsciiStudio/AsciiStudioLib/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ianmartinez/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

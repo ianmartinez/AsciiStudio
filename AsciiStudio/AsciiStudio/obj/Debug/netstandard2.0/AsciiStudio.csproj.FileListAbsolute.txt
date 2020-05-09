@@ -1,8 +1,0 @@
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/bin/Debug/netstandard2.0/AsciiStudio.deps.json
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/bin/Debug/netstandard2.0/AsciiStudio.dll
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/bin/Debug/netstandard2.0/AsciiStudio.pdb
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/obj/Debug/netstandard2.0/AsciiStudio.csproj.CoreCompileInputs.cache
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/obj/Debug/netstandard2.0/AsciiStudio.AssemblyInfoInputs.cache
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/obj/Debug/netstandard2.0/AsciiStudio.AssemblyInfo.cs
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/obj/Debug/netstandard2.0/AsciiStudio.dll
-/Users/ianmartinez/GitHub/ASCII-Studio/AsciiStudio/AsciiStudio/obj/Debug/netstandard2.0/AsciiStudio.pdb
