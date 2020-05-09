@@ -1,9 +1,8 @@
 ﻿<Properties StartupConfiguration="{A529F0A9-1458-4501-8C60-4B3E4961C0ED}|Default">
   <MonoDevelop.Ide.ItemProperties.AsciiStudioMac PreferredExecutionTarget="Test1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AsciiStudioMac/Main.storyboard">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AsciiStudioMac/Info.plist">
     <Files>
       <File FileName="AsciiStudioMac/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="AsciiStudioMac/Main.storyboard" Line="719" Column="1" />
       <File FileName="AsciiStudioLib/AsciiImage.cs" Line="29" Column="29" />
       <File FileName="AsciiStudioLib/AsciiFrame.cs" Line="28" Column="40" />
       <File FileName="AsciiStudioMac/Main.cs" Line="1" Column="1" />
@@ -15,7 +14,7 @@
           <Node name="AsciiStudio" expanded="True">
             <Node name="AsciiStudioLib" expanded="True" />
             <Node name="AsciiStudioMac" expanded="True">
-              <Node name="Main.storyboard" selected="True" />
+              <Node name="Info.plist" selected="True" />
             </Node>
           </Node>
         </State>
