@@ -14,7 +14,7 @@
           <Node name="AsciiStudio" expanded="True">
             <Node name="AsciiStudioLib" expanded="True" />
             <Node name="AsciiStudioMac" expanded="True">
-              <Node name="Info.plist" selected="True" />
+              <Node name="Main.storyboard" selected="True" />
             </Node>
           </Node>
         </State>

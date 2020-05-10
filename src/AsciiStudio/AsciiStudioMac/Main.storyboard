@@ -694,25 +694,81 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="YK5-dU-Sbs" kind="relationship" relationship="window.shadowedContentViewController" id="bJ5-7a-V3H"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Split View Controller-->
+        <scene sceneID="JgZ-kb-OK6">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="536" height="360"/>
+                <splitViewController id="YK5-dU-Sbs" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="zKG-F7-t5F"/>
+                        <splitViewItem id="gh5-TT-nJX"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="kLl-Cm-Ga0">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="YK5-dU-Sbs" id="Zgm-p4-GXy"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="kLl-Cm-Ga0" id="uVe-Dz-gs2"/>
+                        <segue destination="dso-fe-GfW" kind="relationship" relationship="splitItems" id="zb9-48-b61"/>
+                        <segue destination="MoF-gk-iC2" kind="relationship" relationship="splitItems" id="Lnf-vw-OHV"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="Ddk-ry-rFa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="750"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KYk-cf-Qyr">
+            <objects>
+                <viewController id="dso-fe-GfW" sceneMemberID="viewController">
+                    <view key="view" id="549-rY-yDa">
+                        <rect key="frame" x="0.0" y="0.0" width="176" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="x4F-se-IwE">
+                                <rect key="frame" x="0.0" y="0.0" width="176" height="300"/>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="x4F-se-IwE" secondAttribute="bottom" id="1VQ-s5-Xh8"/>
+                            <constraint firstItem="x4F-se-IwE" firstAttribute="leading" secondItem="549-rY-yDa" secondAttribute="leading" id="BOF-ar-RRp"/>
+                            <constraint firstItem="x4F-se-IwE" firstAttribute="top" secondItem="549-rY-yDa" secondAttribute="top" id="CaV-KH-Whl"/>
+                            <constraint firstAttribute="trailing" secondItem="x4F-se-IwE" secondAttribute="trailing" id="Ka9-K8-coY"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="ZND-Ne-uLV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="691"/>
+            <point key="canvasLocation" x="589" y="478"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gov-mD-A8f">
+            <objects>
+                <viewController id="MoF-gk-iC2" sceneMemberID="viewController">
+                    <view key="view" id="8SM-o1-qOh">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZG-dy-KxJ">
+                                <rect key="frame" x="17" y="42" width="305" height="241"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="photo" id="r4l-2r-S2J"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="jVa-Uf-xsi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="726" y="889"/>
         </scene>
     </scenes>
 </document>
