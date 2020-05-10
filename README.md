@@ -1,8 +1,18 @@
-# ASCII-Studio
-A program that converts both still and animated images into ASCII art, in full color and with the ability to choose custom weights and fonts. It is currently in the process of being re-written as a C# Eto.Forms app. 
+# ASCII Studio
+A program that converts both still and animated images into ASCII art, in full color and with the ability to choose custom weights and fonts. 
 
 ![Screenshot](https://github.com/ianmartinez/ASCII-Studio/raw/master/Screenshot.jpg)
-![Settings](https://github.com/ianmartinez/ASCII-Studio/raw/master/Settings.jpg)
+![Settings](https://github.com/ianmartinez/ASCII-Studio/raw/master/Settings.jpg)   
+    
+## ASCII Studio 4.0
+ASCII Studio is currently in the process of being re-written. Here are some of the changes:    
+- Updated to Java 13
+- Redesigned UI
+- GUI showing progress of converting an image
+- Preview pane
+- Allow custom colors for each weight
+- GIF frame delays are now preserved if they are varied throughout the animation   
+    
 
 ## Created with ASCII Studio
 ![Day Night Cycle](https://github.com/ianmartinez/ASCII-Studio/raw/master/creations/Day%20night.gif)
