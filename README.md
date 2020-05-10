@@ -13,6 +13,8 @@ ASCII Studio is currently in the process of being re-written. Here are some of t
 - Allow custom colors for each weight
 - GIF frame delays are now preserved if they are varied throughout the animation   
 - Work with multiple images at once
+- Dedicated installer
+- New icon
     
 
 ## Created with ASCII Studio
