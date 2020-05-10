@@ -68,7 +68,7 @@ public class MainWindow extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 500));
 
         jSplitPane1.setDividerLocation(200);
-        jSplitPane1.setDividerSize(5);
+        jSplitPane1.setDividerSize(2);
         jSplitPane1.setDoubleBuffered(true);
         jSplitPane1.setMinimumSize(new java.awt.Dimension(100, 100));
 
@@ -87,13 +87,15 @@ public class MainWindow extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(sidebarPanel);
 
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+
         jPanel2.setName("sidebarPanel"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+            .addGap(0, 336, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +108,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+            .addGap(0, 336, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
