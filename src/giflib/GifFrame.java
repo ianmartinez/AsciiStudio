@@ -1,18 +1,20 @@
-// Gif.java
-//  
-// Created by Elliot Kroo on 2009-04-25.
-// Modified by Ian Martinez, May 2020.
-//
-// This work is licensed under the Creative Commons Attribution 3.0 Unported
-// License. To view a copy of this license, visit
-// http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
-// Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+/**
+ * GifFrame.java 
+ * 
+ * Created by Elliot Kroo, April 25, 2009
+ * Modified by Ian Martinez, May 2020
+ * 
+ * This work is licensed under the Creative Commons Attribution 3.0 Unported
+ * License. To view a copy of this license, visit
+ * http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
+ * Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+ */
+
 package giflib;
 
 import java.awt.image.BufferedImage;
 
 public class GifFrame {
-
     private final int delay;
     private final BufferedImage image;
     private final String disposal;
