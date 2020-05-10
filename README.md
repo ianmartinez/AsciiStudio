@@ -8,6 +8,7 @@ A program that converts both still and animated images into ASCII art, in full c
 ASCII Studio is currently in the process of being re-written. Here are some of the changes:    
 - Updated to Java 13
 - Redesigned UI
+- Dark mode support on macOS
 - GUI showing progress of converting an image
 - Preview pane
 - Allow custom colors for each weight
