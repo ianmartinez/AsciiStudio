@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -709,61 +708,11 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="536" height="360"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgy-pA-QG3">
-                                <rect key="frame" x="0.0" y="0.0" width="536" height="360"/>
-                                <subviews>
-                                    <customView id="9Yr-hD-Y2e">
-                                        <rect key="frame" x="0.0" y="0.0" width="175" height="360"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="gUb-uc-X33">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="360"/>
-                                            </visualEffectView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="gUb-uc-X33" secondAttribute="bottom" id="Atf-Lt-faN"/>
-                                            <constraint firstItem="gUb-uc-X33" firstAttribute="leading" secondItem="9Yr-hD-Y2e" secondAttribute="leading" id="Els-u6-FSX"/>
-                                            <constraint firstAttribute="trailing" secondItem="gUb-uc-X33" secondAttribute="trailing" id="vqR-g8-9lm"/>
-                                            <constraint firstItem="gUb-uc-X33" firstAttribute="top" secondItem="9Yr-hD-Y2e" secondAttribute="top" id="ysB-31-Fft"/>
-                                        </constraints>
-                                    </customView>
-                                    <customView id="gxr-DS-dij">
-                                        <rect key="frame" x="176" y="0.0" width="360" height="360"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6IZ-dR-VGT">
-                                                <rect key="frame" x="49" y="49" width="262" height="262"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="256" id="eHs-0C-w2y"/>
-                                                    <constraint firstAttribute="width" constant="256" id="u47-hp-7qT"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="photo" id="Y7c-qu-DqM"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="6IZ-dR-VGT" firstAttribute="centerY" secondItem="gxr-DS-dij" secondAttribute="centerY" id="9p6-1H-RxH"/>
-                                            <constraint firstItem="6IZ-dR-VGT" firstAttribute="centerX" secondItem="gxr-DS-dij" secondAttribute="centerX" id="Zgz-M6-IaM"/>
-                                        </constraints>
-                                    </customView>
-                                </subviews>
-                                <holdingPriorities>
-                                    <real value="250"/>
-                                    <real value="250"/>
-                                </holdingPriorities>
-                            </splitView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Xgy-pA-QG3" secondAttribute="trailing" id="3hH-yL-Dns"/>
-                            <constraint firstItem="Xgy-pA-QG3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="BRJ-nm-OQs"/>
-                            <constraint firstAttribute="bottom" secondItem="Xgy-pA-QG3" secondAttribute="bottom" id="vnw-DI-kS0"/>
-                            <constraint firstItem="Xgy-pA-QG3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="z9i-f9-ull"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="103" y="700"/>
+            <point key="canvasLocation" x="75" y="691"/>
         </scene>
     </scenes>
 </document>

@@ -3,9 +3,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="AsciiStudioMac/Info.plist">
     <Files>
       <File FileName="AsciiStudioMac/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="AsciiStudioLib/AsciiImage.cs" Line="29" Column="29" />
-      <File FileName="AsciiStudioLib/AsciiFrame.cs" Line="28" Column="40" />
-      <File FileName="AsciiStudioMac/Main.cs" Line="1" Column="1" />
+      <File FileName="AsciiStudioLib/AsciiImage.cs" />
+      <File FileName="AsciiStudioLib/AsciiFrame.cs" />
+      <File FileName="AsciiStudioMac/Main.cs" />
       <File FileName="AsciiStudioMac/Info.plist" />
     </Files>
     <Pads>
