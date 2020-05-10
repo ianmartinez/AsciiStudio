@@ -16,17 +16,27 @@
  */
 package asciistudio;
 
+import javax.swing.*;
+
 /**
- * Stores the application info.
+ * Stores the application info and sets styling.
  *
  * @author Ian Martinez
  */
-public class AppInfo {
-    private AppInfo() {};
+public class App {
+    private App() {};
     
     public static final double APP_VERSION = 4.0;
     
     public static String getAppTitle() { 
         return "ASCII Studio " + APP_VERSION;
+    }
+        
+    public static void setRootProperty(JFrame frame, Object key, Object value) {                
+        frame.getRootPane().putClientProperty(key, value);
+    }
+    
+    public static void setProperty(JComponent component, Object key, Object value) {                
+        component.putClientProperty(key, value);
     }
 }

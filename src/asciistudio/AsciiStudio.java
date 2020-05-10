@@ -50,7 +50,13 @@ public class AsciiStudio {
         var mainWindow = new MainWindow();
         // Center on screen
         mainWindow.setLocationRelativeTo(null);
-        mainWindow.setTitle(AppInfo.getAppTitle());
+        mainWindow.setTitle(App.getAppTitle());
+        
+        // Configure styling
+        App.setRootProperty(mainWindow, "Aqua.windowStyle", "unifiedToolBar");
+        App.setProperty(mainWindow.sidebarPanel, "Aqua.backgroundStyle", "vibrantSidebar");
+        
+        // Show
         mainWindow.setVisible(true);
     }
 
