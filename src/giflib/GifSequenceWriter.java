@@ -43,7 +43,7 @@ public class GifSequenceWriter {
         // my method to create a writer
         gifWriter = getWriter();
         imageWriteParam = gifWriter.getDefaultWriteParam();
-        ImageTypeSpecifier imageTypeSpecifier = ImageTypeSpecifier.createFromBufferedImageType(imageType);
+        var imageTypeSpecifier = ImageTypeSpecifier.createFromBufferedImageType(imageType);
         imageMetaData = gifWriter.getDefaultImageMetadata(imageTypeSpecifier, imageWriteParam);
 
         var metaFormatName = imageMetaData.getNativeMetadataFormatName();
