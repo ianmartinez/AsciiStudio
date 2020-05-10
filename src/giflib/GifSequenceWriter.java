@@ -9,7 +9,6 @@
  * http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
  * Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
  */
-
 package giflib;
 
 import javax.imageio.*;
@@ -83,8 +82,10 @@ public class GifSequenceWriter {
     }
 
     /**
-     * Close this GifSequenceWriter object. This does not close the underlying
+     * Close this GifSequenceWriter object.This does not close the underlying
      * stream, just finishes off the GIF.
+     * 
+     * @throws java.io.IOException if no GIF image writers are returned
      */
     public void close() throws IOException {
         gifWriter.endWriteSequence();
@@ -118,37 +119,34 @@ public class GifSequenceWriter {
      * name.
      */
     private static IIOMetadataNode getNode(IIOMetadataNode rootNode, String nodeName) {
-        int nNodes = rootNode.getLength();
-        
-        for (int i = 0; i < nNodes; i++) {
-            if (rootNode.item(i).getNodeName().compareToIgnoreCase(nodeName)
-                    == 0) {
-                return ((IIOMetadataNode) rootNode.item(i));
+        for (int i = 0; i < rootNode.getLength(); i++) {
+            if (rootNode.item(i).getNodeName().compareToIgnoreCase(nodeName) == 0) {
+                return ((IIOMetadataNode)rootNode.item(i));
             }
         }
         
         var node = new IIOMetadataNode(nodeName);
         rootNode.appendChild(node);
-        return (node);
+        
+        return node;
     }
 
-    public static GifFrame[] readGif(String source) {
+    public static GifFrame[] getFrames(String source) {
         try {
-            InputStream stream = new FileInputStream(source);
-            ArrayList<GifFrame> frames = new ArrayList<>(2);
-
-            ImageReader reader = (ImageReader) ImageIO.getImageReadersByFormatName("gif").next();
-            reader.setInput(ImageIO.createImageInputStream(stream));
-
+            var stream = new FileInputStream(source);
+            var frames = new ArrayList<GifFrame>(2);  
+            
             int lastx = 0;
             int lasty = 0;
-
+            
             int width = -1;
             int height = -1;
-
-            IIOMetadata metadata = reader.getStreamMetadata();
-
+            
             Color backgroundColor = null;
+            
+            var reader = (ImageReader) ImageIO.getImageReadersByFormatName("gif").next();
+            reader.setInput(ImageIO.createImageInputStream(stream));            
+            var metadata = reader.getStreamMetadata();
 
             if (metadata != null) {
                 var globalRoot = (IIOMetadataNode) metadata.getAsTree(metadata.getNativeMetadataFormatName());
@@ -204,26 +202,24 @@ public class GifSequenceWriter {
                     height = image.getHeight();
                 }
 
-                var root = (IIOMetadataNode) reader.getImageMetadata(frameIndex).getAsTree("javax_imageio_gif_image_1.0");
-                var gceNode = (IIOMetadataNode) root.getElementsByTagName("GraphicControlExtension").item(0);
+                var root = (IIOMetadataNode)reader.getImageMetadata(frameIndex).getAsTree("javax_imageio_gif_image_1.0");
+                var gceNode = (IIOMetadataNode)root.getElementsByTagName("GraphicControlExtension").item(0);
                 var children = root.getChildNodes();
                 int delay = Integer.valueOf(gceNode.getAttribute("delayTime"));
-                String disposal = gceNode.getAttribute("disposalMethod");
+                var disposal = gceNode.getAttribute("disposalMethod");
 
                 if (master == null) {
                     master = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                     master.createGraphics().setColor(backgroundColor);
                     master.createGraphics().fillRect(0, 0, master.getWidth(), master.getHeight());
-
                     hasBackround = image.getWidth() == width && image.getHeight() == height;
-
                     master.createGraphics().drawImage(image, 0, 0, null);
                 } else {
                     int x = 0;
                     int y = 0;
 
                     for (int nodeIndex = 0; nodeIndex < children.getLength(); nodeIndex++) {
-                        Node nodeItem = children.item(nodeIndex);
+                        var nodeItem = children.item(nodeIndex);
 
                         if (nodeItem.getNodeName().equals("ImageDescriptor")) {
                             NamedNodeMap map = nodeItem.getAttributes();
@@ -242,9 +238,9 @@ public class GifSequenceWriter {
                             }
                         }
 
-                        ColorModel model = from.getColorModel();
-                        boolean alpha = from.isAlphaPremultiplied();
-                        WritableRaster raster = from.copyData(null);
+                        var model = from.getColorModel();
+                        var alpha = from.isAlphaPremultiplied();
+                        var raster = from.copyData(null);
                         master = new BufferedImage(model, raster, alpha, null);
                     } else if (disposal.equals("restoreToBackgroundColor") && backgroundColor != null) {
                         if (!hasBackround || frameIndex > 1) {
@@ -257,39 +253,39 @@ public class GifSequenceWriter {
                     lasty = y;
                 }
 
-                BufferedImage copy;
-                ColorModel model = master.getColorModel();
-                boolean alpha = master.isAlphaPremultiplied();
-                WritableRaster raster = master.copyData(null);
-                copy = new BufferedImage(model, raster, alpha, null);
+                var model = master.getColorModel();
+                var alpha = master.isAlphaPremultiplied();
+                var raster = master.copyData(null);
+                var copy = new BufferedImage(model, raster, alpha, null);
                 frames.add(new GifFrame(copy, delay, disposal, image.getWidth(), image.getHeight()));
                 master.flush();
             }
             reader.dispose();
 
-            GifFrame[] fs = new GifFrame[frames.size()];
+            var fs = new GifFrame[frames.size()];
             for (int i = 0; i < frames.size(); i++) {
                 fs[i] = frames.get(i);
             }
-            return fs;
+            
+            return fs;            
         } catch (Exception ex) {
             return null;
         }
     }
 
-    public static BufferedImage[] getFrames(String file) {
-        GifFrame[] f = readGif(file);
-        BufferedImage[] bf = new BufferedImage[f.length];
+    public static BufferedImage[] getFrameImages(String file) {
+        var frames = getFrames(file);
+        var bufferedFrames = new BufferedImage[frames.length];
         
-        for (int i = 0; i < f.length; i++) {
-            bf[i] = f[i].getImage();
+        for (int i = 0; i < frames.length; i++) {
+            bufferedFrames[i] = frames[i].getImage();
         }
 
-        return bf;
+        return bufferedFrames;
     }
 
     public static int getAverageDelay(String file) {
-        GifFrame[] frames = readGif(file);
+        var frames = getFrames(file);
         int total = 0;
         
         for (GifFrame frame : frames) {
