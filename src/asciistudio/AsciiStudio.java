@@ -34,7 +34,13 @@ public class AsciiStudio {
         
         // Use native look and feel
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            if(System.getProperty("os.name", "").startsWith("Mac OS")) {        
+                // Use improved Aqua look and feel over native Java version.
+                // Adds support for dark mode, among other things
+                UIManager.setLookAndFeel("org.violetlib.aqua.AquaLookAndFeel");
+            } else {                
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }
         } catch (Exception e) {
             // Couldn't load native look and feel, so just continue with
             // default.
