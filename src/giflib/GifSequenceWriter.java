@@ -57,11 +57,8 @@ public class GifSequenceWriter {
 
         var commentsNode = getNode(root, "CommentExtensions");
         commentsNode.setAttribute("CommentExtension", "Created by MAH");
-
-        var appEntensionsNode = getNode(
-                root,
-                "ApplicationExtensions");
-
+        
+        var appExtensionsNode = getNode(root, "ApplicationExtensions");
         var child = new IIOMetadataNode("ApplicationExtension");
 
         child.setAttribute("applicationID", "NETSCAPE");
@@ -70,7 +67,7 @@ public class GifSequenceWriter {
         int loop = loopContinuously ? 0 : 1;
 
         child.setUserObject(new byte[]{0x1, (byte) (loop & 0xFF), (byte) ((loop >> 8) & 0xFF)});
-        appEntensionsNode.appendChild(child);
+        appExtensionsNode.appendChild(child);
 
         imageMetaData.setFromTree(metaFormatName, root);
         gifWriter.setOutput(outputStream);

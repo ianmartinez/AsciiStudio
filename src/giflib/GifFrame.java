@@ -1,7 +1,7 @@
-//  Gif.java
+// Gif.java
 //  
-//  Created by Elliot Kroo on 2009-04-25.
-//  Modified by Ian Martinez, May 2020.
+// Created by Elliot Kroo on 2009-04-25.
+// Modified by Ian Martinez, May 2020.
 //
 // This work is licensed under the Creative Commons Attribution 3.0 Unported
 // License. To view a copy of this license, visit
