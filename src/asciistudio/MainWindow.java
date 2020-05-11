@@ -40,16 +40,15 @@ public class MainWindow extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         sidebarPanel = new javax.swing.JPanel();
-        jSplitPane2 = new javax.swing.JSplitPane();
+        settingsImageSplitter = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jSplitPane4 = new javax.swing.JSplitPane();
+        beforeAfterSplitter = new javax.swing.JSplitPane();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        importButton = new javax.swing.JButton();
+        exportButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -93,8 +92,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(sidebarPanel);
 
-        jSplitPane2.setDividerLocation(175);
-        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        settingsImageSplitter.setDividerLocation(175);
+        settingsImageSplitter.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jCheckBox2.setText("jCheckBox2");
 
@@ -115,39 +114,34 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        jSplitPane2.setLeftComponent(jPanel1);
+        settingsImageSplitter.setLeftComponent(jPanel1);
 
-        jSplitPane4.setDividerLocation(250);
+        beforeAfterSplitter.setDividerLocation(250);
+        beforeAfterSplitter.setResizeWeight(0.5);
 
         jLabel5.setText("jLabel1");
-        jSplitPane4.setTopComponent(jLabel5);
+        beforeAfterSplitter.setLeftComponent(jLabel5);
 
         jLabel6.setText("jLabel2");
-        jSplitPane4.setRightComponent(jLabel6);
+        beforeAfterSplitter.setRightComponent(jLabel6);
 
-        jSplitPane2.setRightComponent(jSplitPane4);
+        settingsImageSplitter.setRightComponent(beforeAfterSplitter);
 
-        jSplitPane1.setRightComponent(jSplitPane2);
+        jSplitPane1.setRightComponent(settingsImageSplitter);
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("New");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        importButton.setText("Import");
+        importButton.setFocusable(false);
+        importButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        importButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(importButton);
 
-        jButton2.setText("Open");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
-
-        jButton3.setText("Save");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        exportButton.setText("Export");
+        exportButton.setFocusable(false);
+        exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(exportButton);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -237,30 +231,29 @@ public class MainWindow extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
+    protected javax.swing.JSplitPane beforeAfterSplitter;
     protected javax.swing.JMenuItem copyMenuItem;
     protected javax.swing.JMenuItem cutMenuItem;
     protected javax.swing.JMenuItem deleteMenuItem;
     protected javax.swing.JMenu editMenu;
     protected javax.swing.JMenuItem exitMenuItem;
+    protected javax.swing.JButton exportButton;
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JMenu helpMenu;
-    protected javax.swing.JButton jButton1;
-    protected javax.swing.JButton jButton2;
-    protected javax.swing.JButton jButton3;
+    protected javax.swing.JButton importButton;
     protected javax.swing.JCheckBox jCheckBox2;
     protected javax.swing.JLabel jLabel5;
     protected javax.swing.JLabel jLabel6;
     protected javax.swing.JMenu jMenu1;
     protected javax.swing.JPanel jPanel1;
     protected javax.swing.JSplitPane jSplitPane1;
-    protected javax.swing.JSplitPane jSplitPane2;
-    protected javax.swing.JSplitPane jSplitPane4;
     protected javax.swing.JToolBar jToolBar1;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JMenuItem openMenuItem;
     protected javax.swing.JMenuItem pasteMenuItem;
     protected javax.swing.JMenuItem saveAsMenuItem;
     protected javax.swing.JMenuItem saveMenuItem;
+    protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
     // End of variables declaration//GEN-END:variables
 
