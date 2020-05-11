@@ -40,9 +40,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         sidebarPanel = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jSplitPane4 = new javax.swing.JSplitPane();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -58,6 +61,7 @@ public class MainWindow extends javax.swing.JFrame {
         copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -65,7 +69,6 @@ public class MainWindow extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(400, 300));
         setName("MainWindowFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(700, 500));
         setSize(new java.awt.Dimension(700, 500));
 
         jSplitPane1.setDividerLocation(200);
@@ -73,52 +76,58 @@ public class MainWindow extends javax.swing.JFrame {
         jSplitPane1.setDoubleBuffered(true);
         jSplitPane1.setMinimumSize(new java.awt.Dimension(100, 100));
 
+        sidebarPanel.setMinimumSize(new java.awt.Dimension(200, 0));
         sidebarPanel.setName("sidebarPanel"); // NOI18N
+        sidebarPanel.setPreferredSize(new java.awt.Dimension(200, 472));
 
         javax.swing.GroupLayout sidebarPanelLayout = new javax.swing.GroupLayout(sidebarPanel);
         sidebarPanel.setLayout(sidebarPanelLayout);
         sidebarPanelLayout.setHorizontalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
         sidebarPanelLayout.setVerticalGroup(
             sidebarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+            .addGap(0, 472, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(sidebarPanel);
 
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        jSplitPane2.setDividerLocation(175);
+        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel2.setName("sidebarPanel"); // NOI18N
+        jCheckBox2.setText("jCheckBox2");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addComponent(jCheckBox2)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Source", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jCheckBox2)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Preview", jPanel3);
+        jSplitPane2.setLeftComponent(jPanel1);
 
-        jSplitPane1.setRightComponent(jTabbedPane1);
+        jSplitPane4.setDividerLocation(250);
+
+        jLabel5.setText("jLabel1");
+        jSplitPane4.setTopComponent(jLabel5);
+
+        jLabel6.setText("jLabel2");
+        jSplitPane4.setRightComponent(jLabel6);
+
+        jSplitPane2.setRightComponent(jSplitPane4);
+
+        jSplitPane1.setRightComponent(jSplitPane2);
 
         jToolBar1.setRollover(true);
 
@@ -188,6 +197,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         menuBar.add(editMenu);
 
+        jMenu1.setText("View");
+        menuBar.add(jMenu1);
+
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
 
@@ -235,10 +247,14 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JButton jButton1;
     protected javax.swing.JButton jButton2;
     protected javax.swing.JButton jButton3;
-    protected javax.swing.JPanel jPanel2;
-    protected javax.swing.JPanel jPanel3;
+    protected javax.swing.JCheckBox jCheckBox2;
+    protected javax.swing.JLabel jLabel5;
+    protected javax.swing.JLabel jLabel6;
+    protected javax.swing.JMenu jMenu1;
+    protected javax.swing.JPanel jPanel1;
     protected javax.swing.JSplitPane jSplitPane1;
-    protected javax.swing.JTabbedPane jTabbedPane1;
+    protected javax.swing.JSplitPane jSplitPane2;
+    protected javax.swing.JSplitPane jSplitPane4;
     protected javax.swing.JToolBar jToolBar1;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JMenuItem openMenuItem;
