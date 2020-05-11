@@ -24,6 +24,7 @@
  *  - GifSequenceWriter implements AutoCloseable so it can be used with try-with-resources
  *  - Customizable comments section
  *  - Per-frame delay setting
+ *  - GIF frames can be added or removed
  *  - Let IO errors be handled by user of library, not the library itself
  */
 package giflib;
