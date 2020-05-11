@@ -205,7 +205,7 @@ public class GifSequenceWriter {
                 var root = (IIOMetadataNode)reader.getImageMetadata(frameIndex).getAsTree("javax_imageio_gif_image_1.0");
                 var gceNode = (IIOMetadataNode)root.getElementsByTagName("GraphicControlExtension").item(0);
                 var children = root.getChildNodes();
-                int delay = Integer.valueOf(gceNode.getAttribute("delayTime"));
+                var delay = Integer.valueOf(gceNode.getAttribute("delayTime"));
                 var disposal = gceNode.getAttribute("disposalMethod");
 
                 if (master == null) {
@@ -244,7 +244,8 @@ public class GifSequenceWriter {
                         master = new BufferedImage(model, raster, alpha, null);
                     } else if (disposal.equals("restoreToBackgroundColor") && backgroundColor != null) {
                         if (!hasBackround || frameIndex > 1) {
-                            master.createGraphics().fillRect(lastx, lasty, frames.get(frameIndex - 1).getWidth(), frames.get(frameIndex - 1).getHeight());
+                            var lastFrame = frames.get(frameIndex - 1);
+                            master.createGraphics().fillRect(lastx, lasty, lastFrame.getWidth(), lastFrame.getHeight());
                         }
                     }
                     master.createGraphics().drawImage(image, x, y, null);
