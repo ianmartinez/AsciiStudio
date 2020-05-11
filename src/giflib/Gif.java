@@ -3,7 +3,7 @@
  * Handles the loading and saving of GIF files.
  *
  * ---
- * 
+ *
  * Created by Elliot Kroo, April 25, 2009
  * Modified by Ian Martinez, May 2020
  *
@@ -21,10 +21,10 @@
  *  - Update with newer Java constructs
  *  - Add JavaDocs
  *  - Simplified function and variable names
+ *  - GifSequenceWriter implements AutoCloseable so it can be used with try-with-resources
  *  - Customizable comments section
  *  - Per-frame delay setting
  *  - Let IO errors be handled by user of library, not the library itself
- *  - 
  */
 package giflib;
 
@@ -52,11 +52,11 @@ public final class Gif {
     }
 
     public void save(String filename) throws IOException {
-        try (var output = new FileImageOutputStream(new File(filename))) {
-            var writer = new GifSequenceWriter(output, frames[0].getType(), getDelay(), true);
+        try (var output = new FileImageOutputStream(new File(filename)); 
+             var writer = new GifSequenceWriter(output, frames[0].getType(), getDelay(), true)) {
 
-            for (BufferedImage bi : frames) {
-                writer.writeToSequence(bi);
+            for (var frameImage : frames) {
+                writer.writeToSequence(frameImage);
             }
 
             writer.close();

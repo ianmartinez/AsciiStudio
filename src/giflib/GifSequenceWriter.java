@@ -1,9 +1,9 @@
 /**
- * GifSequenceWriter.java 
- * 
+ * GifSequenceWriter.java
+ *
  * Created by Elliot Kroo, April 25, 2009
  * Modified by Ian Martinez, May 2020
- * 
+ *
  * This work is licensed under the Creative Commons Attribution 3.0 Unported
  * License. To view a copy of this license, visit
  * http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -21,7 +21,8 @@ import java.util.Iterator;
 import org.w3c.dom.*;
 import java.awt.*;
 
-public class GifSequenceWriter {
+public class GifSequenceWriter implements AutoCloseable {
+
     protected ImageWriter gifWriter;
     protected ImageWriteParam imageWriteParam;
     protected IIOMetadata imageMetaData;
@@ -37,12 +38,11 @@ public class GifSequenceWriter {
      *
      * @author Elliot Kroo (elliot[at]kroo[dot]net)
      */
-    public GifSequenceWriter(ImageOutputStream outputStream, 
+    public GifSequenceWriter(ImageOutputStream outputStream,
             int imageType,
-            int timeBetweenFramesMS, 
+            int timeBetweenFramesMS,
             boolean loopContinuously) throws IIOException, IOException {
-        
-        // my method to create a writer
+
         gifWriter = getWriter();
         imageWriteParam = gifWriter.getDefaultWriteParam();
         var imageTypeSpecifier = ImageTypeSpecifier.createFromBufferedImageType(imageType);
@@ -59,7 +59,7 @@ public class GifSequenceWriter {
 
         var commentsNode = getNode(root, "CommentExtensions");
         commentsNode.setAttribute("CommentExtension", "Created by MAH");
-        
+
         var appExtensionsNode = getNode(root, "ApplicationExtensions");
         var child = new IIOMetadataNode("ApplicationExtension");
 
@@ -76,6 +76,13 @@ public class GifSequenceWriter {
         gifWriter.prepareWriteSequence(null);
     }
 
+    /**
+     * 
+     * 
+     * @param img the image to write
+     * 
+     * @throws IOException if the image cannot be written
+     */
     public void writeToSequence(RenderedImage img) throws IOException {
         var ioImg = new IIOImage(img, null, imageMetaData);
         gifWriter.writeToSequence(ioImg, imageWriteParam);
@@ -84,7 +91,7 @@ public class GifSequenceWriter {
     /**
      * Close this GifSequenceWriter object.This does not close the underlying
      * stream, just finishes off the GIF.
-     * 
+     *
      * @throws java.io.IOException if no GIF image writers are returned
      */
     public void close() throws IOException {
@@ -121,31 +128,39 @@ public class GifSequenceWriter {
     private static IIOMetadataNode getNode(IIOMetadataNode rootNode, String nodeName) {
         for (int i = 0; i < rootNode.getLength(); i++) {
             if (rootNode.item(i).getNodeName().compareToIgnoreCase(nodeName) == 0) {
-                return ((IIOMetadataNode)rootNode.item(i));
+                return ((IIOMetadataNode) rootNode.item(i));
             }
         }
-        
+
         var node = new IIOMetadataNode(nodeName);
         rootNode.appendChild(node);
-        
+
         return node;
     }
 
-    public static GifFrame[] getFrames(String source) {
+    /**
+     * Extract an array of GIF frames from a file. Returns null
+     * if it is not a valid GIF.
+     *
+     * @param fileName The GIF file.
+     * 
+     * @return The array of GIF frames.
+     */
+    public static GifFrame[] getFrames(String fileName) {
         try {
-            var stream = new FileInputStream(source);
-            var frames = new ArrayList<GifFrame>(2);  
-            
+            var stream = new FileInputStream(fileName);
+            var frames = new ArrayList<GifFrame>(2);
+
             int lastx = 0;
             int lasty = 0;
-            
+
             int width = -1;
             int height = -1;
-            
+
             Color backgroundColor = null;
-            
+
             var reader = (ImageReader) ImageIO.getImageReadersByFormatName("gif").next();
-            reader.setInput(ImageIO.createImageInputStream(stream));            
+            reader.setInput(ImageIO.createImageInputStream(stream));
             var metadata = reader.getStreamMetadata();
 
             if (metadata != null) {
@@ -168,7 +183,7 @@ public class GifSequenceWriter {
                     if (colorTable != null) {
                         String bgIndex = colorTable.getAttribute("backgroundColorIndex");
                         var colorEntry = (IIOMetadataNode) colorTable.getFirstChild();
-                        
+
                         while (colorEntry != null) {
                             if (colorEntry.getAttribute("index").equals(bgIndex)) {
                                 int red = Integer.parseInt(colorEntry.getAttribute("red"));
@@ -190,7 +205,7 @@ public class GifSequenceWriter {
 
             for (int frameIndex = 0;; frameIndex++) {
                 BufferedImage image;
-                
+
                 try {
                     image = reader.read(frameIndex);
                 } catch (IndexOutOfBoundsException io) {
@@ -202,8 +217,8 @@ public class GifSequenceWriter {
                     height = image.getHeight();
                 }
 
-                var root = (IIOMetadataNode)reader.getImageMetadata(frameIndex).getAsTree("javax_imageio_gif_image_1.0");
-                var gceNode = (IIOMetadataNode)root.getElementsByTagName("GraphicControlExtension").item(0);
+                var root = (IIOMetadataNode) reader.getImageMetadata(frameIndex).getAsTree("javax_imageio_gif_image_1.0");
+                var gceNode = (IIOMetadataNode) root.getElementsByTagName("GraphicControlExtension").item(0);
                 var children = root.getChildNodes();
                 var delay = Integer.valueOf(gceNode.getAttribute("delayTime"));
                 var disposal = gceNode.getAttribute("disposalMethod");
@@ -267,17 +282,24 @@ public class GifSequenceWriter {
             for (int i = 0; i < frames.size(); i++) {
                 fs[i] = frames.get(i);
             }
-            
-            return fs;            
+
+            return fs;
         } catch (Exception ex) {
             return null;
         }
     }
 
-    public static BufferedImage[] getFrameImages(String file) {
-        var frames = getFrames(file);
+    /**
+     * Extract frames from a GIF as an array of images.
+     * 
+     * @param fileName The GIF file
+     * 
+     * @return The array of images
+     */
+    public static BufferedImage[] getFrameImages(String fileName) {
+        var frames = getFrames(fileName);
         var bufferedFrames = new BufferedImage[frames.length];
-        
+
         for (int i = 0; i < frames.length; i++) {
             bufferedFrames[i] = frames[i].getImage();
         }
@@ -285,10 +307,17 @@ public class GifSequenceWriter {
         return bufferedFrames;
     }
 
-    public static int getAverageDelay(String file) {
-        var frames = getFrames(file);
+    /**
+     * Get the average delay between frames in a GIF.
+     * 
+     * @param fileName The GIF file
+     * 
+     * @return The average delay
+     */
+    public static int getAverageDelay(String fileName) {
+        var frames = getFrames(fileName);
         int total = 0;
-        
+
         for (GifFrame frame : frames) {
             total += frame.getDelay();
         }
