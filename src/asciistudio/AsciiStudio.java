@@ -28,7 +28,10 @@ public class AsciiStudio {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) {      
+        // Change the app name in macOS's menu bar
+        System.setProperty("apple.awt.application.name", "ASCII Studio");
+        
         // Use native menu on macOS
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         
