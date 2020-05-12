@@ -22,9 +22,10 @@ import org.w3c.dom.*;
 import java.awt.*;
 
 public class GifSequenceWriter implements AutoCloseable {
+
     // Change this to your program
     public static String programName = "GifSequenceWriter";
-    
+
     protected ImageWriter gifWriter;
     protected ImageWriteParam imageWriteParam;
     protected IIOMetadata imageMetaData;
@@ -79,17 +80,17 @@ public class GifSequenceWriter implements AutoCloseable {
     }
 
     /**
-     * 
-     * 
-     * @param img the image to write
-     * 
+     *
+     *
+     * @param frame the frame to write
+     *
      * @throws IOException if the image cannot be written
      */
     public void writeToSequence(GifFrame frame) throws IOException {
         var ioImg = new IIOImage(frame.getImage(), null, imageMetaData);
         gifWriter.writeToSequence(ioImg, imageWriteParam);
     }
-
+    
     /**
      * Close this GifSequenceWriter object.This does not close the underlying
      * stream, just finishes off the GIF.
@@ -145,7 +146,7 @@ public class GifSequenceWriter implements AutoCloseable {
      * if it is not a valid GIF.
      *
      * @param fileName The GIF file.
-     * 
+     *
      * @return The array of GIF frames.
      */
     public static GifFrame[] getFrames(String fileName) {

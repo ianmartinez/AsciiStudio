@@ -24,7 +24,8 @@
  *  - GifSequenceWriter implements AutoCloseable so it can be used with try-with-resources
  *  - Customizable program name in comments
  *  - Let IO errors be handled by user of library, not the library itself
- *  - Use GifFrame for storing frames instead of
+ *  - Use GifFrame for storing frames instead of BufferedImage array
+ *  - Change delay of GIF
  */
 package giflib;
 
@@ -98,6 +99,14 @@ public final class Gif {
 
     public void setFrameImage(int pos, BufferedImage img) {
         frames[pos].setImage(img);
+    }
+
+    public int getFrameDelay(int pos) {
+        return frames[pos].getDelay();
+    }
+
+    public void setFrameDelay(int pos, int delay) {
+        frames[delay].setDelay(delay);
     }
 
     public int getDelay() {

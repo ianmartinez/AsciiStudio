@@ -14,7 +14,7 @@ package giflib;
 import java.awt.image.BufferedImage;
 
 public final class GifFrame {
-    private final int delay;
+    private int delay;
     private BufferedImage image;
     private int width, height;
     /**
@@ -57,6 +57,10 @@ public final class GifFrame {
 
     public int getDelay() {
         return delay;
+    }
+    
+    public void setDelay(int delay) {
+        this.delay = delay;
     }
 
     public String getDisposal() {
