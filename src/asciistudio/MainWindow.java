@@ -102,16 +102,16 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addContainerGap()
                 .addComponent(jCheckBox2)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addContainerGap()
                 .addComponent(jCheckBox2)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         settingsImageSplitter.setLeftComponent(jPanel1);
