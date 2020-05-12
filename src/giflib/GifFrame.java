@@ -40,6 +40,11 @@ public final class GifFrame {
         this.disposal = null;
         refreshDimensions();
     }
+    
+    private void refreshDimensions() {        
+        width = image.getWidth();
+        height = image.getHeight();
+    }
 
     public BufferedImage getImage() {
         return image;
@@ -50,11 +55,6 @@ public final class GifFrame {
         refreshDimensions();
     }
     
-    private void refreshDimensions() {        
-        width = image.getWidth();
-        height = image.getHeight();
-    }
-
     public int getDelay() {
         return delay;
     }
