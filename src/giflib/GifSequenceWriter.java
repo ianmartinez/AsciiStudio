@@ -22,7 +22,9 @@ import org.w3c.dom.*;
 import java.awt.*;
 
 public class GifSequenceWriter implements AutoCloseable {
-
+    // Change this to your program
+    public static String programName = "GifSequenceWriter";
+    
     protected ImageWriter gifWriter;
     protected ImageWriteParam imageWriteParam;
     protected IIOMetadata imageMetaData;
@@ -58,7 +60,7 @@ public class GifSequenceWriter implements AutoCloseable {
         gceNode.setAttribute("transparentColorIndex", "0");
 
         var commentsNode = getNode(root, "CommentExtensions");
-        commentsNode.setAttribute("CommentExtension", "Created by MAH");
+        commentsNode.setAttribute("CommentExtension", "Created by " + programName);
 
         var appExtensionsNode = getNode(root, "ApplicationExtensions");
         var child = new IIOMetadataNode("ApplicationExtension");
@@ -83,8 +85,8 @@ public class GifSequenceWriter implements AutoCloseable {
      * 
      * @throws IOException if the image cannot be written
      */
-    public void writeToSequence(RenderedImage img) throws IOException {
-        var ioImg = new IIOImage(img, null, imageMetaData);
+    public void writeToSequence(GifFrame frame) throws IOException {
+        var ioImg = new IIOImage(frame.getImage(), null, imageMetaData);
         gifWriter.writeToSequence(ioImg, imageWriteParam);
     }
 
@@ -139,7 +141,7 @@ public class GifSequenceWriter implements AutoCloseable {
     }
 
     /**
-     * Extract an array of GIF frames from a file. Returns null
+     * Extract an array of GIF frames and their data from a file. Returns null
      * if it is not a valid GIF.
      *
      * @param fileName The GIF file.
@@ -273,7 +275,7 @@ public class GifSequenceWriter implements AutoCloseable {
                 var alpha = master.isAlphaPremultiplied();
                 var raster = master.copyData(null);
                 var copy = new BufferedImage(model, raster, alpha, null);
-                frames.add(new GifFrame(copy, delay, disposal, image.getWidth(), image.getHeight()));
+                frames.add(new GifFrame(copy, delay, disposal));
                 master.flush();
             }
             reader.dispose();
@@ -287,41 +289,5 @@ public class GifSequenceWriter implements AutoCloseable {
         } catch (Exception ex) {
             return null;
         }
-    }
-
-    /**
-     * Extract frames from a GIF as an array of images.
-     * 
-     * @param fileName The GIF file
-     * 
-     * @return The array of images
-     */
-    public static BufferedImage[] getFrameImages(String fileName) {
-        var frames = getFrames(fileName);
-        var bufferedFrames = new BufferedImage[frames.length];
-
-        for (int i = 0; i < frames.length; i++) {
-            bufferedFrames[i] = frames[i].getImage();
-        }
-
-        return bufferedFrames;
-    }
-
-    /**
-     * Get the average delay between frames in a GIF.
-     * 
-     * @param fileName The GIF file
-     * 
-     * @return The average delay
-     */
-    public static int getAverageDelay(String fileName) {
-        var frames = getFrames(fileName);
-        int total = 0;
-
-        for (GifFrame frame : frames) {
-            total += frame.getDelay();
-        }
-
-        return (int) (total / frames.length);
     }
 }

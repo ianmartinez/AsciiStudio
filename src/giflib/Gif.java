@@ -22,42 +22,58 @@
  *  - Add JavaDocs
  *  - Simplified function and variable names
  *  - GifSequenceWriter implements AutoCloseable so it can be used with try-with-resources
- *  - Customizable comments section
- *  - Per-frame delay setting
- *  - GIF frames can be added or removed
+ *  - Customizable program name in comments
  *  - Let IO errors be handled by user of library, not the library itself
+ *  - Use GifFrame for storing frames instead of
  */
 package giflib;
 
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.stream.*;
+import java.awt.Dimension;
+import static giflib.GifSequenceWriter.getFrames;
 
 public final class Gif {
 
-    private BufferedImage[] frames;
-    private int delay = 0;
+    private GifFrame[] frames;
+    private int averageDelay = -1; // Don't calculate until needed
 
-    public Gif(BufferedImage[] f, int d) {
-        frames = f;
-        delay = d;
+    public Gif(BufferedImage[] images, int delay) {
+        Dimension imgSize = maxSize(images);
+        frames = new GifFrame[images.length];
+
+        for (int i = 0; i < frames.length; i++) {
+            frames[i] = new GifFrame(images[i], delay, "");
+        }
     }
 
     public Gif(String filename) {
         open(filename);
     }
 
-    public void open(String filename) {
-        frames = GifSequenceWriter.getFrameImages(filename);
-        delay = GifSequenceWriter.getAverageDelay(filename);
+    private Dimension maxSize(BufferedImage[] images) {
+        int maxW = 0;
+        int maxH = 0;
+
+        for (var image : images) {
+            maxW = Math.max(maxW, image.getWidth());
+            maxH = Math.max(maxH, image.getHeight());
+        }
+
+        return new Dimension(maxW, maxH);
     }
 
-    public void save(String filename) throws IOException {
-        try (var output = new FileImageOutputStream(new File(filename)); 
-             var writer = new GifSequenceWriter(output, frames[0].getType(), getDelay(), true)) {
+    public void open(String fileName) {
+        frames = getFrames(fileName);
+    }
 
-            for (var frameImage : frames) {
-                writer.writeToSequence(frameImage);
+    public void save(String fileName) throws IOException {
+        try (var output = new FileImageOutputStream(new File(fileName));
+                var writer = new GifSequenceWriter(output, frames[0].getImageType(), getDelay(), true)) {
+
+            for (var frame : frames) {
+                writer.writeToSequence(frame);
             }
 
             writer.close();
@@ -68,15 +84,33 @@ public final class Gif {
         return frames.length;
     }
 
-    public BufferedImage getFrame(int pos) {
+    public GifFrame getFrame(int pos) {
         return frames[pos];
     }
 
-    public void setFrame(int pos, BufferedImage img) {
-        frames[pos] = img;
+    public void setFrame(int pos, GifFrame frame) {
+        frames[pos] = frame;
+    }
+
+    public BufferedImage getFrameImage(int pos) {
+        return getFrame(pos).getImage();
+    }
+
+    public void setFrameImage(int pos, BufferedImage img) {
+        frames[pos].setImage(img);
     }
 
     public int getDelay() {
-        return delay;
+        if (averageDelay == -1) { // Not calculated
+            int total = 0;
+
+            for (GifFrame frame : frames) {
+                total += frame.getDelay();
+            }
+
+            averageDelay = total / frames.length;
+        }
+
+        return averageDelay;
     }
 }

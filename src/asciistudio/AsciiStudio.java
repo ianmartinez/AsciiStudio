@@ -58,8 +58,8 @@ public class AsciiStudio {
         // Configure styling
         App.setRootProperty(mainWindow, "Aqua.windowStyle", "unifiedToolBar");
         App.setProperty(mainWindow.sidebarPanel, "Aqua.backgroundStyle", "vibrantSidebar");
-        App.setProperty(mainWindow.importButton, "JButton.buttonType", "toolbarItem");
-        App.setProperty(mainWindow.exportButton, "JButton.buttonType", "toolbarItem");
+        /*App.setProperty(mainWindow.importButton, "JButton.buttonType", "toolbarItem");
+        App.setProperty(mainWindow.exportButton, "JButton.buttonType", "toolbarItem");*/
 
         
         // Show
