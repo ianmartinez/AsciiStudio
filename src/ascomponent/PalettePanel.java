@@ -231,7 +231,6 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
         jPanel12.add(jLabel8, gridBagConstraints);
 
-        fontFamiliesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         fontFamiliesComboBox.setMinimumSize(new java.awt.Dimension(150, 27));
         fontFamiliesComboBox.setPreferredSize(new java.awt.Dimension(150, 27));
         gridBagConstraints = new java.awt.GridBagConstraints();
