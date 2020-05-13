@@ -25,6 +25,7 @@ import javax.swing.JPanel;
  * @author Ian Martinez
  */
 public class ColorPanel extends JPanel {
+
     private Color color = Color.BLACK;
 
     /**
@@ -41,11 +42,13 @@ public class ColorPanel extends JPanel {
         this.color = color;
         this.revalidate();
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
-      super.paintComponent(g);
-      g.setColor(color);
-      g.fillRect(0, 0, getWidth(), getHeight());
+        super.paintComponent(g);
+        g.setColor(color);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(new Color(0, 0, 0, 200));
+        g.drawRect(0, 0, getWidth(), getHeight());
     }
 }
