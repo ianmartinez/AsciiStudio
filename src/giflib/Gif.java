@@ -106,7 +106,12 @@ public final class Gif {
     }
 
     public void setFrameDelay(int pos, int delay) {
-        frames[delay].setDelay(delay);
+        frames[pos].setDelay(delay);
+    }
+    
+    public void setAllFramesDelay(int delay) {
+        for(var frame: frames) 
+            frame.setDelay(delay);
     }
 
     public int getDelay() {

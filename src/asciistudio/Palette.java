@@ -17,6 +17,7 @@
 package asciistudio;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 /**
  * Represents the palette used to render a ASCII image.
@@ -25,19 +26,21 @@ import java.awt.*;
  * @author Ian Martinez
  */
 public class Palette {
+
     private boolean usingPhrase = false;
     private boolean overridingImageColors = false;
     private Color backgroundColor = Color.BLACK;
-    private Color foregroundColor = Color.WHITE;
+    private Color fontColor = Color.WHITE;
     private Font font = new Font("Consolas", Font.BOLD, 12);
     private String[] weights = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("");
-    
+
     public Palette() {
-        
+
     }
-    
+
     /**
      * Set the weights array from a string
+     *
      * @param weights the weights to set
      */
     public void setWeights(String weights) {
@@ -73,17 +76,17 @@ public class Palette {
     }
 
     /**
-     * @return the foregroundColor
+     * @return the fontColor
      */
-    public Color getForegroundColor() {
-        return foregroundColor;
+    public Color getFontColor() {
+        return fontColor;
     }
 
     /**
-     * @param foregroundColor the foregroundColor to set
+     * @param fontColor the fontColor to set
      */
-    public void setForegroundColor(Color foregroundColor) {
-        this.foregroundColor = foregroundColor;
+    public void setFontColor(Color fontColor) {
+        this.fontColor = fontColor;
     }
 
     /**
@@ -126,5 +129,57 @@ public class Palette {
      */
     public void setUsingPhrase(boolean usingPhrase) {
         this.usingPhrase = usingPhrase;
+    }
+
+    /**
+     * @return the number of weights
+     */
+    public int getWeightCount() {
+        return weights.length;
+    }
+    
+    /** 
+     * @param pos the weight index
+     * @return the string for the weight at that index
+     */
+    public String getWeight(int pos) {
+        return weights[pos];
+    }
+        
+    public int getFontRatio(Graphics g) {
+        var metrics = g.getFontMetrics(font);
+        return (int) (metrics.getHeight() / maxVal(metrics.getWidths()));
+    }
+
+    public Dimension measureLine(Graphics g, String s) {
+        var metrics = g.getFontMetrics(font);
+        Rectangle2D bounds = metrics.getStringBounds(s, g);
+
+        return new Dimension((int) bounds.getWidth(), (int) bounds.getHeight());
+    }
+
+    public int getStringWidth(Graphics g, String s) {
+        FontMetrics metrics = g.getFontMetrics(font);
+        Rectangle2D bounds = metrics.getStringBounds(s, g);
+
+        return (int) bounds.getWidth();
+    }
+
+    public int getStringHeight(Graphics g, String s) {
+        FontMetrics metrics = g.getFontMetrics(font);
+        Rectangle2D bounds = metrics.getStringBounds(s, g);
+
+        return (int) bounds.getHeight();
+    }
+    
+    private static int maxVal(int[] arr)
+    {
+        int max = arr[0];
+
+        for(int i=1; i< arr.length; i++)
+            if(arr[i] > max)
+                max = arr[i];
+
+        return max;	
     }
 }
