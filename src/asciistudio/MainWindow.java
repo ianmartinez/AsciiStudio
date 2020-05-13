@@ -40,7 +40,11 @@ public class MainWindow extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         mainSplitter = new javax.swing.JSplitPane();
+        sidebarScroll = new javax.swing.JScrollPane();
         sidebarPanel = new javax.swing.JPanel();
+        imageSidebarItem1 = new ascomponent.ImageSidebarItem();
+        imageSidebarItem2 = new ascomponent.ImageSidebarItem();
+        imageSidebarItem3 = new ascomponent.ImageSidebarItem();
         settingsImageSplitter = new javax.swing.JSplitPane();
         currentPaletteContainer = new javax.swing.JPanel();
         currentPalette = new ascomponent.PalettePanel();
@@ -74,9 +78,59 @@ public class MainWindow extends javax.swing.JFrame {
         mainSplitter.setDividerLocation(200);
         mainSplitter.setDoubleBuffered(true);
 
-        sidebarPanel.setMinimumSize(new java.awt.Dimension(200, 10));
-        sidebarPanel.setName("sidebarPanel"); // NOI18N
-        mainSplitter.setLeftComponent(sidebarPanel);
+        sidebarScroll.setBorder(null);
+        sidebarScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        sidebarPanel.setLayout(new javax.swing.BoxLayout(sidebarPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        imageSidebarItem1.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout imageSidebarItem1Layout = new javax.swing.GroupLayout(imageSidebarItem1);
+        imageSidebarItem1.setLayout(imageSidebarItem1Layout);
+        imageSidebarItem1Layout.setHorizontalGroup(
+            imageSidebarItem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        imageSidebarItem1Layout.setVerticalGroup(
+            imageSidebarItem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        sidebarPanel.add(imageSidebarItem1);
+
+        imageSidebarItem2.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout imageSidebarItem2Layout = new javax.swing.GroupLayout(imageSidebarItem2);
+        imageSidebarItem2.setLayout(imageSidebarItem2Layout);
+        imageSidebarItem2Layout.setHorizontalGroup(
+            imageSidebarItem2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        imageSidebarItem2Layout.setVerticalGroup(
+            imageSidebarItem2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        sidebarPanel.add(imageSidebarItem2);
+
+        imageSidebarItem3.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout imageSidebarItem3Layout = new javax.swing.GroupLayout(imageSidebarItem3);
+        imageSidebarItem3.setLayout(imageSidebarItem3Layout);
+        imageSidebarItem3Layout.setHorizontalGroup(
+            imageSidebarItem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+        imageSidebarItem3Layout.setVerticalGroup(
+            imageSidebarItem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        sidebarPanel.add(imageSidebarItem3);
+
+        sidebarScroll.setViewportView(sidebarPanel);
+
+        mainSplitter.setLeftComponent(sidebarScroll);
 
         settingsImageSplitter.setDividerLocation(150);
         settingsImageSplitter.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -196,7 +250,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(mainToolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -220,6 +274,9 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JButton exportButton;
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JMenu helpMenu;
+    protected ascomponent.ImageSidebarItem imageSidebarItem1;
+    protected ascomponent.ImageSidebarItem imageSidebarItem2;
+    protected ascomponent.ImageSidebarItem imageSidebarItem3;
     protected javax.swing.JButton importButton;
     protected javax.swing.JMenu jMenu1;
     protected javax.swing.JSplitPane mainSplitter;
@@ -233,6 +290,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenuItem saveMenuItem;
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
+    protected javax.swing.JScrollPane sidebarScroll;
     // End of variables declaration//GEN-END:variables
 
 }
