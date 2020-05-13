@@ -42,7 +42,7 @@ public class MainWindow extends javax.swing.JFrame {
         sidebarPanel = new javax.swing.JPanel();
         settingsImageSplitter = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        palette1 = new ascomponent.Palette();
         beforeAfterSplitter = new javax.swing.JSplitPane();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -95,23 +95,21 @@ public class MainWindow extends javax.swing.JFrame {
         settingsImageSplitter.setDividerLocation(175);
         settingsImageSplitter.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jCheckBox2.setText("jCheckBox2");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jCheckBox2)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(palette1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jCheckBox2)
-                .addContainerGap(144, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(palette1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         settingsImageSplitter.setLeftComponent(jPanel1);
@@ -241,7 +239,6 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
-    protected javax.swing.JCheckBox jCheckBox2;
     protected javax.swing.JLabel jLabel5;
     protected javax.swing.JLabel jLabel6;
     protected javax.swing.JMenu jMenu1;
@@ -250,6 +247,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JToolBar jToolBar1;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JMenuItem openMenuItem;
+    protected ascomponent.Palette palette1;
     protected javax.swing.JMenuItem pasteMenuItem;
     protected javax.swing.JMenuItem saveAsMenuItem;
     protected javax.swing.JMenuItem saveMenuItem;
