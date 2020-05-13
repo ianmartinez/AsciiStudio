@@ -7,12 +7,14 @@
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AsciiImage.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/PaletteWindow.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AsciiStudio.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/ColorPanel.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/Gif.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/Palette.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/PalettePanel.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/App.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/MainWindow.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifFrame.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifSequenceWriter.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/FontPicker.java</file>
         </group>
     </open-files>
 </project-private>

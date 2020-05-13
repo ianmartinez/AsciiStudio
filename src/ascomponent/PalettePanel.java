@@ -18,6 +18,9 @@ package ascomponent;
 
 import asciistudio.App;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.util.Locale;
 import javax.swing.JColorChooser;
 
 /**
@@ -31,6 +34,14 @@ public class PalettePanel extends javax.swing.JPanel {
      */
     public PalettePanel() {
         initComponents();
+        
+        // Load font combo
+        fontFamiliesComboBox.removeAllItems();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Font[] allFonts = ge.getAllFonts();
+        for (Font font : allFonts) {
+            fontFamiliesComboBox.addItem(font.getFontName(Locale.US));
+        }
     }
 
     /**
@@ -57,7 +68,7 @@ public class PalettePanel extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        fontFamiliesComboBox = new javax.swing.JComboBox<>();
         jSpinner1 = new javax.swing.JSpinner();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -214,12 +225,12 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 9);
         jPanel12.add(jLabel8, gridBagConstraints);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setMinimumSize(new java.awt.Dimension(150, 27));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(150, 27));
+        fontFamiliesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        fontFamiliesComboBox.setMinimumSize(new java.awt.Dimension(150, 27));
+        fontFamiliesComboBox.setPreferredSize(new java.awt.Dimension(150, 27));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel12.add(jComboBox1, gridBagConstraints);
+        jPanel12.add(fontFamiliesComboBox, gridBagConstraints);
 
         jSpinner1.setMinimumSize(new java.awt.Dimension(70, 26));
         jSpinner1.setPreferredSize(new java.awt.Dimension(25, 26));
@@ -263,10 +274,10 @@ public class PalettePanel extends javax.swing.JPanel {
     private ascomponent.ColorPanel backgroundColorPanel;
     private javax.swing.JButton fontColorButton;
     private ascomponent.ColorPanel fontColorPanel;
+    private javax.swing.JComboBox<String> fontFamiliesComboBox;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
