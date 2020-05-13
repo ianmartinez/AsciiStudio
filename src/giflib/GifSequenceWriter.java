@@ -22,10 +22,6 @@ import org.w3c.dom.*;
 import java.awt.*;
 
 public class GifSequenceWriter implements AutoCloseable {
-
-    // Change this to your program
-    public static String programName = "GifSequenceWriter";
-
     protected ImageWriter gifWriter;
     protected ImageWriteParam imageWriteParam;
     protected IIOMetadata imageMetaData;
@@ -37,14 +33,15 @@ public class GifSequenceWriter implements AutoCloseable {
      * @param imageType one of the imageTypes specified in BufferedImage
      * @param timeBetweenFramesMS the time between frames in milliseconds
      * @param loopContinuously whether the GIF should loop repeatedly
-     * @throws IIOException if no GIF ImageWriters are found
-     *
-     * @author Elliot Kroo (elliot[at]kroo[dot]net)
+     * @param comment the comment to add
+     * 
+     * @throws IIOException if no GIF ImageWriters are found   
      */
     public GifSequenceWriter(ImageOutputStream outputStream,
             int imageType,
             int timeBetweenFramesMS,
-            boolean loopContinuously) throws IIOException, IOException {
+            boolean loopContinuously,
+            String comment) throws IIOException, IOException {
 
         gifWriter = getWriter();
         imageWriteParam = gifWriter.getDefaultWriteParam();
@@ -61,7 +58,7 @@ public class GifSequenceWriter implements AutoCloseable {
         gceNode.setAttribute("transparentColorIndex", "0");
 
         var commentsNode = getNode(root, "CommentExtensions");
-        commentsNode.setAttribute("CommentExtension", "Created by " + programName);
+        commentsNode.setAttribute("CommentExtension", comment);
 
         var appExtensionsNode = getNode(root, "ApplicationExtensions");
         var child = new IIOMetadataNode("ApplicationExtension");
@@ -77,6 +74,23 @@ public class GifSequenceWriter implements AutoCloseable {
         imageMetaData.setFromTree(metaFormatName, root);
         gifWriter.setOutput(outputStream);
         gifWriter.prepareWriteSequence(null);
+    }
+    
+    /**
+     * Creates a new GifSequenceWriter
+     *
+     * @param outputStream the ImageOutputStream to be written to
+     * @param imageType one of the imageTypes specified in BufferedImage
+     * @param timeBetweenFramesMS the time between frames in milliseconds
+     * @param loopContinuously whether the GIF should loop repeatedly
+     *  
+     * @throws IIOException if no GIF ImageWriters are found  
+     */
+    public GifSequenceWriter(ImageOutputStream outputStream,
+            int imageType,
+            int timeBetweenFramesMS,
+            boolean loopContinuously) throws IOException {
+        this(outputStream, imageType, timeBetweenFramesMS, loopContinuously, "Created by GifLib");
     }
 
     /**

@@ -24,12 +24,12 @@ import javax.swing.JColorChooser;
  *
  * @author Ian Martinez
  */
-public class Palette extends javax.swing.JPanel {
-
+public class PalettePanel extends javax.swing.JPanel {
+    
     /**
      * Creates new form FontPicker
      */
-    public Palette() {
+    public PalettePanel() {
         initComponents();
     }
 
@@ -187,6 +187,7 @@ public class Palette extends javax.swing.JPanel {
             fontColorPanel.setColor(newColor);
     }//GEN-LAST:event_fontColorButtonActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;

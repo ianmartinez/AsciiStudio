@@ -43,7 +43,7 @@ public class MainWindow extends javax.swing.JFrame {
         sidebarPanel = new javax.swing.JPanel();
         settingsImageSplitter = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        palette2 = new ascomponent.Palette();
+        palette2 = new ascomponent.PalettePanel();
         beforeAfterSplitter = new javax.swing.JSplitPane();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -241,7 +241,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JToolBar jToolBar1;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JMenuItem openMenuItem;
-    protected ascomponent.Palette palette2;
+    protected ascomponent.PalettePanel palette2;
     protected javax.swing.JMenuItem pasteMenuItem;
     protected javax.swing.JMenuItem saveAsMenuItem;
     protected javax.swing.JMenuItem saveMenuItem;
