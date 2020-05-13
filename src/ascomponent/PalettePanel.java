@@ -51,19 +51,22 @@ public class PalettePanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         fontColorPanel = new ascomponent.ColorPanel();
         fontColorButton = new javax.swing.JButton();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        fontColorPanel3 = new ascomponent.ColorPanel();
-        fontColorButton3 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        fontColorPanel4 = new ascomponent.ColorPanel();
-        fontColorButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jSpinner1 = new javax.swing.JSpinner();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
 
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
         jPanel7.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel7.setPreferredSize(new java.awt.Dimension(300, 30));
+        jPanel7.setPreferredSize(new java.awt.Dimension(350, 30));
         java.awt.GridBagLayout jPanel7Layout = new java.awt.GridBagLayout();
         jPanel7Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
         jPanel7.setLayout(jPanel7Layout);
@@ -116,7 +119,7 @@ public class PalettePanel extends javax.swing.JPanel {
         add(jPanel7);
 
         jPanel9.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel9.setPreferredSize(new java.awt.Dimension(300, 30));
+        jPanel9.setPreferredSize(new java.awt.Dimension(350, 30));
         java.awt.GridBagLayout jPanel9Layout = new java.awt.GridBagLayout();
         jPanel9Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
         jPanel9.setLayout(jPanel9Layout);
@@ -167,65 +170,13 @@ public class PalettePanel extends javax.swing.JPanel {
 
         add(jPanel9);
 
-        jPanel12.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel12.setPreferredSize(new java.awt.Dimension(300, 30));
-        java.awt.GridBagLayout jPanel12Layout = new java.awt.GridBagLayout();
-        jPanel12Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
-        jPanel12.setLayout(jPanel12Layout);
-
-        jLabel8.setText("Font Color:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel12.add(jLabel8, gridBagConstraints);
-
-        fontColorPanel3.setPreferredSize(new java.awt.Dimension(180, 30));
-
-        javax.swing.GroupLayout fontColorPanel3Layout = new javax.swing.GroupLayout(fontColorPanel3);
-        fontColorPanel3.setLayout(fontColorPanel3Layout);
-        fontColorPanel3Layout.setHorizontalGroup(
-            fontColorPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
-        );
-        fontColorPanel3Layout.setVerticalGroup(
-            fontColorPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel12.add(fontColorPanel3, gridBagConstraints);
-
-        fontColorButton3.setText("...");
-        fontColorButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fontColorButton3ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel12.add(fontColorButton3, gridBagConstraints);
-
-        add(jPanel12);
-
         jPanel13.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel13.setPreferredSize(new java.awt.Dimension(300, 30));
+        jPanel13.setPreferredSize(new java.awt.Dimension(350, 30));
         java.awt.GridBagLayout jPanel13Layout = new java.awt.GridBagLayout();
         jPanel13Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
         jPanel13.setLayout(jPanel13Layout);
 
-        jLabel9.setText("Font Color:");
+        jLabel9.setText("String weights/phrase:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -234,42 +185,48 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel13.add(jLabel9, gridBagConstraints);
 
-        fontColorPanel4.setPreferredSize(new java.awt.Dimension(180, 30));
-
-        javax.swing.GroupLayout fontColorPanel4Layout = new javax.swing.GroupLayout(fontColorPanel4);
-        fontColorPanel4.setLayout(fontColorPanel4Layout);
-        fontColorPanel4Layout.setHorizontalGroup(
-            fontColorPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
-        );
-        fontColorPanel4Layout.setVerticalGroup(
-            fontColorPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-        );
-
+        jTextField1.setText("jTextField1");
+        jTextField1.setMinimumSize(new java.awt.Dimension(100, 26));
+        jTextField1.setPreferredSize(new java.awt.Dimension(100, 26));
+        jTextField1.setSize(new java.awt.Dimension(100, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel13.add(fontColorPanel4, gridBagConstraints);
-
-        fontColorButton4.setText("...");
-        fontColorButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fontColorButton4ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel13.add(fontColorButton4, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel13.add(jTextField1, gridBagConstraints);
 
         add(jPanel13);
+
+        jPanel12.setMinimumSize(new java.awt.Dimension(200, 45));
+        jPanel12.setPreferredSize(new java.awt.Dimension(400, 30));
+        java.awt.GridBagLayout jPanel12Layout = new java.awt.GridBagLayout();
+        jPanel12Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
+        jPanel12.setLayout(jPanel12Layout);
+
+        jLabel8.setText("Font:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel12.add(jLabel8, gridBagConstraints);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel12.add(jComboBox1, new java.awt.GridBagConstraints());
+        jPanel12.add(jSpinner1, new java.awt.GridBagConstraints());
+
+        jRadioButton1.setText("P");
+        jPanel12.add(jRadioButton1, new java.awt.GridBagConstraints());
+
+        jRadioButton2.setText("B");
+        jPanel12.add(jRadioButton2, new java.awt.GridBagConstraints());
+
+        jRadioButton3.setText("I");
+        jPanel12.add(jRadioButton3, new java.awt.GridBagConstraints());
+
+        jRadioButton4.setText("BI");
+        jPanel12.add(jRadioButton4, new java.awt.GridBagConstraints());
+
+        add(jPanel12);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
@@ -286,25 +243,14 @@ public class PalettePanel extends javax.swing.JPanel {
             fontColorPanel.setColor(newColor);
     }//GEN-LAST:event_fontColorButtonActionPerformed
 
-    private void fontColorButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fontColorButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fontColorButton3ActionPerformed
-
-    private void fontColorButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fontColorButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fontColorButton4ActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;
     private ascomponent.ColorPanel backgroundColorPanel;
     private javax.swing.JButton fontColorButton;
-    private javax.swing.JButton fontColorButton3;
-    private javax.swing.JButton fontColorButton4;
     private ascomponent.ColorPanel fontColorPanel;
-    private ascomponent.ColorPanel fontColorPanel3;
-    private ascomponent.ColorPanel fontColorPanel4;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
@@ -313,5 +259,11 @@ public class PalettePanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
