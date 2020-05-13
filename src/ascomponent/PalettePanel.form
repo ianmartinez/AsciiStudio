@@ -25,17 +25,22 @@
           <Dimension value="[200, 45]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[370, 30]"/>
+          <Dimension value="[375, 30]"/>
         </Property>
       </Properties>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+              <FontInfo relative="true">
+                <Font bold="true" component="jLabel4" property="font" relativeSize="true" size="0"/>
+              </FontInfo>
+            </Property>
             <Property name="text" type="java.lang.String" value="Background Color:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="9" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -200,7 +205,7 @@
             <CodeExpression id="9">
               <ExpressionOrigin>
                 <Value type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                  <Insets value="[3, 3, 3, 9]"/>
+                  <Insets value="[3, 9, 3, 9]"/>
                 </Value>
               </ExpressionOrigin>
             </CodeExpression>
@@ -425,17 +430,22 @@
           <Dimension value="[200, 45]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[370, 30]"/>
+          <Dimension value="[375, 30]"/>
         </Property>
       </Properties>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+              <FontInfo relative="true">
+                <Font bold="true" component="jLabel5" property="font" relativeSize="true" size="0"/>
+              </FontInfo>
+            </Property>
             <Property name="text" type="java.lang.String" value="Font Color:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="9" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -611,7 +621,7 @@
             <CodeExpression id="33">
               <ExpressionOrigin>
                 <Value type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                  <Insets value="[3, 3, 3, 9]"/>
+                  <Insets value="[3, 9, 3, 9]"/>
                 </Value>
               </ExpressionOrigin>
             </CodeExpression>
@@ -835,11 +845,16 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+              <FontInfo relative="true">
+                <Font bold="true" component="jLabel9" property="font" relativeSize="true" size="0"/>
+              </FontInfo>
+            </Property>
             <Property name="text" type="java.lang.String" value="String weights/phrase:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="9" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -981,7 +996,7 @@
             <CodeExpression id="56">
               <ExpressionOrigin>
                 <Value type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                  <Insets value="[3, 3, 3, 9]"/>
+                  <Insets value="[3, 9, 3, 9]"/>
                 </Value>
               </ExpressionOrigin>
             </CodeExpression>
@@ -1102,11 +1117,16 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+              <FontInfo relative="true">
+                <Font bold="true" component="jLabel8" property="font" relativeSize="true" size="0"/>
+              </FontInfo>
+            </Property>
             <Property name="text" type="java.lang.String" value="Font:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="10" insetsTop="3" insetsLeft="9" insetsBottom="3" insetsRight="9" anchor="17" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1297,7 +1317,7 @@
             <CodeExpression id="72">
               <ExpressionOrigin>
                 <Value type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                  <Insets value="[3, 3, 3, 9]"/>
+                  <Insets value="[3, 9, 3, 9]"/>
                 </Value>
               </ExpressionOrigin>
             </CodeExpression>
