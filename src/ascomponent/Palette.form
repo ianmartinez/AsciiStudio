@@ -39,17 +39,20 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="backgroundColorButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="..."/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backgroundColorButtonActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="2" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="13" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="ascomponent.ColorPanel" name="colorPanel2">
+        <Container class="ascomponent.ColorPanel" name="backgroundColorPanel">
           <Properties>
             <Property name="color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -290,11 +293,11 @@
             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
           </StatementProvider>
           <Parameters>
-            <CodeExpression id="16_jButton4">
-              <CodeVariable name="jButton4" type="8194" declaredType="javax.swing.JButton"/>
+            <CodeExpression id="16_backgroundColorButton">
+              <CodeVariable name="backgroundColorButton" type="8194" declaredType="javax.swing.JButton"/>
               <ExpressionOrigin>
                 <ExpressionProvider type="ComponentRef">
-                  <ComponentRef name="jButton4"/>
+                  <ComponentRef name="backgroundColorButton"/>
                 </ExpressionProvider>
               </ExpressionOrigin>
             </CodeExpression>
@@ -400,11 +403,11 @@
             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
           </StatementProvider>
           <Parameters>
-            <CodeExpression id="24_colorPanel2">
-              <CodeVariable name="colorPanel2" type="8194" declaredType="ascomponent.ColorPanel"/>
+            <CodeExpression id="24_backgroundColorPanel">
+              <CodeVariable name="backgroundColorPanel" type="8194" declaredType="ascomponent.ColorPanel"/>
               <ExpressionOrigin>
                 <ExpressionProvider type="ComponentRef">
-                  <ComponentRef name="colorPanel2"/>
+                  <ComponentRef name="backgroundColorPanel"/>
                 </ExpressionProvider>
               </ExpressionOrigin>
             </CodeExpression>
@@ -438,7 +441,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="ascomponent.ColorPanel" name="colorPanel1">
+        <Container class="ascomponent.ColorPanel" name="fontColorPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="3" ipadX="60" ipadY="0" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="13" weightX="0.0" weightY="0.0"/>
@@ -458,10 +461,13 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="fontColorButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="..."/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fontColorButtonActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="2" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="13" weightX="0.0" weightY="0.0"/>
@@ -710,11 +716,11 @@
             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
           </StatementProvider>
           <Parameters>
-            <CodeExpression id="42_colorPanel1">
-              <CodeVariable name="colorPanel1" type="8194" declaredType="ascomponent.ColorPanel"/>
+            <CodeExpression id="42_fontColorPanel">
+              <CodeVariable name="fontColorPanel" type="8194" declaredType="ascomponent.ColorPanel"/>
               <ExpressionOrigin>
                 <ExpressionProvider type="ComponentRef">
-                  <ComponentRef name="colorPanel1"/>
+                  <ComponentRef name="fontColorPanel"/>
                 </ExpressionProvider>
               </ExpressionOrigin>
             </CodeExpression>
@@ -794,11 +800,11 @@
             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
           </StatementProvider>
           <Parameters>
-            <CodeExpression id="48_jButton5">
-              <CodeVariable name="jButton5" type="8194" declaredType="javax.swing.JButton"/>
+            <CodeExpression id="48_fontColorButton">
+              <CodeVariable name="fontColorButton" type="8194" declaredType="javax.swing.JButton"/>
               <ExpressionOrigin>
                 <ExpressionProvider type="ComponentRef">
-                  <ComponentRef name="jButton5"/>
+                  <ComponentRef name="fontColorButton"/>
                 </ExpressionProvider>
               </ExpressionOrigin>
             </CodeExpression>

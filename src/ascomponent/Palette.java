@@ -15,8 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package ascomponent;
+
 import asciistudio.App;
 import java.awt.Color;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -43,12 +45,12 @@ public class Palette extends javax.swing.JPanel {
 
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        colorPanel2 = new ascomponent.ColorPanel();
+        backgroundColorButton = new javax.swing.JButton();
+        backgroundColorPanel = new ascomponent.ColorPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        colorPanel1 = new ascomponent.ColorPanel();
-        jButton5 = new javax.swing.JButton();
+        fontColorPanel = new ascomponent.ColorPanel();
+        fontColorButton = new javax.swing.JButton();
 
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWeights = new double[] {0.0};
@@ -69,24 +71,29 @@ public class Palette extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel7.add(jLabel4, gridBagConstraints);
 
-        jButton4.setText("...");
+        backgroundColorButton.setText("...");
+        backgroundColorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backgroundColorButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel7.add(jButton4, gridBagConstraints);
+        jPanel7.add(backgroundColorButton, gridBagConstraints);
 
-        colorPanel2.setColor(new java.awt.Color(255, 255, 255));
+        backgroundColorPanel.setColor(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout colorPanel2Layout = new javax.swing.GroupLayout(colorPanel2);
-        colorPanel2.setLayout(colorPanel2Layout);
-        colorPanel2Layout.setHorizontalGroup(
-            colorPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout backgroundColorPanelLayout = new javax.swing.GroupLayout(backgroundColorPanel);
+        backgroundColorPanel.setLayout(backgroundColorPanelLayout);
+        backgroundColorPanelLayout.setHorizontalGroup(
+            backgroundColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        colorPanel2Layout.setVerticalGroup(
-            colorPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        backgroundColorPanelLayout.setVerticalGroup(
+            backgroundColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -97,7 +104,7 @@ public class Palette extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel7.add(colorPanel2, gridBagConstraints);
+        jPanel7.add(backgroundColorPanel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -123,14 +130,14 @@ public class Palette extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel9.add(jLabel5, gridBagConstraints);
 
-        javax.swing.GroupLayout colorPanel1Layout = new javax.swing.GroupLayout(colorPanel1);
-        colorPanel1.setLayout(colorPanel1Layout);
-        colorPanel1Layout.setHorizontalGroup(
-            colorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout fontColorPanelLayout = new javax.swing.GroupLayout(fontColorPanel);
+        fontColorPanel.setLayout(fontColorPanelLayout);
+        fontColorPanelLayout.setHorizontalGroup(
+            fontColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        colorPanel1Layout.setVerticalGroup(
-            colorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        fontColorPanelLayout.setVerticalGroup(
+            fontColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -141,15 +148,20 @@ public class Palette extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel9.add(colorPanel1, gridBagConstraints);
+        jPanel9.add(fontColorPanel, gridBagConstraints);
 
-        jButton5.setText("...");
+        fontColorButton.setText("...");
+        fontColorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fontColorButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel9.add(jButton5, gridBagConstraints);
+        jPanel9.add(fontColorButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -161,12 +173,26 @@ public class Palette extends javax.swing.JPanel {
         add(jPanel9, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
+        Color newColor = JColorChooser.showDialog(this, "Choose background Color", backgroundColorPanel.getColor());
+
+        if (newColor != null)
+            backgroundColorPanel.setColor(newColor);
+    }//GEN-LAST:event_backgroundColorButtonActionPerformed
+
+    private void fontColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fontColorButtonActionPerformed
+        Color newColor = JColorChooser.showDialog(this, "Choose font Color", fontColorPanel.getColor());
+
+        if (newColor != null)
+            fontColorPanel.setColor(newColor);
+    }//GEN-LAST:event_fontColorButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ascomponent.ColorPanel colorPanel1;
-    private ascomponent.ColorPanel colorPanel2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton backgroundColorButton;
+    private ascomponent.ColorPanel backgroundColorPanel;
+    private javax.swing.JButton fontColorButton;
+    private ascomponent.ColorPanel fontColorPanel;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel7;
