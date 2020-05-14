@@ -16,6 +16,7 @@ ASCII Studio is currently in the process of being re-written. Here are some of t
 - Import and export weights
 - Resize image before rendering
 - Edit multiple images at once
+- Multi-threaded image rendering 
 - Dedicated installer
 - New icon
     
