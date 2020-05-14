@@ -23,7 +23,6 @@ import ascomponent.ImageSidebarItem;
  * @author Ian Martinez
  */
 public class MainWindow extends javax.swing.JFrame {
-
     /**
      * Creates new form MainWindow
      */

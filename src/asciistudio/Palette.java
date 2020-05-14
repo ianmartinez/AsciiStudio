@@ -28,7 +28,8 @@ import java.awt.geom.Rectangle2D;
 public class Palette {
 
     /**
-     * The palette settings that all other palettes use.
+     * The palette settings that all other palettes 
+     * derive from.
      */
     public static Palette basePalette = new Palette();
 
@@ -191,12 +192,5 @@ public class Palette {
                 max = arr[i];
 
         return max;	
-    }
-
-    /**
-     * @param weights the weights to set
-     */
-    public void setWeights(String[] weights) {
-        this.weights = weights;
     }
 }
