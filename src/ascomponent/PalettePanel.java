@@ -53,7 +53,14 @@ public class PalettePanel extends javax.swing.JPanel {
         });
     }
 
+    /**
+     * Set the palette UI to match a palette
+     * 
+     * @param palette the palette
+     */
     public final void setPalette(Palette palette) {
+        this.palette = palette;
+        
         // Load font combo with current selection from the palette
         fontFamiliesComboBox.removeAllItems();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -87,8 +94,10 @@ public class PalettePanel extends javax.swing.JPanel {
         }
     }
 
-    // Update palette to reflect controls
-    private void updatePalette() {
+    /**
+     * Refresh the palette object with the values from the UI
+     */
+    private void savePalette() {
         // Font
         var fontName = (String) fontFamiliesComboBox.getSelectedItem();
         var fontSize = (int) fontSizeSpinner.getValue();
@@ -115,6 +124,14 @@ public class PalettePanel extends javax.swing.JPanel {
         // Weights/phrase
         palette.setUsingPhrase(usePhraseRadioButton.isSelected());
         palette.setWeights(weightsPhraseValueTextField.getText());
+    }
+    
+    /**
+     * @return The palette stored by this control
+     */
+    public Palette getPalette() {
+        savePalette();
+        return new Palette(palette);
     }
 
     /**

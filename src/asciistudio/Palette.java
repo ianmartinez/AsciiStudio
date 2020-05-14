@@ -50,6 +50,15 @@ public class Palette {
             weights = basePalette.getWeights();
         }
     }
+    
+    public Palette(Palette otherPalette) {        
+        usingPhrase = otherPalette.isUsingPhrase();
+        overridingImageColors = otherPalette.isOverridingImageColors();
+        backgroundColor = otherPalette.getBackgroundColor();
+        fontColor = otherPalette.getFontColor();
+        font = otherPalette.getFont();        
+        weights = otherPalette.getWeights();
+    }
 
     /**
      * Set the weights array from a string
