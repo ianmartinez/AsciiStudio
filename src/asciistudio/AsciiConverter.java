@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -91,7 +92,7 @@ public class AsciiConverter {
         return ascii;
     }
 
-    public BufferedImage getFullImage(BufferedImage img) {
+    public BufferedImage getImage(BufferedImage img) {
         Graphics2D g = img.createGraphics();
         int ratio = palette.getFontRatio(g);
 
@@ -99,7 +100,7 @@ public class AsciiConverter {
 
         // measure dimensions
         System.out.println("Measuring lines");
-        ArrayList<Dimension> dimensions = new ArrayList<Dimension>();
+        ArrayList<Dimension> dimensions = new ArrayList<>();
         for (int y = 0; y < img.getHeight(); y += ratio) {
             System.out.println("Measuring line #" + (y + 1));
             String line = getRow(img, y);
@@ -160,12 +161,18 @@ public class AsciiConverter {
         System.out.println("Render finished");
         return renderImage;
     }
-    
+
     public void saveImage(String filePath, BufferedImage img) {
-        
+
     }
-    
-    public void saveGif(String filePath, Gif gif) {
+
+    public void saveGif(String filePath, Gif gif) throws IOException {
         var convertedGif = new Gif(gif);
+        for (var i = 0; i < gif.getFrameCount(); i++) {
+            var convertedFrame = getImage(gif.getFrameImage(i));
+            gif.setFrameImage(i, convertedFrame);
+        }
+        
+        convertedGif.save(filePath);
     }
 }
