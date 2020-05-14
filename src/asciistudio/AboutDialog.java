@@ -28,6 +28,11 @@ public class AboutDialog extends javax.swing.JDialog {
     public AboutDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        appNameLabel.setText(App.getAppTitle());
+        licenseTextArea.setSelectionStart(0);
+        licenseTextArea.setSelectionEnd(0);
+        changelogTextArea.setSelectionStart(0);
+        changelogTextArea.setSelectionEnd(0);        
     }
 
     /**
@@ -38,30 +43,92 @@ public class AboutDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         appNameLabel = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        licenseTextArea = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        changelogTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 550));
+        setPreferredSize(new java.awt.Dimension(300, 200));
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWeights = new double[] {1.0};
+        layout.rowWeights = new double[] {0.0, 1.0};
+        getContentPane().setLayout(layout);
 
+        appNameLabel.setFont(appNameLabel.getFont().deriveFont(appNameLabel.getFont().getStyle() | java.awt.Font.BOLD, appNameLabel.getFont().getSize()+4));
+        appNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         appNameLabel.setText("App Name");
         appNameLabel.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 3, 10, 3);
+        getContentPane().add(appNameLabel, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(appNameLabel)
-                .addContainerGap(329, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(appNameLabel)
-                .addContainerGap(278, Short.MAX_VALUE))
-        );
+        java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
+        jPanel1Layout.columnWeights = new double[] {1.0};
+        jPanel1Layout.rowWeights = new double[] {1.0};
+        jPanel1.setLayout(jPanel1Layout);
+
+        jScrollPane1.setEnabled(false);
+
+        licenseTextArea.setEditable(false);
+        licenseTextArea.setColumns(20);
+        licenseTextArea.setLineWrap(true);
+        licenseTextArea.setRows(5);
+        licenseTextArea.setText("Copyright (C) 2016-2020, Ian Martinez \nWebsite: ianmtz.com\nGitHub: github.com/ianmartinez\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."); // NOI18N
+        licenseTextArea.setWrapStyleWord(true);
+        licenseTextArea.setFocusable(false);
+        licenseTextArea.setMinimumSize(new java.awt.Dimension(200, 400));
+        licenseTextArea.setSelectionEnd(0);
+        licenseTextArea.setSelectionStart(0);
+        jScrollPane1.setViewportView(licenseTextArea);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(jScrollPane1, gridBagConstraints);
+
+        jTabbedPane1.addTab("License", jPanel1);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane3.setEnabled(false);
+
+        changelogTextArea.setEditable(false);
+        changelogTextArea.setColumns(20);
+        changelogTextArea.setLineWrap(true);
+        changelogTextArea.setRows(5);
+        changelogTextArea.setWrapStyleWord(true);
+        changelogTextArea.setFocusable(false);
+        changelogTextArea.setMinimumSize(new java.awt.Dimension(200, 400));
+        jScrollPane3.setViewportView(changelogTextArea);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(jScrollPane3, gridBagConstraints);
+
+        jTabbedPane1.addTab("Changelog", jPanel2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        getContentPane().add(jTabbedPane1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,5 +177,12 @@ public class AboutDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appNameLabel;
+    private javax.swing.JTextArea changelogTextArea;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea licenseTextArea;
     // End of variables declaration//GEN-END:variables
 }
