@@ -56,6 +56,8 @@ public class PalettePanel extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         backgroundColorButton = new javax.swing.JButton();
@@ -65,25 +67,33 @@ public class PalettePanel extends javax.swing.JPanel {
         jCheckBox1 = new javax.swing.JCheckBox();
         fontColorPanel = new ascomponent.ColorPanel();
         fontColorButton = new javax.swing.JButton();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         fontFamiliesComboBox = new javax.swing.JComboBox<>();
         jSpinner1 = new javax.swing.JSpinner();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
-        setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10);
+        flowLayout1.setAlignOnBaseline(true);
+        jPanel1.setLayout(flowLayout1);
 
         jPanel7.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel7.setPreferredSize(new java.awt.Dimension(375, 30));
+        jPanel7.setPreferredSize(new java.awt.Dimension(270, 30));
         java.awt.GridBagLayout jPanel7Layout = new java.awt.GridBagLayout();
         jPanel7Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
         jPanel7.setLayout(jPanel7Layout);
 
-        jLabel4.setFont(jLabel4.getFont().deriveFont(jLabel4.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel4.setText("Background Color:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -107,13 +117,13 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel7.add(backgroundColorButton, gridBagConstraints);
 
         backgroundColorPanel.setColor(new java.awt.Color(255, 255, 255));
-        backgroundColorPanel.setPreferredSize(new java.awt.Dimension(180, 30));
+        backgroundColorPanel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         javax.swing.GroupLayout backgroundColorPanelLayout = new javax.swing.GroupLayout(backgroundColorPanel);
         backgroundColorPanel.setLayout(backgroundColorPanelLayout);
         backgroundColorPanelLayout.setHorizontalGroup(
             backgroundColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
         backgroundColorPanelLayout.setVerticalGroup(
             backgroundColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,20 +134,19 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel7.add(backgroundColorPanel, gridBagConstraints);
 
-        add(jPanel7);
+        jPanel1.add(jPanel7);
 
         jPanel9.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel9.setPreferredSize(new java.awt.Dimension(375, 30));
+        jPanel9.setPreferredSize(new java.awt.Dimension(340, 30));
         java.awt.GridBagLayout jPanel9Layout = new java.awt.GridBagLayout();
         jPanel9Layout.columnWeights = new double[] {1.0, 0.0, 0.0, 0.0};
         jPanel9.setLayout(jPanel9Layout);
 
-        jLabel5.setFont(jLabel5.getFont().deriveFont(jLabel5.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel5.setText("Font Color:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -154,13 +163,13 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel9.add(jCheckBox1, gridBagConstraints);
 
-        fontColorPanel.setPreferredSize(new java.awt.Dimension(180, 30));
+        fontColorPanel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         javax.swing.GroupLayout fontColorPanelLayout = new javax.swing.GroupLayout(fontColorPanel);
         fontColorPanel.setLayout(fontColorPanelLayout);
         fontColorPanelLayout.setHorizontalGroup(
             fontColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
         fontColorPanelLayout.setVerticalGroup(
             fontColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,9 +178,9 @@ public class PalettePanel extends javax.swing.JPanel {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 3);
         jPanel9.add(fontColorPanel, gridBagConstraints);
 
         fontColorButton.setText("...");
@@ -185,35 +194,11 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel9.add(fontColorButton, gridBagConstraints);
 
-        add(jPanel9);
+        jPanel1.add(jPanel9);
 
-        jPanel13.setMinimumSize(new java.awt.Dimension(600, 45));
-        jPanel13.setPreferredSize(new java.awt.Dimension(520, 30));
-        java.awt.GridBagLayout jPanel13Layout = new java.awt.GridBagLayout();
-        jPanel13Layout.columnWeights = new double[] {0.0, 1.0, 0.0};
-        jPanel13.setLayout(jPanel13Layout);
+        jTabbedPane1.addTab("Colors", jPanel1);
 
-        jLabel9.setFont(jLabel9.getFont().deriveFont(jLabel9.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel9.setText("String weights/phrase:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
-        jPanel13.add(jLabel9, gridBagConstraints);
-
-        jTextField1.setMinimumSize(new java.awt.Dimension(150, 26));
-        jTextField1.setPreferredSize(new java.awt.Dimension(150, 26));
-        jTextField1.setSize(new java.awt.Dimension(150, 26));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel13.add(jTextField1, gridBagConstraints);
-
-        add(jPanel13);
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jPanel12.setMinimumSize(new java.awt.Dimension(300, 45));
         jPanel12.setPreferredSize(new java.awt.Dimension(450, 30));
@@ -221,7 +206,6 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel12Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
         jPanel12.setLayout(jPanel12Layout);
 
-        jLabel8.setFont(jLabel8.getFont().deriveFont(jLabel8.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel8.setText("Font:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -252,10 +236,63 @@ public class PalettePanel extends javax.swing.JPanel {
         jCheckBox3.setText("Italic");
         jCheckBox3.setMinimumSize(new java.awt.Dimension(70, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 3);
         jPanel12.add(jCheckBox3, gridBagConstraints);
 
-        add(jPanel12);
+        jPanel2.add(jPanel12);
+
+        jTabbedPane1.addTab("Font", jPanel2);
+
+        jPanel3.setLayout(new java.awt.GridLayout(0, 1, 5, 5));
+
+        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
+
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Use Weights");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jRadioButton1);
+
+        jRadioButton2.setText("Use Phrase");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jRadioButton2);
+
+        jPanel3.add(jPanel4);
+
+        jPanel13.setMinimumSize(new java.awt.Dimension(600, 45));
+        jPanel13.setPreferredSize(new java.awt.Dimension(520, 30));
+        jPanel13.setLayout(new java.awt.GridBagLayout());
+
+        jLabel9.setText("Value:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
+        jPanel13.add(jLabel9, gridBagConstraints);
+
+        jTextField1.setMinimumSize(new java.awt.Dimension(150, 26));
+        jTextField1.setPreferredSize(new java.awt.Dimension(150, 26));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        jPanel13.add(jTextField1, gridBagConstraints);
+
+        jPanel3.add(jPanel13);
+
+        jTabbedPane1.addTab("Weights/Phrase", jPanel3);
+
+        add(jTabbedPane1);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
@@ -276,6 +313,14 @@ public class PalettePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_fontColorButtonActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,11 +336,18 @@ public class PalettePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

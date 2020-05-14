@@ -16,11 +16,14 @@
  */
 package ascomponent;
 
+import javax.swing.border.TitledBorder;
+
 /**
  *
  * @author Ian Martinez
  */
 public class ImageSidebarItem extends javax.swing.JPanel {
+    private String title = "";
 
     /**
      * Creates new form ImageSidebarItem
@@ -55,6 +58,22 @@ public class ImageSidebarItem extends javax.swing.JPanel {
             .addGap(0, 84, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        var border = (TitledBorder)this.getBorder();
+        return border.getTitle();
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        var border = (TitledBorder)this.getBorder();
+        border.setTitle(title);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
