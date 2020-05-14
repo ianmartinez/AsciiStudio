@@ -59,7 +59,7 @@ public class AsciiConverter {
         return palette.getWeight(lum);
     }
 
-    public String getRow(BufferedImage img, int y) {
+    public String renderTextRow(BufferedImage img, int y) {
         String val = "";
         for (int x = 0; x < img.getWidth(); x++) {
             if (palette.isUsingPhrase()) {
@@ -77,7 +77,7 @@ public class AsciiConverter {
         return val;
     }
 
-    public String getText(BufferedImage img) {
+    public String renderText(BufferedImage img) {
         System.out.println("Beginning render");
         System.out.println(img.getHeight() + " rows");
         Graphics2D g = img.createGraphics();
@@ -86,7 +86,7 @@ public class AsciiConverter {
 
         for (int y = 0; y < img.getHeight(); y += ratio) {
             System.out.println("Processing row #" + (y + 1) + " of " + (img.getHeight() - 1));
-            ascii += getRow(img, y) + "\r\n";
+            ascii += renderTextRow(img, y) + "\r\n";
         }
 
         System.out.println("Render finished");
@@ -94,7 +94,7 @@ public class AsciiConverter {
         return ascii;
     }
 
-    public BufferedImage getImage(BufferedImage img) {
+    public BufferedImage renderImage(BufferedImage img) {
         Graphics2D g = img.createGraphics();
         int ratio = palette.getFontRatio(g);
 
@@ -105,7 +105,7 @@ public class AsciiConverter {
         ArrayList<Dimension> dimensions = new ArrayList<>();
         for (int y = 0; y < img.getHeight(); y += ratio) {
             System.out.println("Measuring line #" + (y + 1));
-            String line = getRow(img, y);
+            String line = renderTextRow(img, y);
             dimensions.add(palette.measureLine(g, line));
         }
 
@@ -172,14 +172,14 @@ public class AsciiConverter {
 
     public void saveImage(String filePath, BufferedImage img) throws IOException {
         File outFile = new File(filePath);
-        BufferedImage render = getImage(img);
+        BufferedImage render = renderImage(img);
         ImageIO.write(render, getEXT(filePath), outFile);
     }
 
     public void saveGif(String filePath, Gif gif) throws IOException {
         var convertedGif = new Gif(gif);
         for (var i = 0; i < gif.getFrameCount(); i++) {
-            var convertedFrame = getImage(gif.getFrameImage(i));
+            var convertedFrame = renderImage(gif.getFrameImage(i));
             gif.setFrameImage(i, convertedFrame);
         }
         
