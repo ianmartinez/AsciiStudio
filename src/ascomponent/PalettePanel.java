@@ -94,6 +94,7 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel7Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
         jPanel7.setLayout(jPanel7Layout);
 
+        jLabel4.setFont(jLabel4.getFont().deriveFont(jLabel4.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel4.setText("Background Color:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -147,6 +148,7 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel9Layout.columnWeights = new double[] {1.0, 0.0, 0.0, 0.0};
         jPanel9.setLayout(jPanel9Layout);
 
+        jLabel5.setFont(jLabel5.getFont().deriveFont(jLabel5.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel5.setText("Font Color:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -206,6 +208,7 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel12Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
         jPanel12.setLayout(jPanel12Layout);
 
+        jLabel8.setFont(jLabel8.getFont().deriveFont(jLabel8.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel8.setText("Font:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -249,6 +252,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Use Weights");
+        jRadioButton1.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -257,6 +261,7 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel4.add(jRadioButton1);
 
         jRadioButton2.setText("Use Phrase");
+        jRadioButton2.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -270,6 +275,7 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel13.setPreferredSize(new java.awt.Dimension(520, 30));
         jPanel13.setLayout(new java.awt.GridBagLayout());
 
+        jLabel9.setFont(jLabel9.getFont().deriveFont(jLabel9.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel9.setText("Value:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

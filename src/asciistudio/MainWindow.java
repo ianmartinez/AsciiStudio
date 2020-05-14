@@ -59,6 +59,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
+        exportButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -135,6 +136,12 @@ public class MainWindow extends javax.swing.JFrame {
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(exportButton);
+
+        exportButton1.setText("Export Text");
+        exportButton1.setFocusable(false);
+        exportButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        exportButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        mainToolbar.add(exportButton1);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -233,6 +240,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenu editMenu;
     protected javax.swing.JMenuItem exitMenuItem;
     protected javax.swing.JButton exportButton;
+    protected javax.swing.JButton exportButton1;
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
