@@ -75,12 +75,14 @@ public class MainWindow extends javax.swing.JFrame {
         setName("MainWindowFrame"); // NOI18N
         setSize(new java.awt.Dimension(700, 500));
 
-        mainSplitter.setDividerLocation(200);
+        mainSplitter.setDividerLocation(130);
         mainSplitter.setDoubleBuffered(true);
 
         sidebarScroll.setBorder(null);
         sidebarScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        sidebarScroll.setMinimumSize(new java.awt.Dimension(120, 5));
 
+        sidebarPanel.setMinimumSize(new java.awt.Dimension(120, 300));
         sidebarPanel.setLayout(new javax.swing.BoxLayout(sidebarPanel, javax.swing.BoxLayout.Y_AXIS));
 
         imageSidebarItem1.setPreferredSize(new java.awt.Dimension(200, 200));

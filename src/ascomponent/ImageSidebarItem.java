@@ -39,6 +39,10 @@ public class ImageSidebarItem extends javax.swing.JPanel {
     private void initComponents() {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Image 1"));
+        setMaximumSize(new java.awt.Dimension(256, 164));
+        setMinimumSize(new java.awt.Dimension(100, 100));
+        setPreferredSize(new java.awt.Dimension(124, 124));
+        setSize(new java.awt.Dimension(100, 164));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
