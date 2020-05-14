@@ -26,7 +26,7 @@ import java.util.ArrayList;
  *
  * @author Ian Martinez
  */
-public class AsciiImage {
+public class AsciiConverter {
 
     private Palette palette = new Palette();
     private int phrasePos = 0;
@@ -158,5 +158,9 @@ public class AsciiImage {
 
         System.out.println("Render finished");
         return renderImage;
+    }
+    
+    public void saveImage(String filePath) {
+        
     }
 }
