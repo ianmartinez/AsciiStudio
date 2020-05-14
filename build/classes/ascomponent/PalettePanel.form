@@ -459,7 +459,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                <Component class="javax.swing.JCheckBox" name="overrideImageCheckbox">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="label" type="java.lang.String" value="Override image"/>
@@ -688,11 +688,11 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="37_jCheckBox1">
-                      <CodeVariable name="jCheckBox1" type="8194" declaredType="javax.swing.JCheckBox"/>
+                    <CodeExpression id="37_overrideImageCheckbox">
+                      <CodeVariable name="overrideImageCheckbox" type="8194" declaredType="javax.swing.JCheckBox"/>
                       <ExpressionOrigin>
                         <ExpressionProvider type="ComponentRef">
-                          <ComponentRef name="jCheckBox1"/>
+                          <ComponentRef name="overrideImageCheckbox"/>
                         </ExpressionProvider>
                       </ExpressionOrigin>
                     </CodeExpression>
@@ -970,7 +970,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinner1">
+                <Component class="javax.swing.JSpinner" name="fontSizeSpinner">
                   <Properties>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[70, 26]"/>
@@ -985,7 +985,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                <Component class="javax.swing.JCheckBox" name="fontBoldCheckbox">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bold"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -998,7 +998,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                <Component class="javax.swing.JCheckBox" name="fontItalicCheckbox">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Italic"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1233,11 +1233,11 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="69_jSpinner1">
-                      <CodeVariable name="jSpinner1" type="8194" declaredType="javax.swing.JSpinner"/>
+                    <CodeExpression id="69_fontSizeSpinner">
+                      <CodeVariable name="fontSizeSpinner" type="8194" declaredType="javax.swing.JSpinner"/>
                       <ExpressionOrigin>
                         <ExpressionProvider type="ComponentRef">
-                          <ComponentRef name="jSpinner1"/>
+                          <ComponentRef name="fontSizeSpinner"/>
                         </ExpressionProvider>
                       </ExpressionOrigin>
                     </CodeExpression>
@@ -1278,11 +1278,11 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="72_jCheckBox2">
-                      <CodeVariable name="jCheckBox2" type="8194" declaredType="javax.swing.JCheckBox"/>
+                    <CodeExpression id="72_fontBoldCheckbox">
+                      <CodeVariable name="fontBoldCheckbox" type="8194" declaredType="javax.swing.JCheckBox"/>
                       <ExpressionOrigin>
                         <ExpressionProvider type="ComponentRef">
-                          <ComponentRef name="jCheckBox2"/>
+                          <ComponentRef name="fontBoldCheckbox"/>
                         </ExpressionProvider>
                       </ExpressionOrigin>
                     </CodeExpression>
@@ -1323,11 +1323,11 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="75_jCheckBox3">
-                      <CodeVariable name="jCheckBox3" type="8194" declaredType="javax.swing.JCheckBox"/>
+                    <CodeExpression id="75_fontItalicCheckbox">
+                      <CodeVariable name="fontItalicCheckbox" type="8194" declaredType="javax.swing.JCheckBox"/>
                       <ExpressionOrigin>
                         <ExpressionProvider type="ComponentRef">
-                          <ComponentRef name="jCheckBox3"/>
+                          <ComponentRef name="fontItalicCheckbox"/>
                         </ExpressionProvider>
                       </ExpressionOrigin>
                     </CodeExpression>
@@ -1358,7 +1358,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+                <Component class="javax.swing.JRadioButton" name="useWeightsRadioButton">
                   <Properties>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="Use Weights"/>
@@ -1367,10 +1367,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="useWeightsRadioButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+                <Component class="javax.swing.JRadioButton" name="usePhraseRadioButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Use Phrase"/>
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -1378,7 +1378,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usePhraseRadioButtonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1410,7 +1410,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="weightsPhraseValueTextField">
                   <Properties>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[150, 26]"/>

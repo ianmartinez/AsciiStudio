@@ -64,23 +64,23 @@ public class PalettePanel extends javax.swing.JPanel {
         backgroundColorPanel = new ascomponent.ColorPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        overrideImageCheckbox = new javax.swing.JCheckBox();
         fontColorPanel = new ascomponent.ColorPanel();
         fontColorButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         fontFamiliesComboBox = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        fontSizeSpinner = new javax.swing.JSpinner();
+        fontBoldCheckbox = new javax.swing.JCheckBox();
+        fontItalicCheckbox = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        useWeightsRadioButton = new javax.swing.JRadioButton();
+        usePhraseRadioButton = new javax.swing.JRadioButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        weightsPhraseValueTextField = new javax.swing.JTextField();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -158,12 +158,12 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
         jPanel9.add(jLabel5, gridBagConstraints);
 
-        jCheckBox1.setToolTipText("");
-        jCheckBox1.setLabel("Override image");
-        jCheckBox1.setMinimumSize(new java.awt.Dimension(130, 23));
+        overrideImageCheckbox.setToolTipText("");
+        overrideImageCheckbox.setLabel("Override image");
+        overrideImageCheckbox.setMinimumSize(new java.awt.Dimension(130, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel9.add(jCheckBox1, gridBagConstraints);
+        jPanel9.add(overrideImageCheckbox, gridBagConstraints);
 
         fontColorPanel.setPreferredSize(new java.awt.Dimension(100, 30));
 
@@ -224,23 +224,23 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel12.add(fontFamiliesComboBox, gridBagConstraints);
 
-        jSpinner1.setMinimumSize(new java.awt.Dimension(70, 26));
-        jSpinner1.setPreferredSize(new java.awt.Dimension(25, 26));
+        fontSizeSpinner.setMinimumSize(new java.awt.Dimension(70, 26));
+        fontSizeSpinner.setPreferredSize(new java.awt.Dimension(25, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel12.add(jSpinner1, gridBagConstraints);
+        jPanel12.add(fontSizeSpinner, gridBagConstraints);
 
-        jCheckBox2.setText("Bold");
-        jCheckBox2.setMinimumSize(new java.awt.Dimension(70, 23));
+        fontBoldCheckbox.setText("Bold");
+        fontBoldCheckbox.setMinimumSize(new java.awt.Dimension(70, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel12.add(jCheckBox2, gridBagConstraints);
+        jPanel12.add(fontBoldCheckbox, gridBagConstraints);
 
-        jCheckBox3.setText("Italic");
-        jCheckBox3.setMinimumSize(new java.awt.Dimension(70, 23));
+        fontItalicCheckbox.setText("Italic");
+        fontItalicCheckbox.setMinimumSize(new java.awt.Dimension(70, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 3);
-        jPanel12.add(jCheckBox3, gridBagConstraints);
+        jPanel12.add(fontItalicCheckbox, gridBagConstraints);
 
         jPanel2.add(jPanel12);
 
@@ -250,24 +250,24 @@ public class PalettePanel extends javax.swing.JPanel {
 
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
 
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Use Weights");
-        jRadioButton1.setMargin(new java.awt.Insets(3, 3, 3, 3));
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        useWeightsRadioButton.setSelected(true);
+        useWeightsRadioButton.setText("Use Weights");
+        useWeightsRadioButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
+        useWeightsRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                useWeightsRadioButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(jRadioButton1);
+        jPanel4.add(useWeightsRadioButton);
 
-        jRadioButton2.setText("Use Phrase");
-        jRadioButton2.setMargin(new java.awt.Insets(3, 3, 3, 3));
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        usePhraseRadioButton.setText("Use Phrase");
+        usePhraseRadioButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
+        usePhraseRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                usePhraseRadioButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(jRadioButton2);
+        jPanel4.add(usePhraseRadioButton);
 
         jPanel3.add(jPanel4);
 
@@ -285,14 +285,14 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
         jPanel13.add(jLabel9, gridBagConstraints);
 
-        jTextField1.setMinimumSize(new java.awt.Dimension(150, 26));
-        jTextField1.setPreferredSize(new java.awt.Dimension(150, 26));
+        weightsPhraseValueTextField.setMinimumSize(new java.awt.Dimension(150, 26));
+        weightsPhraseValueTextField.setPreferredSize(new java.awt.Dimension(150, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel13.add(jTextField1, gridBagConstraints);
+        jPanel13.add(weightsPhraseValueTextField, gridBagConstraints);
 
         jPanel3.add(jPanel13);
 
@@ -319,25 +319,25 @@ public class PalettePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_fontColorButtonActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void useWeightsRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useWeightsRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_useWeightsRadioButtonActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void usePhraseRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usePhraseRadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_usePhraseRadioButtonActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;
     private ascomponent.ColorPanel backgroundColorPanel;
+    private javax.swing.JCheckBox fontBoldCheckbox;
     private javax.swing.JButton fontColorButton;
     private ascomponent.ColorPanel fontColorPanel;
     private javax.swing.JComboBox<String> fontFamiliesComboBox;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox fontItalicCheckbox;
+    private javax.swing.JSpinner fontSizeSpinner;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
@@ -350,10 +350,10 @@ public class PalettePanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JCheckBox overrideImageCheckbox;
+    private javax.swing.JRadioButton usePhraseRadioButton;
+    private javax.swing.JRadioButton useWeightsRadioButton;
+    private javax.swing.JTextField weightsPhraseValueTextField;
     // End of variables declaration//GEN-END:variables
 }
