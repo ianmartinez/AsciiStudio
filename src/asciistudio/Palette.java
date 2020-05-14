@@ -31,7 +31,7 @@ public class Palette {
      * The palette settings that all other palettes 
      * derive from.
      */
-    public static Palette basePalette = new Palette();
+    public final static Palette basePalette = new Palette();
 
     private boolean usingPhrase = false;
     private boolean overridingImageColors = false;
@@ -41,12 +41,14 @@ public class Palette {
     private String[] weights = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("");
 
     public Palette() {
-        usingPhrase = basePalette.isUsingPhrase();
-        overridingImageColors = basePalette.isOverridingImageColors();
-        backgroundColor = basePalette.getBackgroundColor();
-        fontColor = basePalette.getFontColor();
-        font = basePalette.getFont();        
-        weights = basePalette.getWeights();
+        if(basePalette != null) { // Not initializing the base palette
+            usingPhrase = basePalette.isUsingPhrase();
+            overridingImageColors = basePalette.isOverridingImageColors();
+            backgroundColor = basePalette.getBackgroundColor();
+            fontColor = basePalette.getFontColor();
+            font = basePalette.getFont();        
+            weights = basePalette.getWeights();
+        }
     }
 
     /**

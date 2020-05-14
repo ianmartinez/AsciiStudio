@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.util.Locale;
+import javax.swing.ButtonGroup;
 import javax.swing.JColorChooser;
 
 /**
@@ -30,6 +31,7 @@ import javax.swing.JColorChooser;
 public class PalettePanel extends javax.swing.JPanel {
     
     private Palette palette = new Palette();
+    private ButtonGroup weightsPhraseGroup = new ButtonGroup();
     
     /**
      * Creates new form FontPicker
@@ -44,6 +46,13 @@ public class PalettePanel extends javax.swing.JPanel {
         for (Font font : allFonts) {
             fontFamiliesComboBox.addItem(font.getFontName(Locale.US));
         }
+        
+        // Load font size
+        
+        
+        // Add button groups
+        weightsPhraseGroup.add(useWeightsRadioButton);
+        weightsPhraseGroup.add(usePhraseRadioButton);
     }
 
     /**
