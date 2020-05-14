@@ -17,12 +17,15 @@
 package ascomponent;
 
 import asciistudio.Palette;
+import asciistudio.SimpleDocumentListener;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.util.Locale;
 import javax.swing.ButtonGroup;
 import javax.swing.JColorChooser;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -31,19 +34,24 @@ import javax.swing.JColorChooser;
 public class PalettePanel extends javax.swing.JPanel {
     
     private Palette palette = new Palette();
-    private ButtonGroup weightsPhraseGroup = new ButtonGroup();
-    
+    private final ButtonGroup weightsPhraseGroup = new ButtonGroup();
+
     /**
      * Creates new form FontPicker
      */
     public PalettePanel() {
         initComponents();
-        
+
         // Add button groups
         weightsPhraseGroup.add(useWeightsRadioButton);
         weightsPhraseGroup.add(usePhraseRadioButton);
         
         setPalette(palette);
+        
+        // Add event listeners
+        weightsPhraseValueTextField.getDocument().addDocumentListener((SimpleDocumentListener) e -> {
+            palette.setWeights(weightsPhraseValueTextField.getText());
+        });
     }
     
     public final void setPalette(Palette palette) {
@@ -52,30 +60,31 @@ public class PalettePanel extends javax.swing.JPanel {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Font[] allFonts = ge.getAllFonts();
         for (Font font : allFonts) {
-            var fontName = font.getFontName(Locale.US); 
+            var fontName = font.getFontName(Locale.US);            
             fontFamiliesComboBox.addItem(fontName);
-            if(fontName.equals(palette.getFont().getName()))
+            if (fontName.equals(palette.getFont().getName())) {
                 fontFamiliesComboBox.setSelectedItem(fontName);
-        }        
-        
+            }
+        }
+
         // Set font size from palette
-        fontSizeSpinner.setValue(palette.getFont().getSize());        
-        
+        fontSizeSpinner.setValue(palette.getFont().getSize());
+
         // Set font styles from palette
         fontBoldCheckbox.setSelected(palette.getFont().isBold());
         fontItalicCheckbox.setSelected(palette.getFont().isItalic());
-        
+
         // Set colors from palette
         backgroundColorPanel.setColor(palette.getBackgroundColor());
         fontColorPanel.setColor(palette.getFontColor());
-        
+
         // Set weights/phrase
         weightsPhraseValueTextField.setText(palette.getWeightsString());
-        if(palette.isUsingPhrase()) {
+        if (palette.isUsingPhrase()) {
             usePhraseRadioButton.setSelected(true);
         } else {
             useWeightsRadioButton.setSelected(true);
-        }   
+        }        
     }
 
     /**
@@ -336,7 +345,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
         Color newColor = JColorChooser.showDialog(this, "Choose background Color", backgroundColorPanel.getColor());
-
+        
         if (newColor != null) {
             backgroundColorPanel.setColor(newColor);
             palette.setBackgroundColor(newColor);
@@ -345,7 +354,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
     private void fontColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fontColorButtonActionPerformed
         Color newColor = JColorChooser.showDialog(this, "Choose font Color", fontColorPanel.getColor());
-
+        
         if (newColor != null) {
             fontColorPanel.setColor(newColor);
             palette.setFontColor(newColor);
@@ -353,14 +362,13 @@ public class PalettePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_fontColorButtonActionPerformed
 
     private void useWeightsRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useWeightsRadioButtonActionPerformed
-        // TODO add your handling code here:
+        palette.setUsingPhrase(false);
     }//GEN-LAST:event_useWeightsRadioButtonActionPerformed
 
     private void usePhraseRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usePhraseRadioButtonActionPerformed
-        // TODO add your handling code here:
+        palette.setUsingPhrase(true);
     }//GEN-LAST:event_usePhraseRadioButtonActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;
