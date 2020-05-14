@@ -44,11 +44,14 @@ public class PalettePanel extends javax.swing.JPanel {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Font[] allFonts = ge.getAllFonts();
         for (Font font : allFonts) {
-            fontFamiliesComboBox.addItem(font.getFontName(Locale.US));
+            var fontName = font.getFontName(Locale.US); 
+            fontFamiliesComboBox.addItem(fontName);
+            if(fontName.equals(palette.getFont().getName()))
+                fontFamiliesComboBox.setSelectedItem(fontName);
         }
         
-        // Load font size
-        
+        // Set font size
+        fontSizeSpinner.setValue(palette.getFont().getSize());
         
         // Add button groups
         weightsPhraseGroup.add(useWeightsRadioButton);
@@ -233,6 +236,7 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel12.add(fontFamiliesComboBox, gridBagConstraints);
 
+        fontSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1000, 1));
         fontSizeSpinner.setMinimumSize(new java.awt.Dimension(70, 26));
         fontSizeSpinner.setPreferredSize(new java.awt.Dimension(25, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();

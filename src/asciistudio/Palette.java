@@ -37,7 +37,7 @@ public class Palette {
     private boolean overridingImageColors = false;
     private Color backgroundColor = Color.BLACK;
     private Color fontColor = Color.WHITE;
-    private Font font = new Font("Consolas", Font.BOLD, 12);
+    private Font font = new Font("Monospaced", Font.BOLD, 12);
     private String[] weights = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("");
 
     public Palette() {
