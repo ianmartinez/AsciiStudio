@@ -27,34 +27,34 @@ import java.util.ArrayList;
  * @author Ian Martinez
  */
 public class AsciiImage {
-    
+
     private Palette palette = new Palette();
     private int phrasePos = 0;
     private int pixelPos = 0;
-    
+
     public void updateProgress(int newProgress) {
-        
+
     }
-    
+
     public int getLuminosityXY(BufferedImage img, int x, int y, int max) {
         int color = img.getRGB(x, y);
         return getLuminosity(new Color(color), max);
     }
-    
+
     public int getLuminosity(Color c, int max) {
         int red = (c.getRGB() >>> 16) & 0xFF;
         int green = (c.getRGB() >>> 8) & 0xFF;
         int blue = (c.getRGB() >>> 0) & 0xFF;
-        
+
         float luminance = (red * 0.2126f + green * 0.7152f + blue * 0.0722f) / 255;
         return (int) (max * luminance);
     }
-    
+
     public String getWeight(Color c) {
         int lum = getLuminosity(c, palette.getWeightCount() - 1);
         return palette.getWeight(lum);
     }
-    
+
     public String getRow(BufferedImage img, int y) {
         String val = "";
         for (int x = 0; x < img.getWidth(); x++) {
@@ -62,45 +62,45 @@ public class AsciiImage {
                 if (phrasePos >= palette.getWeightCount()) {
                     phrasePos = 0;
                 }
-                
+
                 val += palette.getWeight(phrasePos);
                 phrasePos++;
             } else {
                 val += getWeight(new Color(img.getRGB(x, y)));
             }
         }
-        
-        return val;        
+
+        return val;
     }
-    
+
     public String getText(BufferedImage img) {
-        System.out.println("Beginning render");        
-        System.out.println(img.getHeight() + " rows");        
+        System.out.println("Beginning render");
+        System.out.println(img.getHeight() + " rows");
         Graphics2D g = img.createGraphics();
         int ratio = palette.getFontRatio(g);
         String ascii = "";
-        
+
         for (int y = 0; y < img.getHeight(); y += ratio) {
             System.out.println("Processing row #" + (y + 1) + " of " + (img.getHeight() - 1));
             ascii += getRow(img, y) + "\r\n";
         }
-        
-        System.out.println("Render finished");        
-        
-        return ascii;        
+
+        System.out.println("Render finished");
+
+        return ascii;
     }
-    
-    public BufferedImage getFullImage(BufferedImage img) {        
+
+    public BufferedImage getFullImage(BufferedImage img) {
         Graphics2D g = img.createGraphics();
         int ratio = palette.getFontRatio(g);
-        
+
         System.out.println("Beginning render");
 
         // measure dimensions
-        System.out.println("Measuring lines");        
+        System.out.println("Measuring lines");
         ArrayList<Dimension> dimensions = new ArrayList<Dimension>();
         for (int y = 0; y < img.getHeight(); y += ratio) {
-            System.out.println("Measuring line #" + (y + 1));            
+            System.out.println("Measuring line #" + (y + 1));
             String line = getRow(img, y);
             dimensions.add(palette.measureLine(g, line));
         }
@@ -116,7 +116,7 @@ public class AsciiImage {
             height += d.getHeight();
             maxWidth = Math.max((int) d.getWidth(), maxWidth);
         }
-        
+
         BufferedImage renderImage = new BufferedImage(maxWidth, height, BufferedImage.TRANSLUCENT);
         Graphics2D renderGraphics = renderImage.createGraphics();
         // set background color
@@ -132,31 +132,31 @@ public class AsciiImage {
                     if (phrasePos >= palette.getWeightCount()) {
                         phrasePos = 0;
                     }
-                    
+
                     str = palette.getWeight(phrasePos);
                     phrasePos++;
                 } else {
                     str = getWeight(clr);
                 }
-                
+
                 if (palette.isOverridingImageColors()) {
                     renderGraphics.setColor(palette.getFontColor());
                 } else {
                     renderGraphics.setColor(clr);
                 }
-                
+
                 renderGraphics.setFont(palette.getFont());
                 renderGraphics.drawString(str, charX, charY);
-                
+
                 charX += palette.getStringWidth(renderGraphics, str);
-                updateProgress(++pixelPos);             
+                updateProgress(++pixelPos);
             }
             charX = 0;
             charY += (int) dimensions.get(dimPos).getHeight();
             dimPos++;
         }
-        
-        System.out.println("Render finished");        
-        return renderImage;        
+
+        System.out.println("Render finished");
+        return renderImage;
     }
 }
