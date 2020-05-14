@@ -281,7 +281,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="exportButton1">
+        <Component class="javax.swing.JButton" name="exportTextButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Export Text"/>
             <Property name="focusable" type="boolean" value="false"/>
