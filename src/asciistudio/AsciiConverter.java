@@ -16,6 +16,7 @@
  */
 package asciistudio;
 
+import giflib.Gif;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -160,7 +161,11 @@ public class AsciiConverter {
         return renderImage;
     }
     
-    public void saveImage(String filePath) {
+    public void saveImage(String filePath, BufferedImage img) {
         
+    }
+    
+    public void saveGif(String filePath, Gif gif) {
+        var convertedGif = new Gif(gif);
     }
 }

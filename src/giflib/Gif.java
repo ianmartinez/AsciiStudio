@@ -52,6 +52,16 @@ public final class Gif {
     public Gif(String filename) {
         open(filename);
     }
+    
+    /**
+     * Create a new GIF with the same frame count and 
+     * delay as another GIF
+     * 
+     * @param gif The GIF to base the frame and delay from
+     */
+    public Gif(Gif gif) {
+        this(new BufferedImage[gif.getFrameCount()], gif.getDelay());
+    }
 
     private Dimension maxSize(BufferedImage[] images) {
         int maxW = 0;
