@@ -39,7 +39,15 @@ public class PalettePanel extends javax.swing.JPanel {
     public PalettePanel() {
         initComponents();
         
-        // Load font combo
+        // Add button groups
+        weightsPhraseGroup.add(useWeightsRadioButton);
+        weightsPhraseGroup.add(usePhraseRadioButton);
+        
+        setPalette(palette);
+    }
+    
+    public final void setPalette(Palette palette) {
+        // Load font combo with current selection from the palette
         fontFamiliesComboBox.removeAllItems();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Font[] allFonts = ge.getAllFonts();
@@ -48,14 +56,26 @@ public class PalettePanel extends javax.swing.JPanel {
             fontFamiliesComboBox.addItem(fontName);
             if(fontName.equals(palette.getFont().getName()))
                 fontFamiliesComboBox.setSelectedItem(fontName);
-        }
+        }        
         
-        // Set font size
-        fontSizeSpinner.setValue(palette.getFont().getSize());
+        // Set font size from palette
+        fontSizeSpinner.setValue(palette.getFont().getSize());        
         
-        // Add button groups
-        weightsPhraseGroup.add(useWeightsRadioButton);
-        weightsPhraseGroup.add(usePhraseRadioButton);
+        // Set font styles from palette
+        fontBoldCheckbox.setSelected(palette.getFont().isBold());
+        fontItalicCheckbox.setSelected(palette.getFont().isItalic());
+        
+        // Set colors from palette
+        backgroundColorPanel.setColor(palette.getBackgroundColor());
+        fontColorPanel.setColor(palette.getFontColor());
+        
+        // Set weights/phrase
+        weightsPhraseValueTextField.setText(palette.getWeightsString());
+        if(palette.isUsingPhrase()) {
+            usePhraseRadioButton.setSelected(true);
+        } else {
+            useWeightsRadioButton.setSelected(true);
+        }   
     }
 
     /**

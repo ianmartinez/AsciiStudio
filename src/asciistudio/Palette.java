@@ -122,12 +122,19 @@ public class Palette {
     public String[] getWeights() {
         return weights;
     }
+    
+    /**
+     * @return the weights as a string
+     */
+    public String getWeightsString() {
+        return String.join("", weights);
+    }
 
     /**
      * @param weights the weights to set
      */
     public void setWeights(String[] weights) {
-        this.setWeights(weights);
+        this.weights = weights;
     }
 
     /**
