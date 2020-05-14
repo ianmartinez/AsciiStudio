@@ -20,19 +20,18 @@ import asciistudio.Palette;
 import asciistudio.SimpleDocumentListener;
 import java.awt.Color;
 import java.awt.Font;
+import static java.awt.Font.*;
 import java.awt.GraphicsEnvironment;
 import java.util.Locale;
 import javax.swing.ButtonGroup;
 import javax.swing.JColorChooser;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
  * @author Ian Martinez
  */
 public class PalettePanel extends javax.swing.JPanel {
-    
+
     private Palette palette = new Palette();
     private final ButtonGroup weightsPhraseGroup = new ButtonGroup();
 
@@ -45,22 +44,22 @@ public class PalettePanel extends javax.swing.JPanel {
         // Add button groups
         weightsPhraseGroup.add(useWeightsRadioButton);
         weightsPhraseGroup.add(usePhraseRadioButton);
-        
+
         setPalette(palette);
-        
+
         // Add event listeners
         weightsPhraseValueTextField.getDocument().addDocumentListener((SimpleDocumentListener) e -> {
             palette.setWeights(weightsPhraseValueTextField.getText());
         });
     }
-    
+
     public final void setPalette(Palette palette) {
         // Load font combo with current selection from the palette
         fontFamiliesComboBox.removeAllItems();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Font[] allFonts = ge.getAllFonts();
         for (Font font : allFonts) {
-            var fontName = font.getFontName(Locale.US);            
+            var fontName = font.getFontName(Locale.US);
             fontFamiliesComboBox.addItem(fontName);
             if (fontName.equals(palette.getFont().getName())) {
                 fontFamiliesComboBox.setSelectedItem(fontName);
@@ -77,6 +76,7 @@ public class PalettePanel extends javax.swing.JPanel {
         // Set colors from palette
         backgroundColorPanel.setColor(palette.getBackgroundColor());
         fontColorPanel.setColor(palette.getFontColor());
+        overrideImageCheckbox.setSelected(palette.isOverridingImageColors());
 
         // Set weights/phrase
         weightsPhraseValueTextField.setText(palette.getWeightsString());
@@ -84,7 +84,37 @@ public class PalettePanel extends javax.swing.JPanel {
             usePhraseRadioButton.setSelected(true);
         } else {
             useWeightsRadioButton.setSelected(true);
-        }        
+        }
+    }
+
+    // Update palette to reflect controls
+    private void updatePalette() {
+        // Font
+        var fontName = (String) fontFamiliesComboBox.getSelectedItem();
+        var fontSize = (int) fontSizeSpinner.getValue();
+        var isBold = fontBoldCheckbox.isSelected();
+        var isItalic = fontItalicCheckbox.isSelected();
+        int fontStyle = PLAIN;
+        
+        if (isBold && isItalic) {
+            fontStyle = BOLD|ITALIC;
+        } else if (isBold) {
+            fontStyle = BOLD;
+        } else if (isItalic) {
+            fontStyle = ITALIC;
+        }
+        
+        // Set font 
+        palette.setFont(new Font(fontName, fontStyle, fontSize));
+
+        // Colors
+        palette.setOverridingImageColors(overrideImageCheckbox.isSelected());
+        palette.setBackgroundColor(backgroundColorPanel.getColor());
+        palette.setFontColor(fontColorPanel.getColor());
+
+        // Weights/phrase
+        palette.setUsingPhrase(usePhraseRadioButton.isSelected());
+        palette.setWeights(weightsPhraseValueTextField.getText());
     }
 
     /**
@@ -295,20 +325,10 @@ public class PalettePanel extends javax.swing.JPanel {
         useWeightsRadioButton.setSelected(true);
         useWeightsRadioButton.setText("Use Weights");
         useWeightsRadioButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
-        useWeightsRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                useWeightsRadioButtonActionPerformed(evt);
-            }
-        });
         jPanel4.add(useWeightsRadioButton);
 
         usePhraseRadioButton.setText("Use Phrase");
         usePhraseRadioButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
-        usePhraseRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usePhraseRadioButtonActionPerformed(evt);
-            }
-        });
         jPanel4.add(usePhraseRadioButton);
 
         jPanel3.add(jPanel4);
@@ -345,29 +365,19 @@ public class PalettePanel extends javax.swing.JPanel {
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
         Color newColor = JColorChooser.showDialog(this, "Choose background Color", backgroundColorPanel.getColor());
-        
+
         if (newColor != null) {
             backgroundColorPanel.setColor(newColor);
-            palette.setBackgroundColor(newColor);
         }
     }//GEN-LAST:event_backgroundColorButtonActionPerformed
 
     private void fontColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fontColorButtonActionPerformed
         Color newColor = JColorChooser.showDialog(this, "Choose font Color", fontColorPanel.getColor());
-        
+
         if (newColor != null) {
             fontColorPanel.setColor(newColor);
-            palette.setFontColor(newColor);
         }
     }//GEN-LAST:event_fontColorButtonActionPerformed
-
-    private void useWeightsRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useWeightsRadioButtonActionPerformed
-        palette.setUsingPhrase(false);
-    }//GEN-LAST:event_useWeightsRadioButtonActionPerformed
-
-    private void usePhraseRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usePhraseRadioButtonActionPerformed
-        palette.setUsingPhrase(true);
-    }//GEN-LAST:event_usePhraseRadioButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

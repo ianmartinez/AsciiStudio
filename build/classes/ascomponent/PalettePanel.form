@@ -1369,9 +1369,6 @@
                       <Insets value="[3, 3, 3, 3]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="useWeightsRadioButtonActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="usePhraseRadioButton">
                   <Properties>
@@ -1380,9 +1377,6 @@
                       <Insets value="[3, 3, 3, 3]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usePhraseRadioButtonActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
