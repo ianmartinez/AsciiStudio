@@ -21,8 +21,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -161,9 +163,17 @@ public class AsciiConverter {
         System.out.println("Render finished");
         return renderImage;
     }
+    
+    private String getEXT(String path) 
+    {
+        int dot = path.lastIndexOf(".");
+        return path.substring(dot + 1).toLowerCase();
+    }
 
-    public void saveImage(String filePath, BufferedImage img) {
-
+    public void saveImage(String filePath, BufferedImage img) throws IOException {
+        File outFile = new File(filePath);
+        BufferedImage render = getImage(img);
+        ImageIO.write(render, getEXT(filePath), outFile);
     }
 
     public void saveGif(String filePath, Gif gif) throws IOException {
