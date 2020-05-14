@@ -27,6 +27,11 @@ import java.awt.geom.Rectangle2D;
  */
 public class Palette {
 
+    /**
+     * The palette settings that all other palettes use.
+     */
+    public static Palette basePalette = new Palette();
+
     private boolean usingPhrase = false;
     private boolean overridingImageColors = false;
     private Color backgroundColor = Color.BLACK;
@@ -35,7 +40,12 @@ public class Palette {
     private String[] weights = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("");
 
     public Palette() {
-
+        usingPhrase = basePalette.isUsingPhrase();
+        overridingImageColors = basePalette.isOverridingImageColors();
+        backgroundColor = basePalette.getBackgroundColor();
+        fontColor = basePalette.getFontColor();
+        font = basePalette.getFont();        
+        weights = basePalette.getWeights();
     }
 
     /**
@@ -44,7 +54,7 @@ public class Palette {
      * @param weights the weights to set
      */
     public void setWeights(String weights) {
-        this.weights = weights.split("");
+        this.setWeights(weights.split(""));
     }
 
     /**
@@ -114,7 +124,7 @@ public class Palette {
      * @param weights the weights to set
      */
     public void setWeights(String[] weights) {
-        this.weights = weights;
+        this.setWeights(weights);
     }
 
     /**
@@ -181,5 +191,12 @@ public class Palette {
                 max = arr[i];
 
         return max;	
+    }
+
+    /**
+     * @param weights the weights to set
+     */
+    public void setWeights(String[] weights) {
+        this.weights = weights;
     }
 }
