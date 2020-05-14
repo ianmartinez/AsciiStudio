@@ -20,6 +20,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 /**
+ * Make looking for text changes in a text field less
+ * of a PITA than it is in plain Java.
  *
  * @author Ian Martinez
  */

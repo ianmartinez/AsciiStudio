@@ -195,6 +195,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -228,6 +233,12 @@ public class MainWindow extends javax.swing.JFrame {
     private void editBasePaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBasePaletteMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editBasePaletteMenuItemActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        var aboutDialog = new AboutDialog(this, true);        
+        aboutDialog.setLocationRelativeTo(this);
+        aboutDialog.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
