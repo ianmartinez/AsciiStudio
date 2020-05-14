@@ -62,15 +62,15 @@ public class MainWindow extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
+        exportMenuItem = new javax.swing.JMenuItem();
+        exportTextMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        paletteMenu = new javax.swing.JMenu();
+        editBasePaletteMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        loadPaletteMenuItem = new javax.swing.JMenuItem();
+        savePaletteMenuItem = new javax.swing.JMenuItem();
+        resetPaletteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -149,14 +149,13 @@ public class MainWindow extends javax.swing.JFrame {
         openMenuItem.setText("Open");
         fileMenu.add(openMenuItem);
 
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
+        exportMenuItem.setMnemonic('s');
+        exportMenuItem.setText("Export...");
+        fileMenu.add(exportMenuItem);
 
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
+        exportTextMenuItem.setMnemonic('a');
+        exportTextMenuItem.setText("Export Text...");
+        fileMenu.add(exportTextMenuItem);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -169,29 +168,27 @@ public class MainWindow extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        paletteMenu.setText("Palette");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
+        editBasePaletteMenuItem.setText("Edit Base Palette...");
+        editBasePaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBasePaletteMenuItemActionPerformed(evt);
+            }
+        });
+        paletteMenu.add(editBasePaletteMenuItem);
+        paletteMenu.add(jSeparator1);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
+        loadPaletteMenuItem.setText("Load Palette");
+        paletteMenu.add(loadPaletteMenuItem);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
+        savePaletteMenuItem.setText("Save Palette");
+        paletteMenu.add(savePaletteMenuItem);
 
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        resetPaletteMenuItem.setText("Reset Palette");
+        paletteMenu.add(resetPaletteMenuItem);
 
-        menuBar.add(editMenu);
-
-        jMenu1.setText("View");
-        menuBar.add(jMenu1);
+        menuBar.add(paletteMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
@@ -227,32 +224,36 @@ public class MainWindow extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void editBasePaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBasePaletteMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editBasePaletteMenuItemActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;
-    protected javax.swing.JMenuItem copyMenuItem;
     protected ascomponent.PalettePanel currentPalette;
     protected javax.swing.JPanel currentPaletteContainer;
-    protected javax.swing.JMenuItem cutMenuItem;
-    protected javax.swing.JMenuItem deleteMenuItem;
-    protected javax.swing.JMenu editMenu;
+    protected javax.swing.JMenuItem editBasePaletteMenuItem;
     protected javax.swing.JMenuItem exitMenuItem;
     protected javax.swing.JButton exportButton;
+    protected javax.swing.JMenuItem exportMenuItem;
     protected javax.swing.JButton exportTextButton;
+    protected javax.swing.JMenuItem exportTextMenuItem;
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
-    protected javax.swing.JMenu jMenu1;
+    protected javax.swing.JPopupMenu.Separator jSeparator1;
+    protected javax.swing.JMenuItem loadPaletteMenuItem;
     protected javax.swing.JSplitPane mainSplitter;
     protected javax.swing.JToolBar mainToolbar;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JMenuItem openMenuItem;
     protected javax.swing.JLabel originalImage;
-    protected javax.swing.JMenuItem pasteMenuItem;
+    protected javax.swing.JMenu paletteMenu;
     protected javax.swing.JLabel renderedImage;
-    protected javax.swing.JMenuItem saveAsMenuItem;
-    protected javax.swing.JMenuItem saveMenuItem;
+    protected javax.swing.JMenuItem resetPaletteMenuItem;
+    protected javax.swing.JMenuItem savePaletteMenuItem;
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
     protected javax.swing.JScrollPane sidebarScroll;
