@@ -172,7 +172,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.add(jLabel1, java.awt.BorderLayout.WEST);
         jLabel1.getAccessibleContext().setAccessibleName("Sample Size (%):");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, null, 100, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         jSpinner1.setMinimumSize(new java.awt.Dimension(40, 26));
         jSpinner1.setPreferredSize(new java.awt.Dimension(50, 26));
         jPanel1.add(jSpinner1, java.awt.BorderLayout.EAST);
@@ -265,8 +265,8 @@ public class MainWindow extends javax.swing.JFrame {
         });
         mainToolbar.add(importButton);
 
-        exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/document-save.png"))); // NOI18N
-        exportButton.setText("Export");
+        exportButton.setIcon(new javax.swing.ImageIcon("/Users/ianmartinez/GitHub/taiga-icons/png/32/filetype-image.png")); // NOI18N
+        exportButton.setText("Export Image");
         exportButton.setFocusable(false);
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -292,7 +292,7 @@ public class MainWindow extends javax.swing.JFrame {
         fileMenu.add(importMenuItem);
 
         exportMenuItem.setMnemonic('s');
-        exportMenuItem.setText("Export...");
+        exportMenuItem.setText("Export Image...");
         fileMenu.add(exportMenuItem);
 
         exportTextMenuItem.setMnemonic('a');

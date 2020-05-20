@@ -22,7 +22,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="exportMenuItem">
               <Properties>
                 <Property name="mnemonic" type="int" value="115"/>
-                <Property name="text" type="java.lang.String" value="Export..."/>
+                <Property name="text" type="java.lang.String" value="Export Image..."/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exportTextMenuItem">
@@ -285,7 +285,7 @@
                     <Component class="javax.swing.JSpinner" name="jSpinner1">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                          <SpinnerModel initial="0" maximum="100" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                          <SpinnerModel initial="1" maximum="100" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
                         </Property>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[40, 26]"/>
@@ -958,9 +958,9 @@
         <Component class="javax.swing.JButton" name="exportButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/asciistudio/icons/document-save.png"/>
+              <Image iconType="2" name="/Users/ianmartinez/GitHub/taiga-icons/png/32/filetype-image.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Export"/>
+            <Property name="text" type="java.lang.String" value="Export Image"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
