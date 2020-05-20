@@ -23,13 +23,14 @@ import ascomponent.ImageSidebarItem;
  * @author Ian Martinez
  */
 public class MainWindow extends javax.swing.JFrame {
+
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
-        initComponents();  
-        
-        for(var i=0; i<20; i++) {
+        initComponents();
+
+        for (var i = 0; i < 20; i++) {
             var sidebarItem = new ImageSidebarItem();
             sidebarItem.setTitle("Image " + i);
             sidebarPanel.add(sidebarItem);
@@ -235,11 +236,11 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_editBasePaletteMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        var aboutDialog = new AboutDialog(this, true);        
+        var aboutDialog = new AboutDialog(this, true);
         aboutDialog.setLocationRelativeTo(this);
         aboutDialog.setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;

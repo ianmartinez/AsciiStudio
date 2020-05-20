@@ -55,15 +55,17 @@ public class PalettePanel extends javax.swing.JPanel {
 
     /**
      * Set the palette UI to match a palette
-     * 
+     *
      * @param palette the palette
      */
     public final void setPalette(Palette palette) {
         this.palette = palette;
-        
+
         // Load font combo with current selection from the palette
         fontFamiliesComboBox.removeAllItems();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+
+        // TODO: Only use monospace fonts
         Font[] allFonts = ge.getAllFonts();
         for (Font font : allFonts) {
             var fontName = font.getFontName(Locale.US);
@@ -104,15 +106,15 @@ public class PalettePanel extends javax.swing.JPanel {
         var isBold = fontBoldCheckbox.isSelected();
         var isItalic = fontItalicCheckbox.isSelected();
         int fontStyle = PLAIN;
-        
+
         if (isBold && isItalic) {
-            fontStyle = BOLD|ITALIC;
+            fontStyle = BOLD | ITALIC;
         } else if (isBold) {
             fontStyle = BOLD;
         } else if (isItalic) {
             fontStyle = ITALIC;
         }
-        
+
         // Set font 
         palette.setFont(new Font(fontName, fontStyle, fontSize));
 
@@ -125,7 +127,7 @@ public class PalettePanel extends javax.swing.JPanel {
         palette.setUsingPhrase(usePhraseRadioButton.isSelected());
         palette.setWeights(weightsPhraseValueTextField.getText());
     }
-    
+
     /**
      * @return The palette stored by this control
      */
