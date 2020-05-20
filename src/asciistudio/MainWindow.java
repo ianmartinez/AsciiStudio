@@ -16,20 +16,51 @@
  */
 package asciistudio;
 
-import ascomponent.ImageSidebarItem;
+import giflib.Gif;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author Ian Martinez
  */
 public class MainWindow extends javax.swing.JFrame {
+    public String sourceImagePath = ""; // The source image's location
+    public boolean isGif = false; // If the source image is a GIF or still image
+    public Gif sourceGif; // The source image if it's a GIF
+    public BufferedImage sourceCurrentFrame; // If a GIF, the current frame, if not the whole image
+    
+    // File dialogs
+    JFileChooser importImageDialog = new JFileChooser();
+    JFileChooser exportImageDialog = new JFileChooser();
+    JFileChooser exportTextDialog = new JFileChooser();
+    
+    // Filters for file dialogs
+    public FileNameExtensionFilter importImageFilter = new FileNameExtensionFilter("Image Files(*.jpeg, *.jpg, *.gif, *.png)", "jpeg", "jpg", "gif", "png");
+    public FileNameExtensionFilter exportImageFilter = new FileNameExtensionFilter("Image Files(*.gif, *.png)", "gif", "png");
+    public FileNameExtensionFilter exportTextFilter = new FileNameExtensionFilter("Text Files(*.txt)", "txt");
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
-
+        beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 2);            	
+    	importImageDialog.addChoosableFileFilter(importImageFilter);        	
+    	exportImageDialog.addChoosableFileFilter(exportImageFilter);        	
+    	exportTextDialog.addChoosableFileFilter(exportTextFilter);
+    }
+    
+    private String getExt(String path) 
+    {
+        int dot = path.lastIndexOf(".");
+        return path.substring(dot + 1).toLowerCase();
     }
 
     /**
@@ -47,26 +78,32 @@ public class MainWindow extends javax.swing.JFrame {
         currentPaletteContainer = new javax.swing.JPanel();
         currentPalette = new ascomponent.PalettePanel();
         beforeAfterSplitter = new javax.swing.JSplitPane();
-        originalImage = new javax.swing.JLabel();
-        renderedImage = new javax.swing.JLabel();
+        originalImageView = new javax.swing.JLabel();
+        renderedImageView = new javax.swing.JLabel();
         sidebarScroll = new javax.swing.JScrollPane();
         sidebarPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        frameCountLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        widthLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        heightLabel = new javax.swing.JLabel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
         exportTextButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
+        importMenuItem = new javax.swing.JMenuItem();
         exportMenuItem = new javax.swing.JMenuItem();
         exportTextMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -105,14 +142,15 @@ public class MainWindow extends javax.swing.JFrame {
 
         settingsImageSplitter.setLeftComponent(currentPaletteContainer);
 
-        beforeAfterSplitter.setDividerLocation(400);
+        beforeAfterSplitter.setDividerLocation(350);
         beforeAfterSplitter.setResizeWeight(0.5);
 
-        originalImage.setText("Original");
-        beforeAfterSplitter.setLeftComponent(originalImage);
+        originalImageView.setToolTipText("");
+        originalImageView.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        beforeAfterSplitter.setLeftComponent(originalImageView);
 
-        renderedImage.setText("Rendered");
-        beforeAfterSplitter.setRightComponent(renderedImage);
+        renderedImageView.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        beforeAfterSplitter.setRightComponent(renderedImageView);
 
         settingsImageSplitter.setRightComponent(beforeAfterSplitter);
 
@@ -130,12 +168,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("Sample Size (%):");
+        jLabel1.setText("Current Frame:");
         jPanel1.add(jLabel1, java.awt.BorderLayout.WEST);
         jLabel1.getAccessibleContext().setAccessibleName("Sample Size (%):");
 
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, null, 100, 1));
         jSpinner1.setMinimumSize(new java.awt.Dimension(40, 26));
-        jSpinner1.setPreferredSize(new java.awt.Dimension(40, 26));
+        jSpinner1.setPreferredSize(new java.awt.Dimension(50, 26));
         jPanel1.add(jSpinner1, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -145,14 +184,45 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         sidebarPanel.add(jPanel1, gridBagConstraints);
 
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jLabel2.setText("Sample Size (%):");
+        jPanel4.add(jLabel2, java.awt.BorderLayout.WEST);
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(10, null, 100, 1));
+        jSpinner2.setMinimumSize(new java.awt.Dimension(40, 26));
+        jSpinner2.setPreferredSize(new java.awt.Dimension(50, 26));
+        jPanel4.add(jSpinner2, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        sidebarPanel.add(jPanel4, gridBagConstraints);
+
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setText("Frames:");
+        jPanel5.add(jLabel6, java.awt.BorderLayout.WEST);
+
+        frameCountLabel.setText("0");
+        jPanel5.add(frameCountLabel, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        sidebarPanel.add(jPanel5, gridBagConstraints);
+
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jLabel3.setText("Width:");
         jPanel2.add(jLabel3, java.awt.BorderLayout.WEST);
-        jLabel3.getAccessibleContext().setAccessibleName("Width:");
 
-        jLabel4.setText("100 px");
-        jPanel2.add(jLabel4, java.awt.BorderLayout.EAST);
+        widthLabel.setText("900 px");
+        jPanel2.add(widthLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -166,8 +236,8 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel5.setText("Height:");
         jPanel3.add(jLabel5, java.awt.BorderLayout.WEST);
 
-        jLabel6.setText("100 px");
-        jPanel3.add(jLabel6, java.awt.BorderLayout.EAST);
+        heightLabel.setText("600 px");
+        jPanel3.add(heightLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -183,21 +253,26 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainToolbar.setRollover(true);
 
-        importButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/Images/document-open.png"))); // NOI18N
+        importButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/document-open.png"))); // NOI18N
         importButton.setText("Import");
         importButton.setFocusable(false);
         importButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         importButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        importButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importButtonActionPerformed(evt);
+            }
+        });
         mainToolbar.add(importButton);
 
-        exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/Images/document-save.png"))); // NOI18N
+        exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/document-save.png"))); // NOI18N
         exportButton.setText("Export");
         exportButton.setFocusable(false);
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(exportButton);
 
-        exportTextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/Images/filetype-text.png"))); // NOI18N
+        exportTextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/filetype-text.png"))); // NOI18N
         exportTextButton.setText("Export Text");
         exportTextButton.setFocusable(false);
         exportTextButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -207,9 +282,14 @@ public class MainWindow extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
+        importMenuItem.setMnemonic('o');
+        importMenuItem.setText("Import...");
+        importMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(importMenuItem);
 
         exportMenuItem.setMnemonic('s');
         exportMenuItem.setText("Export...");
@@ -302,6 +382,48 @@ public class MainWindow extends javax.swing.JFrame {
         aboutDialog.setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
+    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
+        importMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_importButtonActionPerformed
+
+    private void importMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importMenuItemActionPerformed
+    	if (importImageDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)  {
+            var importedPath = importImageDialog.getSelectedFile().getAbsolutePath();
+                
+            try {
+                var importingGif = getExt(importedPath).equals("gif");
+                
+                if(importingGif) {                
+                    var importedGif = new Gif(importedPath);
+                    var importedCurrentFrame = sourceGif.getFrameImage(0);
+                    
+                    // All importing succeeded, so update data
+                    sourceImagePath = importedPath;
+                    isGif = true;
+                    sourceGif = importedGif;
+                    sourceCurrentFrame = importedCurrentFrame;                    
+                } else {
+                    var importedImage =  ImageIO.read(new File(importedPath));
+                    
+                    // All importing succeeded, so update data
+                    sourceImagePath = importedPath;
+                    isGif = false;
+                    sourceGif = null;
+                    sourceCurrentFrame = importedImage;                      
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error importing " + importedPath + "!");
+            }
+            
+            // Update UI
+            originalImageView.setIcon(new StretchIcon(sourceCurrentFrame));
+            renderedImageView.setIcon(new StretchIcon(sourceCurrentFrame));
+            frameCountLabel.setText(String.valueOf(isGif ? sourceGif.getFrameCount() : 1));
+            widthLabel.setText(sourceCurrentFrame.getWidth() + "px");
+            heightLabel.setText(sourceCurrentFrame.getHeight() + "px");            
+        }
+    }//GEN-LAST:event_importMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;
@@ -314,31 +436,37 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JButton exportTextButton;
     protected javax.swing.JMenuItem exportTextMenuItem;
     protected javax.swing.JMenu fileMenu;
+    protected javax.swing.JLabel frameCountLabel;
+    protected javax.swing.JLabel heightLabel;
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
+    protected javax.swing.JMenuItem importMenuItem;
     protected javax.swing.JLabel jLabel1;
+    protected javax.swing.JLabel jLabel2;
     protected javax.swing.JLabel jLabel3;
-    protected javax.swing.JLabel jLabel4;
     protected javax.swing.JLabel jLabel5;
     protected javax.swing.JLabel jLabel6;
     protected javax.swing.JPanel jPanel1;
     protected javax.swing.JPanel jPanel2;
     protected javax.swing.JPanel jPanel3;
+    protected javax.swing.JPanel jPanel4;
+    protected javax.swing.JPanel jPanel5;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
     protected javax.swing.JSpinner jSpinner1;
+    protected javax.swing.JSpinner jSpinner2;
     protected javax.swing.JMenuItem loadPaletteMenuItem;
     protected javax.swing.JSplitPane mainSplitter;
     protected javax.swing.JToolBar mainToolbar;
     protected javax.swing.JMenuBar menuBar;
-    protected javax.swing.JMenuItem openMenuItem;
-    protected javax.swing.JLabel originalImage;
+    protected javax.swing.JLabel originalImageView;
     protected javax.swing.JMenu paletteMenu;
-    protected javax.swing.JLabel renderedImage;
+    protected javax.swing.JLabel renderedImageView;
     protected javax.swing.JMenuItem resetPaletteMenuItem;
     protected javax.swing.JMenuItem savePaletteMenuItem;
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
     protected javax.swing.JScrollPane sidebarScroll;
+    protected javax.swing.JLabel widthLabel;
     // End of variables declaration//GEN-END:variables
 
 }

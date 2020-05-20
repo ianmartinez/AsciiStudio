@@ -14,8 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package asciistudio;
+package asciistudio.ascii;
 
+import asciistudio.Palette;
 import giflib.Gif;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -163,17 +164,11 @@ public class AsciiConverter {
         System.out.println("Render finished");
         return renderImage;
     }
-    
-    private String getEXT(String path) 
-    {
-        int dot = path.lastIndexOf(".");
-        return path.substring(dot + 1).toLowerCase();
-    }
 
     public void saveImage(String filePath, BufferedImage img) throws IOException {
         File outFile = new File(filePath);
         BufferedImage render = renderImage(img);
-        ImageIO.write(render, getEXT(filePath), outFile);
+        ImageIO.write(render, "gif", outFile);
     }
 
     public void saveGif(String filePath, Gif gif) throws IOException {
