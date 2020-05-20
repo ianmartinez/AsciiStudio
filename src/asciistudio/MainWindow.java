@@ -30,11 +30,6 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
 
-        for (var i = 0; i < 20; i++) {
-            var sidebarItem = new ImageSidebarItem();
-            sidebarItem.setTitle("Image " + i);
-            sidebarPanel.add(sidebarItem);
-        }
     }
 
     /**
@@ -48,14 +43,23 @@ public class MainWindow extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         mainSplitter = new javax.swing.JSplitPane();
-        sidebarScroll = new javax.swing.JScrollPane();
-        sidebarPanel = new javax.swing.JPanel();
         settingsImageSplitter = new javax.swing.JSplitPane();
         currentPaletteContainer = new javax.swing.JPanel();
         currentPalette = new ascomponent.PalettePanel();
         beforeAfterSplitter = new javax.swing.JSplitPane();
         originalImage = new javax.swing.JLabel();
         renderedImage = new javax.swing.JLabel();
+        sidebarScroll = new javax.swing.JScrollPane();
+        sidebarPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
@@ -81,18 +85,9 @@ public class MainWindow extends javax.swing.JFrame {
         setName("MainWindowFrame"); // NOI18N
         setSize(new java.awt.Dimension(700, 500));
 
-        mainSplitter.setDividerLocation(130);
+        mainSplitter.setDividerLocation(700);
+        mainSplitter.setResizeWeight(0.85);
         mainSplitter.setDoubleBuffered(true);
-
-        sidebarScroll.setBorder(null);
-        sidebarScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        sidebarScroll.setMinimumSize(new java.awt.Dimension(120, 5));
-
-        sidebarPanel.setMinimumSize(new java.awt.Dimension(120, 300));
-        sidebarPanel.setLayout(new javax.swing.BoxLayout(sidebarPanel, javax.swing.BoxLayout.Y_AXIS));
-        sidebarScroll.setViewportView(sidebarPanel);
-
-        mainSplitter.setLeftComponent(sidebarScroll);
 
         settingsImageSplitter.setDividerLocation(120);
         settingsImageSplitter.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -121,22 +116,88 @@ public class MainWindow extends javax.swing.JFrame {
 
         settingsImageSplitter.setRightComponent(beforeAfterSplitter);
 
-        mainSplitter.setRightComponent(settingsImageSplitter);
+        mainSplitter.setLeftComponent(settingsImageSplitter);
+
+        sidebarScroll.setBorder(null);
+        sidebarScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        sidebarScroll.setMinimumSize(new java.awt.Dimension(120, 5));
+
+        sidebarPanel.setMinimumSize(new java.awt.Dimension(120, 300));
+        java.awt.GridBagLayout sidebarPanelLayout = new java.awt.GridBagLayout();
+        sidebarPanelLayout.columnWeights = new double[] {1.0};
+        sidebarPanelLayout.rowWeights = new double[] {-1.0, -1.0, -1.0};
+        sidebarPanel.setLayout(sidebarPanelLayout);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setText("Sample Size (%):");
+        jPanel1.add(jLabel1, java.awt.BorderLayout.WEST);
+        jLabel1.getAccessibleContext().setAccessibleName("Sample Size (%):");
+
+        jSpinner1.setMinimumSize(new java.awt.Dimension(40, 26));
+        jSpinner1.setPreferredSize(new java.awt.Dimension(40, 26));
+        jPanel1.add(jSpinner1, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        sidebarPanel.add(jPanel1, gridBagConstraints);
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jLabel3.setText("Width:");
+        jPanel2.add(jLabel3, java.awt.BorderLayout.WEST);
+        jLabel3.getAccessibleContext().setAccessibleName("Width:");
+
+        jLabel4.setText("100 px");
+        jPanel2.add(jLabel4, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        sidebarPanel.add(jPanel2, gridBagConstraints);
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jLabel5.setText("Height:");
+        jPanel3.add(jLabel5, java.awt.BorderLayout.WEST);
+
+        jLabel6.setText("100 px");
+        jPanel3.add(jLabel6, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        sidebarPanel.add(jPanel3, gridBagConstraints);
+
+        sidebarScroll.setViewportView(sidebarPanel);
+
+        mainSplitter.setRightComponent(sidebarScroll);
 
         mainToolbar.setRollover(true);
 
+        importButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/Images/document-open.png"))); // NOI18N
         importButton.setText("Import");
         importButton.setFocusable(false);
         importButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         importButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(importButton);
 
+        exportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/Images/document-save.png"))); // NOI18N
         exportButton.setText("Export");
         exportButton.setFocusable(false);
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(exportButton);
 
+        exportTextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/Images/filetype-text.png"))); // NOI18N
         exportTextButton.setText("Export Text");
         exportTextButton.setFocusable(false);
         exportTextButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -220,7 +281,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(mainToolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -255,7 +316,16 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
+    protected javax.swing.JLabel jLabel1;
+    protected javax.swing.JLabel jLabel3;
+    protected javax.swing.JLabel jLabel4;
+    protected javax.swing.JLabel jLabel5;
+    protected javax.swing.JLabel jLabel6;
+    protected javax.swing.JPanel jPanel1;
+    protected javax.swing.JPanel jPanel2;
+    protected javax.swing.JPanel jPanel3;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
+    protected javax.swing.JSpinner jSpinner1;
     protected javax.swing.JMenuItem loadPaletteMenuItem;
     protected javax.swing.JSplitPane mainSplitter;
     protected javax.swing.JToolBar mainToolbar;
