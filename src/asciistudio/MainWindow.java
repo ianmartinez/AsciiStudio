@@ -131,6 +131,10 @@ public class MainWindow extends javax.swing.JFrame {
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
         exportTextButton = new javax.swing.JButton();
+        importPaletteButton = new javax.swing.JButton();
+        exportPaletteButton = new javax.swing.JButton();
+        resetPaletteButton = new javax.swing.JButton();
+        invertPaletteButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -139,10 +143,11 @@ public class MainWindow extends javax.swing.JFrame {
         exportTextMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         paletteMenu = new javax.swing.JMenu();
-        editBasePaletteMenuItem = new javax.swing.JMenuItem();
+        importPaletteMenuItem = new javax.swing.JMenuItem();
+        exportPaletteMenuItem = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        invertPaletteMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        loadPaletteMenuItem = new javax.swing.JMenuItem();
-        savePaletteMenuItem = new javax.swing.JMenuItem();
         resetPaletteMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         refreshMenuItem = new javax.swing.JMenuItem();
@@ -372,6 +377,54 @@ public class MainWindow extends javax.swing.JFrame {
         exportTextButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(exportTextButton);
 
+        importPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/document-import.png"))); // NOI18N
+        importPaletteButton.setText("Import Palette");
+        importPaletteButton.setFocusable(false);
+        importPaletteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        importPaletteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        importPaletteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importPaletteButtonActionPerformed(evt);
+            }
+        });
+        mainToolbar.add(importPaletteButton);
+
+        exportPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/document-export.png"))); // NOI18N
+        exportPaletteButton.setText("Export Palette");
+        exportPaletteButton.setFocusable(false);
+        exportPaletteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        exportPaletteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        exportPaletteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportPaletteButtonActionPerformed(evt);
+            }
+        });
+        mainToolbar.add(exportPaletteButton);
+
+        resetPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/edit-clear.png"))); // NOI18N
+        resetPaletteButton.setText("Reset Palette");
+        resetPaletteButton.setFocusable(false);
+        resetPaletteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        resetPaletteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        resetPaletteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetPaletteButtonActionPerformed(evt);
+            }
+        });
+        mainToolbar.add(resetPaletteButton);
+
+        invertPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/inverse.png"))); // NOI18N
+        invertPaletteButton.setText("Invert Palette");
+        invertPaletteButton.setFocusable(false);
+        invertPaletteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        invertPaletteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        invertPaletteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                invertPaletteButtonActionPerformed(evt);
+            }
+        });
+        mainToolbar.add(invertPaletteButton);
+
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/refresh.png"))); // NOI18N
         refreshButton.setText("Refresh");
         refreshButton.setFocusable(false);
@@ -417,20 +470,32 @@ public class MainWindow extends javax.swing.JFrame {
 
         paletteMenu.setText("Palette");
 
-        editBasePaletteMenuItem.setText("Edit Base Palette...");
-        editBasePaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        importPaletteMenuItem.setText("Import Palette");
+        importPaletteMenuItem.setToolTipText("");
+        importPaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editBasePaletteMenuItemActionPerformed(evt);
+                importPaletteMenuItemActionPerformed(evt);
             }
         });
-        paletteMenu.add(editBasePaletteMenuItem);
+        paletteMenu.add(importPaletteMenuItem);
+
+        exportPaletteMenuItem.setText("Export Palette");
+        exportPaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportPaletteMenuItemActionPerformed(evt);
+            }
+        });
+        paletteMenu.add(exportPaletteMenuItem);
+        paletteMenu.add(jSeparator4);
+
+        invertPaletteMenuItem.setText("Invert Palette");
+        invertPaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                invertPaletteMenuItemActionPerformed(evt);
+            }
+        });
+        paletteMenu.add(invertPaletteMenuItem);
         paletteMenu.add(jSeparator1);
-
-        loadPaletteMenuItem.setText("Load Palette");
-        paletteMenu.add(loadPaletteMenuItem);
-
-        savePaletteMenuItem.setText("Save Palette");
-        paletteMenu.add(savePaletteMenuItem);
 
         resetPaletteMenuItem.setText("Reset Palette");
         resetPaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -493,10 +558,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
-
-    private void editBasePaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBasePaletteMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editBasePaletteMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         var aboutDialog = new AboutDialog(this, true);
@@ -562,15 +623,44 @@ public class MainWindow extends javax.swing.JFrame {
         currentPalette.resetPalette();
     }//GEN-LAST:event_resetPaletteMenuItemActionPerformed
 
+    private void importPaletteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importPaletteButtonActionPerformed
+        importPaletteMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_importPaletteButtonActionPerformed
+
+    private void exportPaletteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportPaletteButtonActionPerformed
+        exportPaletteMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_exportPaletteButtonActionPerformed
+
+    private void resetPaletteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPaletteButtonActionPerformed
+        resetPaletteMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_resetPaletteButtonActionPerformed
+
+    private void invertPaletteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertPaletteButtonActionPerformed
+        invertPaletteMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_invertPaletteButtonActionPerformed
+
+    private void importPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importPaletteMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_importPaletteMenuItemActionPerformed
+
+    private void exportPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportPaletteMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exportPaletteMenuItemActionPerformed
+
+    private void invertPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertPaletteMenuItemActionPerformed
+        currentPalette.invertPalette();
+    }//GEN-LAST:event_invertPaletteMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;
     protected asciicomponent.PalettePanel currentPalette;
     protected javax.swing.JPanel currentPaletteContainer;
-    protected javax.swing.JMenuItem editBasePaletteMenuItem;
     protected javax.swing.JMenuItem exitMenuItem;
     protected javax.swing.JButton exportButton;
     protected javax.swing.JMenuItem exportMenuItem;
+    protected javax.swing.JButton exportPaletteButton;
+    protected javax.swing.JMenuItem exportPaletteMenuItem;
     protected javax.swing.JButton exportTextButton;
     protected javax.swing.JMenuItem exportTextMenuItem;
     protected javax.swing.JMenu fileMenu;
@@ -579,6 +669,10 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
     protected javax.swing.JMenuItem importMenuItem;
+    protected javax.swing.JButton importPaletteButton;
+    protected javax.swing.JMenuItem importPaletteMenuItem;
+    protected javax.swing.JButton invertPaletteButton;
+    protected javax.swing.JMenuItem invertPaletteMenuItem;
     protected javax.swing.JLabel jLabel1;
     protected javax.swing.JLabel jLabel2;
     protected javax.swing.JLabel jLabel3;
@@ -599,8 +693,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JPanel jPanel8;
     protected javax.swing.JPanel jPanel9;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
+    protected javax.swing.JPopupMenu.Separator jSeparator4;
     protected javax.swing.JSpinner jSpinner1;
-    protected javax.swing.JMenuItem loadPaletteMenuItem;
     protected javax.swing.JSplitPane mainSplitter;
     protected javax.swing.JToolBar mainToolbar;
     protected javax.swing.JMenuBar menuBar;
@@ -611,11 +705,11 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JLabel renderHeightLabel;
     protected javax.swing.JLabel renderWidthLabel;
     protected javax.swing.JLabel renderedImageView;
+    protected javax.swing.JButton resetPaletteButton;
     protected javax.swing.JMenuItem resetPaletteMenuItem;
     protected javax.swing.JLabel sampleHeightLabel;
     protected javax.swing.JLabel sampleWidthLabel;
     protected javax.swing.JSpinner samplingSizeSpinner;
-    protected javax.swing.JMenuItem savePaletteMenuItem;
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
     protected javax.swing.JScrollPane sidebarScroll;

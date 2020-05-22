@@ -137,6 +137,20 @@ public class PalettePanel extends javax.swing.JPanel {
     public void resetPalette() {
         setPalette(new Palette());
     }
+    
+    public void invertPalette() {
+        var invertedPalette = new Palette(palette);
+        invertedPalette.setBackgroundColor(palette.getFontColor());
+        invertedPalette.setFontColor(palette.getBackgroundColor());
+        
+        if(!palette.isUsingPhrase()) {
+            var reverseStrBuilder = new StringBuilder(palette.getWeightsString());  
+            reverseStrBuilder.reverse();
+            invertedPalette.setWeights(reverseStrBuilder.toString());
+        }
+        
+        setPalette(invertedPalette);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
