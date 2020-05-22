@@ -201,14 +201,8 @@ public class Palette {
         var weightsSize = measureLine(testImg.createGraphics(), String.join("", weights));
         var fontWidth = weightsSize.getWidth() / weights.length;
         var fontHeight = weightsSize.getHeight();
-        var samplingWidth = width / fontWidth;
-        var samplingHeight = height / fontHeight;
         
-        if (fontHeight > fontWidth) {
-            return Math.ceil(height / samplingHeight);
-        } else {
-            return Math.ceil(width / samplingWidth);
-        }
+        return Math.ceil((fontHeight > fontWidth) ? fontHeight : fontWidth);
     }
 
     public int getStringWidth(Graphics g, String s) {
