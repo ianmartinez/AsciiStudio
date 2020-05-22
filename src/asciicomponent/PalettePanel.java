@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package ascomponent;
+package asciicomponent;
 
 import asciilib.Palette;
 import asciistudio.SimpleDocumentListener;
@@ -151,11 +151,11 @@ public class PalettePanel extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         backgroundColorButton = new javax.swing.JButton();
-        backgroundColorPanel = new ascomponent.ColorPanel();
+        backgroundColorPanel = new asciicomponent.ColorPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         overrideImageCheckbox = new javax.swing.JCheckBox();
-        fontColorPanel = new ascomponent.ColorPanel();
+        fontColorPanel = new asciicomponent.ColorPanel();
         fontColorButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -401,10 +401,10 @@ public class PalettePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;
-    private ascomponent.ColorPanel backgroundColorPanel;
+    private asciicomponent.ColorPanel backgroundColorPanel;
     private javax.swing.JCheckBox fontBoldCheckbox;
     private javax.swing.JButton fontColorButton;
-    private ascomponent.ColorPanel fontColorPanel;
+    private asciicomponent.ColorPanel fontColorPanel;
     private javax.swing.JComboBox<String> fontFamiliesComboBox;
     private javax.swing.JCheckBox fontItalicCheckbox;
     private javax.swing.JSpinner fontSizeSpinner;

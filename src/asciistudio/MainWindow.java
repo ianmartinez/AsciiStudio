@@ -87,7 +87,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainSplitter = new javax.swing.JSplitPane();
         settingsImageSplitter = new javax.swing.JSplitPane();
         currentPaletteContainer = new javax.swing.JPanel();
-        currentPalette = new ascomponent.PalettePanel();
+        currentPalette = new asciicomponent.PalettePanel();
         beforeAfterSplitter = new javax.swing.JSplitPane();
         originalImageView = new javax.swing.JLabel();
         renderedImageView = new javax.swing.JLabel();
@@ -513,7 +513,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;
-    protected ascomponent.PalettePanel currentPalette;
+    protected asciicomponent.PalettePanel currentPalette;
     protected javax.swing.JPanel currentPaletteContainer;
     protected javax.swing.JMenuItem editBasePaletteMenuItem;
     protected javax.swing.JMenuItem exitMenuItem;
