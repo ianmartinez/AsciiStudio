@@ -303,7 +303,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainToolbar.setRollover(true);
 
-        importButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/document-open.png"))); // NOI18N
+        importButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/document-open.png"))); // NOI18N
         importButton.setText("Import");
         importButton.setFocusable(false);
         importButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -322,14 +322,14 @@ public class MainWindow extends javax.swing.JFrame {
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(exportButton);
 
-        exportTextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/filetype-text.png"))); // NOI18N
+        exportTextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/filetype-text.png"))); // NOI18N
         exportTextButton.setText("Export Text");
         exportTextButton.setFocusable(false);
         exportTextButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportTextButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(exportTextButton);
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/refresh.png"))); // NOI18N
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/refresh.png"))); // NOI18N
         refreshButton.setText("Refresh");
         refreshButton.setFocusable(false);
         refreshButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

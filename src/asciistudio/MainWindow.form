@@ -1189,7 +1189,7 @@
         <Component class="javax.swing.JButton" name="importButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/asciistudio/icons/document-open.png"/>
+              <Image iconType="3" name="/asciiicons/document-open.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Import"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -1214,7 +1214,7 @@
         <Component class="javax.swing.JButton" name="exportTextButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/asciistudio/icons/filetype-text.png"/>
+              <Image iconType="3" name="/asciiicons/filetype-text.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Export Text"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -1225,7 +1225,7 @@
         <Component class="javax.swing.JButton" name="refreshButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/asciistudio/icons/refresh.png"/>
+              <Image iconType="3" name="/asciiicons/refresh.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Refresh"/>
             <Property name="focusable" type="boolean" value="false"/>
