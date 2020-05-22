@@ -183,10 +183,10 @@ public class GifSequenceWriter implements AutoCloseable {
             if (metadata != null) {
                 var globalRoot = (IIOMetadataNode) metadata.getAsTree(metadata.getNativeMetadataFormatName());
                 var globalColorTable = globalRoot.getElementsByTagName("GlobalColorTable");
-                var globalScreeDescriptor = globalRoot.getElementsByTagName("LogicalScreenDescriptor");
+                var globalScreenDescriptor = globalRoot.getElementsByTagName("LogicalScreenDescriptor");
 
-                if (globalScreeDescriptor != null && globalScreeDescriptor.getLength() > 0) {
-                    IIOMetadataNode screenDescriptor = (IIOMetadataNode) globalScreeDescriptor.item(0);
+                if (globalScreenDescriptor != null && globalScreenDescriptor.getLength() > 0) {
+                    IIOMetadataNode screenDescriptor = (IIOMetadataNode) globalScreenDescriptor.item(0);
 
                     if (screenDescriptor != null) {
                         width = Integer.parseInt(screenDescriptor.getAttribute("logicalScreenWidth"));

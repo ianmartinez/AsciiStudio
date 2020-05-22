@@ -467,7 +467,7 @@ public class MainWindow extends javax.swing.JFrame {
                 
                 if(importingGif) {                
                     var importedGif = new Gif(importedPath);
-                    var importedCurrentFrame = sourceGif.getFrameImage(0);
+                    var importedCurrentFrame = importedGif.getFrameImage(0);
                     
                     // All importing succeeded, so update data
                     sourceImagePath = importedPath;
