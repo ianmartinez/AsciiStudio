@@ -14,10 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package asciistudio;
+package asciilib;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 
 /**
  * Represents the palette used to render a ASCII image.
@@ -28,8 +29,7 @@ import java.awt.geom.Rectangle2D;
 public class Palette {
 
     /**
-     * The palette settings that all other palettes 
-     * derive from.
+     * The palette settings that all other palettes derive from.
      */
     public final static Palette basePalette = new Palette();
 
@@ -41,22 +41,22 @@ public class Palette {
     private String[] weights = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("");
 
     public Palette() {
-        if(basePalette != null) { // Not initializing the base palette
+        if (basePalette != null) { // Not initializing the base palette
             usingPhrase = basePalette.isUsingPhrase();
             overridingImageColors = basePalette.isOverridingImageColors();
             backgroundColor = basePalette.getBackgroundColor();
             fontColor = basePalette.getFontColor();
-            font = basePalette.getFont();        
+            font = basePalette.getFont();
             weights = basePalette.getWeights();
         }
     }
-    
-    public Palette(Palette otherPalette) {        
+
+    public Palette(Palette otherPalette) {
         usingPhrase = otherPalette.isUsingPhrase();
         overridingImageColors = otherPalette.isOverridingImageColors();
         backgroundColor = otherPalette.getBackgroundColor();
         fontColor = otherPalette.getFontColor();
-        font = otherPalette.getFont();        
+        font = otherPalette.getFont();
         weights = otherPalette.getWeights();
     }
 
@@ -131,7 +131,7 @@ public class Palette {
     public String[] getWeights() {
         return weights;
     }
-    
+
     /**
      * @return the weights as a string
      */
@@ -166,15 +166,15 @@ public class Palette {
     public int getWeightCount() {
         return weights.length;
     }
-    
-    /** 
+
+    /**
      * @param pos the weight index
      * @return the string for the weight at that index
      */
     public String getWeight(int pos) {
         return weights[pos];
     }
-        
+
     public int getFontRatio(Graphics g) {
         var metrics = g.getFontMetrics(font);
         return (int) (metrics.getHeight() / maxVal(metrics.getWidths()));
@@ -185,6 +185,30 @@ public class Palette {
         Rectangle2D bounds = metrics.getStringBounds(s, g);
 
         return new Dimension((int) bounds.getWidth(), (int) bounds.getHeight());
+    }
+
+    /**
+     * Find the best ratio to get a rendered image size to match 
+     * the source image's size with this palette.
+     * 
+     * @param width the source image width
+     * @param height the source image height
+     * 
+     * @return the best sampling ratio.
+     */
+    public double getSamplingRatio(int width, int height) {
+        var testImg = new BufferedImage(25, 25, BufferedImage.TRANSLUCENT);
+        var weightsSize = measureLine(testImg.createGraphics(), String.join("", weights));
+        var fontWidth = weightsSize.getWidth() / weights.length;
+        var fontHeight = weightsSize.getHeight();
+        var samplingWidth = width / fontWidth;
+        var samplingHeight = height / fontHeight;
+        
+        if (fontHeight > fontWidth) {
+            return Math.ceil(height / samplingHeight);
+        } else {
+            return Math.ceil(width / samplingWidth);
+        }
     }
 
     public int getStringWidth(Graphics g, String s) {
@@ -200,15 +224,16 @@ public class Palette {
 
         return (int) bounds.getHeight();
     }
-    
-    private static int maxVal(int[] arr)
-    {
+
+    private static int maxVal(int[] arr) {
         int max = arr[0];
 
-        for(int i=1; i< arr.length; i++)
-            if(arr[i] > max)
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
                 max = arr[i];
+            }
+        }
 
-        return max;	
+        return max;
     }
 }

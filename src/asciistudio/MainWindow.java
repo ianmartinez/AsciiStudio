@@ -50,7 +50,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-         beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 2);            	
+        beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 2);            	
     	importImageDialog.addChoosableFileFilter(importImageFilter);        	
     	exportImageDialog.addChoosableFileFilter(exportImageFilter);        	
     	exportTextDialog.addChoosableFileFilter(exportTextFilter);
@@ -86,7 +86,7 @@ public class MainWindow extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        samplingSizeSpinner = new javax.swing.JSpinner();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         frameCountLabel = new javax.swing.JLabel();
@@ -188,10 +188,10 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel2.setText("Sample Size (%):");
         jPanel4.add(jLabel2, java.awt.BorderLayout.WEST);
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(10, null, 100, 1));
-        jSpinner2.setMinimumSize(new java.awt.Dimension(40, 26));
-        jSpinner2.setPreferredSize(new java.awt.Dimension(50, 26));
-        jPanel4.add(jSpinner2, java.awt.BorderLayout.EAST);
+        samplingSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(10, null, 100, 1));
+        samplingSizeSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
+        samplingSizeSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
+        jPanel4.add(samplingSizeSpinner, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -419,7 +419,9 @@ public class MainWindow extends javax.swing.JFrame {
             renderedImageView.setIcon(new StretchIcon(sourceCurrentFrame));
             frameCountLabel.setText(String.valueOf(isGif ? sourceGif.getFrameCount() : 1));
             widthLabel.setText(sourceCurrentFrame.getWidth() + "px");
-            heightLabel.setText(sourceCurrentFrame.getHeight() + "px");            
+            heightLabel.setText(sourceCurrentFrame.getHeight() + "px");      
+            var samplingRatio = currentPalette.getPalette().getSamplingRatio(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
+            samplingSizeSpinner.setValue(samplingRatio);
         }
     }//GEN-LAST:event_importMenuItemActionPerformed
 
@@ -452,7 +454,6 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JPanel jPanel5;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
     protected javax.swing.JSpinner jSpinner1;
-    protected javax.swing.JSpinner jSpinner2;
     protected javax.swing.JMenuItem loadPaletteMenuItem;
     protected javax.swing.JSplitPane mainSplitter;
     protected javax.swing.JToolBar mainToolbar;
@@ -461,6 +462,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenu paletteMenu;
     protected javax.swing.JLabel renderedImageView;
     protected javax.swing.JMenuItem resetPaletteMenuItem;
+    protected javax.swing.JSpinner samplingSizeSpinner;
     protected javax.swing.JMenuItem savePaletteMenuItem;
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;

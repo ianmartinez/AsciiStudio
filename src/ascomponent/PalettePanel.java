@@ -16,7 +16,7 @@
  */
 package ascomponent;
 
-import asciistudio.Palette;
+import asciilib.Palette;
 import asciistudio.SimpleDocumentListener;
 import java.awt.Color;
 import java.awt.Font;

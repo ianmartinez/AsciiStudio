@@ -321,7 +321,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner2">
+                    <Component class="javax.swing.JSpinner" name="samplingSizeSpinner">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                           <SpinnerModel initial="10" maximum="100" numberType="java.lang.Integer" stepSize="1" type="number"/>

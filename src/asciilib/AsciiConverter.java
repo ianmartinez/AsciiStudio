@@ -16,7 +16,6 @@
  */
 package asciilib;
 
-import asciistudio.Palette;
 import giflib.Gif;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,7 +31,6 @@ import javax.imageio.ImageIO;
  * @author Ian Martinez
  */
 public class AsciiConverter {
-
     private Palette palette = new Palette();
     private int phrasePos = 0;
     private int pixelPos = 0;
@@ -79,41 +77,32 @@ public class AsciiConverter {
     }
 
     public String renderText(BufferedImage img) {
-        System.out.println("Beginning render");
-        System.out.println(img.getHeight() + " rows");
         Graphics2D g = img.createGraphics();
         int ratio = palette.getFontRatio(g);
         String ascii = "";
 
         for (int y = 0; y < img.getHeight(); y += ratio) {
-            System.out.println("Processing row #" + (y + 1) + " of " + (img.getHeight() - 1));
             ascii += renderTextRow(img, y) + "\r\n";
         }
-
-        System.out.println("Render finished");
 
         return ascii;
     }
 
     public BufferedImage renderImage(BufferedImage img) {
-        Graphics2D g = img.createGraphics();
-        int ratio = palette.getFontRatio(g);
+        var sourceGraphics = img.createGraphics();
+        int ratio = palette.getFontRatio(sourceGraphics);
 
-        System.out.println("Beginning render");
-
-        // measure dimensions
-        System.out.println("Measuring lines");
-        ArrayList<Dimension> dimensions = new ArrayList<>();
+        // Measure dimensions line by line
+        var dimensions = new ArrayList<Dimension>();
         for (int y = 0; y < img.getHeight(); y += ratio) {
-            System.out.println("Measuring line #" + (y + 1));
             String line = renderTextRow(img, y);
-            dimensions.add(palette.measureLine(g, line));
+            dimensions.add(palette.measureLine(sourceGraphics, line));
         }
 
-        // get width and height for image
+        // Get width and height for image
         int height = 0;
         int maxWidth = 0;
-        int dimPos = 0; // position in the dimensions array
+        int dimPos = 0; // Position in the dimensions array
         int charX = 0; // X position of the text
         int charY = dimensions.get(0).height - 3; // X position of the text = first row of characters height - offset
 
@@ -122,14 +111,14 @@ public class AsciiConverter {
             maxWidth = Math.max((int) d.getWidth(), maxWidth);
         }
 
-        BufferedImage renderImage = new BufferedImage(maxWidth, height, BufferedImage.TRANSLUCENT);
-        Graphics2D renderGraphics = renderImage.createGraphics();
-        // set background color
+        var renderImage = new BufferedImage(maxWidth, height, BufferedImage.TRANSLUCENT);
+        var renderGraphics = renderImage.createGraphics();
+        // Set background color
         renderGraphics.setColor(palette.getBackgroundColor());
         renderGraphics.fillRect(0, 0, renderImage.getWidth(), renderImage.getHeight());
         for (int y = 0; y < img.getHeight(); y += ratio) {
             for (int x = 0; x < img.getWidth(); x++) {
-                Color clr = new Color(img.getRGB(x, y));
+                Color pixelColor = new Color(img.getRGB(x, y));
 
                 // Get string associated with the pixel
                 String str;
@@ -141,13 +130,13 @@ public class AsciiConverter {
                     str = palette.getWeight(phrasePos);
                     phrasePos++;
                 } else {
-                    str = getWeight(clr);
+                    str = getWeight(pixelColor);
                 }
 
                 if (palette.isOverridingImageColors()) {
                     renderGraphics.setColor(palette.getFontColor());
                 } else {
-                    renderGraphics.setColor(clr);
+                    renderGraphics.setColor(pixelColor);
                 }
 
                 renderGraphics.setFont(palette.getFont());
@@ -156,12 +145,12 @@ public class AsciiConverter {
                 charX += palette.getStringWidth(renderGraphics, str);
                 updateProgress(++pixelPos);
             }
+            
             charX = 0;
             charY += (int) dimensions.get(dimPos).getHeight();
             dimPos++;
         }
 
-        System.out.println("Render finished");
         return renderImage;
     }
 
