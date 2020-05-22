@@ -21,7 +21,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -51,7 +50,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 2);            	
+         beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 2);            	
     	importImageDialog.addChoosableFileFilter(importImageFilter);        	
     	exportImageDialog.addChoosableFileFilter(exportImageFilter);        	
     	exportTextDialog.addChoosableFileFilter(exportTextFilter);
@@ -361,7 +360,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(mainToolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 

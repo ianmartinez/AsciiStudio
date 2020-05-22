@@ -9,13 +9,14 @@
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/Palette.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AboutDialog.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/App.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/ascii/AsciiConverter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifSequenceWriter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/ImageSidebarItem.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/ascii/ThreadingStrategy.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/PaletteWindow.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/StretchIcon.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/PalettePanel.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/ThreadingStrategy.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/MainWindow.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AsciiConverter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifFrame.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/SimpleDocumentListener.java</file>
         </group>
