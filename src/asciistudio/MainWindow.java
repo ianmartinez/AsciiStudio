@@ -71,11 +71,13 @@ public class MainWindow extends javax.swing.JFrame {
             samplingParams.setSamplingRatio((double)samplingSizeSpinner.getValue());
             sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams); 
             sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
-            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");    
+            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");     
             
             var converter = new AsciiConverter(currentPalette.getPalette());
             var renderedImage = converter.renderImage(sampledCurrentFrame);            
-            renderedImageView.setIcon(new StretchIcon(renderedImage));
+            renderedImageView.setIcon(new StretchIcon(renderedImage));  
+            renderWidthLabel.setText(renderedImage.getWidth() + "px");
+            renderHeightLabel.setText(renderedImage.getHeight() + "px"); 
         }
     }
 
@@ -119,6 +121,12 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         sampleHeightLabel = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        renderHeightLabel = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        renderWidthLabel = new javax.swing.JLabel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
@@ -298,9 +306,39 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         sidebarPanel.add(jPanel7, gridBagConstraints);
+
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
+        jLabel8.setText("Render Height:");
+        jPanel8.add(jLabel8, java.awt.BorderLayout.WEST);
+
+        renderHeightLabel.setText("600 px");
+        jPanel8.add(renderHeightLabel, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        sidebarPanel.add(jPanel8, gridBagConstraints);
+
+        jPanel9.setLayout(new java.awt.BorderLayout());
+
+        jLabel9.setText("Render Width:");
+        jPanel9.add(jLabel9, java.awt.BorderLayout.WEST);
+
+        renderWidthLabel.setText("900 px");
+        jPanel9.add(renderWidthLabel, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        sidebarPanel.add(jPanel9, gridBagConstraints);
 
         sidebarScroll.setViewportView(sidebarPanel);
 
@@ -539,6 +577,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JLabel jLabel5;
     protected javax.swing.JLabel jLabel6;
     protected javax.swing.JLabel jLabel7;
+    protected javax.swing.JLabel jLabel8;
+    protected javax.swing.JLabel jLabel9;
     protected javax.swing.JMenu jMenu1;
     protected javax.swing.JPanel jPanel1;
     protected javax.swing.JPanel jPanel2;
@@ -547,6 +587,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JPanel jPanel5;
     protected javax.swing.JPanel jPanel6;
     protected javax.swing.JPanel jPanel7;
+    protected javax.swing.JPanel jPanel8;
+    protected javax.swing.JPanel jPanel9;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
     protected javax.swing.JSpinner jSpinner1;
     protected javax.swing.JMenuItem loadPaletteMenuItem;
@@ -557,6 +599,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenu paletteMenu;
     protected javax.swing.JButton refreshButton;
     protected javax.swing.JMenuItem refreshMenuItem;
+    protected javax.swing.JLabel renderHeightLabel;
+    protected javax.swing.JLabel renderWidthLabel;
     protected javax.swing.JLabel renderedImageView;
     protected javax.swing.JMenuItem resetPaletteMenuItem;
     protected javax.swing.JLabel sampleHeightLabel;
