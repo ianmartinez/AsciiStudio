@@ -58,8 +58,7 @@ public class MainWindow extends javax.swing.JFrame {
     	exportTextDialog.addChoosableFileFilter(exportTextFilter);
     }
     
-    private String getExt(String path) 
-    {
+    private String getExt(String path) {
         int dot = path.lastIndexOf(".");
         return path.substring(dot + 1).toLowerCase();
     }
