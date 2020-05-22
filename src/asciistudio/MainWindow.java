@@ -63,6 +63,14 @@ public class MainWindow extends javax.swing.JFrame {
         int dot = path.lastIndexOf(".");
         return path.substring(dot + 1).toLowerCase();
     }
+    
+    private void refreshPreview() {
+        var samplingRatio = (double)samplingSizeSpinner.getValue();
+        sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingRatio); 
+        sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
+        sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");            
+        renderedImageView.setIcon(new StretchIcon(sampledCurrentFrame));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,6 +116,7 @@ public class MainWindow extends javax.swing.JFrame {
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
         exportTextButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         importMenuItem = new javax.swing.JMenuItem();
@@ -120,6 +129,8 @@ public class MainWindow extends javax.swing.JFrame {
         loadPaletteMenuItem = new javax.swing.JMenuItem();
         savePaletteMenuItem = new javax.swing.JMenuItem();
         resetPaletteMenuItem = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        refreshMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -238,10 +249,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setText("Sample Size (%):");
+        jLabel2.setText("Sample Ratio:");
         jPanel4.add(jLabel2, java.awt.BorderLayout.WEST);
 
-        samplingSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(10, null, 100, 1));
+        samplingSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(10.0d, null, 100.0d, 1.0d));
         samplingSizeSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
         samplingSizeSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
         jPanel4.add(samplingSizeSpinner, java.awt.BorderLayout.EAST);
@@ -316,6 +327,18 @@ public class MainWindow extends javax.swing.JFrame {
         exportTextButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         mainToolbar.add(exportTextButton);
 
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciistudio/icons/refresh.png"))); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.setFocusable(false);
+        refreshButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        refreshButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+        mainToolbar.add(refreshButton);
+
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
 
@@ -368,6 +391,18 @@ public class MainWindow extends javax.swing.JFrame {
         paletteMenu.add(resetPaletteMenuItem);
 
         menuBar.add(paletteMenu);
+
+        jMenu1.setText("Preview");
+
+        refreshMenuItem.setText("Refresh");
+        refreshMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(refreshMenuItem);
+
+        menuBar.add(jMenu1);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
@@ -454,19 +489,24 @@ public class MainWindow extends javax.swing.JFrame {
             
             // Update UI
             originalImageView.setIcon(new StretchIcon(sourceCurrentFrame));
-            renderedImageView.setIcon(new StretchIcon(sourceCurrentFrame));
             frameCountLabel.setText(String.valueOf(isGif ? sourceGif.getFrameCount() : 1));
             widthLabel.setText(sourceCurrentFrame.getWidth() + "px");
             heightLabel.setText(sourceCurrentFrame.getHeight() + "px");      
             
-            // Set sampling image
+            // Set sampling image            
             var samplingRatio = currentPalette.getPalette().getSamplingRatio(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
             samplingSizeSpinner.setValue(samplingRatio);
-            sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingRatio); 
-            sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
-            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");
+            refreshPreview();
         }
     }//GEN-LAST:event_importMenuItemActionPerformed
+
+    private void refreshMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshMenuItemActionPerformed
+        refreshPreview();
+    }//GEN-LAST:event_refreshMenuItemActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        refreshMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
@@ -492,6 +532,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JLabel jLabel5;
     protected javax.swing.JLabel jLabel6;
     protected javax.swing.JLabel jLabel7;
+    protected javax.swing.JMenu jMenu1;
     protected javax.swing.JPanel jPanel1;
     protected javax.swing.JPanel jPanel2;
     protected javax.swing.JPanel jPanel3;
@@ -507,6 +548,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JLabel originalImageView;
     protected javax.swing.JMenu paletteMenu;
+    protected javax.swing.JButton refreshButton;
+    protected javax.swing.JMenuItem refreshMenuItem;
     protected javax.swing.JLabel renderedImageView;
     protected javax.swing.JMenuItem resetPaletteMenuItem;
     protected javax.swing.JLabel sampleHeightLabel;
