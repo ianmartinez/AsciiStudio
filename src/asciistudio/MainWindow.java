@@ -65,11 +65,13 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     private void refreshPreview() {
-        var samplingRatio = (double)samplingSizeSpinner.getValue();
-        sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingRatio); 
-        sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
-        sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");            
-        renderedImageView.setIcon(new StretchIcon(sampledCurrentFrame));
+        if(sourceCurrentFrame != null) {
+            var samplingRatio = (double)samplingSizeSpinner.getValue();
+            sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingRatio); 
+            sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
+            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");            
+            renderedImageView.setIcon(new StretchIcon(sampledCurrentFrame));
+        }
     }
 
     /**
