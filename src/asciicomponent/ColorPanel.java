@@ -40,7 +40,7 @@ public class ColorPanel extends JPanel {
      */
     public void setColor(Color color) {
         this.color = color;
-        this.revalidate();
+        this.repaint();
     }
 
     @Override

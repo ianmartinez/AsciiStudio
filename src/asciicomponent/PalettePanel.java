@@ -23,7 +23,6 @@ import java.awt.Color;
 import java.awt.Font;
 import static java.awt.Font.*;
 import java.awt.GraphicsEnvironment;
-import java.util.Locale;
 import javax.swing.ButtonGroup;
 import javax.swing.JColorChooser;
 
@@ -133,6 +132,10 @@ public class PalettePanel extends javax.swing.JPanel {
     public Palette getPalette() {
         savePalette();
         return new Palette(palette);
+    }
+    
+    public void resetPalette() {
+        setPalette(new Palette());
     }
 
     /**

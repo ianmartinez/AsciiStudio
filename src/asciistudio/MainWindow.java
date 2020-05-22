@@ -433,6 +433,11 @@ public class MainWindow extends javax.swing.JFrame {
         paletteMenu.add(savePaletteMenuItem);
 
         resetPaletteMenuItem.setText("Reset Palette");
+        resetPaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetPaletteMenuItemActionPerformed(evt);
+            }
+        });
         paletteMenu.add(resetPaletteMenuItem);
 
         menuBar.add(paletteMenu);
@@ -552,6 +557,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         refreshMenuItemActionPerformed(evt);
     }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void resetPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPaletteMenuItemActionPerformed
+        currentPalette.resetPalette();
+    }//GEN-LAST:event_resetPaletteMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
