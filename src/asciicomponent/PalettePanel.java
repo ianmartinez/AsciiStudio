@@ -16,6 +16,7 @@
  */
 package asciicomponent;
 
+import asciilib.FontUtil;
 import asciilib.Palette;
 import asciistudio.SimpleDocumentListener;
 import java.awt.Color;
@@ -65,10 +66,8 @@ public class PalettePanel extends javax.swing.JPanel {
         fontFamiliesComboBox.removeAllItems();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
-        // TODO: Only use monospace fonts
-        Font[] allFonts = ge.getAllFonts();
-        for (Font font : allFonts) {
-            var fontName = font.getFontName(Locale.US);
+        var allFonts = FontUtil.getAllFontNames(true);
+        for (String fontName : allFonts) {
             fontFamiliesComboBox.addItem(fontName);
             if (fontName.equals(palette.getFont().getName())) {
                 fontFamiliesComboBox.setSelectedItem(fontName);

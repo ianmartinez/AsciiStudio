@@ -31,7 +31,7 @@ import java.util.Locale;
 public final class FontUtil {
     private FontUtil() {}
     
-    public ArrayList<String> getAllFontNames(boolean onlyMonospace) {
+    public static ArrayList<String> getAllFontNames(boolean onlyMonospace) {
         var gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
         var fontContext = new FontRenderContext(null, RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT, RenderingHints.VALUE_FRACTIONALMETRICS_DEFAULT);   
         var fontNames = new ArrayList<String>();
