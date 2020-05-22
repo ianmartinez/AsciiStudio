@@ -16,6 +16,7 @@
  */
 package asciistudio;
 
+import asciilib.AsciiConverter;
 import asciilib.ImageResizer;
 import giflib.Gif;
 import java.awt.image.BufferedImage;
@@ -68,8 +69,11 @@ public class MainWindow extends javax.swing.JFrame {
             var samplingRatio = (double)samplingSizeSpinner.getValue();
             sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingRatio); 
             sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
-            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");            
-            renderedImageView.setIcon(new StretchIcon(sampledCurrentFrame));
+            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");    
+            
+            var converter = new AsciiConverter(currentPalette.getPalette());
+            var renderedImage = converter.renderImage(sampledCurrentFrame);            
+            renderedImageView.setIcon(new StretchIcon(renderedImage));
         }
     }
 

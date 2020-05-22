@@ -31,10 +31,14 @@ import javax.imageio.ImageIO;
  * @author Ian Martinez
  */
 public class AsciiConverter {
-    private Palette palette = new Palette();
+    private final Palette palette;
     private int phrasePos = 0;
     private int pixelPos = 0;
 
+    public AsciiConverter(Palette palette) {
+        this.palette = palette;
+    }
+    
     public void updateProgress(int newProgress) {
 
     }
