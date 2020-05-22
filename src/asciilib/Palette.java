@@ -188,21 +188,21 @@ public class Palette {
     }
 
     /**
-     * Find the best ratio to get a rendered image size to match 
+     * Find the best params to get a rendered image size to match 
      * the source image's size with this palette.
      * 
      * @param width the source image width
      * @param height the source image height
      * 
-     * @return the best sampling ratio.
+     * @return the best sampling params.
      */
-    public double getSamplingRatio(int width, int height) {
+    public ImageSamplingParams getSamplingParams(int width, int height) {
         var testImg = new BufferedImage(25, 25, BufferedImage.TRANSLUCENT);
         var weightsSize = measureLine(testImg.createGraphics(), String.join("", weights));
         var fontWidth = weightsSize.getWidth() / weights.length;
         var fontHeight = weightsSize.getHeight();
         
-        return Math.ceil((fontHeight > fontWidth) ? fontHeight : fontWidth);
+        return new ImageSamplingParams(width, height, fontWidth, fontHeight);
     }
 
     public int getStringWidth(Graphics g, String s) {

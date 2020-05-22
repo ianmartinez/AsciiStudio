@@ -18,6 +18,7 @@ package asciistudio;
 
 import asciilib.AsciiConverter;
 import asciilib.ImageResizer;
+import asciilib.ImageSamplingParams;
 import giflib.Gif;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -37,6 +38,7 @@ public class MainWindow extends javax.swing.JFrame {
     public Gif sourceGif; // The source image if it's a GIF
     public BufferedImage sourceCurrentFrame; // If a GIF, the current frame, if not the whole image
     public BufferedImage sampledCurrentFrame; // The current frame at the sampling size
+    public ImageSamplingParams samplingParams;
     
     // File dialogs
     JFileChooser importImageDialog = new JFileChooser();
@@ -66,8 +68,8 @@ public class MainWindow extends javax.swing.JFrame {
     
     private void refreshPreview() {
         if(sourceCurrentFrame != null) {
-            var samplingRatio = (double)samplingSizeSpinner.getValue();
-            sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingRatio); 
+            samplingParams.setSamplingRatio((double)samplingSizeSpinner.getValue());
+            sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams); 
             sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
             sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");    
             
@@ -499,8 +501,8 @@ public class MainWindow extends javax.swing.JFrame {
             heightLabel.setText(sourceCurrentFrame.getHeight() + "px");      
             
             // Set sampling image            
-            var samplingRatio = currentPalette.getPalette().getSamplingRatio(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
-            samplingSizeSpinner.setValue(samplingRatio);
+            samplingParams = currentPalette.getPalette().getSamplingParams(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
+            samplingSizeSpinner.setValue(samplingParams.getSamplingRatio());
             refreshPreview();
         }
     }//GEN-LAST:event_importMenuItemActionPerformed

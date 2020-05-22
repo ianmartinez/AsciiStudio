@@ -42,9 +42,9 @@ public final class ImageResizer {
         return resizedImage;
     }
     
-    public static BufferedImage getSample(BufferedImage source, double ratio) {
-        var sampleWidth = (int)Math.ceil(source.getWidth() / ratio);
-        var sampleHeight = (int)Math.ceil(source.getHeight() / ratio);
+    public static BufferedImage getSample(BufferedImage source, ImageSamplingParams params) {
+        var sampleWidth = (int)params.getSampleWidth();
+        var sampleHeight = (int)params.getSampleHeight();
         
         return resize(source, sampleWidth, sampleHeight);
     }
