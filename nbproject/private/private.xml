@@ -3,22 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/PalettePanel.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ImageResizer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AsciiStudio.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/ColorPanel.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/Gif.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/Palette.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FontUtil.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AboutDialog.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ImageSamplingParams.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/App.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/ascii/AsciiConverter.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/Palette.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifSequenceWriter.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/ImageSidebarItem.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/ascii/ThreadingStrategy.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/AsciiConverter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/PaletteWindow.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ColorPanel.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/StretchIcon.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/ascomponent/PalettePanel.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/MainWindow.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifFrame.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/SimpleDocumentListener.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ThreadingStrategy.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ImageSidebarItem.java</file>
         </group>
     </open-files>
 </project-private>

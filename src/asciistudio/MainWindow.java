@@ -55,7 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 2);            	
+        beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 4);            	
     	importImageDialog.addChoosableFileFilter(importImageFilter);        	
     	exportImageDialog.addChoosableFileFilter(exportImageFilter);        	
     	exportTextDialog.addChoosableFileFilter(exportTextFilter);
