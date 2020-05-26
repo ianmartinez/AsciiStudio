@@ -16,10 +16,12 @@
  */
 package asciistudio;
 
+import asciicomponent.ColorPickerDialog;
 import asciilib.AsciiConverter;
 import asciilib.ImageResizer;
 import asciilib.ImageSamplingParams;
 import giflib.Gif;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -455,6 +457,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         exportTextMenuItem.setMnemonic('a');
         exportTextMenuItem.setText("Export Text...");
+        exportTextMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportTextMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(exportTextMenuItem);
 
         exitMenuItem.setMnemonic('x');
@@ -650,6 +657,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void invertPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertPaletteMenuItemActionPerformed
         currentPalette.invertPalette();
     }//GEN-LAST:event_invertPaletteMenuItemActionPerformed
+
+    private void exportTextMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportTextMenuItemActionPerformed
+        
+    }//GEN-LAST:event_exportTextMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;

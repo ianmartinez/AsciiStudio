@@ -399,8 +399,8 @@ public class PalettePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
-        Color newColor = JColorChooser.showDialog(this, "Choose background Color", backgroundColorPanel.getColor());
-
+        var newColor = ColorPickerDialog.showDialog(this, "Choose background Color", backgroundColorPanel.getColor());
+        
         if (newColor != null) {
             backgroundColorPanel.setColor(newColor);
         }
