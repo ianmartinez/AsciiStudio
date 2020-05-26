@@ -37,7 +37,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Ian Martinez
  */
 public class MainWindow extends javax.swing.JFrame {
-
     public String sourceImagePath = ""; // The source image's location
     public boolean isGif = false; // If the source image is a GIF or still image
     public Gif sourceGif; // The source image if it's a GIF
@@ -51,9 +50,9 @@ public class MainWindow extends javax.swing.JFrame {
     JFileChooser exportTextDialog = new JFileChooser();
 
     // Filters for file dialogs
-    public FileNameExtensionFilter importImageFilter = new FileNameExtensionFilter("Image Files(*.jpeg, *.jpg, *.gif, *.png)", "jpeg", "jpg", "gif", "png");
-    public FileNameExtensionFilter exportImageFilter = new FileNameExtensionFilter("Image Files(*.gif, *.png)", "gif", "png");
-    public FileNameExtensionFilter exportTextFilter = new FileNameExtensionFilter("Text Files(*.txt)", "txt");
+    public FileNameExtensionFilter importImageFilter = new FileNameExtensionFilter("Image files (*.jpeg, *.jpg, *.gif, *.png)", "jpeg", "jpg", "gif", "png");
+    public FileNameExtensionFilter exportImageFilter = new FileNameExtensionFilter("Image files (*.gif, *.png)", "gif", "png");
+    public FileNameExtensionFilter exportTextFilter = new FileNameExtensionFilter("Text files (*.txt)", "txt");
 
     /**
      * Creates new form MainWindow
@@ -63,7 +62,9 @@ public class MainWindow extends javax.swing.JFrame {
         beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 4);
         importImageDialog.setFileFilter(importImageFilter);
         exportImageDialog.addChoosableFileFilter(exportImageFilter);
+        exportImageDialog.setFileFilter(exportImageFilter);
         exportTextDialog.addChoosableFileFilter(exportTextFilter);
+        exportTextDialog.setFileFilter(exportTextFilter);
 
         // Hide tooltips
         originalImageView.setToolTipText(null);
@@ -92,8 +93,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void openProcess(String process) {
         try {
-            Desktop dt = Desktop.getDesktop();
-            dt.open(new File(process));
+            Desktop.getDesktop().open(new File(process));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error opening " + process + "!");
         }
@@ -475,6 +475,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         exportMenuItem.setMnemonic('s');
         exportMenuItem.setText("Export Image...");
+        exportMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(exportMenuItem);
 
         exportTextMenuItem.setMnemonic('a');
@@ -636,6 +641,8 @@ public class MainWindow extends javax.swing.JFrame {
             // Set sampling image            
             samplingParams = currentPalette.getPalette().getSamplingParams(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
             samplingSizeSpinner.setValue(samplingParams.getSamplingRatio());
+            
+            // Render image and put it in the preview
             refreshPreview();
         }
     }//GEN-LAST:event_importMenuItemActionPerformed
@@ -704,6 +711,10 @@ public class MainWindow extends javax.swing.JFrame {
         exportTextMenuItemActionPerformed(evt);
     }//GEN-LAST:event_exportTextButtonActionPerformed
 
+    private void exportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exportMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;
@@ -768,5 +779,4 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JScrollPane sidebarScroll;
     protected javax.swing.JLabel widthLabel;
     // End of variables declaration//GEN-END:variables
-
 }
