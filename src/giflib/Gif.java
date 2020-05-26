@@ -34,6 +34,8 @@ import java.awt.image.BufferedImage;
 import javax.imageio.stream.*;
 import java.awt.Dimension;
 import static giflib.GifSequenceWriter.getFrames;
+import static java.awt.image.BufferedImage.*;
+import java.util.ArrayList;
 
 public final class Gif {
 
@@ -41,7 +43,6 @@ public final class Gif {
     private int averageDelay = -1; // Don't calculate until needed
 
     public Gif(BufferedImage[] images, int delay) {
-        Dimension imgSize = maxSize(images);
         frames = new GifFrame[images.length];
 
         for (int i = 0; i < frames.length; i++) {
@@ -52,15 +53,20 @@ public final class Gif {
     public Gif(String filename) {
         open(filename);
     }
-    
+
     /**
-     * Create a new GIF with the same frame count and 
-     * delay as another GIF
-     * 
+     * Create a new GIF with the same frame count and delay as another GIF
+     *
      * @param gif The GIF to base the frame and delay from
      */
     public Gif(Gif gif) {
         this(new BufferedImage[gif.getFrameCount()], gif.getDelay());
+
+        // Init empty frames
+        var maxSize = maxSize(gif.getImages());
+        for (GifFrame frame : frames) {
+            frame.setImage(new BufferedImage(maxSize.width, maxSize.height, TYPE_INT_ARGB));
+        }
     }
 
     private Dimension maxSize(BufferedImage[] images) {
@@ -86,8 +92,6 @@ public final class Gif {
             for (var frame : frames) {
                 writer.writeToSequence(frame);
             }
-
-            writer.close();
         }
     }
 
@@ -118,10 +122,11 @@ public final class Gif {
     public void setFrameDelay(int pos, int delay) {
         frames[pos].setDelay(delay);
     }
-    
+
     public void setAllFramesDelay(int delay) {
-        for(var frame: frames) 
+        for (var frame : frames) {
             frame.setDelay(delay);
+        }
     }
 
     public int getDelay() {
@@ -136,5 +141,15 @@ public final class Gif {
         }
 
         return averageDelay;
+    }
+
+    public BufferedImage[] getImages() {
+        var images = new ArrayList<BufferedImage>();
+
+        for (var frame : frames) {
+            images.add(frame.getImage());
+        }
+
+        return images.toArray(new BufferedImage[images.size()]);
     }
 }

@@ -111,6 +111,7 @@ public class GifSequenceWriter implements AutoCloseable {
      *
      * @throws java.io.IOException if no GIF image writers are returned
      */
+    @Override
     public void close() throws IOException {
         gifWriter.endWriteSequence();
     }

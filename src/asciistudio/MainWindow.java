@@ -37,6 +37,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Ian Martinez
  */
 public class MainWindow extends javax.swing.JFrame {
+
     public String sourceImagePath = ""; // The source image's location
     public boolean isGif = false; // If the source image is a GIF or still image
     public Gif sourceGif; // The source image if it's a GIF
@@ -48,6 +49,10 @@ public class MainWindow extends javax.swing.JFrame {
     JFileChooser importImageDialog = new JFileChooser();
     JFileChooser exportImageDialog = new JFileChooser();
     JFileChooser exportTextDialog = new JFileChooser();
+
+    // If the user has changed from the default directory for exporting.
+    // If not, open the export dialogs at the imported images location
+    public boolean exportDirectoryChanged = false;
 
     // Filters for file dialogs
     public FileNameExtensionFilter importImageFilter = new FileNameExtensionFilter("Image files (*.jpeg, *.jpg, *.gif, *.png)", "jpeg", "jpg", "gif", "png");
@@ -62,7 +67,6 @@ public class MainWindow extends javax.swing.JFrame {
         beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 4);
         importImageDialog.setFileFilter(importImageFilter);
         exportImageDialog.addChoosableFileFilter(exportImageFilter);
-        exportImageDialog.setFileFilter(exportImageFilter);
         exportTextDialog.addChoosableFileFilter(exportTextFilter);
         exportTextDialog.setFileFilter(exportTextFilter);
 
@@ -72,13 +76,17 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     private String getExt(String path) {
-        int dot = path.lastIndexOf(".");
-        return path.substring(dot + 1).toLowerCase();
+        int dot = path.lastIndexOf(".");            
+        return (dot == -1) ? "" : path.substring(dot + 1).toLowerCase();
+    }
+
+    private void refreshSampleParams() {
+        samplingParams.setSamplingRatio((double) samplingSizeSpinner.getValue());
     }
 
     private void refreshPreview() {
         if (sourceCurrentFrame != null) {
-            samplingParams.setSamplingRatio((double) samplingSizeSpinner.getValue());
+            refreshSampleParams();
             sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
             sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
             sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");
@@ -387,6 +395,11 @@ public class MainWindow extends javax.swing.JFrame {
         exportButton.setFocusable(false);
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        exportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportButtonActionPerformed(evt);
+            }
+        });
         mainToolbar.add(exportButton);
 
         exportTextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/filetype-text.png"))); // NOI18N
@@ -641,7 +654,7 @@ public class MainWindow extends javax.swing.JFrame {
             // Set sampling image            
             samplingParams = currentPalette.getPalette().getSamplingParams(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
             samplingSizeSpinner.setValue(samplingParams.getSamplingRatio());
-            
+
             // Render image and put it in the preview
             refreshPreview();
         }
@@ -689,17 +702,24 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void exportTextMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportTextMenuItemActionPerformed
         try {
-            exportTextDialog.setCurrentDirectory(new File(sourceImagePath));
+            var currentDirectory = exportTextDialog.getCurrentDirectory();
+
+            if (!exportDirectoryChanged) {
+                exportTextDialog.setCurrentDirectory(new File(sourceImagePath));
+            }
 
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                refreshSampleParams();             
                 var converter = new AsciiConverter(currentPalette.getPalette());
-                var renderedText = converter.renderText(sampledCurrentFrame);
+                var exportSample = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
+                var renderedText = converter.renderText(exportSample);
 
                 try (var out = new PrintWriter(exportTextDialog.getSelectedFile().getAbsolutePath())) {
                     out.println(renderedText);
                 }
 
                 openProcess(exportTextDialog.getSelectedFile().getAbsolutePath());
+                exportDirectoryChanged = !exportTextDialog.getCurrentDirectory().equals(currentDirectory);
             }
 
         } catch (HeadlessException | FileNotFoundException ex) {
@@ -712,8 +732,42 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_exportTextButtonActionPerformed
 
     private void exportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportMenuItemActionPerformed
-        // TODO add your handling code here:
+        try {
+            var currentDirectory = exportImageDialog.getCurrentDirectory();
+
+            if (!exportDirectoryChanged) {
+                exportImageDialog.setCurrentDirectory(new File(sourceImagePath));
+            }
+
+            if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                refreshSampleParams();
+                var converter = new AsciiConverter(currentPalette.getPalette());
+                var outputPath = exportImageDialog.getSelectedFile().getAbsolutePath();
+                var ext = getExt(outputPath);
+
+                if (isGif && ext.equals("gif")) { // Animated GIF
+                    var exportedGif = new Gif(sourceGif);
+                    for (int i = 0; i < sourceGif.getFrameCount(); i++) {                       
+                        converter.setPhrasePos(0);
+                        var sampledFrame = ImageResizer.getSample(sourceGif.getFrameImage(i), samplingParams);
+                        var renderedFrame = converter.renderImage(sampledFrame);
+                        exportedGif.setFrameImage(i, renderedFrame);
+                    }
+                    
+                    exportedGif.save(outputPath);
+                } else { // Still image
+                }
+
+                exportDirectoryChanged = !exportImageDialog.getCurrentDirectory().equals(currentDirectory);
+            }
+        } catch (HeadlessException | IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error exporting " + exportImageDialog.getSelectedFile().getAbsolutePath() + "!");   
+        }
     }//GEN-LAST:event_exportMenuItemActionPerformed
+
+    private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
+        exportMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_exportButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;

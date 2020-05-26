@@ -66,12 +66,12 @@ public class AsciiConverter {
         String val = "";
         for (int x = 0; x < img.getWidth(); x++) {
             if (palette.isUsingPhrase()) {
-                if (phrasePos >= palette.getWeightCount()) {
-                    phrasePos = 0;
+                if (getPhrasePos() >= palette.getWeightCount()) {
+                    setPhrasePos(0);
                 }
 
-                val += palette.getWeight(phrasePos);
-                phrasePos++;
+                val += palette.getWeight(getPhrasePos());
+                setPhrasePos(getPhrasePos() + 1);
             } else {
                 val += getWeight(new Color(img.getRGB(x, y)));
             }
@@ -127,12 +127,12 @@ public class AsciiConverter {
                 // Get string associated with the pixel
                 String str;
                 if (palette.isUsingPhrase()) {
-                    if (phrasePos >= palette.getWeightCount()) {
-                        phrasePos = 0;
+                    if (getPhrasePos() >= palette.getWeightCount()) {
+                        setPhrasePos(0);
                     }
 
-                    str = palette.getWeight(phrasePos);
-                    phrasePos++;
+                    str = palette.getWeight(getPhrasePos());
+                    setPhrasePos(getPhrasePos() + 1);
                 } else {
                     str = getWeight(pixelColor);
                 }
@@ -172,5 +172,19 @@ public class AsciiConverter {
         }
         
         convertedGif.save(filePath);
+    }
+
+    /**
+     * @return the phrasePos
+     */
+    public int getPhrasePos() {
+        return phrasePos;
+    }
+
+    /**
+     * @param phrasePos the phrasePos to set
+     */
+    public void setPhrasePos(int phrasePos) {
+        this.phrasePos = phrasePos;
     }
 }

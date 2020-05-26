@@ -41,9 +41,11 @@ public final class GifFrame {
         refreshDimensions();
     }
     
-    private void refreshDimensions() {        
-        width = image.getWidth();
-        height = image.getHeight();
+    private void refreshDimensions() { 
+        if(image != null) {
+            width = image.getWidth();
+            height = image.getHeight();
+        }
     }
 
     public BufferedImage getImage() {
