@@ -118,6 +118,7 @@ public class ColorPickerDialog extends javax.swing.JDialog {
 
     public static Color showDialog(JFrame frame, String title, Color initialColor) {
         var colorDialog = new ColorPickerDialog(frame, true);
+        colorDialog.setLocationRelativeTo(frame);
         colorDialog.setModalityType(ModalityType.APPLICATION_MODAL);
         colorDialog.setInitialColor(initialColor);
         colorDialog.setVisible(true);

@@ -399,7 +399,7 @@ public class PalettePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
-        var newColor = ColorPickerDialog.showDialog(this, "Choose background Color", backgroundColorPanel.getColor());
+        var newColor = ColorPickerDialog.showDialog(this, "Choose background color", backgroundColorPanel.getColor());
         
         if (newColor != null) {
             backgroundColorPanel.setColor(newColor);
@@ -407,7 +407,7 @@ public class PalettePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backgroundColorButtonActionPerformed
 
     private void fontColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fontColorButtonActionPerformed
-        Color newColor = JColorChooser.showDialog(this, "Choose font Color", fontColorPanel.getColor());
+        Color newColor = ColorPickerDialog.showDialog(this, "Choose font color", fontColorPanel.getColor());
 
         if (newColor != null) {
             fontColorPanel.setColor(newColor);

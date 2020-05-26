@@ -16,12 +16,10 @@
  */
 package asciistudio;
 
-import asciicomponent.ColorPickerDialog;
 import asciilib.AsciiConverter;
 import asciilib.ImageResizer;
 import asciilib.ImageSamplingParams;
 import giflib.Gif;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
