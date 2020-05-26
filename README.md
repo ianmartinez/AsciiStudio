@@ -11,7 +11,6 @@ ASCII Studio is currently in the process of being re-written. Here are some of t
 - Dark mode support on macOS
 - GUI showing progress of converting an image
 - Split preview-original pane
-- Allow custom colors for each weight
 - GIF frame delays are now preserved if they are varied throughout the animation   
 - Import and export weights
 - Resize image before rendering
