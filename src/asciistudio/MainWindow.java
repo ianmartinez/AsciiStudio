@@ -97,7 +97,7 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     private void refreshSampleParams() {
-        samplingParams.setSamplingRatio((double) samplingSizeSpinner.getValue());
+        samplingParams.setSamplingRatio((double) sampleRatioSpinner.getValue());
     }
 
     private void refreshRender() {
@@ -125,13 +125,19 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     private void enableEditing(boolean enable) {
+        // File
         exportImageMenuItem.setEnabled(enable);
         exportTextMenuItem.setEnabled(enable);
         exportImageButton.setEnabled(enable);
-        exportTextButton.setEnabled(enable);
+        exportTextButton.setEnabled(enable); 
         
+        // Preview
         refreshMenuItem.setEnabled(enable);
         refreshButton.setEnabled(enable);
+        
+        // Sidebar
+        frameSpinner.setEnabled(enable);
+        sampleRatioSpinner.setEnabled(enable);
     }
 
     public void openProcess(String process) {
@@ -175,7 +181,7 @@ public class MainWindow extends javax.swing.JFrame {
         frameSpinner = new javax.swing.JSpinner();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        samplingSizeSpinner = new javax.swing.JSpinner();
+        sampleRatioSpinner = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         sampleWidthLabel = new javax.swing.JLabel();
@@ -318,6 +324,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel1.getAccessibleContext().setAccessibleName("Sample Size (%):");
 
         frameSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 0, 1));
+        frameSpinner.setEnabled(false);
         frameSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
         frameSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
         jPanel1.add(frameSpinner, java.awt.BorderLayout.EAST);
@@ -334,10 +341,11 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel2.setText("Sample Ratio:");
         jPanel4.add(jLabel2, java.awt.BorderLayout.WEST);
 
-        samplingSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(10.0d, 1.0d, 100.0d, 1.0d));
-        samplingSizeSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
-        samplingSizeSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
-        jPanel4.add(samplingSizeSpinner, java.awt.BorderLayout.EAST);
+        sampleRatioSpinner.setModel(new javax.swing.SpinnerNumberModel(10.0d, 1.0d, 100.0d, 1.0d));
+        sampleRatioSpinner.setEnabled(false);
+        sampleRatioSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
+        sampleRatioSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
+        jPanel4.add(sampleRatioSpinner, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -710,7 +718,7 @@ public class MainWindow extends javax.swing.JFrame {
 
             // Set sampling image            
             samplingParams = currentPalette.getPalette().getSamplingParams(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
-            samplingSizeSpinner.setValue(samplingParams.getSamplingRatio());
+            sampleRatioSpinner.setValue(samplingParams.getSamplingRatio());
 
             // Render image and put it in the preview
             refreshPreview();
@@ -913,8 +921,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JButton resetPaletteButton;
     protected javax.swing.JMenuItem resetPaletteMenuItem;
     protected javax.swing.JLabel sampleHeightLabel;
+    protected javax.swing.JSpinner sampleRatioSpinner;
     protected javax.swing.JLabel sampleWidthLabel;
-    protected javax.swing.JSpinner samplingSizeSpinner;
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
     protected javax.swing.JScrollPane sidebarScroll;
