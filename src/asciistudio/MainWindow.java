@@ -659,8 +659,8 @@ public class MainWindow extends javax.swing.JFrame {
                     sourceGif = null;
                     sourceCurrentFrame = importedImage;
                 }
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "Error importing " + importedPath + "!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error importing " + importedPath);
             }
 
             // Update UI
@@ -745,7 +745,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
 
         } catch (HeadlessException | FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Error exporting " + exportTextDialog.getSelectedFile().getAbsolutePath() + "!");
+            JOptionPane.showMessageDialog(this, "Error exporting " + exportTextDialog.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_exportTextMenuItemActionPerformed
 
@@ -790,7 +790,7 @@ public class MainWindow extends javax.swing.JFrame {
                 openProcess(outputPath);
             }
         } catch (HeadlessException | IOException ex) {
-            JOptionPane.showMessageDialog(this, "Error exporting " + exportImageDialog.getSelectedFile().getAbsolutePath() + "!");
+            JOptionPane.showMessageDialog(this, "Error exporting " + exportImageDialog.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_exportMenuItemActionPerformed
 
