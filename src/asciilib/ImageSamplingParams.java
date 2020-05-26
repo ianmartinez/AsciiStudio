@@ -33,7 +33,9 @@ public class ImageSamplingParams {
         this.originalHeight = originalHeight;
         this.fontWidth = fontWidth;
         this.fontHeight = fontHeight;
-        samplingRatio = Math.ceil((fontHeight > fontWidth) ? fontHeight : fontWidth);
+        
+        var largestFontDimension = Math.ceil((fontHeight > fontWidth) ? fontHeight : fontWidth);        
+        this.samplingRatio = largestFontDimension;
     }
     
     public double getSampleHeight() {

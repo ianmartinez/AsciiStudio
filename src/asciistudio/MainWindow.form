@@ -346,7 +346,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="widthLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="900 px"/>
+                        <Property name="text" type="java.lang.String" value="0 px"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -377,7 +377,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="heightLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="600 px"/>
+                        <Property name="text" type="java.lang.String" value="0 px"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -409,10 +409,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner1">
+                    <Component class="javax.swing.JSpinner" name="frameSpinner">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                          <SpinnerModel initial="1" maximum="100" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                          <SpinnerModel initial="0" maximum="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
                         </Property>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[40, 26]"/>
@@ -451,7 +451,7 @@
                     <Component class="javax.swing.JSpinner" name="samplingSizeSpinner">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                          <SpinnerModel initial="10.0" maximum="100.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                          <SpinnerModel initial="10.0" maximum="100.0" minimum="1.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
                         </Property>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[40, 26]"/>
@@ -489,7 +489,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="sampleWidthLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="900 px"/>
+                        <Property name="text" type="java.lang.String" value="0 px"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -520,38 +520,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="sampleHeightLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="600 px"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="East"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="jPanel8">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="0" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="11" weightX="0.0" weightY="0.0"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel8">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Render Height:"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="West"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="renderHeightLabel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="600 px"/>
+                        <Property name="text" type="java.lang.String" value="0 px"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -564,7 +533,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel9">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="0" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="11" weightX="0.0" weightY="1.0"/>
+                      <GridBagConstraints gridX="0" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="11" weightX="0.0" weightY="0.0"/>
                     </Constraint>
                   </Constraints>
 
@@ -582,7 +551,38 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="renderWidthLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="900 px"/>
+                        <Property name="text" type="java.lang.String" value="0 px"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                          <BorderConstraints direction="East"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel8">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                      <GridBagConstraints gridX="0" gridY="-1" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="11" weightX="0.0" weightY="1.0"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel8">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Render Height:"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                          <BorderConstraints direction="West"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="renderHeightLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0 px"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -1314,11 +1314,11 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="52_jPanel8">
-                      <CodeVariable name="jPanel8" type="8196" declaredType="javax.swing.JPanel"/>
+                    <CodeExpression id="52_jPanel9">
+                      <CodeVariable name="jPanel9" type="8196" declaredType="javax.swing.JPanel"/>
                       <ExpressionOrigin>
                         <ExpressionProvider type="ComponentRef">
-                          <ComponentRef name="jPanel8"/>
+                          <ComponentRef name="jPanel9"/>
                         </ExpressionProvider>
                       </ExpressionOrigin>
                     </CodeExpression>
@@ -1411,11 +1411,11 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="59_jPanel9">
-                      <CodeVariable name="jPanel9" type="8196" declaredType="javax.swing.JPanel"/>
+                    <CodeExpression id="59_jPanel8">
+                      <CodeVariable name="jPanel8" type="8196" declaredType="javax.swing.JPanel"/>
                       <ExpressionOrigin>
                         <ExpressionProvider type="ComponentRef">
-                          <ComponentRef name="jPanel9"/>
+                          <ComponentRef name="jPanel8"/>
                         </ExpressionProvider>
                       </ExpressionOrigin>
                     </CodeExpression>

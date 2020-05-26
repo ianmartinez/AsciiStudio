@@ -30,6 +30,7 @@ import java.io.PrintWriter;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -101,6 +102,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void refreshRender() {
         refreshSampleParams();
+        
+        if(isGif) {
+            var frameSpinnerValue = (Integer)frameSpinner.getValue();
+            sourceCurrentFrame = sourceGif.getFrameImage(frameSpinnerValue);
+        }                
+        
         sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
         var converter = new AsciiConverter(currentPalette.getPalette());
         renderedCurrentFrame = converter.renderImage(sampledCurrentFrame);
@@ -155,7 +162,7 @@ public class MainWindow extends javax.swing.JFrame {
         heightLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        frameSpinner = new javax.swing.JSpinner();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         samplingSizeSpinner = new javax.swing.JSpinner();
@@ -165,12 +172,12 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         sampleHeightLabel = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        renderHeightLabel = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         renderWidthLabel = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        renderHeightLabel = new javax.swing.JLabel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
@@ -269,7 +276,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel3.setText("Width:");
         jPanel2.add(jLabel3, java.awt.BorderLayout.WEST);
 
-        widthLabel.setText("900 px");
+        widthLabel.setText("0 px");
         jPanel2.add(widthLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -284,7 +291,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel5.setText("Height:");
         jPanel3.add(jLabel5, java.awt.BorderLayout.WEST);
 
-        heightLabel.setText("600 px");
+        heightLabel.setText("0 px");
         jPanel3.add(heightLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -300,10 +307,10 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.add(jLabel1, java.awt.BorderLayout.WEST);
         jLabel1.getAccessibleContext().setAccessibleName("Sample Size (%):");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
-        jSpinner1.setMinimumSize(new java.awt.Dimension(40, 26));
-        jSpinner1.setPreferredSize(new java.awt.Dimension(50, 26));
-        jPanel1.add(jSpinner1, java.awt.BorderLayout.EAST);
+        frameSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 0, 1));
+        frameSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
+        frameSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
+        jPanel1.add(frameSpinner, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -317,7 +324,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel2.setText("Sample Ratio:");
         jPanel4.add(jLabel2, java.awt.BorderLayout.WEST);
 
-        samplingSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(10.0d, null, 100.0d, 1.0d));
+        samplingSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(10.0d, 1.0d, 100.0d, 1.0d));
         samplingSizeSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
         samplingSizeSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
         jPanel4.add(samplingSizeSpinner, java.awt.BorderLayout.EAST);
@@ -334,7 +341,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel4.setText("Sample Width:");
         jPanel6.add(jLabel4, java.awt.BorderLayout.WEST);
 
-        sampleWidthLabel.setText("900 px");
+        sampleWidthLabel.setText("0 px");
         jPanel6.add(sampleWidthLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -349,7 +356,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel7.setText("Sample Height:");
         jPanel7.add(jLabel7, java.awt.BorderLayout.WEST);
 
-        sampleHeightLabel.setText("600 px");
+        sampleHeightLabel.setText("0 px");
         jPanel7.add(sampleHeightLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -359,28 +366,28 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         sidebarPanel.add(jPanel7, gridBagConstraints);
 
-        jPanel8.setLayout(new java.awt.BorderLayout());
+        jPanel9.setLayout(new java.awt.BorderLayout());
 
-        jLabel8.setText("Render Height:");
-        jPanel8.add(jLabel8, java.awt.BorderLayout.WEST);
+        jLabel9.setText("Render Width:");
+        jPanel9.add(jLabel9, java.awt.BorderLayout.WEST);
 
-        renderHeightLabel.setText("600 px");
-        jPanel8.add(renderHeightLabel, java.awt.BorderLayout.EAST);
+        renderWidthLabel.setText("0 px");
+        jPanel9.add(renderWidthLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel8, gridBagConstraints);
+        sidebarPanel.add(jPanel9, gridBagConstraints);
 
-        jPanel9.setLayout(new java.awt.BorderLayout());
+        jPanel8.setLayout(new java.awt.BorderLayout());
 
-        jLabel9.setText("Render Width:");
-        jPanel9.add(jLabel9, java.awt.BorderLayout.WEST);
+        jLabel8.setText("Render Height:");
+        jPanel8.add(jLabel8, java.awt.BorderLayout.WEST);
 
-        renderWidthLabel.setText("900 px");
-        jPanel9.add(renderWidthLabel, java.awt.BorderLayout.EAST);
+        renderHeightLabel.setText("0 px");
+        jPanel8.add(renderHeightLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -388,7 +395,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel9, gridBagConstraints);
+        sidebarPanel.add(jPanel8, gridBagConstraints);
 
         sidebarScroll.setViewportView(sidebarPanel);
 
@@ -650,6 +657,10 @@ public class MainWindow extends javax.swing.JFrame {
                     isGif = true;
                     sourceGif = importedGif;
                     sourceCurrentFrame = importedCurrentFrame;
+                    
+                    // Set frame spinner
+                    var model = new SpinnerNumberModel(0, 0, sourceGif.getFrameCount() - 1, 1);
+                    frameSpinner.setModel(model);
                 } else {
                     var importedImage = ImageIO.read(new File(importedPath));
 
@@ -658,6 +669,10 @@ public class MainWindow extends javax.swing.JFrame {
                     isGif = false;
                     sourceGif = null;
                     sourceCurrentFrame = importedImage;
+                    
+                    // Set frame spinner
+                    var model = new SpinnerNumberModel(0, 0, 0, 1);
+                    frameSpinner.setModel(model);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error importing " + importedPath);
@@ -812,6 +827,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenuItem exportTextMenuItem;
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JLabel frameCountLabel;
+    protected javax.swing.JSpinner frameSpinner;
     protected javax.swing.JLabel heightLabel;
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
@@ -841,7 +857,6 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JPanel jPanel9;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
     protected javax.swing.JPopupMenu.Separator jSeparator4;
-    protected javax.swing.JSpinner jSpinner1;
     protected javax.swing.JSplitPane mainSplitter;
     protected javax.swing.JToolBar mainToolbar;
     protected javax.swing.JMenuBar menuBar;
