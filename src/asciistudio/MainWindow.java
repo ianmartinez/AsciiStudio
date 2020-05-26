@@ -747,7 +747,7 @@ public class MainWindow extends javax.swing.JFrame {
             if (!exportDirectoryChanged) {
                 exportImageDialog.setCurrentDirectory(new File(sourceImagePath));
             }
-
+            
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
                 var converter = new AsciiConverter(currentPalette.getPalette());
@@ -768,8 +768,9 @@ public class MainWindow extends javax.swing.JFrame {
                     refreshRender();
                     ImageIO.write(renderedCurrentFrame, ext, new File(outputPath));
                 }
-
+                
                 exportDirectoryChanged = !exportImageDialog.getCurrentDirectory().equals(currentDirectory);
+                openProcess(outputPath);
             }
         } catch (HeadlessException | IOException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting " + exportImageDialog.getSelectedFile().getAbsolutePath() + "!");
