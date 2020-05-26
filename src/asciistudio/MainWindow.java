@@ -85,6 +85,15 @@ public class MainWindow extends javax.swing.JFrame {
         int dot = path.lastIndexOf(".");
         return (dot == -1) ? "" : path.substring(dot + 1).toLowerCase();
     }
+    
+    public String removeExt(String path) 
+    {
+        if (path.equals("")) 
+            return "";
+        
+        int dot = path.lastIndexOf(".");
+        return (dot == -1) ? path : path.substring(0,dot);
+    }
 
     private void refreshSampleParams() {
         samplingParams.setSamplingRatio((double) samplingSizeSpinner.getValue());
@@ -716,6 +725,10 @@ public class MainWindow extends javax.swing.JFrame {
             if (!exportDirectoryChanged) {
                 exportTextDialog.setCurrentDirectory(new File(sourceImagePath));
             }
+            
+            if (!sourceImagePath.equals("")) {
+                exportImageDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII.txt"));
+            }
 
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
@@ -746,6 +759,10 @@ public class MainWindow extends javax.swing.JFrame {
 
             if (!exportDirectoryChanged) {
                 exportImageDialog.setCurrentDirectory(new File(sourceImagePath));
+            }
+            
+            if (!sourceImagePath.equals("")) {
+                exportImageDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII." + getExt(sourceImagePath)));
             }
             
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
