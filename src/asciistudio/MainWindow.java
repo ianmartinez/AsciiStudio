@@ -61,6 +61,10 @@ public class MainWindow extends javax.swing.JFrame {
     	importImageDialog.addChoosableFileFilter(importImageFilter);        	
     	exportImageDialog.addChoosableFileFilter(exportImageFilter);        	
     	exportTextDialog.addChoosableFileFilter(exportTextFilter);
+        
+        // Hide tooltips
+        originalImageView.setToolTipText(null);
+        renderedImageView.setToolTipText(null);
     }
     
     private String getExt(String path) {
@@ -189,6 +193,7 @@ public class MainWindow extends javax.swing.JFrame {
         originalImageView.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         beforeAfterSplitter.setLeftComponent(originalImageView);
 
+        renderedImageView.setToolTipText("");
         renderedImageView.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         beforeAfterSplitter.setRightComponent(renderedImageView);
 
