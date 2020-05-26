@@ -20,9 +20,13 @@ import asciilib.AsciiConverter;
 import asciilib.ImageResizer;
 import asciilib.ImageSamplingParams;
 import giflib.Gif;
+import java.awt.Desktop;
+import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -33,18 +37,19 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Ian Martinez
  */
 public class MainWindow extends javax.swing.JFrame {
+
     public String sourceImagePath = ""; // The source image's location
     public boolean isGif = false; // If the source image is a GIF or still image
     public Gif sourceGif; // The source image if it's a GIF
     public BufferedImage sourceCurrentFrame; // If a GIF, the current frame, if not the whole image
     public BufferedImage sampledCurrentFrame; // The current frame at the sampling size
     public ImageSamplingParams samplingParams;
-    
+
     // File dialogs
     JFileChooser importImageDialog = new JFileChooser();
     JFileChooser exportImageDialog = new JFileChooser();
     JFileChooser exportTextDialog = new JFileChooser();
-    
+
     // Filters for file dialogs
     public FileNameExtensionFilter importImageFilter = new FileNameExtensionFilter("Image Files(*.jpeg, *.jpg, *.gif, *.png)", "jpeg", "jpg", "gif", "png");
     public FileNameExtensionFilter exportImageFilter = new FileNameExtensionFilter("Image Files(*.gif, *.png)", "gif", "png");
@@ -55,33 +60,42 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 4);            	
-    	importImageDialog.setFileFilter(importImageFilter);        	
-    	exportImageDialog.addChoosableFileFilter(exportImageFilter);        	
-    	exportTextDialog.addChoosableFileFilter(exportTextFilter);
-        
+        beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 4);
+        importImageDialog.setFileFilter(importImageFilter);
+        exportImageDialog.addChoosableFileFilter(exportImageFilter);
+        exportTextDialog.addChoosableFileFilter(exportTextFilter);
+
         // Hide tooltips
         originalImageView.setToolTipText(null);
         renderedImageView.setToolTipText(null);
     }
-    
+
     private String getExt(String path) {
         int dot = path.lastIndexOf(".");
         return path.substring(dot + 1).toLowerCase();
     }
-    
+
     private void refreshPreview() {
-        if(sourceCurrentFrame != null) {
-            samplingParams.setSamplingRatio((double)samplingSizeSpinner.getValue());
-            sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams); 
+        if (sourceCurrentFrame != null) {
+            samplingParams.setSamplingRatio((double) samplingSizeSpinner.getValue());
+            sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
             sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
-            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");     
-            
+            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");
+
             var converter = new AsciiConverter(currentPalette.getPalette());
-            var renderedImage = converter.renderImage(sampledCurrentFrame);            
-            renderedImageView.setIcon(new StretchIcon(renderedImage));  
+            var renderedImage = converter.renderImage(sampledCurrentFrame);
+            renderedImageView.setIcon(new StretchIcon(renderedImage));
             renderWidthLabel.setText(renderedImage.getWidth() + "px");
-            renderHeightLabel.setText(renderedImage.getHeight() + "px"); 
+            renderHeightLabel.setText(renderedImage.getHeight() + "px");
+        }
+    }
+
+    public void openProcess(String process) {
+        try {
+            Desktop dt = Desktop.getDesktop();
+            dt.open(new File(process));
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error opening " + process + "!");
         }
     }
 
@@ -380,6 +394,11 @@ public class MainWindow extends javax.swing.JFrame {
         exportTextButton.setFocusable(false);
         exportTextButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportTextButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        exportTextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportTextButtonActionPerformed(evt);
+            }
+        });
         mainToolbar.add(exportTextButton);
 
         importPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/document-import.png"))); // NOI18N
@@ -580,40 +599,40 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_importButtonActionPerformed
 
     private void importMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importMenuItemActionPerformed
-    	if (importImageDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)  {
+        if (importImageDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             var importedPath = importImageDialog.getSelectedFile().getAbsolutePath();
-                
+
             try {
                 var importingGif = getExt(importedPath).equals("gif");
-                
-                if(importingGif) {                
+
+                if (importingGif) {
                     var importedGif = new Gif(importedPath);
                     var importedCurrentFrame = importedGif.getFrameImage(0);
-                    
+
                     // All importing succeeded, so update data
                     sourceImagePath = importedPath;
                     isGif = true;
                     sourceGif = importedGif;
-                    sourceCurrentFrame = importedCurrentFrame;                    
+                    sourceCurrentFrame = importedCurrentFrame;
                 } else {
-                    var importedImage =  ImageIO.read(new File(importedPath));
-                    
+                    var importedImage = ImageIO.read(new File(importedPath));
+
                     // All importing succeeded, so update data
                     sourceImagePath = importedPath;
                     isGif = false;
                     sourceGif = null;
-                    sourceCurrentFrame = importedImage;                      
+                    sourceCurrentFrame = importedImage;
                 }
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "Error importing " + importedPath + "!");
             }
-            
+
             // Update UI
             originalImageView.setIcon(new StretchIcon(sourceCurrentFrame));
             frameCountLabel.setText(String.valueOf(isGif ? sourceGif.getFrameCount() : 1));
             widthLabel.setText(sourceCurrentFrame.getWidth() + "px");
-            heightLabel.setText(sourceCurrentFrame.getHeight() + "px");      
-            
+            heightLabel.setText(sourceCurrentFrame.getHeight() + "px");
+
             // Set sampling image            
             samplingParams = currentPalette.getPalette().getSamplingParams(sourceCurrentFrame.getWidth(), sourceCurrentFrame.getHeight());
             samplingSizeSpinner.setValue(samplingParams.getSamplingRatio());
@@ -662,8 +681,28 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_invertPaletteMenuItemActionPerformed
 
     private void exportTextMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportTextMenuItemActionPerformed
-        
+        try {
+            exportTextDialog.setCurrentDirectory(new File(sourceImagePath));
+
+            if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                var converter = new AsciiConverter(currentPalette.getPalette());
+                var renderedText = converter.renderText(sampledCurrentFrame);
+
+                try (var out = new PrintWriter(exportTextDialog.getSelectedFile().getAbsolutePath())) {
+                    out.println(renderedText);
+                }
+
+                openProcess(exportTextDialog.getSelectedFile().getAbsolutePath());
+            }
+
+        } catch (HeadlessException | FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Error exporting " + exportTextDialog.getSelectedFile().getAbsolutePath() + "!");
+        }
     }//GEN-LAST:event_exportTextMenuItemActionPerformed
+
+    private void exportTextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportTextButtonActionPerformed
+        exportTextMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_exportTextButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
