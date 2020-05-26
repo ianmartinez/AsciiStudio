@@ -123,6 +123,16 @@ public class MainWindow extends javax.swing.JFrame {
             renderHeightLabel.setText(renderedCurrentFrame.getHeight() + "px");
         }
     }
+    
+    private void enableEditing(boolean enable) {
+        exportImageMenuItem.setEnabled(enable);
+        exportTextMenuItem.setEnabled(enable);
+        exportImageButton.setEnabled(enable);
+        exportTextButton.setEnabled(enable);
+        
+        refreshMenuItem.setEnabled(enable);
+        refreshButton.setEnabled(enable);
+    }
 
     public void openProcess(String process) {
         try {
@@ -180,7 +190,7 @@ public class MainWindow extends javax.swing.JFrame {
         renderHeightLabel = new javax.swing.JLabel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
-        exportButton = new javax.swing.JButton();
+        exportImageButton = new javax.swing.JButton();
         exportTextButton = new javax.swing.JButton();
         importPaletteButton = new javax.swing.JButton();
         exportPaletteButton = new javax.swing.JButton();
@@ -190,7 +200,7 @@ public class MainWindow extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         importMenuItem = new javax.swing.JMenuItem();
-        exportMenuItem = new javax.swing.JMenuItem();
+        exportImageMenuItem = new javax.swing.JMenuItem();
         exportTextMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         paletteMenu = new javax.swing.JMenu();
@@ -415,20 +425,22 @@ public class MainWindow extends javax.swing.JFrame {
         });
         mainToolbar.add(importButton);
 
-        exportButton.setIcon(new javax.swing.ImageIcon("/Users/ianmartinez/GitHub/taiga-icons/png/32/filetype-image.png")); // NOI18N
-        exportButton.setText("Export Image");
-        exportButton.setFocusable(false);
-        exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        exportButton.addActionListener(new java.awt.event.ActionListener() {
+        exportImageButton.setIcon(new javax.swing.ImageIcon("/Users/ianmartinez/GitHub/taiga-icons/png/32/filetype-image.png")); // NOI18N
+        exportImageButton.setText("Export Image");
+        exportImageButton.setEnabled(false);
+        exportImageButton.setFocusable(false);
+        exportImageButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        exportImageButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        exportImageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportButtonActionPerformed(evt);
+                exportImageButtonActionPerformed(evt);
             }
         });
-        mainToolbar.add(exportButton);
+        mainToolbar.add(exportImageButton);
 
         exportTextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/filetype-text.png"))); // NOI18N
         exportTextButton.setText("Export Text");
+        exportTextButton.setEnabled(false);
         exportTextButton.setFocusable(false);
         exportTextButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportTextButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -489,6 +501,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/refresh.png"))); // NOI18N
         refreshButton.setText("Refresh");
+        refreshButton.setEnabled(false);
         refreshButton.setFocusable(false);
         refreshButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         refreshButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -511,17 +524,19 @@ public class MainWindow extends javax.swing.JFrame {
         });
         fileMenu.add(importMenuItem);
 
-        exportMenuItem.setMnemonic('s');
-        exportMenuItem.setText("Export Image...");
-        exportMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        exportImageMenuItem.setMnemonic('s');
+        exportImageMenuItem.setText("Export Image...");
+        exportImageMenuItem.setEnabled(false);
+        exportImageMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportMenuItemActionPerformed(evt);
+                exportImageMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(exportMenuItem);
+        fileMenu.add(exportImageMenuItem);
 
         exportTextMenuItem.setMnemonic('a');
         exportTextMenuItem.setText("Export Text...");
+        exportTextMenuItem.setEnabled(false);
         exportTextMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exportTextMenuItemActionPerformed(evt);
@@ -582,6 +597,7 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu1.setText("Preview");
 
         refreshMenuItem.setText("Refresh");
+        refreshMenuItem.setEnabled(false);
         refreshMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshMenuItemActionPerformed(evt);
@@ -684,6 +700,8 @@ public class MainWindow extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error importing " + importedPath);
             }
 
+            enableEditing(true);
+                    
             // Update UI
             originalImageView.setIcon(new StretchIcon(sourceCurrentFrame));
             frameCountLabel.setText(String.valueOf(isGif ? sourceGif.getFrameCount() : 1));
@@ -784,7 +802,7 @@ public class MainWindow extends javax.swing.JFrame {
         exportTextMenuItemActionPerformed(evt);
     }//GEN-LAST:event_exportTextButtonActionPerformed
 
-    private void exportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportMenuItemActionPerformed
+    private void exportImageMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportImageMenuItemActionPerformed
         try {
             var currentDirectory = exportImageDialog.getCurrentDirectory();
 
@@ -832,11 +850,11 @@ public class MainWindow extends javax.swing.JFrame {
         } catch (HeadlessException | IOException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting " + exportImageDialog.getSelectedFile().getAbsolutePath());
         }
-    }//GEN-LAST:event_exportMenuItemActionPerformed
+    }//GEN-LAST:event_exportImageMenuItemActionPerformed
 
-    private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
-        exportMenuItemActionPerformed(evt);
-    }//GEN-LAST:event_exportButtonActionPerformed
+    private void exportImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportImageButtonActionPerformed
+        exportImageMenuItemActionPerformed(evt);
+    }//GEN-LAST:event_exportImageButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
@@ -844,8 +862,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected asciicomponent.PalettePanel currentPalette;
     protected javax.swing.JPanel currentPaletteContainer;
     protected javax.swing.JMenuItem exitMenuItem;
-    protected javax.swing.JButton exportButton;
-    protected javax.swing.JMenuItem exportMenuItem;
+    protected javax.swing.JButton exportImageButton;
+    protected javax.swing.JMenuItem exportImageMenuItem;
     protected javax.swing.JButton exportPaletteButton;
     protected javax.swing.JMenuItem exportPaletteMenuItem;
     protected javax.swing.JButton exportTextButton;
