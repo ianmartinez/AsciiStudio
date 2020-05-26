@@ -121,6 +121,7 @@ public class ColorPickerDialog extends javax.swing.JDialog {
         colorDialog.setLocationRelativeTo(frame);
         colorDialog.setModalityType(ModalityType.APPLICATION_MODAL);
         colorDialog.setInitialColor(initialColor);
+        colorDialog.setTitle(title);
         colorDialog.setVisible(true);
 
         return colorDialog.hasChosenColor() ? colorDialog.getColor() : null;
