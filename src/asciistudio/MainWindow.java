@@ -648,7 +648,7 @@ public class MainWindow extends javax.swing.JFrame {
             try {
                 var importingGif = getExt(importedPath).equals("gif");
 
-                if (importingGif) {
+                if (importingGif) { // GIF
                     var importedGif = new Gif(importedPath);
                     var importedCurrentFrame = importedGif.getFrameImage(0);
 
@@ -661,7 +661,10 @@ public class MainWindow extends javax.swing.JFrame {
                     // Set frame spinner
                     var model = new SpinnerNumberModel(0, 0, sourceGif.getFrameCount() - 1, 1);
                     frameSpinner.setModel(model);
-                } else {
+                    
+                    // Set the export image dialog to export GIFs by default
+                    exportImageDialog.setFileFilter(gifImageFilter);
+                } else { // Still image
                     var importedImage = ImageIO.read(new File(importedPath));
 
                     // All importing succeeded, so update data
@@ -673,6 +676,9 @@ public class MainWindow extends javax.swing.JFrame {
                     // Set frame spinner
                     var model = new SpinnerNumberModel(0, 0, 0, 1);
                     frameSpinner.setModel(model);
+                    
+                    // Set the export image dialog to export PNG by default
+                    exportImageDialog.setFileFilter(pngImageFilter);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error importing " + importedPath);
@@ -742,7 +748,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
             
             if (!sourceImagePath.equals("")) {
-                exportImageDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII.txt"));
+                exportTextDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII.txt"));
             }
 
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -750,12 +756,22 @@ public class MainWindow extends javax.swing.JFrame {
                 var converter = new AsciiConverter(currentPalette.getPalette());
                 var exportSample = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
                 var renderedText = converter.renderText(exportSample);
+                var outputPath = exportTextDialog.getSelectedFile().getAbsolutePath();
+                
+                // Add extension if it was not given
+                if(!outputPath.contains(".")) {
+                    var filter = (FileNameExtensionFilter)exportTextDialog.getFileFilter();
+                    
+                    if(filter != null) {
+                        outputPath += "." + filter.getExtensions()[0];
+                    }
+                }
 
-                try (var out = new PrintWriter(exportTextDialog.getSelectedFile().getAbsolutePath())) {
+                try (var out = new PrintWriter(outputPath)) {
                     out.println(renderedText);
                 }
 
-                openProcess(exportTextDialog.getSelectedFile().getAbsolutePath());
+                openProcess(outputPath);
                 exportDirectoryChanged = !exportTextDialog.getCurrentDirectory().equals(currentDirectory);
             }
 
@@ -777,15 +793,24 @@ public class MainWindow extends javax.swing.JFrame {
             }
             
             if (!sourceImagePath.equals("")) {
-                exportImageDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII." + getExt(sourceImagePath)));
+                exportImageDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII"));
             }
             
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
                 var converter = new AsciiConverter(currentPalette.getPalette());
                 var outputPath = exportImageDialog.getSelectedFile().getAbsolutePath();
+                
+                // Add extension if it was not given
+                if(!outputPath.contains(".")) {
+                    var filter = (FileNameExtensionFilter)exportImageDialog.getFileFilter();
+                    
+                    if(filter != null) {
+                        outputPath += "." + filter.getExtensions()[0];
+                    }
+                }
+                
                 var ext = getExt(outputPath);
-
                 if (isGif && ext.equals("gif")) { // Animated GIF
                     var exportedGif = new Gif(sourceGif);
                     for (int i = 0; i < sourceGif.getFrameCount(); i++) {
