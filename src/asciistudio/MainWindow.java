@@ -19,6 +19,7 @@ package asciistudio;
 import asciilib.AsciiConverter;
 import asciilib.ImageResizer;
 import asciilib.ImageSamplingParams;
+import asciilib.Palette;
 import giflib.Gif;
 import java.awt.Desktop;
 import java.awt.HeadlessException;
@@ -32,6 +33,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.xml.bind.JAXBException;
 
 /**
  *
@@ -762,13 +764,17 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_invertPaletteButtonActionPerformed
 
     private void importPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importPaletteMenuItemActionPerformed
-        try {           
+        try {
             if (importPaletteDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 var filePath = importPaletteDialog.getSelectedFile().getAbsolutePath();
+                var importedPalette = Palette.importXml(filePath);
                 
-                                
+                if(importedPalette != null) {
+                    currentPalette.setPalette(importedPalette);
+                } else {
+                    throw new Exception("Invalid file");
+                }
             }
-
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error importing " + importPaletteDialog.getSelectedFile().getAbsolutePath());
         }
@@ -776,7 +782,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void exportPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportPaletteMenuItemActionPerformed
         try {
-           
             if (exportPaletteDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 var outputPath = exportPaletteDialog.getSelectedFile().getAbsolutePath();
 
@@ -788,11 +793,10 @@ public class MainWindow extends javax.swing.JFrame {
                         outputPath += "." + filter.getExtensions()[0];
                     }
                 }
-                
+
                 currentPalette.getPalette().exportXml(outputPath);
             }
-
-        } catch (Exception ex) {
+        } catch (HeadlessException | JAXBException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting " + exportPaletteDialog.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_exportPaletteMenuItemActionPerformed
