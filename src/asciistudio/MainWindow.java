@@ -51,6 +51,8 @@ public class MainWindow extends javax.swing.JFrame {
     JFileChooser importImageDialog = new JFileChooser();
     JFileChooser exportImageDialog = new JFileChooser();
     JFileChooser exportTextDialog = new JFileChooser();
+    JFileChooser importPaletteDialog = new JFileChooser();
+    JFileChooser exportPaletteDialog = new JFileChooser();
 
     // If the user has changed from the default directory for exporting.
     // If not, open the export dialogs at the imported images location
@@ -61,6 +63,7 @@ public class MainWindow extends javax.swing.JFrame {
     public FileNameExtensionFilter gifImageFilter = new FileNameExtensionFilter("GIF image (*.gif)", "gif");
     public FileNameExtensionFilter pngImageFilter = new FileNameExtensionFilter("PNG image (*.png)", "png");
     public FileNameExtensionFilter textFileFilter = new FileNameExtensionFilter("Text file (*.txt)", "txt");
+    public FileNameExtensionFilter paletteFileFilter = new FileNameExtensionFilter("ASCII Palette (*.ascp)", "ascp");
 
     /**
      * Creates new form MainWindow
@@ -69,13 +72,18 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         beforeAfterSplitter.setDividerLocation(beforeAfterSplitter.getWidth() / 4);
         importImageDialog.setFileFilter(imageFilesFilter);
-        
+
         exportImageDialog.addChoosableFileFilter(gifImageFilter);
         exportImageDialog.addChoosableFileFilter(pngImageFilter);
-        exportImageDialog.setFileFilter(gifImageFilter);        
-        
+        exportImageDialog.setFileFilter(gifImageFilter);
+
         exportTextDialog.addChoosableFileFilter(textFileFilter);
         exportTextDialog.setFileFilter(textFileFilter);
+
+        importPaletteDialog.addChoosableFileFilter(paletteFileFilter);
+        importPaletteDialog.setFileFilter(paletteFileFilter);
+        exportPaletteDialog.addChoosableFileFilter(paletteFileFilter);
+        exportPaletteDialog.setFileFilter(paletteFileFilter);
 
         // Hide tooltips
         originalImageView.setToolTipText(null);
@@ -86,14 +94,14 @@ public class MainWindow extends javax.swing.JFrame {
         int dot = path.lastIndexOf(".");
         return (dot == -1) ? "" : path.substring(dot + 1).toLowerCase();
     }
-    
-    public String removeExt(String path) 
-    {
-        if (path.equals("")) 
+
+    public String removeExt(String path) {
+        if (path.equals("")) {
             return "";
-        
+        }
+
         int dot = path.lastIndexOf(".");
-        return (dot == -1) ? path : path.substring(0,dot);
+        return (dot == -1) ? path : path.substring(0, dot);
     }
 
     private void refreshSampleParams() {
@@ -102,12 +110,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void refreshRender() {
         refreshSampleParams();
-        
-        if(isGif) {
-            var frameSpinnerValue = (Integer)frameSpinner.getValue();
+
+        if (isGif) {
+            var frameSpinnerValue = (Integer) frameSpinner.getValue();
             sourceCurrentFrame = sourceGif.getFrameImage(frameSpinnerValue);
-        }                
-        
+        }
+
         sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
         var converter = new AsciiConverter(currentPalette.getPalette());
         renderedCurrentFrame = converter.renderImage(sampledCurrentFrame);
@@ -123,18 +131,18 @@ public class MainWindow extends javax.swing.JFrame {
             renderHeightLabel.setText(renderedCurrentFrame.getHeight() + "px");
         }
     }
-    
+
     private void enableEditing(boolean enable) {
         // File
         exportImageMenuItem.setEnabled(enable);
         exportTextMenuItem.setEnabled(enable);
         exportImageButton.setEnabled(enable);
-        exportTextButton.setEnabled(enable); 
-        
+        exportTextButton.setEnabled(enable);
+
         // Preview
         refreshMenuItem.setEnabled(enable);
         refreshButton.setEnabled(enable);
-        
+
         // Sidebar
         frameSpinner.setEnabled(enable);
         sampleRatioSpinner.setEnabled(enable);
@@ -681,11 +689,11 @@ public class MainWindow extends javax.swing.JFrame {
                     isGif = true;
                     sourceGif = importedGif;
                     sourceCurrentFrame = importedCurrentFrame;
-                    
+
                     // Set frame spinner
                     var model = new SpinnerNumberModel(0, 0, sourceGif.getFrameCount() - 1, 1);
                     frameSpinner.setModel(model);
-                    
+
                     // Set the export image dialog to export GIFs by default
                     exportImageDialog.setFileFilter(gifImageFilter);
                 } else { // Still image
@@ -696,11 +704,11 @@ public class MainWindow extends javax.swing.JFrame {
                     isGif = false;
                     sourceGif = null;
                     sourceCurrentFrame = importedImage;
-                    
+
                     // Set frame spinner
                     var model = new SpinnerNumberModel(0, 0, 0, 1);
                     frameSpinner.setModel(model);
-                    
+
                     // Set the export image dialog to export PNG by default
                     exportImageDialog.setFileFilter(pngImageFilter);
                 }
@@ -709,7 +717,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
 
             enableEditing(true);
-                    
+
             // Update UI
             originalImageView.setIcon(new StretchIcon(sourceCurrentFrame));
             frameCountLabel.setText(String.valueOf(isGif ? sourceGif.getFrameCount() : 1));
@@ -754,11 +762,39 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_invertPaletteButtonActionPerformed
 
     private void importPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importPaletteMenuItemActionPerformed
-        // TODO add your handling code here:
+        try {           
+            if (importPaletteDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                var filePath = importPaletteDialog.getSelectedFile().getAbsolutePath();
+                
+                                
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error importing " + importPaletteDialog.getSelectedFile().getAbsolutePath());
+        }
     }//GEN-LAST:event_importPaletteMenuItemActionPerformed
 
     private void exportPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportPaletteMenuItemActionPerformed
-        // TODO add your handling code here:
+        try {
+           
+            if (exportPaletteDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                var outputPath = exportPaletteDialog.getSelectedFile().getAbsolutePath();
+
+                // Add extension if it was not given
+                if (!outputPath.contains(".")) {
+                    var filter = (FileNameExtensionFilter) exportPaletteDialog.getFileFilter();
+
+                    if (filter != null) {
+                        outputPath += "." + filter.getExtensions()[0];
+                    }
+                }
+                
+                currentPalette.getPalette().exportXml(outputPath);
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error exporting " + exportPaletteDialog.getSelectedFile().getAbsolutePath());
+        }
     }//GEN-LAST:event_exportPaletteMenuItemActionPerformed
 
     private void invertPaletteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertPaletteMenuItemActionPerformed
@@ -772,7 +808,7 @@ public class MainWindow extends javax.swing.JFrame {
             if (!exportDirectoryChanged) {
                 exportTextDialog.setCurrentDirectory(new File(sourceImagePath));
             }
-            
+
             if (!sourceImagePath.equals("")) {
                 exportTextDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII.txt"));
             }
@@ -783,12 +819,12 @@ public class MainWindow extends javax.swing.JFrame {
                 var exportSample = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
                 var renderedText = converter.renderText(exportSample);
                 var outputPath = exportTextDialog.getSelectedFile().getAbsolutePath();
-                
+
                 // Add extension if it was not given
-                if(!outputPath.contains(".")) {
-                    var filter = (FileNameExtensionFilter)exportTextDialog.getFileFilter();
-                    
-                    if(filter != null) {
+                if (!outputPath.contains(".")) {
+                    var filter = (FileNameExtensionFilter) exportTextDialog.getFileFilter();
+
+                    if (filter != null) {
                         outputPath += "." + filter.getExtensions()[0];
                     }
                 }
@@ -817,25 +853,25 @@ public class MainWindow extends javax.swing.JFrame {
             if (!exportDirectoryChanged) {
                 exportImageDialog.setCurrentDirectory(new File(sourceImagePath));
             }
-            
+
             if (!sourceImagePath.equals("")) {
                 exportImageDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII"));
             }
-            
+
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
                 var converter = new AsciiConverter(currentPalette.getPalette());
                 var outputPath = exportImageDialog.getSelectedFile().getAbsolutePath();
-                
+
                 // Add extension if it was not given
-                if(!outputPath.contains(".")) {
-                    var filter = (FileNameExtensionFilter)exportImageDialog.getFileFilter();
-                    
-                    if(filter != null) {
+                if (!outputPath.contains(".")) {
+                    var filter = (FileNameExtensionFilter) exportImageDialog.getFileFilter();
+
+                    if (filter != null) {
                         outputPath += "." + filter.getExtensions()[0];
                     }
                 }
-                
+
                 var ext = getExt(outputPath);
                 if (isGif && ext.equals("gif")) { // Animated GIF
                     var exportedGif = new Gif(sourceGif);
@@ -851,7 +887,7 @@ public class MainWindow extends javax.swing.JFrame {
                     refreshRender();
                     ImageIO.write(renderedCurrentFrame, ext, new File(outputPath));
                 }
-                
+
                 exportDirectoryChanged = !exportImageDialog.getCurrentDirectory().equals(currentDirectory);
                 openProcess(outputPath);
             }

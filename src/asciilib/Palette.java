@@ -19,6 +19,11 @@ package asciilib;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.xml.bind.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * Represents the palette used to render a ASCII image.
@@ -26,6 +31,7 @@ import java.awt.image.BufferedImage;
  *
  * @author Ian Martinez
  */
+@XmlRootElement
 public class Palette {
 
     /**
@@ -61,17 +67,9 @@ public class Palette {
     }
 
     /**
-     * Set the weights array from a string
-     *
-     * @param weights the weights to set
-     */
-    public void setWeights(String weights) {
-        this.setWeights(weights.split(""));
-    }
-
-    /**
      * @return the overridingImageColors
      */
+    @XmlElement(name = "overide-image-colors")
     public boolean isOverridingImageColors() {
         return overridingImageColors;
     }
@@ -86,6 +84,8 @@ public class Palette {
     /**
      * @return the backgroundColor
      */
+    @XmlElement(name = "background-color")
+    @XmlJavaTypeAdapter(ColorAdapter.class)
     public Color getBackgroundColor() {
         return backgroundColor;
     }
@@ -100,6 +100,8 @@ public class Palette {
     /**
      * @return the fontColor
      */
+    @XmlElement(name = "font-color")
+    @XmlJavaTypeAdapter(ColorAdapter.class)
     public Color getFontColor() {
         return fontColor;
     }
@@ -114,6 +116,8 @@ public class Palette {
     /**
      * @return the font
      */
+    @XmlElement(name = "font")
+    @XmlJavaTypeAdapter(FontAdapter.class)
     public Font getFont() {
         return font;
     }
@@ -128,15 +132,9 @@ public class Palette {
     /**
      * @return the weights
      */
+    @XmlElement(name = "weights")
     public String[] getWeights() {
         return weights;
-    }
-
-    /**
-     * @return the weights as a string
-     */
-    public String getWeightsString() {
-        return String.join("", weights);
     }
 
     /**
@@ -149,6 +147,7 @@ public class Palette {
     /**
      * @return the usingPhrase
      */
+    @XmlElement(name = "using-phrase")
     public boolean isUsingPhrase() {
         return usingPhrase;
     }
@@ -158,6 +157,22 @@ public class Palette {
      */
     public void setUsingPhrase(boolean usingPhrase) {
         this.usingPhrase = usingPhrase;
+    }
+
+    /**
+     * @return the weights as a string
+     */
+    public String getWeightsString() {
+        return String.join("", weights);
+    }
+
+    /**
+     * Set the weights array from a string
+     *
+     * @param weights the weights to set
+     */
+    public void setWeights(String weights) {
+        this.setWeights(weights.split(""));
     }
 
     /**
@@ -188,12 +203,12 @@ public class Palette {
     }
 
     /**
-     * Find the best params to get a rendered image size to match 
-     * the source image's size with this palette.
-     * 
+     * Find the best params to get a rendered image size to match the source
+     * image's size with this palette.
+     *
      * @param width the source image width
      * @param height the source image height
-     * 
+     *
      * @return the best sampling params.
      */
     public ImageSamplingParams getSamplingParams(int width, int height) {
@@ -201,7 +216,7 @@ public class Palette {
         var weightsSize = measureLine(testImg.createGraphics(), String.join("", weights));
         var fontWidth = weightsSize.getWidth() / weights.length;
         var fontHeight = weightsSize.getHeight();
-        
+
         return new ImageSamplingParams(width, height, fontWidth, fontHeight);
     }
 
@@ -229,5 +244,27 @@ public class Palette {
         }
 
         return max;
+    }
+    
+    public static Palette importXml(String filePath) {
+        try {
+            File file = new File(filePath);
+            JAXBContext context = JAXBContext.newInstance(Palette.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            Palette palette = (Palette)unmarshaller.unmarshal(file);
+            
+            return palette;
+        } catch (JAXBException ex) {
+            return null;
+        }
+    }
+    
+    public void exportXml(String filePath) throws JAXBException {
+        File file = new File(filePath);
+           
+        JAXBContext context = JAXBContext.newInstance(Palette.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(this, file);
     }
 }
