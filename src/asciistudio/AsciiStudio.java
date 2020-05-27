@@ -17,6 +17,9 @@
 package asciistudio;
 
 import javax.swing.UIManager;
+import java.awt.Desktop;
+import java.awt.desktop.AboutEvent;
+import java.awt.desktop.AboutHandler;
 
 /**
  * Main class
@@ -58,9 +61,13 @@ public class AsciiStudio {
         // Configure styling
         App.setRootProperty(mainWindow, "Aqua.windowStyle", "unifiedToolBar");
         App.setProperty(mainWindow.sidebarPanel, "Aqua.backgroundStyle", "vibrantSidebar");
-        /*App.setProperty(mainWindow.importButton, "JButton.buttonType", "toolbarItem");
-        App.setProperty(mainWindow.exportButton, "JButton.buttonType", "toolbarItem");*/
-
+        
+        // Set about handler to open the about window
+        Desktop.getDesktop().setAboutHandler((AboutEvent e) -> {
+            var aboutDialog = new AboutDialog(mainWindow, true);
+            aboutDialog.setLocationRelativeTo(mainWindow);
+            aboutDialog.setVisible(true);
+        });
         
         // Show
         mainWindow.setVisible(true);
