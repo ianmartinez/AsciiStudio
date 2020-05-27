@@ -47,10 +47,10 @@ public class AboutDialog extends javax.swing.JDialog {
 
         iconLabel = new javax.swing.JLabel();
         appNameLabel = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        buttonPanel = new javax.swing.JPanel();
+        websiteButton = new javax.swing.JButton();
+        githubButon = new javax.swing.JButton();
+        patreonButton = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -71,7 +71,7 @@ public class AboutDialog extends javax.swing.JDialog {
 
         appNameLabel.setFont(appNameLabel.getFont().deriveFont(appNameLabel.getFont().getStyle() | java.awt.Font.BOLD, appNameLabel.getFont().getSize()+4));
         appNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        appNameLabel.setText("App Name");
+        appNameLabel.setText("ASCII Studio");
         appNameLabel.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -80,21 +80,47 @@ public class AboutDialog extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(10, 3, 10, 3);
         getContentPane().add(appNameLabel, gridBagConstraints);
 
-        jButton1.setText("Website");
-        jPanel3.add(jButton1);
+        websiteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/web.png"))); // NOI18N
+        websiteButton.setText("Website");
+        websiteButton.setIconTextGap(6);
+        websiteButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
+        websiteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                websiteButtonActionPerformed(evt);
+            }
+        });
+        buttonPanel.add(websiteButton);
 
-        jButton2.setText("GitHub");
-        jPanel3.add(jButton2);
+        githubButon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/github.png"))); // NOI18N
+        githubButon.setText("GitHub");
+        githubButon.setIconTextGap(6);
+        githubButon.setMargin(new java.awt.Insets(3, 3, 3, 3));
+        githubButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                githubButonActionPerformed(evt);
+            }
+        });
+        buttonPanel.add(githubButon);
 
-        jButton3.setText("Patreon");
-        jPanel3.add(jButton3);
+        patreonButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/patreon.png"))); // NOI18N
+        patreonButton.setText("Support on Patreon");
+        patreonButton.setToolTipText("");
+        patreonButton.setIconTextGap(6);
+        patreonButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
+        patreonButton.setVerifyInputWhenFocusTarget(false);
+        patreonButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patreonButtonActionPerformed(evt);
+            }
+        });
+        buttonPanel.add(patreonButton);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jPanel3, gridBagConstraints);
+        getContentPane().add(buttonPanel, gridBagConstraints);
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWeights = new double[] {1.0};
@@ -158,6 +184,18 @@ public class AboutDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void websiteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_websiteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_websiteButtonActionPerformed
+
+    private void githubButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_githubButonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_githubButonActionPerformed
+
+    private void patreonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patreonButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_patreonButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,17 +240,17 @@ public class AboutDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appNameLabel;
+    private javax.swing.JPanel buttonPanel;
     private javax.swing.JTextArea changelogTextArea;
+    private javax.swing.JButton githubButon;
     private javax.swing.JLabel iconLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea licenseTextArea;
+    private javax.swing.JButton patreonButton;
+    private javax.swing.JButton websiteButton;
     // End of variables declaration//GEN-END:variables
 }
