@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 /**
+ * A converter to images into ASCII art.
  *
  * @author Ian Martinez
  */
@@ -35,6 +36,11 @@ public class AsciiConverter {
     private int phrasePos = 0;
     private int pixelPos = 0;
 
+    /**
+     * Create a new ASCII converter with a palette.
+     * 
+     * @param palette the palette to use when rendering
+     */
     public AsciiConverter(Palette palette) {
         this.palette = palette;
     }
@@ -43,25 +49,58 @@ public class AsciiConverter {
 
     }
 
+    /**
+     * Get the luminosity of a pixel in an image.
+     * 
+     * @param img the image
+     * @param x the x position of the pixel
+     * @param y the y position of the pixel
+     * @param max the max luminosity
+     * 
+     * @return the pixel's luminosity
+     */
     public int getLuminosityXY(BufferedImage img, int x, int y, int max) {
         int color = img.getRGB(x, y);
         return getLuminosity(new Color(color), max);
     }
 
-    public int getLuminosity(Color c, int max) {
-        int red = (c.getRGB() >>> 16) & 0xFF;
-        int green = (c.getRGB() >>> 8) & 0xFF;
-        int blue = (c.getRGB() >>> 0) & 0xFF;
+    /**
+     * Get the luminosity of a color.
+     * 
+     * @param color the color 
+     * @param max the max luminosity
+     * 
+     * @return the color's luminosity
+     */
+    public int getLuminosity(Color color, int max) {
+        int red = (color.getRGB() >>> 16) & 0xFF;
+        int green = (color.getRGB() >>> 8) & 0xFF;
+        int blue = (color.getRGB() >>> 0) & 0xFF;
 
         float luminance = (red * 0.2126f + green * 0.7152f + blue * 0.0722f) / 255;
         return (int) (max * luminance);
     }
 
-    public String getWeight(Color c) {
-        int lum = getLuminosity(c, palette.getWeightCount() - 1);
+    /**
+     * Get the corresponding weight to a color.
+     * 
+     * @param color the color
+     * 
+     * @return the weight for the color
+     */
+    public String getWeight(Color color) {
+        int lum = getLuminosity(color, palette.getWeightCount() - 1);
         return palette.getWeight(lum);
     }
 
+    /**
+     * Render a row of text from a row of pixels in an image.
+     * 
+     * @param img the image
+     * @param y the y position of the row of pixels
+     * 
+     * @return the rendered text
+     */
     public String renderTextRow(BufferedImage img, int y) {
         String val = "";
         for (int x = 0; x < img.getWidth(); x++) {
@@ -80,6 +119,13 @@ public class AsciiConverter {
         return val;
     }
 
+    /**
+     * Render ASCII art text derived from an image.
+     * 
+     * @param img the image to derive the pixel data from
+     * 
+     * @return the ASCII art text
+     */
     public String renderText(BufferedImage img) {
         Graphics2D g = img.createGraphics();
         int ratio = palette.getFontRatio(g);
@@ -92,6 +138,13 @@ public class AsciiConverter {
         return ascii;
     }
 
+    /**
+     * Render an ASCII art image derived from another image.
+     * 
+     * @param img the image to derive the pixel data from
+     * 
+     * @return the rendered ASCII art image
+     */
     public BufferedImage renderImage(BufferedImage img) {
         var sourceGraphics = img.createGraphics();
         int ratio = palette.getFontRatio(sourceGraphics);
@@ -158,14 +211,31 @@ public class AsciiConverter {
         return renderImage;
     }
 
+    /**
+     * Render a still image and save it to a file.
+     * 
+     * @param filePath the file to save to
+     * @param img the source image
+     * 
+     * @throws IOException if there was an error writing the file
+     */
     public void saveImage(String filePath, BufferedImage img) throws IOException {
         File outFile = new File(filePath);
         BufferedImage render = renderImage(img);
         ImageIO.write(render, "gif", outFile);
     }
 
+    /**
+     * Render a GIF and save it to a file.
+     * 
+     * @param filePath the file to save to
+     * @param gif the source GIF
+     * 
+     * @throws IOException if there was an error writing the file
+     */
     public void saveGif(String filePath, Gif gif) throws IOException {
         var convertedGif = new Gif(gif);
+        
         for (var i = 0; i < gif.getFrameCount(); i++) {
             var convertedFrame = renderImage(gif.getFrameImage(i));
             gif.setFrameImage(i, convertedFrame);
