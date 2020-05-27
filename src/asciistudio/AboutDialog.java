@@ -45,7 +45,12 @@ public class AboutDialog extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        iconLabel = new javax.swing.JLabel();
         appNameLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -59,8 +64,10 @@ public class AboutDialog extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(300, 200));
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWeights = new double[] {1.0};
-        layout.rowWeights = new double[] {0.0, 1.0};
         getContentPane().setLayout(layout);
+
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/64.png"))); // NOI18N
+        getContentPane().add(iconLabel, new java.awt.GridBagConstraints());
 
         appNameLabel.setFont(appNameLabel.getFont().deriveFont(appNameLabel.getFont().getStyle() | java.awt.Font.BOLD, appNameLabel.getFont().getSize()+4));
         appNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -72,6 +79,22 @@ public class AboutDialog extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 3, 10, 3);
         getContentPane().add(appNameLabel, gridBagConstraints);
+
+        jButton1.setText("Website");
+        jPanel3.add(jButton1);
+
+        jButton2.setText("GitHub");
+        jPanel3.add(jButton2);
+
+        jButton3.setText("Patreon");
+        jPanel3.add(jButton3);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        getContentPane().add(jPanel3, gridBagConstraints);
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWeights = new double[] {1.0};
@@ -127,6 +150,7 @@ public class AboutDialog extends javax.swing.JDialog {
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         getContentPane().add(jTabbedPane1, gridBagConstraints);
@@ -179,8 +203,13 @@ public class AboutDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appNameLabel;
     private javax.swing.JTextArea changelogTextArea;
+    private javax.swing.JLabel iconLabel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
