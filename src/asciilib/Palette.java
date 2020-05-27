@@ -46,6 +46,9 @@ public class Palette {
     private Font font = new Font("Monospaced", Font.BOLD, 12);
     private String[] weights = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("");
 
+    /**
+     * Create a new palette that derives from the base palette.
+     */
     public Palette() {
         if (basePalette != null) { // Not initializing the base palette
             usingPhrase = basePalette.isUsingPhrase();
@@ -57,6 +60,11 @@ public class Palette {
         }
     }
 
+    /**
+     * Create a new palette that derives from another palette.
+     * 
+     * @param otherPalette the palette to derive from
+     */
     public Palette(Palette otherPalette) {
         usingPhrase = otherPalette.isUsingPhrase();
         overridingImageColors = otherPalette.isOverridingImageColors();
@@ -183,7 +191,10 @@ public class Palette {
     }
 
     /**
+     * Get the weight at a given position.
+     * 
      * @param pos the weight index
+     * 
      * @return the string for the weight at that index
      */
     public String getWeight(int pos) {
@@ -195,13 +206,6 @@ public class Palette {
         return (int) (metrics.getHeight() / maxVal(metrics.getWidths()));
     }
 
-    public Dimension measureLine(Graphics g, String s) {
-        var metrics = g.getFontMetrics(font);
-        Rectangle2D bounds = metrics.getStringBounds(s, g);
-
-        return new Dimension((int) bounds.getWidth(), (int) bounds.getHeight());
-    }
-
     /**
      * Find the best params to get a rendered image size to match the source
      * image's size with this palette.
@@ -209,17 +213,41 @@ public class Palette {
      * @param width the source image width
      * @param height the source image height
      *
-     * @return the best sampling params.
+     * @return the best sampling params
      */
     public ImageSamplingParams getSamplingParams(int width, int height) {
         var testImg = new BufferedImage(25, 25, BufferedImage.TRANSLUCENT);
-        var weightsSize = measureLine(testImg.createGraphics(), String.join("", weights));
+        var weightsSize = getStringDimensions(testImg.createGraphics(), String.join("", weights));
         var fontWidth = weightsSize.getWidth() / weights.length;
         var fontHeight = weightsSize.getHeight();
 
         return new ImageSamplingParams(width, height, fontWidth, fontHeight);
     }
 
+    /**
+     * Get the dimensions of a string using this palette.
+     * 
+     * @param g the graphics the string will be rendered with
+     * @param s the string to measure
+     * 
+     * @return the string's dimensions
+     */
+    public Dimension getStringDimensions(Graphics g, String s) {
+        var metrics = g.getFontMetrics(font);
+        Rectangle2D bounds = metrics.getStringBounds(s, g);
+
+        return new Dimension((int) bounds.getWidth(), (int) bounds.getHeight());
+    }
+
+
+    /**
+     * Get the width of a string using this palette.
+     * 
+     * @param g the graphics the string will be rendered with
+     * @param s the string to measure
+     * 
+     * @return the string's width
+     */
     public int getStringWidth(Graphics g, String s) {
         FontMetrics metrics = g.getFontMetrics(font);
         Rectangle2D bounds = metrics.getStringBounds(s, g);
@@ -227,6 +255,14 @@ public class Palette {
         return (int) bounds.getWidth();
     }
 
+    /**
+     * Get the height of a string using this palette.
+     * 
+     * @param g the graphics the string will be rendered with
+     * @param s the string to measure
+     * 
+     * @return the string's height
+     */
     public int getStringHeight(Graphics g, String s) {
         FontMetrics metrics = g.getFontMetrics(font);
         Rectangle2D bounds = metrics.getStringBounds(s, g);
@@ -234,18 +270,32 @@ public class Palette {
         return (int) bounds.getHeight();
     }
 
+    /**
+     * Get the max value in an array.
+     * 
+     * @param arr the array to search through
+     * 
+     * @return the max value
+     */
     private static int maxVal(int[] arr) {
         int max = arr[0];
 
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] > max) {
+        for (int i = 1; i < arr.length; i++) 
+            if (arr[i] > max) 
                 max = arr[i];
-            }
-        }
-
+        
         return max;
     }
     
+    /**
+     * Import an XML file to create a palette.
+     * If an exception occurred while parsing the file,
+     * null is returned.
+     * 
+     * @param filePath the XML file representing a palette
+     * 
+     * @return a new palette from the XML file
+     */
     public static Palette importXml(String filePath) {
         try {
             File file = new File(filePath);
@@ -259,6 +309,13 @@ public class Palette {
         }
     }
     
+    /**
+     * Export this palette to an XML file.
+     * 
+     * @param filePath the path to export the file to
+     * 
+     * @throws JAXBException if there was an exception exporting the XML file
+     */
     public void exportXml(String filePath) throws JAXBException {
         File file = new File(filePath);
            

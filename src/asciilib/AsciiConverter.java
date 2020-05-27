@@ -100,7 +100,7 @@ public class AsciiConverter {
         var dimensions = new ArrayList<Dimension>();
         for (int y = 0; y < img.getHeight(); y += ratio) {
             String line = renderTextRow(img, y);
-            dimensions.add(palette.measureLine(sourceGraphics, line));
+            dimensions.add(palette.getStringDimensions(sourceGraphics, line));
         }
 
         // Get width and height for image
