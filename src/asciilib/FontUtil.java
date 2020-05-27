@@ -31,6 +31,13 @@ import java.util.Locale;
 public final class FontUtil {
     private FontUtil() {}
     
+    /**
+     * Get all of the available fonts on the system.
+     * 
+     * @param onlyMonospace if only monospace fonts should be included
+     * 
+     * @return the available fonts
+     */
     public static ArrayList<String> getAllFontNames(boolean onlyMonospace) {
         var gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
         var fontContext = new FontRenderContext(null, RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT, RenderingHints.VALUE_FRACTIONALMETRICS_DEFAULT);   
