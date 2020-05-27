@@ -108,6 +108,7 @@ public class AboutDialog extends javax.swing.JDialog {
         changelogTextArea.setColumns(20);
         changelogTextArea.setLineWrap(true);
         changelogTextArea.setRows(5);
+        changelogTextArea.setText("Version 4.0 (May 28, 2020)\n   • Updated to Java 13\n   • Completely redesigned UI\n   • A more native UI on macOS, including support for dark mode\n   • GUI showing the progress of converting an image\n   • Split original-rendered pane\n   • Import and export weights\n   • Resize image before rendering by setting a sample ratio\n   • Multi-threaded image rendering\n   • New program icon\n\nVersion 3.1 (August 18, 2018)\n   • New program icon\n\nVersion 3.0 (January 23, 2017)\n   • Change name from \"ASCII Converter\" to \"ASCII Studio\"\n   • Improve look on HiDPI displays\n\nVersion 2.0 (October 12, 2016)\n   • Code cleanup\n   • Migrate from JCreator to NetBeans\n   • Update toolbar icons\n   • Added \"export using phrase\" option\n\nVersion 1.1 (May 17, 2016)\n   • Updated UI\n   • Show progress bars in console\n   • Files now open automatically when finished converting\n   • Bug fix: characters where off by a few pixels \n\nVersion 1.0 (May 5, 2016)\n   • Initial release");
         changelogTextArea.setWrapStyleWord(true);
         changelogTextArea.setFocusable(false);
         changelogTextArea.setMinimumSize(new java.awt.Dimension(200, 400));
