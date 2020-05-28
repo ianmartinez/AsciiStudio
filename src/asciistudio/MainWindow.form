@@ -597,7 +597,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="progressPanel">
+                <Container class="javax.swing.JPanel" name="progressPanelContainer">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -613,7 +613,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Component class="asciicomponent.ProgressPanel" name="progressPanel1">
+                    <Component class="asciicomponent.ProgressPanel" name="progressPanel">
                       <Properties>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[14, 28]"/>
@@ -1530,11 +1530,11 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="65_progressPanel">
-                      <CodeVariable name="progressPanel" type="8196" declaredType="javax.swing.JPanel"/>
+                    <CodeExpression id="65_progressPanelContainer">
+                      <CodeVariable name="progressPanelContainer" type="8196" declaredType="javax.swing.JPanel"/>
                       <ExpressionOrigin>
                         <ExpressionProvider type="ComponentRef">
-                          <ComponentRef name="progressPanel"/>
+                          <ComponentRef name="progressPanelContainer"/>
                         </ExpressionProvider>
                       </ExpressionOrigin>
                     </CodeExpression>

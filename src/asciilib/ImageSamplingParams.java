@@ -16,6 +16,8 @@
  */
 package asciilib;
 
+import java.awt.Dimension;
+
 /**
  * The parameters needed for an image sample.
  *
@@ -45,7 +47,6 @@ public class ImageSamplingParams {
     public double getSampleWidth() {
         return (int)Math.ceil(originalWidth / getSamplingRatio());
     }
-
 
     /**
      * @return the originalWidth

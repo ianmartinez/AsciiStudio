@@ -37,6 +37,7 @@ public class AsciiConverter {
     private final ImageSamplingParams samplingParams;
     private int phrasePos = 0;
     private int pixelPos = 0;
+    private ProgressWatcher progressWatcher;
 
     /**
      * Create a new ASCII converter with a palette.
@@ -50,7 +51,9 @@ public class AsciiConverter {
     }
 
     public void updateProgress(int newProgress) {
-
+        if(getProgressWatcher() != null) {
+            getProgressWatcher().update(newProgress);
+        }
     }
 
     /**
@@ -93,8 +96,8 @@ public class AsciiConverter {
      * @return the weight for the color
      */
     public String getWeight(Color color) {
-        int lum = getLuminosity(color, palette.getWeightCount() - 1);
-        return palette.getWeight(lum);
+        int lum = getLuminosity(color, getPalette().getWeightCount() - 1);
+        return getPalette().getWeight(lum);
     }
 
     /**
@@ -108,12 +111,12 @@ public class AsciiConverter {
     private String renderTextRow(BufferedImage img, int y) {
         String val = "";
         for (int x = 0; x < img.getWidth(); x++) {
-            if (palette.isUsingPhrase()) {
-                if (phrasePos >= palette.getWeightCount()) {
+            if (getPalette().isUsingPhrase()) {
+                if (phrasePos >= getPalette().getWeightCount()) {
                     phrasePos = 0;
                 }
 
-                val += palette.getWeight(phrasePos);
+                val += getPalette().getWeight(phrasePos);
                 phrasePos++;
             } else {
                 val += getWeight(new Color(img.getRGB(x, y)));
@@ -131,11 +134,11 @@ public class AsciiConverter {
      * @return the ASCII art text
      */
     public String renderText(BufferedImage sourceImage) {
-        var sampledImage = (samplingParams != null)
-                ? ImageResizer.getSample(sourceImage, samplingParams) : sourceImage;
+        var sampledImage = (getSamplingParams() != null)
+                ? ImageResizer.getSample(sourceImage, getSamplingParams()) : sourceImage;
         
         Graphics2D g = sampledImage.createGraphics();
-        int ratio = palette.getFontRatio(g);
+        int ratio = getPalette().getFontRatio(g);
         String ascii = "";
 
         for (int y = 0; y < sampledImage.getHeight(); y += ratio) {
@@ -153,17 +156,17 @@ public class AsciiConverter {
      * @return the rendered ASCII art image
      */
     public BufferedImage renderImage(BufferedImage sourceImage) {
-        var sampledImage = (samplingParams != null)
-                ? ImageResizer.getSample(sourceImage, samplingParams) : sourceImage;
+        var sampledImage = (getSamplingParams() != null)
+                ? ImageResizer.getSample(sourceImage, getSamplingParams()) : sourceImage;
 
         var sourceGraphics = sampledImage.createGraphics();
-        int ratio = palette.getFontRatio(sourceGraphics);
+        int ratio = getPalette().getFontRatio(sourceGraphics);
 
         // Measure dimensions line by line
         var dimensions = new ArrayList<Dimension>();
         for (int y = 0; y < sampledImage.getHeight(); y += ratio) {
             String line = renderTextRow(sampledImage, y);
-            dimensions.add(palette.getStringDimensions(sourceGraphics, line));
+            dimensions.add(getPalette().getStringDimensions(sourceGraphics, line));
         }
 
         // Get width and height for image
@@ -181,41 +184,41 @@ public class AsciiConverter {
         var renderImage = new BufferedImage(maxWidth, height, BufferedImage.TRANSLUCENT);
         var renderGraphics = renderImage.createGraphics();
         // Set background color
-        renderGraphics.setColor(palette.getBackgroundColor());
+        renderGraphics.setColor(getPalette().getBackgroundColor());
         renderGraphics.fillRect(0, 0, renderImage.getWidth(), renderImage.getHeight());
-        for (int y = 0; y < sampledImage.getHeight(); y += ratio) {
-            for (int x = 0; x < sampledImage.getWidth(); x++) {
+        for (int y = 0; y < sampledImage.getHeight(); y += ratio) { // Loop through each row of pixels
+            for (int x = 0; x < sampledImage.getWidth(); x++) { // Loop through each pixel in a row
                 Color pixelColor = new Color(sampledImage.getRGB(x, y));
 
                 // Get string associated with the pixel
                 String str;
-                if (palette.isUsingPhrase()) {
-                    if (phrasePos >= palette.getWeightCount()) {
+                if (getPalette().isUsingPhrase()) {
+                    if (phrasePos >= getPalette().getWeightCount()) {
                         phrasePos = 0;
                     }
 
-                    str = palette.getWeight(phrasePos);
+                    str = getPalette().getWeight(phrasePos);
                     phrasePos++;
                 } else {
                     str = getWeight(pixelColor);
                 }
 
-                if (palette.isOverridingImageColors()) {
-                    renderGraphics.setColor(palette.getFontColor());
+                if (getPalette().isOverridingImageColors()) {
+                    renderGraphics.setColor(getPalette().getFontColor());
                 } else {
                     renderGraphics.setColor(pixelColor);
                 }
 
-                renderGraphics.setFont(palette.getFont());
+                renderGraphics.setFont(getPalette().getFont());
                 renderGraphics.drawString(str, charX, charY);
 
-                charX += palette.getStringWidth(renderGraphics, str);
-                updateProgress(++pixelPos);
+                charX += getPalette().getStringWidth(renderGraphics, str);
             }
 
             charX = 0;
             charY += (int) dimensions.get(dimPos).getHeight();
             dimPos++;
+            updateProgress(y);
         }
 
         return renderImage;
@@ -249,13 +252,41 @@ public class AsciiConverter {
         for (int i = 0; i < sourceGif.getFrameCount(); i++) {
             phrasePos = 0;
             var currentFrame = sourceGif.getFrameImage(i);
-            var sampledFrame = (samplingParams != null)
-                    ? ImageResizer.getSample(currentFrame, samplingParams) : currentFrame;
+            var sampledFrame = (getSamplingParams() != null)
+                    ? ImageResizer.getSample(currentFrame, getSamplingParams()) : currentFrame;
             var renderedFrame = renderImage(sampledFrame);
 
             exportedGif.setFrameImage(i, renderedFrame);
         }
 
         exportedGif.save(filePath);
+    }
+
+    /**
+     * @return the palette
+     */
+    public Palette getPalette() {
+        return palette;
+    }
+
+    /**
+     * @return the samplingParams
+     */
+    public ImageSamplingParams getSamplingParams() {
+        return samplingParams;
+    }
+
+    /**
+     * @return the progressWatcher
+     */
+    public ProgressWatcher getProgressWatcher() {
+        return progressWatcher;
+    }
+
+    /**
+     * @param progressWatcher the progressWatcher to set
+     */
+    public void setProgressWatcher(ProgressWatcher progressWatcher) {
+        this.progressWatcher = progressWatcher;
     }
 }

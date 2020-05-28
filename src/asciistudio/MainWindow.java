@@ -16,7 +16,6 @@
  */
 package asciistudio;
 
-import asciicomponent.ProgressPanel;
 import asciilib.AsciiConverter;
 import asciilib.ImageSamplingParams;
 import asciilib.Palette;
@@ -122,7 +121,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
         var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
-        renderedCurrentFrame = converter.renderImage(sourceCurrentFrame);
+        //renderedCurrentFrame = converter.renderImage(sourceCurrentFrame);
     }
 
     private void refreshPreview() {
@@ -130,9 +129,17 @@ public class MainWindow extends javax.swing.JFrame {
             refreshRender();
             sampleWidthLabel.setText(samplingParams.getSampleWidth() + "px");
             sampleHeightLabel.setText(samplingParams.getSampleHeight() + "px");
-            renderedImageView.setIcon(new StretchIcon(renderedCurrentFrame));
+            
+            var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
+            var renderTask = new PreviewRenderer(converter, 
+                    sourceCurrentFrame, 
+                    this);
+            
+            renderTask.lockRefreshControls(true);
+            renderTask.execute();
+            /*renderedImageView.setIcon(new StretchIcon(renderedCurrentFrame));
             renderWidthLabel.setText(renderedCurrentFrame.getWidth() + "px");
-            renderHeightLabel.setText(renderedCurrentFrame.getHeight() + "px");
+            renderHeightLabel.setText(renderedCurrentFrame.getHeight() + "px");*/
         }
     }
 
@@ -206,8 +213,8 @@ public class MainWindow extends javax.swing.JFrame {
         renderHeightPanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         renderHeightLabel = new javax.swing.JLabel();
-        progressPanel = new javax.swing.JPanel();
-        progressPanel1 = new asciicomponent.ProgressPanel();
+        progressPanelContainer = new javax.swing.JPanel();
+        progressPanel = new asciicomponent.ProgressPanel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportImageButton = new javax.swing.JButton();
@@ -428,16 +435,16 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         sidebarPanel.add(renderHeightPanel, gridBagConstraints);
 
-        progressPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Render Progress", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        progressPanel.setLayout(new java.awt.GridBagLayout());
+        progressPanelContainer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Render Progress", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        progressPanelContainer.setLayout(new java.awt.GridBagLayout());
 
-        progressPanel1.setPreferredSize(new java.awt.Dimension(14, 28));
+        progressPanel.setPreferredSize(new java.awt.Dimension(14, 28));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        progressPanel.add(progressPanel1, gridBagConstraints);
+        progressPanelContainer.add(progressPanel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -445,7 +452,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(progressPanel, gridBagConstraints);
+        sidebarPanel.add(progressPanelContainer, gridBagConstraints);
 
         sidebarScroll.setViewportView(sidebarPanel);
 
@@ -790,8 +797,8 @@ public class MainWindow extends javax.swing.JFrame {
             if (importPaletteDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 var filePath = importPaletteDialog.getSelectedFile().getAbsolutePath();
                 var importedPalette = Palette.importXml(filePath);
-                
-                if(importedPalette != null) {
+
+                if (importedPalette != null) {
                     currentPalette.setPalette(importedPalette);
                 } else {
                     throw new Exception("Invalid file");
@@ -890,7 +897,7 @@ public class MainWindow extends javax.swing.JFrame {
 
                 // Add extension if it was not given
                 if (!outputPath.contains(".")) {
-                    var filter = (FileNameExtensionFilter) exportImageDialog.getFileFilter();                    
+                    var filter = (FileNameExtensionFilter) exportImageDialog.getFileFilter();
                     if (filter != null) {
                         outputPath += "." + filter.getExtensions()[0];
                     }
@@ -959,8 +966,8 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JLabel originalImageView;
     protected javax.swing.JMenu paletteMenu;
-    protected javax.swing.JPanel progressPanel;
-    protected asciicomponent.ProgressPanel progressPanel1;
+    protected asciicomponent.ProgressPanel progressPanel;
+    protected javax.swing.JPanel progressPanelContainer;
     protected javax.swing.JButton refreshButton;
     protected javax.swing.JMenuItem refreshMenuItem;
     protected javax.swing.JLabel renderHeightLabel;
@@ -984,34 +991,68 @@ public class MainWindow extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 
-
+/**
+ * Handle the rendering of the preview image in the background.
+ *
+ * @author Ian Martinez
+ */
 class PreviewRenderer extends SwingWorker<Void, Integer> {
-        ProgressPanel progressPanel;
-        
-        public PreviewRenderer(ProgressPanel progressPanel) {
-            this.progressPanel = progressPanel;
-        }
 
-        @Override
-        protected void process(List<Integer> chunks) {
-            int i = chunks.get(chunks.size()-1);
-            progressPanel.setProgress(i); 
-        }
+    AsciiConverter converter;
+    BufferedImage sourceImage;
+    BufferedImage previewImage;
+    MainWindow mainWindow;
 
-        @Override
-        protected Void doInBackground() throws Exception {
-            
-            return null;
-        }
+    int max;
 
-        @Override
-        protected void done() {
-            try {
-                get();
-                progressPanel.setProgress(100);
-            } catch (ExecutionException | InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    public PreviewRenderer(AsciiConverter converter,
+            BufferedImage sourceImage,
+            MainWindow mainWindow) {
+
+        this.converter = converter;
+        this.sourceImage = sourceImage;
+        this.mainWindow = mainWindow;
+
+        max = (int) converter.getSamplingParams().getSampleHeight();
+    }
     
+    public void lockRefreshControls(boolean locked) {
+        mainWindow.refreshButton.setEnabled(!locked);
+        mainWindow.refreshMenuItem.setEnabled(!locked);
+    }
+
+    @Override
+    protected void process(List<Integer> chunks) {
+        int i = chunks.get(chunks.size() - 1);
+        mainWindow.progressPanel.setProgress(Math.min(i, max), 0, max);
+    }
+
+    @Override
+    protected Void doInBackground() throws Exception {
+        converter.setProgressWatcher((int progress) -> {
+            publish(progress);
+        });
+
+        previewImage = converter.renderImage(sourceImage);
+
+        converter.setProgressWatcher(null);
+
+        return null;
+    }
+
+    @Override
+    protected void done() {
+        try {
+            get();
+            mainWindow.progressPanel.setProgress(100);
+            mainWindow.renderWidthLabel.setText(previewImage.getWidth() + "px");
+            mainWindow.renderHeightLabel.setText(previewImage.getHeight() + "px");
+            mainWindow.renderedImageView.setIcon(new StretchIcon(previewImage));
+            lockRefreshControls(false);
+            
+            // Re-enable preview
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
