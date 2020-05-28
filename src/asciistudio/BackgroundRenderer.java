@@ -111,6 +111,8 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
             case GIF:
                 renderedGif = renderer.renderGif(sourceGif);
         }
+        
+        // TODO: File saving in background as well
 
         renderer.setProgressWatcher(null);
 
