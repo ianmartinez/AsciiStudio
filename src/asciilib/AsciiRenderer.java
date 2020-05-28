@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 /**
- * A converter to images into ASCII art.
+ * Render ASCII art from an existing image.
  *
  * @author Ian Martinez
  */
@@ -36,11 +36,11 @@ public class AsciiRenderer {
     private final Palette palette;
     private final ImageSamplingParams samplingParams;
     private int phrasePos = 0;
-    private int pixelPos = 0;
     private ProgressWatcher progressWatcher;
 
     /**
-     * Create a new ASCII converter with a palette.
+     * Create a new ASCII renderer with a palette and a
+     * sampling parameters.
      *
      * @param palette the palette to use when rendering
      * @param samplingParams the image sampling parameters
@@ -50,8 +50,14 @@ public class AsciiRenderer {
         this.samplingParams = samplingParams;
     }
 
-    public void updateProgress(int newProgress) {
-        if(getProgressWatcher() != null) {
+    /**
+     * Call the progress watcher, if it exists every time the progress
+     * has been updated.
+     * 
+     * @param newProgress 
+     */
+    private void updateProgress(int newProgress) {
+        if (getProgressWatcher() != null) {
             getProgressWatcher().update(newProgress);
         }
     }
@@ -66,7 +72,7 @@ public class AsciiRenderer {
      *
      * @return the pixel's luminosity
      */
-    public int getLuminosityXY(BufferedImage img, int x, int y, int max) {
+    public int getLuminosityAt(BufferedImage img, int x, int y, int max) {
         int color = img.getRGB(x, y);
         return getLuminosity(new Color(color), max);
     }
@@ -136,7 +142,7 @@ public class AsciiRenderer {
     public String renderText(BufferedImage sourceImage) {
         var sampledImage = (getSamplingParams() != null)
                 ? ImageResizer.getSample(sourceImage, getSamplingParams()) : sourceImage;
-        
+
         Graphics2D g = sampledImage.createGraphics();
         int ratio = getPalette().getFontRatio(g);
         String ascii = "";
@@ -289,4 +295,5 @@ public class AsciiRenderer {
     public void setProgressWatcher(ProgressWatcher progressWatcher) {
         this.progressWatcher = progressWatcher;
     }
+
 }
