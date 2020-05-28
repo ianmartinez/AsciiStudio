@@ -19,7 +19,6 @@ package asciistudio;
 import javax.swing.UIManager;
 import java.awt.Desktop;
 import java.awt.desktop.AboutEvent;
-import java.awt.desktop.AboutHandler;
 
 /**
  * Main class

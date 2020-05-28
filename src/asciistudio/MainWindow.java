@@ -242,7 +242,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainSplitter.setResizeWeight(1.0);
         mainSplitter.setDoubleBuffered(true);
 
-        settingsImageSplitter.setDividerLocation(120);
+        settingsImageSplitter.setDividerLocation(105);
         settingsImageSplitter.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         currentPaletteContainer.setMinimumSize(new java.awt.Dimension(550, 55));
@@ -433,7 +433,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         progressPanelLayout.setVerticalGroup(
             progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 302, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
