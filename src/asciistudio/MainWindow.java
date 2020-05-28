@@ -124,9 +124,10 @@ public class MainWindow extends javax.swing.JFrame {
             sampleWidthLabel.setText(samplingParams.getSampleWidth() + " px");
             sampleHeightLabel.setText(samplingParams.getSampleHeight() + " px");
 
+            // Create a renderer for the preview and run it in the background
             var renderer = new AsciiRenderer(currentPalette.getPalette(), samplingParams);
-            var renderTask = new PreviewRenderer(renderer, sourceCurrentFrame, this);
-
+            var renderTask = new BackgroundRenderer(renderer, RenderType.PREVIEW, this);
+            renderTask.setSourceImage(sourceCurrentFrame);
             renderTask.useRenderUI(true);
             renderTask.execute();
         }

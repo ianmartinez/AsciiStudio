@@ -17,32 +17,49 @@
 package asciistudio;
 
 import asciilib.AsciiRenderer;
+import giflib.Gif;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import javax.swing.SwingWorker;
 
 /**
- * Handle the rendering of the preview image in the background
+ * Handle the rendering of ASCII art in the background
  * and updating the main window when it is done.
  *
  * @author Ian Martinez
  */
-public class PreviewRenderer extends SwingWorker<Void, Integer> {
+public class BackgroundRenderer extends SwingWorker<Void, Integer> {
     private final AsciiRenderer renderer; // The renderer
-    private final BufferedImage sourceImage; // The image to use for rendering
+    private final RenderType renderType; // The type of rendering to do
     private final MainWindow mainWindow; // The main window to update
-    private final int max; // The max progress value
+    
+    private BufferedImage sourceImage; // The image to use for rendering, if renderType != GIF
+    private Gif sourceGif; // The GIF to use for rendering, if renderType == GIF
+    private String outputFile; // The output file, if applicable
+    private int max; // The max progress value
     
     private BufferedImage previewImage;
 
-    public PreviewRenderer(AsciiRenderer renderer, BufferedImage sourceImage,
+    public BackgroundRenderer(AsciiRenderer renderer, 
+            RenderType renderType,
             MainWindow mainWindow) {
         this.renderer = renderer;
-        this.sourceImage = sourceImage;
+        this.renderType = renderType;
         this.mainWindow = mainWindow;
-
-        max = (int) renderer.getSamplingParams().getSampleHeight();
+    }
+    
+    /**
+     * @return the max progress value
+     */
+    private int getMax() {
+        var rows = renderer.getSamplingParams().getSampleHeight();
+        
+        if(renderType == RenderType.GIF) {
+            return rows * getSourceGif().getFrameCount();
+        } else {
+            return rows;
+        }            
     }
 
     public void useRenderUI(boolean renderUI) {
@@ -70,7 +87,7 @@ public class PreviewRenderer extends SwingWorker<Void, Integer> {
             publish(progress);
         });
 
-        previewImage = renderer.renderImage(sourceImage);
+        previewImage = renderer.renderImage(getSourceImage());
 
         renderer.setProgressWatcher(null);
 
@@ -82,12 +99,60 @@ public class PreviewRenderer extends SwingWorker<Void, Integer> {
         try {
             get();
             mainWindow.progressPanel.setProgress(100);
-            mainWindow.renderWidthLabel.setText(previewImage.getWidth() + " px");
-            mainWindow.renderHeightLabel.setText(previewImage.getHeight() + " px");
-            mainWindow.renderedImageView.setIcon(new StretchIcon(previewImage));
+            
+            if(renderType == RenderType.PREVIEW) {
+                mainWindow.renderWidthLabel.setText(previewImage.getWidth() + " px");
+                mainWindow.renderHeightLabel.setText(previewImage.getHeight() + " px");                
+                mainWindow.renderedImageView.setIcon(new StretchIcon(previewImage));
+            }
+            
             useRenderUI(false);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * @return the outputFile
+     */
+    public String getOutputFile() {
+        return outputFile;
+    }
+
+    /**
+     * @param outputFile the outputFile to set
+     */
+    public void setOutputFile(String outputFile) {
+        this.outputFile = outputFile;
+    }
+
+    /**
+     * @return the sourceImage
+     */
+    public BufferedImage getSourceImage() {
+        return sourceImage;
+    }
+
+    /**
+     * @param sourceImage the sourceImage to set
+     */
+    public void setSourceImage(BufferedImage sourceImage) {
+        this.sourceImage = sourceImage;
+        this.max = getMax();
+    }
+
+    /**
+     * @return the sourceGif
+     */
+    public Gif getSourceGif() {
+        return sourceGif;
+    }
+
+    /**
+     * @param sourceGif the sourceGif to set
+     */
+    public void setSourceGif(Gif sourceGif) {
+        this.sourceGif = sourceGif;
+        this.max = getMax();
     }
 }
