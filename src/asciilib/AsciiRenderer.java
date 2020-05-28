@@ -152,6 +152,7 @@ public class AsciiRenderer {
 
         for (int y = 0; y < sampledImage.getHeight(); y += ratio) {
             ascii += renderTextRow(sampledImage, y) + "\r\n";
+            updateProgress(y, sampledImage.getHeight());
         }
 
         return ascii;
