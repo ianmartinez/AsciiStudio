@@ -887,14 +887,17 @@ public class MainWindow extends javax.swing.JFrame {
 
                 var ext = FileUtil.getExt(outputPath);
                 if (isGif && ext.equals("gif")) { // Animated GIF                    
-                    renderer.saveGif(outputPath, sourceGif);
+                    var renderTask = new BackgroundRenderer(renderer, RenderType.GIF, this);
+                    renderTask.setSourceGif(sourceGif);
+                    renderTask.useRenderUI(true);
+                    renderTask.setOutputFile(outputPath);
+                    renderTask.execute();
                 } else { // Still image
                     refreshCurrentFrame();
                     ImageIO.write(renderedCurrentFrame, ext, new File(outputPath));
                 }
 
                 exportDirectoryChanged = !exportImageDialog.getCurrentDirectory().equals(currentDirectory);
-                openProcess(outputPath);
             }
         } catch (HeadlessException | IOException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting " + exportImageDialog.getSelectedFile().getAbsolutePath());
