@@ -21,8 +21,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
@@ -39,8 +43,7 @@ public class AsciiRenderer {
     private ProgressWatcher progressWatcher;
 
     /**
-     * Create a new ASCII renderer with a palette and a
-     * sampling parameters.
+     * Create a new ASCII renderer with a palette and a sampling parameters.
      *
      * @param palette the palette to use when rendering
      * @param samplingParams the image sampling parameters
@@ -51,10 +54,10 @@ public class AsciiRenderer {
     }
 
     /**
-     * Call the progress watcher, if it exists every time the progress
-     * has been updated.
-     * 
-     * @param newProgress 
+     * Call the progress watcher, if it exists every time the progress has been
+     * updated.
+     *
+     * @param newProgress
      */
     private void updateProgress(int newProgress) {
         if (getProgressWatcher() != null) {
@@ -231,17 +234,56 @@ public class AsciiRenderer {
     }
 
     /**
-     * Render a still image and save it to a file.
+     * Render an ASCII art GIF derived from another GIF.
      *
+     * @param sourceGif the GIF to derive the pixel data from
+     *
+     * @return the rendered ASCII art GIF
+     */
+    public Gif renderGif(Gif sourceGif) {
+        var renderedGif = new Gif(sourceGif);
+
+        for (int i = 0; i < sourceGif.getFrameCount(); i++) {
+            phrasePos = 0;
+            var currentFrame = sourceGif.getFrameImage(i);
+            var sampledFrame = (getSamplingParams() != null)
+                    ? ImageResizer.getSample(currentFrame, getSamplingParams()) : currentFrame;
+            var renderedFrame = renderImage(sampledFrame);
+
+            renderedGif.setFrameImage(i, renderedFrame);
+        }
+
+        return renderedGif;
+    }
+
+    /**
+     * Render ASCII art as text and save it to a file.
+     * 
      * @param filePath the file to save to
-     * @param img the source image
+     * @param sourceImage the source image
      *
      * @throws IOException if there was an error writing the file
      */
-    public void saveImage(String filePath, BufferedImage img) throws IOException {
+    public void saveText(String filePath, BufferedImage sourceImage) throws IOException {
+        var renderedText = renderText(sourceImage);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(renderedText);
+        }
+    }
+
+    /**
+     * Render a still image and save it to a file.
+     *
+     * @param filePath the file to save to
+     * @param sourceImage the source image
+     *
+     * @throws IOException if there was an error writing the file
+     */
+    public void saveImage(String filePath, BufferedImage sourceImage) throws IOException {
         var outFile = new File(filePath);
-        var render = renderImage(img);
-        ImageIO.write(render, "gif", outFile);
+        var render = renderImage(sourceImage);
+        ImageIO.write(render, FileUtil.getExt(filePath, "png"), outFile);
     }
 
     /**
@@ -253,19 +295,8 @@ public class AsciiRenderer {
      * @throws IOException if there was an error writing the file
      */
     public void saveGif(String filePath, Gif sourceGif) throws IOException {
-        var exportedGif = new Gif(sourceGif);
-
-        for (int i = 0; i < sourceGif.getFrameCount(); i++) {
-            phrasePos = 0;
-            var currentFrame = sourceGif.getFrameImage(i);
-            var sampledFrame = (getSamplingParams() != null)
-                    ? ImageResizer.getSample(currentFrame, getSamplingParams()) : currentFrame;
-            var renderedFrame = renderImage(sampledFrame);
-
-            exportedGif.setFrameImage(i, renderedFrame);
-        }
-
-        exportedGif.save(filePath);
+        var renderedGif = renderGif(sourceGif);
+        renderedGif.save(filePath);
     }
 
     /**

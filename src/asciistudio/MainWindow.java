@@ -19,6 +19,7 @@ package asciistudio;
 import asciilib.AsciiRenderer;
 import asciilib.ImageSamplingParams;
 import asciilib.Palette;
+import asciilib.FileUtil;
 import giflib.Gif;
 import java.awt.Desktop;
 import java.awt.HeadlessException;
@@ -89,20 +90,6 @@ public class MainWindow extends javax.swing.JFrame {
         // Hide tooltips
         originalImageView.setToolTipText(null);
         renderedImageView.setToolTipText(null);
-    }
-
-    private String getExt(String path) {
-        int dot = path.lastIndexOf(".");
-        return (dot == -1) ? "" : path.substring(dot + 1).toLowerCase();
-    }
-
-    public String removeExt(String path) {
-        if (path.equals("")) {
-            return "";
-        }
-
-        int dot = path.lastIndexOf(".");
-        return (dot == -1) ? path : path.substring(0, dot);
     }
 
     private void refreshSampleParams() {
@@ -704,7 +691,7 @@ public class MainWindow extends javax.swing.JFrame {
             var importedPath = importImageDialog.getSelectedFile().getAbsolutePath();
 
             try {
-                var importingGif = getExt(importedPath).equals("gif");
+                var importingGif = FileUtil.getExt(importedPath).equals("gif");
 
                 if (importingGif) { // GIF
                     var importedGif = new Gif(importedPath);
@@ -838,7 +825,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
 
             if (!sourceImagePath.equals("")) {
-                exportTextDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII.txt"));
+                exportTextDialog.setSelectedFile(new File(FileUtil.removeExt(sourceImagePath) + " ASCII.txt"));
             }
 
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -882,7 +869,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
 
             if (!sourceImagePath.equals("")) {
-                exportImageDialog.setSelectedFile(new File(removeExt(sourceImagePath) + " ASCII"));
+                exportImageDialog.setSelectedFile(new File(FileUtil.removeExt(sourceImagePath) + " ASCII"));
             }
 
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -898,7 +885,7 @@ public class MainWindow extends javax.swing.JFrame {
                     }
                 }
 
-                var ext = getExt(outputPath);
+                var ext = FileUtil.getExt(outputPath);
                 if (isGif && ext.equals("gif")) { // Animated GIF                    
                     renderer.saveGif(outputPath, sourceGif);
                 } else { // Still image
