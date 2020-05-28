@@ -177,33 +177,34 @@ public class MainWindow extends javax.swing.JFrame {
         renderedImageView = new javax.swing.JLabel();
         sidebarScroll = new javax.swing.JScrollPane();
         sidebarPanel = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        framesPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         frameCountLabel = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        widthPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         widthLabel = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        heightPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         heightLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        currentFramePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         frameSpinner = new javax.swing.JSpinner();
-        jPanel4 = new javax.swing.JPanel();
+        sampleRatioPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         sampleRatioSpinner = new javax.swing.JSpinner();
-        jPanel6 = new javax.swing.JPanel();
+        sampleWidthPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         sampleWidthLabel = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        sampleHeightPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         sampleHeightLabel = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        renderWidthPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         renderWidthLabel = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        renderHeightPanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         renderHeightLabel = new javax.swing.JLabel();
+        progressPanel = new javax.swing.JPanel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportImageButton = new javax.swing.JButton();
@@ -238,7 +239,7 @@ public class MainWindow extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 500));
 
         mainSplitter.setDividerLocation(700);
-        mainSplitter.setResizeWeight(0.85);
+        mainSplitter.setResizeWeight(1.0);
         mainSplitter.setDoubleBuffered(true);
 
         settingsImageSplitter.setDividerLocation(120);
@@ -282,148 +283,164 @@ public class MainWindow extends javax.swing.JFrame {
         sidebarPanelLayout.rowWeights = new double[] {-1.0, -1.0, -1.0};
         sidebarPanel.setLayout(sidebarPanelLayout);
 
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        framesPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel6.setText("Frames:");
-        jPanel5.add(jLabel6, java.awt.BorderLayout.WEST);
+        framesPanel.add(jLabel6, java.awt.BorderLayout.WEST);
 
         frameCountLabel.setText("0");
-        jPanel5.add(frameCountLabel, java.awt.BorderLayout.EAST);
+        framesPanel.add(frameCountLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel5, gridBagConstraints);
+        sidebarPanel.add(framesPanel, gridBagConstraints);
 
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        widthPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel3.setText("Width:");
-        jPanel2.add(jLabel3, java.awt.BorderLayout.WEST);
+        widthPanel.add(jLabel3, java.awt.BorderLayout.WEST);
 
         widthLabel.setText("0 px");
-        jPanel2.add(widthLabel, java.awt.BorderLayout.EAST);
+        widthPanel.add(widthLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel2, gridBagConstraints);
+        sidebarPanel.add(widthPanel, gridBagConstraints);
 
-        jPanel3.setLayout(new java.awt.BorderLayout());
+        heightPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel5.setText("Height:");
-        jPanel3.add(jLabel5, java.awt.BorderLayout.WEST);
+        heightPanel.add(jLabel5, java.awt.BorderLayout.WEST);
 
         heightLabel.setText("0 px");
-        jPanel3.add(heightLabel, java.awt.BorderLayout.EAST);
+        heightPanel.add(heightLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel3, gridBagConstraints);
+        sidebarPanel.add(heightPanel, gridBagConstraints);
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        currentFramePanel.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setText("Current Frame:");
-        jPanel1.add(jLabel1, java.awt.BorderLayout.WEST);
+        currentFramePanel.add(jLabel1, java.awt.BorderLayout.WEST);
         jLabel1.getAccessibleContext().setAccessibleName("Sample Size (%):");
 
         frameSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 0, 1));
         frameSpinner.setEnabled(false);
         frameSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
         frameSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
-        jPanel1.add(frameSpinner, java.awt.BorderLayout.EAST);
+        currentFramePanel.add(frameSpinner, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel1, gridBagConstraints);
+        sidebarPanel.add(currentFramePanel, gridBagConstraints);
 
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        sampleRatioPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel2.setText("Sample Ratio:");
-        jPanel4.add(jLabel2, java.awt.BorderLayout.WEST);
+        sampleRatioPanel.add(jLabel2, java.awt.BorderLayout.WEST);
 
         sampleRatioSpinner.setModel(new javax.swing.SpinnerNumberModel(10.0d, 1.0d, 100.0d, 1.0d));
         sampleRatioSpinner.setEnabled(false);
         sampleRatioSpinner.setMinimumSize(new java.awt.Dimension(40, 26));
         sampleRatioSpinner.setPreferredSize(new java.awt.Dimension(50, 26));
-        jPanel4.add(sampleRatioSpinner, java.awt.BorderLayout.EAST);
+        sampleRatioPanel.add(sampleRatioSpinner, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel4, gridBagConstraints);
+        sidebarPanel.add(sampleRatioPanel, gridBagConstraints);
 
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        sampleWidthPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel4.setText("Sample Width:");
-        jPanel6.add(jLabel4, java.awt.BorderLayout.WEST);
+        sampleWidthPanel.add(jLabel4, java.awt.BorderLayout.WEST);
 
         sampleWidthLabel.setText("0 px");
-        jPanel6.add(sampleWidthLabel, java.awt.BorderLayout.EAST);
+        sampleWidthPanel.add(sampleWidthLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel6, gridBagConstraints);
+        sidebarPanel.add(sampleWidthPanel, gridBagConstraints);
 
-        jPanel7.setLayout(new java.awt.BorderLayout());
+        sampleHeightPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel7.setText("Sample Height:");
-        jPanel7.add(jLabel7, java.awt.BorderLayout.WEST);
+        sampleHeightPanel.add(jLabel7, java.awt.BorderLayout.WEST);
 
         sampleHeightLabel.setText("0 px");
-        jPanel7.add(sampleHeightLabel, java.awt.BorderLayout.EAST);
+        sampleHeightPanel.add(sampleHeightLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel7, gridBagConstraints);
+        sidebarPanel.add(sampleHeightPanel, gridBagConstraints);
 
-        jPanel9.setLayout(new java.awt.BorderLayout());
+        renderWidthPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel9.setText("Render Width:");
-        jPanel9.add(jLabel9, java.awt.BorderLayout.WEST);
+        renderWidthPanel.add(jLabel9, java.awt.BorderLayout.WEST);
 
         renderWidthLabel.setText("0 px");
-        jPanel9.add(renderWidthLabel, java.awt.BorderLayout.EAST);
+        renderWidthPanel.add(renderWidthLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel9, gridBagConstraints);
+        sidebarPanel.add(renderWidthPanel, gridBagConstraints);
 
-        jPanel8.setLayout(new java.awt.BorderLayout());
+        renderHeightPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel8.setText("Render Height:");
-        jPanel8.add(jLabel8, java.awt.BorderLayout.WEST);
+        renderHeightPanel.add(jLabel8, java.awt.BorderLayout.WEST);
 
         renderHeightLabel.setText("0 px");
-        jPanel8.add(renderHeightLabel, java.awt.BorderLayout.EAST);
+        renderHeightPanel.add(renderHeightLabel, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        sidebarPanel.add(jPanel8, gridBagConstraints);
+        sidebarPanel.add(renderHeightPanel, gridBagConstraints);
+
+        javax.swing.GroupLayout progressPanelLayout = new javax.swing.GroupLayout(progressPanel);
+        progressPanel.setLayout(progressPanelLayout);
+        progressPanelLayout.setHorizontalGroup(
+            progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 167, Short.MAX_VALUE)
+        );
+        progressPanelLayout.setVerticalGroup(
+            progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 302, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 1.0;
+        sidebarPanel.add(progressPanel, gridBagConstraints);
 
         sidebarScroll.setViewportView(sidebarPanel);
 
@@ -654,7 +671,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(mainToolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+                .addComponent(mainSplitter)
                 .addGap(0, 0, 0))
         );
 
@@ -907,6 +924,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;
+    protected javax.swing.JPanel currentFramePanel;
     protected asciicomponent.PalettePanel currentPalette;
     protected javax.swing.JPanel currentPaletteContainer;
     protected javax.swing.JMenuItem exitMenuItem;
@@ -919,7 +937,9 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenu fileMenu;
     protected javax.swing.JLabel frameCountLabel;
     protected javax.swing.JSpinner frameSpinner;
+    protected javax.swing.JPanel framesPanel;
     protected javax.swing.JLabel heightLabel;
+    protected javax.swing.JPanel heightPanel;
     protected javax.swing.JMenu helpMenu;
     protected javax.swing.JButton importButton;
     protected javax.swing.JMenuItem importMenuItem;
@@ -937,15 +957,6 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JLabel jLabel8;
     protected javax.swing.JLabel jLabel9;
     protected javax.swing.JMenu jMenu1;
-    protected javax.swing.JPanel jPanel1;
-    protected javax.swing.JPanel jPanel2;
-    protected javax.swing.JPanel jPanel3;
-    protected javax.swing.JPanel jPanel4;
-    protected javax.swing.JPanel jPanel5;
-    protected javax.swing.JPanel jPanel6;
-    protected javax.swing.JPanel jPanel7;
-    protected javax.swing.JPanel jPanel8;
-    protected javax.swing.JPanel jPanel9;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
     protected javax.swing.JPopupMenu.Separator jSeparator4;
     protected javax.swing.JSplitPane mainSplitter;
@@ -953,19 +964,26 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JLabel originalImageView;
     protected javax.swing.JMenu paletteMenu;
+    protected javax.swing.JPanel progressPanel;
     protected javax.swing.JButton refreshButton;
     protected javax.swing.JMenuItem refreshMenuItem;
     protected javax.swing.JLabel renderHeightLabel;
+    protected javax.swing.JPanel renderHeightPanel;
     protected javax.swing.JLabel renderWidthLabel;
+    protected javax.swing.JPanel renderWidthPanel;
     protected javax.swing.JLabel renderedImageView;
     protected javax.swing.JButton resetPaletteButton;
     protected javax.swing.JMenuItem resetPaletteMenuItem;
     protected javax.swing.JLabel sampleHeightLabel;
+    protected javax.swing.JPanel sampleHeightPanel;
+    protected javax.swing.JPanel sampleRatioPanel;
     protected javax.swing.JSpinner sampleRatioSpinner;
     protected javax.swing.JLabel sampleWidthLabel;
+    protected javax.swing.JPanel sampleWidthPanel;
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
     protected javax.swing.JScrollPane sidebarScroll;
     protected javax.swing.JLabel widthLabel;
+    protected javax.swing.JPanel widthPanel;
     // End of variables declaration//GEN-END:variables
 }
