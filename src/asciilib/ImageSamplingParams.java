@@ -16,8 +16,6 @@
  */
 package asciilib;
 
-import java.awt.Dimension;
-
 /**
  * The parameters needed for an image sample.
  *
@@ -40,11 +38,11 @@ public class ImageSamplingParams {
         this.samplingRatio = largestFontDimension;
     }
     
-    public double getSampleHeight() {
+    public int getSampleHeight() {
         return (int)Math.ceil(originalHeight / getSamplingRatio() / getHeightRatio());        
     }
     
-    public double getSampleWidth() {
+    public int getSampleWidth() {
         return (int)Math.ceil(originalWidth / getSamplingRatio());
     }
 

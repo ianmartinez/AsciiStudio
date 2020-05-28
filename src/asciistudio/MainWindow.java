@@ -127,19 +127,16 @@ public class MainWindow extends javax.swing.JFrame {
     private void refreshPreview() {
         if (sourceCurrentFrame != null) {
             refreshRender();
-            sampleWidthLabel.setText(samplingParams.getSampleWidth() + "px");
-            sampleHeightLabel.setText(samplingParams.getSampleHeight() + "px");
+            sampleWidthLabel.setText(samplingParams.getSampleWidth() + " px");
+            sampleHeightLabel.setText(samplingParams.getSampleHeight() + " px");
             
             var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
             var renderTask = new PreviewRenderer(converter, 
                     sourceCurrentFrame, 
                     this);
             
-            renderTask.lockRefreshControls(true);
+            renderTask.useRenderUI(true);
             renderTask.execute();
-            /*renderedImageView.setIcon(new StretchIcon(renderedCurrentFrame));
-            renderWidthLabel.setText(renderedCurrentFrame.getWidth() + "px");
-            renderHeightLabel.setText(renderedCurrentFrame.getHeight() + "px");*/
         }
     }
 
@@ -1016,9 +1013,14 @@ class PreviewRenderer extends SwingWorker<Void, Integer> {
         max = (int) converter.getSamplingParams().getSampleHeight();
     }
     
-    public void lockRefreshControls(boolean locked) {
-        mainWindow.refreshButton.setEnabled(!locked);
-        mainWindow.refreshMenuItem.setEnabled(!locked);
+    public void useRenderUI(boolean renderUI) {
+        if(renderUI) {
+            mainWindow.progressPanel.setProgress(0);
+        }
+        
+        mainWindow.refreshButton.setEnabled(!renderUI);
+        mainWindow.refreshMenuItem.setEnabled(!renderUI);
+        
     }
 
     @Override
@@ -1045,10 +1047,10 @@ class PreviewRenderer extends SwingWorker<Void, Integer> {
         try {
             get();
             mainWindow.progressPanel.setProgress(100);
-            mainWindow.renderWidthLabel.setText(previewImage.getWidth() + "px");
-            mainWindow.renderHeightLabel.setText(previewImage.getHeight() + "px");
+            mainWindow.renderWidthLabel.setText(previewImage.getWidth() + " px");
+            mainWindow.renderHeightLabel.setText(previewImage.getHeight() + " px");
             mainWindow.renderedImageView.setIcon(new StretchIcon(previewImage));
-            lockRefreshControls(false);
+            useRenderUI(false);
             
             // Re-enable preview
         } catch (ExecutionException | InterruptedException e) {
