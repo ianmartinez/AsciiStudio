@@ -141,14 +141,6 @@ public class MainWindow extends javax.swing.JFrame {
         importButton.setEnabled(enable);
     }
 
-    public void openProcess(String process) {
-        try {
-            Desktop.getDesktop().open(new File(process));
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Error opening " + process + "!");
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -831,7 +823,6 @@ public class MainWindow extends javax.swing.JFrame {
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
                 var renderer = new AsciiRenderer(currentPalette.getPalette(), samplingParams);
-                var renderedText = renderer.renderText(sourceCurrentFrame);
                 var outputPath = exportTextDialog.getSelectedFile().getAbsolutePath();
 
                 // Add extension if it was not given
@@ -843,15 +834,17 @@ public class MainWindow extends javax.swing.JFrame {
                     }
                 }
 
-                try (var out = new PrintWriter(outputPath)) {
-                    out.println(renderedText);
-                }
+                // Render the text and save to file on a background thread
+                var renderTask = new BackgroundRenderer(renderer, RenderType.TEXT, this);
+                renderTask.setSourceImage(sourceCurrentFrame);
+                renderTask.useRenderUI(true);
+                renderTask.setOutputFile(outputPath);
+                renderTask.execute();
 
-                openProcess(outputPath);
                 exportDirectoryChanged = !exportTextDialog.getCurrentDirectory().equals(currentDirectory);
             }
 
-        } catch (HeadlessException | FileNotFoundException ex) {
+        } catch (HeadlessException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting " + exportTextDialog.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_exportTextMenuItemActionPerformed
@@ -884,7 +877,8 @@ public class MainWindow extends javax.swing.JFrame {
                         outputPath += "." + filter.getExtensions()[0];
                     }
                 }
-
+                
+                // Render the image and save to file on a background thread
                 var ext = FileUtil.getExt(outputPath);
                 if (isGif && ext.equals("gif")) { // Animated GIF                    
                     var renderTask = new BackgroundRenderer(renderer, RenderType.GIF, this);
