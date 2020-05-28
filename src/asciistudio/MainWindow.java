@@ -129,18 +129,18 @@ public class MainWindow extends javax.swing.JFrame {
             refreshRender();
             sampleWidthLabel.setText(samplingParams.getSampleWidth() + " px");
             sampleHeightLabel.setText(samplingParams.getSampleHeight() + " px");
-            
+
             var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
-            var renderTask = new PreviewRenderer(converter, 
-                    sourceCurrentFrame, 
+            var renderTask = new PreviewRenderer(converter,
+                    sourceCurrentFrame,
                     this);
-            
+
             renderTask.useRenderUI(true);
             renderTask.execute();
         }
     }
 
-    private void enableEditing(boolean enable) {
+    public void enableEditing(boolean enable) {
         // File
         exportImageMenuItem.setEnabled(enable);
         exportTextMenuItem.setEnabled(enable);
@@ -154,6 +154,11 @@ public class MainWindow extends javax.swing.JFrame {
         // Sidebar
         frameSpinner.setEnabled(enable);
         sampleRatioSpinner.setEnabled(enable);
+    }
+
+    public void enableImport(boolean enable) {
+        importMenuItem.setEnabled(enable);
+        importButton.setEnabled(enable);
     }
 
     public void openProcess(String process) {
@@ -1012,21 +1017,24 @@ class PreviewRenderer extends SwingWorker<Void, Integer> {
 
         max = (int) converter.getSamplingParams().getSampleHeight();
     }
-    
+
     public void useRenderUI(boolean renderUI) {
-        if(renderUI) {
+        if (renderUI) {
             mainWindow.progressPanel.setProgress(0);
+
+            mainWindow.enableImport(false);
+            mainWindow.enableEditing(false);
+        } else {
+            mainWindow.enableImport(true);
+            mainWindow.enableEditing(true);
         }
-        
-        mainWindow.refreshButton.setEnabled(!renderUI);
-        mainWindow.refreshMenuItem.setEnabled(!renderUI);
-        
     }
 
     @Override
     protected void process(List<Integer> chunks) {
         int i = chunks.get(chunks.size() - 1);
-        mainWindow.progressPanel.setProgress(Math.min(i, max), 0, max);
+        int val = chunks.get(chunks.size() - 1);
+        mainWindow.progressPanel.setProgress(val, 0, max);
     }
 
     @Override
@@ -1051,8 +1059,6 @@ class PreviewRenderer extends SwingWorker<Void, Integer> {
             mainWindow.renderHeightLabel.setText(previewImage.getHeight() + " px");
             mainWindow.renderedImageView.setIcon(new StretchIcon(previewImage));
             useRenderUI(false);
-            
-            // Re-enable preview
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }

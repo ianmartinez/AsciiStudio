@@ -36,7 +36,7 @@ public class ProgressPanel extends javax.swing.JPanel {
     }
 
     public void setProgress(int value, int min, int max) {
-        int percent = (int) (value / (double) (max - min)) * 100;
+        var percent = (int)((value / (double) (max - min)) * 100);
         
         if(percent != lastValue) {
             this.progressBar.setValue(percent);
