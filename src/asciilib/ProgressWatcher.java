@@ -17,9 +17,10 @@
 package asciilib;
 
 /**
+ * Watch the progress of an image render.
  *
  * @author Ian Martinez
  */
 public interface ProgressWatcher {
-    public void update(int currentProgress);
+    public void update(int progress, int rowCount, int frame);
 }

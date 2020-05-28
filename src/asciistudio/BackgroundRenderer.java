@@ -95,8 +95,9 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
 
     @Override
     protected Void doInBackground() throws Exception {
-        renderer.setProgressWatcher((int progress) -> {
-            publish(progress);
+        renderer.setProgressWatcher((int progress, int rowCount, int frame) -> {
+            var relativeProgress = (frame * rowCount) + progress;
+            publish(relativeProgress);
         });
 
         switch (renderType) {

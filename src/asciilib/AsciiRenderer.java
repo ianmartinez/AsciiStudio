@@ -23,10 +23,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
@@ -40,6 +38,7 @@ public class AsciiRenderer {
     private final Palette palette;
     private final ImageSamplingParams samplingParams;
     private int phrasePos = 0;
+    private int framePos = 0;
     private ProgressWatcher progressWatcher;
 
     /**
@@ -57,11 +56,12 @@ public class AsciiRenderer {
      * Call the progress watcher, if it exists every time the progress has been
      * updated.
      *
-     * @param newProgress
+     * @param progress the current progress
+     * @param rowCount the number of rows to process
      */
-    private void updateProgress(int newProgress) {
+    private void updateProgress(int progress, int rowCount) {
         if (getProgressWatcher() != null) {
-            getProgressWatcher().update(newProgress);
+            getProgressWatcher().update(progress, rowCount, framePos);
         }
     }
 
@@ -227,7 +227,7 @@ public class AsciiRenderer {
             charX = 0;
             charY += (int) dimensions.get(dimPos).getHeight();
             dimPos++;
-            updateProgress(y);
+            updateProgress(y, sampledImage.getHeight() - 1);
         }
 
         return renderImage;
@@ -242,9 +242,11 @@ public class AsciiRenderer {
      */
     public Gif renderGif(Gif sourceGif) {
         var renderedGif = new Gif(sourceGif);
-
+        framePos = 0;
+        
         for (int i = 0; i < sourceGif.getFrameCount(); i++) {
             phrasePos = 0;
+            framePos = i;
             var currentFrame = sourceGif.getFrameImage(i);
             var sampledFrame = (getSamplingParams() != null)
                     ? ImageResizer.getSample(currentFrame, getSamplingParams()) : currentFrame;
@@ -252,13 +254,15 @@ public class AsciiRenderer {
 
             renderedGif.setFrameImage(i, renderedFrame);
         }
+        
+        framePos = 0;
 
         return renderedGif;
     }
 
     /**
      * Render ASCII art as text and save it to a file.
-     * 
+     *
      * @param filePath the file to save to
      * @param sourceImage the source image
      *
