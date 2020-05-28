@@ -28,7 +28,7 @@ import javax.swing.SwingWorker;
  *
  * @author Ian Martinez
  */
-class PreviewRenderer extends SwingWorker<Void, Integer> {
+public class PreviewRenderer extends SwingWorker<Void, Integer> {
 
     AsciiConverter converter;
     BufferedImage sourceImage;
