@@ -31,7 +31,7 @@ import javax.imageio.ImageIO;
  *
  * @author Ian Martinez
  */
-public class AsciiConverter {
+public class AsciiRenderer {
 
     private final Palette palette;
     private final ImageSamplingParams samplingParams;
@@ -45,7 +45,7 @@ public class AsciiConverter {
      * @param palette the palette to use when rendering
      * @param samplingParams the image sampling parameters
      */
-    public AsciiConverter(Palette palette, ImageSamplingParams samplingParams) {
+    public AsciiRenderer(Palette palette, ImageSamplingParams samplingParams) {
         this.palette = palette;
         this.samplingParams = samplingParams;
     }

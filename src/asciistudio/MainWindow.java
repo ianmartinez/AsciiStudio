@@ -16,7 +16,7 @@
  */
 package asciistudio;
 
-import asciilib.AsciiConverter;
+import asciilib.AsciiRenderer;
 import asciilib.ImageSamplingParams;
 import asciilib.Palette;
 import giflib.Gif;
@@ -109,28 +109,23 @@ public class MainWindow extends javax.swing.JFrame {
         samplingParams.setSamplingRatio((double) sampleRatioSpinner.getValue());
     }
 
-    private void refreshRender() {
+    private void refreshCurrentFrame() {
         refreshSampleParams();
 
         if (isGif) {
             var frameSpinnerValue = (Integer) frameSpinner.getValue();
             sourceCurrentFrame = sourceGif.getFrameImage(frameSpinnerValue);
         }
-
-        var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
-        //renderedCurrentFrame = converter.renderImage(sourceCurrentFrame);
     }
 
     private void refreshPreview() {
         if (sourceCurrentFrame != null) {
-            refreshRender();
+            refreshCurrentFrame();
             sampleWidthLabel.setText(samplingParams.getSampleWidth() + " px");
             sampleHeightLabel.setText(samplingParams.getSampleHeight() + " px");
 
-            var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
-            var renderTask = new PreviewRenderer(converter,
-                    sourceCurrentFrame,
-                    this);
+            var renderer = new AsciiRenderer(currentPalette.getPalette(), samplingParams);
+            var renderTask = new PreviewRenderer(renderer, sourceCurrentFrame, this);
 
             renderTask.useRenderUI(true);
             renderTask.execute();
@@ -847,8 +842,8 @@ public class MainWindow extends javax.swing.JFrame {
 
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
-                var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
-                var renderedText = converter.renderText(sourceCurrentFrame);
+                var renderer = new AsciiRenderer(currentPalette.getPalette(), samplingParams);
+                var renderedText = renderer.renderText(sourceCurrentFrame);
                 var outputPath = exportTextDialog.getSelectedFile().getAbsolutePath();
 
                 // Add extension if it was not given
@@ -891,7 +886,7 @@ public class MainWindow extends javax.swing.JFrame {
 
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
-                var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
+                var renderer = new AsciiRenderer(currentPalette.getPalette(), samplingParams);
                 var outputPath = exportImageDialog.getSelectedFile().getAbsolutePath();
 
                 // Add extension if it was not given
@@ -904,9 +899,9 @@ public class MainWindow extends javax.swing.JFrame {
 
                 var ext = getExt(outputPath);
                 if (isGif && ext.equals("gif")) { // Animated GIF                    
-                    converter.saveGif(outputPath, sourceGif);
+                    renderer.saveGif(outputPath, sourceGif);
                 } else { // Still image
-                    refreshRender();
+                    refreshCurrentFrame();
                     ImageIO.write(renderedCurrentFrame, ext, new File(outputPath));
                 }
 

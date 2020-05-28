@@ -16,7 +16,7 @@
  */
 package asciistudio;
 
-import asciilib.AsciiConverter;
+import asciilib.AsciiRenderer;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -29,23 +29,20 @@ import javax.swing.SwingWorker;
  * @author Ian Martinez
  */
 public class PreviewRenderer extends SwingWorker<Void, Integer> {
+    private final AsciiRenderer renderer; // The renderer
+    private final BufferedImage sourceImage; // The image to use for rendering
+    private final MainWindow mainWindow; // The main window to update
+    private final int max; // The max progress value
+    
+    private BufferedImage previewImage;
 
-    AsciiConverter converter;
-    BufferedImage sourceImage;
-    BufferedImage previewImage;
-    MainWindow mainWindow;
-
-    int max;
-
-    public PreviewRenderer(AsciiConverter converter,
-            BufferedImage sourceImage,
+    public PreviewRenderer(AsciiRenderer renderer, BufferedImage sourceImage,
             MainWindow mainWindow) {
-
-        this.converter = converter;
+        this.renderer = renderer;
         this.sourceImage = sourceImage;
         this.mainWindow = mainWindow;
 
-        max = (int) converter.getSamplingParams().getSampleHeight();
+        max = (int) renderer.getSamplingParams().getSampleHeight();
     }
 
     public void useRenderUI(boolean renderUI) {
@@ -69,13 +66,13 @@ public class PreviewRenderer extends SwingWorker<Void, Integer> {
 
     @Override
     protected Void doInBackground() throws Exception {
-        converter.setProgressWatcher((int progress) -> {
+        renderer.setProgressWatcher((int progress) -> {
             publish(progress);
         });
 
-        previewImage = converter.renderImage(sourceImage);
+        previewImage = renderer.renderImage(sourceImage);
 
-        converter.setProgressWatcher(null);
+        renderer.setProgressWatcher(null);
 
         return null;
     }
