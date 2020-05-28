@@ -17,10 +17,12 @@
 package asciicomponent;
 
 /**
+ * UI for showing progress.
  *
  * @author Ian Martinez
  */
 public class ProgressPanel extends javax.swing.JPanel {
+    private int lastValue = -1;
 
     /**
      * Creates new form ProgressPanel
@@ -35,8 +37,16 @@ public class ProgressPanel extends javax.swing.JPanel {
 
     public void setProgress(int value, int min, int max) {
         int percent = (int) (value / (double) (max - min)) * 100;
-        this.progressBar.setValue(percent);
-        this.progressLabel.setText(percent + "%");
+        
+        if(percent != lastValue) {
+            this.progressBar.setValue(percent);
+            this.progressLabel.setText(percent + "%");        
+            lastValue = percent;
+        }
+    }
+    
+    public void setProgress(int value) {
+        this.setProgress(value, 0, 100);
     }
 
     /**

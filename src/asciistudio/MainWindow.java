@@ -16,6 +16,7 @@
  */
 package asciistudio;
 
+import asciicomponent.ProgressPanel;
 import asciilib.AsciiConverter;
 import asciilib.ImageResizer;
 import asciilib.ImageSamplingParams;
@@ -28,14 +29,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingWorker;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.bind.JAXBException;
 
 /**
+ * The main window.
  *
  * @author Ian Martinez
  */
@@ -990,4 +995,36 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JLabel widthLabel;
     protected javax.swing.JPanel widthPanel;
     // End of variables declaration//GEN-END:variables
+}
+
+
+class PreviewRenderer extends SwingWorker<Void, Integer> {
+        ProgressPanel progressPanel;
+        
+        public PreviewRenderer(ProgressPanel progressPanel) {
+            this.progressPanel = progressPanel;
+        }
+
+        @Override
+        protected void process(List<Integer> chunks) {
+            int i = chunks.get(chunks.size()-1);
+            progressPanel.setProgress(i); 
+        }
+
+        @Override
+        protected Void doInBackground() throws Exception {
+            
+            return null;
+        }
+
+        @Override
+        protected void done() {
+            try {
+                get();
+                progressPanel.setProgress(100);
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    
 }
