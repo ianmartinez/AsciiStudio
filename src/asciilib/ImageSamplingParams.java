@@ -22,61 +22,86 @@ package asciilib;
  * @author Ian Martinez
  */
 public class ImageSamplingParams {
+
     private final double originalWidth, originalHeight, fontWidth, fontHeight;
     private double samplingRatio;
-    
-    public ImageSamplingParams(double originalWidth, 
-                             double originalHeight,
-                             double fontWidth,
-                             double fontHeight) {
+
+    public ImageSamplingParams(double originalWidth,
+            double originalHeight,
+            double fontWidth,
+            double fontHeight) {
         this.originalWidth = originalWidth;
         this.originalHeight = originalHeight;
         this.fontWidth = fontWidth;
         this.fontHeight = fontHeight;
-        
-        var largestFontDimension = Math.ceil((fontHeight > fontWidth) ? fontHeight : fontWidth);        
+
+        var largestFontDimension = Math.ceil((fontHeight > fontWidth) ? fontHeight : fontWidth);
         this.samplingRatio = largestFontDimension;
-    }
-    
-    public int getSampleHeight() {
-        return (int)Math.ceil(originalHeight / getSamplingRatio() / getHeightRatio());        
-    }
-    
-    public int getSampleWidth() {
-        return (int)Math.ceil(originalWidth / getSamplingRatio());
     }
 
     /**
-     * @return the originalWidth
+     * Get the sample image's height.
+     *
+     * @return the height of the sample image
+     */
+    public int getSampleHeight() {
+        return (int) Math.ceil(originalHeight / getSamplingRatio() / getHeightRatio());
+    }
+
+    /**
+     * Get the sample image's width.
+     *
+     * @return the width of the sample image
+     */
+    public int getSampleWidth() {
+        return (int) Math.ceil(originalWidth / getSamplingRatio());
+    }
+
+    /**
+     * Get the original image's width.
+     *
+     * @return the width of the original image
      */
     public double getOriginalWidth() {
         return originalWidth;
     }
 
     /**
-     * @return the originalHeight
+     * Get the original image's height.
+     *
+     * @return the height of the original image
      */
     public double getOriginalHeight() {
         return originalHeight;
     }
 
     /**
-     * @return the fontWidth
+     * Get the font's width.
+     *
+     * @return the width of the font
      */
     public double getFontWidth() {
         return fontWidth;
     }
 
     /**
-     * @return the fontHeight
+     * Get the font's height.
+     *
+     * @return the height of the font
      */
     public double getFontHeight() {
         return fontHeight;
     }
-    
+
+    /**
+     * Get the ratio of the font height to the font width.
+     *
+     * @return the font ratio
+     */
     public int getHeightRatio() {
-        return Math.max(1, (int) Math.round(fontHeight/fontWidth));
+        return Math.max(1, (int) Math.round(fontHeight / fontWidth));
     }
+
     /**
      * @return the samplingRatio
      */
@@ -90,4 +115,5 @@ public class ImageSamplingParams {
     public void setSamplingRatio(double samplingRatio) {
         this.samplingRatio = samplingRatio;
     }
+    
 }

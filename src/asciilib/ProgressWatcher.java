@@ -22,5 +22,14 @@ package asciilib;
  * @author Ian Martinez
  */
 public interface ProgressWatcher {
+
+    /**
+     * Function to call to update the progress of a render.
+     *
+     * @param progress the new progress value
+     * @param rowCount the total row count
+     * @param frame the frame the renderer is rendering
+     */
     public void update(int progress, int rowCount, int frame);
+    
 }
