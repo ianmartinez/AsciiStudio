@@ -1,4 +1,4 @@
-Version 4.0 (May 28, 2020)
+Version 4.0 (May 29, 2020)
    • Updated to Java 13
    • Completely redesigned UI
    • A more native UI on macOS, including support for dark mode
