@@ -892,14 +892,17 @@ public class MainWindow extends javax.swing.JFrame {
                     renderTask.useRenderUI(true);
                     renderTask.setOutputFile(outputPath);
                     renderTask.execute();
-                } else { // Still image
-                    refreshCurrentFrame();
-                    ImageIO.write(renderedCurrentFrame, ext, new File(outputPath));
+                } else { // Still image                                       
+                    var renderTask = new BackgroundRenderer(renderer, RenderType.STILL_IMAGE, this);
+                    renderTask.setSourceImage(sourceCurrentFrame);
+                    renderTask.useRenderUI(true);
+                    renderTask.setOutputFile(outputPath);
+                    renderTask.execute();
                 }
 
                 exportDirectoryChanged = !exportImageDialog.getCurrentDirectory().equals(currentDirectory);
             }
-        } catch (HeadlessException | IOException ex) {
+        } catch (HeadlessException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting " + exportImageDialog.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_exportImageMenuItemActionPerformed
