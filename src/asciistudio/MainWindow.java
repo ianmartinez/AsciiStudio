@@ -18,7 +18,6 @@ package asciistudio;
 
 import asciicomponent.ProgressPanel;
 import asciilib.AsciiConverter;
-import asciilib.ImageResizer;
 import asciilib.ImageSamplingParams;
 import asciilib.Palette;
 import giflib.Gif;
@@ -50,7 +49,6 @@ public class MainWindow extends javax.swing.JFrame {
     public boolean isGif = false; // If the source image is a GIF or still image
     public Gif sourceGif; // The source image if it's a GIF
     public BufferedImage sourceCurrentFrame; // If a GIF, the current frame, if not the whole image
-    public BufferedImage sampledCurrentFrame; // The current frame at the sampling size
     public BufferedImage renderedCurrentFrame; // The current frame that has been rendered
     public ImageSamplingParams samplingParams; // The way to resize the image for rendering
 
@@ -123,16 +121,15 @@ public class MainWindow extends javax.swing.JFrame {
             sourceCurrentFrame = sourceGif.getFrameImage(frameSpinnerValue);
         }
 
-        sampledCurrentFrame = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
-        var converter = new AsciiConverter(currentPalette.getPalette());
-        renderedCurrentFrame = converter.renderImage(sampledCurrentFrame);
+        var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
+        renderedCurrentFrame = converter.renderImage(sourceCurrentFrame);
     }
 
     private void refreshPreview() {
         if (sourceCurrentFrame != null) {
             refreshRender();
-            sampleWidthLabel.setText(sampledCurrentFrame.getWidth() + "px");
-            sampleHeightLabel.setText(sampledCurrentFrame.getHeight() + "px");
+            sampleWidthLabel.setText(samplingParams.getSampleWidth() + "px");
+            sampleHeightLabel.setText(samplingParams.getSampleHeight() + "px");
             renderedImageView.setIcon(new StretchIcon(renderedCurrentFrame));
             renderWidthLabel.setText(renderedCurrentFrame.getWidth() + "px");
             renderHeightLabel.setText(renderedCurrentFrame.getHeight() + "px");
@@ -844,9 +841,8 @@ public class MainWindow extends javax.swing.JFrame {
 
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
-                var converter = new AsciiConverter(currentPalette.getPalette());
-                var exportSample = ImageResizer.getSample(sourceCurrentFrame, samplingParams);
-                var renderedText = converter.renderText(exportSample);
+                var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
+                var renderedText = converter.renderText(sourceCurrentFrame);
                 var outputPath = exportTextDialog.getSelectedFile().getAbsolutePath();
 
                 // Add extension if it was not given
@@ -889,29 +885,20 @@ public class MainWindow extends javax.swing.JFrame {
 
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
-                var converter = new AsciiConverter(currentPalette.getPalette());
+                var converter = new AsciiConverter(currentPalette.getPalette(), samplingParams);
                 var outputPath = exportImageDialog.getSelectedFile().getAbsolutePath();
 
                 // Add extension if it was not given
                 if (!outputPath.contains(".")) {
-                    var filter = (FileNameExtensionFilter) exportImageDialog.getFileFilter();
-
+                    var filter = (FileNameExtensionFilter) exportImageDialog.getFileFilter();                    
                     if (filter != null) {
                         outputPath += "." + filter.getExtensions()[0];
                     }
                 }
 
                 var ext = getExt(outputPath);
-                if (isGif && ext.equals("gif")) { // Animated GIF
-                    var exportedGif = new Gif(sourceGif);
-                    for (int i = 0; i < sourceGif.getFrameCount(); i++) {
-                        converter.setPhrasePos(0);
-                        var sampledFrame = ImageResizer.getSample(sourceGif.getFrameImage(i), samplingParams);
-                        var renderedFrame = converter.renderImage(sampledFrame);
-                        exportedGif.setFrameImage(i, renderedFrame);
-                    }
-
-                    exportedGif.save(outputPath);
+                if (isGif && ext.equals("gif")) { // Animated GIF                    
+                    converter.saveGif(outputPath, sourceGif);
                 } else { // Still image
                     refreshRender();
                     ImageIO.write(renderedCurrentFrame, ext, new File(outputPath));

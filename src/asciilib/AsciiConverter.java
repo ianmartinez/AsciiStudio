@@ -32,31 +32,35 @@ import javax.imageio.ImageIO;
  * @author Ian Martinez
  */
 public class AsciiConverter {
+
     private final Palette palette;
+    private final ImageSamplingParams samplingParams;
     private int phrasePos = 0;
     private int pixelPos = 0;
 
     /**
      * Create a new ASCII converter with a palette.
-     * 
+     *
      * @param palette the palette to use when rendering
+     * @param samplingParams the image sampling parameters
      */
-    public AsciiConverter(Palette palette) {
+    public AsciiConverter(Palette palette, ImageSamplingParams samplingParams) {
         this.palette = palette;
+        this.samplingParams = samplingParams;
     }
-    
+
     public void updateProgress(int newProgress) {
 
     }
 
     /**
      * Get the luminosity of a pixel in an image.
-     * 
+     *
      * @param img the image
      * @param x the x position of the pixel
      * @param y the y position of the pixel
      * @param max the max luminosity
-     * 
+     *
      * @return the pixel's luminosity
      */
     public int getLuminosityXY(BufferedImage img, int x, int y, int max) {
@@ -66,10 +70,10 @@ public class AsciiConverter {
 
     /**
      * Get the luminosity of a color.
-     * 
-     * @param color the color 
+     *
+     * @param color the color
      * @param max the max luminosity
-     * 
+     *
      * @return the color's luminosity
      */
     public int getLuminosity(Color color, int max) {
@@ -83,9 +87,9 @@ public class AsciiConverter {
 
     /**
      * Get the corresponding weight to a color.
-     * 
+     *
      * @param color the color
-     * 
+     *
      * @return the weight for the color
      */
     public String getWeight(Color color) {
@@ -95,22 +99,22 @@ public class AsciiConverter {
 
     /**
      * Render a row of text from a row of pixels in an image.
-     * 
+     *
      * @param img the image
      * @param y the y position of the row of pixels
-     * 
+     *
      * @return the rendered text
      */
-    public String renderTextRow(BufferedImage img, int y) {
+    private String renderTextRow(BufferedImage img, int y) {
         String val = "";
         for (int x = 0; x < img.getWidth(); x++) {
             if (palette.isUsingPhrase()) {
-                if (getPhrasePos() >= palette.getWeightCount()) {
-                    setPhrasePos(0);
+                if (phrasePos >= palette.getWeightCount()) {
+                    phrasePos = 0;
                 }
 
-                val += palette.getWeight(getPhrasePos());
-                setPhrasePos(getPhrasePos() + 1);
+                val += palette.getWeight(phrasePos);
+                phrasePos++;
             } else {
                 val += getWeight(new Color(img.getRGB(x, y)));
             }
@@ -121,18 +125,21 @@ public class AsciiConverter {
 
     /**
      * Render ASCII art text derived from an image.
-     * 
-     * @param img the image to derive the pixel data from
-     * 
+     *
+     * @param sourceImage the image to derive the pixel data from
+     *
      * @return the ASCII art text
      */
-    public String renderText(BufferedImage img) {
-        Graphics2D g = img.createGraphics();
+    public String renderText(BufferedImage sourceImage) {
+        var sampledImage = (samplingParams != null)
+                ? ImageResizer.getSample(sourceImage, samplingParams) : sourceImage;
+        
+        Graphics2D g = sampledImage.createGraphics();
         int ratio = palette.getFontRatio(g);
         String ascii = "";
 
-        for (int y = 0; y < img.getHeight(); y += ratio) {
-            ascii += renderTextRow(img, y) + "\r\n";
+        for (int y = 0; y < sampledImage.getHeight(); y += ratio) {
+            ascii += renderTextRow(sampledImage, y) + "\r\n";
         }
 
         return ascii;
@@ -140,19 +147,22 @@ public class AsciiConverter {
 
     /**
      * Render an ASCII art image derived from another image.
-     * 
-     * @param img the image to derive the pixel data from
-     * 
+     *
+     * @param sourceImage the image to derive the pixel data from
+     *
      * @return the rendered ASCII art image
      */
-    public BufferedImage renderImage(BufferedImage img) {
-        var sourceGraphics = img.createGraphics();
+    public BufferedImage renderImage(BufferedImage sourceImage) {
+        var sampledImage = (samplingParams != null)
+                ? ImageResizer.getSample(sourceImage, samplingParams) : sourceImage;
+
+        var sourceGraphics = sampledImage.createGraphics();
         int ratio = palette.getFontRatio(sourceGraphics);
 
         // Measure dimensions line by line
         var dimensions = new ArrayList<Dimension>();
-        for (int y = 0; y < img.getHeight(); y += ratio) {
-            String line = renderTextRow(img, y);
+        for (int y = 0; y < sampledImage.getHeight(); y += ratio) {
+            String line = renderTextRow(sampledImage, y);
             dimensions.add(palette.getStringDimensions(sourceGraphics, line));
         }
 
@@ -173,19 +183,19 @@ public class AsciiConverter {
         // Set background color
         renderGraphics.setColor(palette.getBackgroundColor());
         renderGraphics.fillRect(0, 0, renderImage.getWidth(), renderImage.getHeight());
-        for (int y = 0; y < img.getHeight(); y += ratio) {
-            for (int x = 0; x < img.getWidth(); x++) {
-                Color pixelColor = new Color(img.getRGB(x, y));
+        for (int y = 0; y < sampledImage.getHeight(); y += ratio) {
+            for (int x = 0; x < sampledImage.getWidth(); x++) {
+                Color pixelColor = new Color(sampledImage.getRGB(x, y));
 
                 // Get string associated with the pixel
                 String str;
                 if (palette.isUsingPhrase()) {
-                    if (getPhrasePos() >= palette.getWeightCount()) {
-                        setPhrasePos(0);
+                    if (phrasePos >= palette.getWeightCount()) {
+                        phrasePos = 0;
                     }
 
-                    str = palette.getWeight(getPhrasePos());
-                    setPhrasePos(getPhrasePos() + 1);
+                    str = palette.getWeight(phrasePos);
+                    phrasePos++;
                 } else {
                     str = getWeight(pixelColor);
                 }
@@ -202,7 +212,7 @@ public class AsciiConverter {
                 charX += palette.getStringWidth(renderGraphics, str);
                 updateProgress(++pixelPos);
             }
-            
+
             charX = 0;
             charY += (int) dimensions.get(dimPos).getHeight();
             dimPos++;
@@ -213,48 +223,39 @@ public class AsciiConverter {
 
     /**
      * Render a still image and save it to a file.
-     * 
+     *
      * @param filePath the file to save to
      * @param img the source image
-     * 
+     *
      * @throws IOException if there was an error writing the file
      */
     public void saveImage(String filePath, BufferedImage img) throws IOException {
-        File outFile = new File(filePath);
-        BufferedImage render = renderImage(img);
+        var outFile = new File(filePath);
+        var render = renderImage(img);
         ImageIO.write(render, "gif", outFile);
     }
 
     /**
      * Render a GIF and save it to a file.
-     * 
+     *
      * @param filePath the file to save to
-     * @param gif the source GIF
-     * 
+     * @param sourceGif the source GIF
+     *
      * @throws IOException if there was an error writing the file
      */
-    public void saveGif(String filePath, Gif gif) throws IOException {
-        var convertedGif = new Gif(gif);
-        
-        for (var i = 0; i < gif.getFrameCount(); i++) {
-            var convertedFrame = renderImage(gif.getFrameImage(i));
-            gif.setFrameImage(i, convertedFrame);
+    public void saveGif(String filePath, Gif sourceGif) throws IOException {
+        var exportedGif = new Gif(sourceGif);
+
+        for (int i = 0; i < sourceGif.getFrameCount(); i++) {
+            phrasePos = 0;
+            var currentFrame = sourceGif.getFrameImage(i);
+            var sampledFrame = (samplingParams != null)
+                    ? ImageResizer.getSample(currentFrame, samplingParams) : currentFrame;
+            var renderedFrame = renderImage(sampledFrame);
+
+            exportedGif.setFrameImage(i, renderedFrame);
         }
-        
-        convertedGif.save(filePath);
-    }
 
-    /**
-     * @return the phrasePos
-     */
-    public int getPhrasePos() {
-        return phrasePos;
-    }
-
-    /**
-     * @param phrasePos the phrasePos to set
-     */
-    public void setPhrasePos(int phrasePos) {
-        this.phrasePos = phrasePos;
+        exportedGif.save(filePath);
     }
 }

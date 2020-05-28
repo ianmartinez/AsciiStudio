@@ -73,5 +73,4 @@ public class RenderProgress {
     public void setCurrentRow(int currentRow) {
         this.currentRow = currentRow;
     }
-    
 }
