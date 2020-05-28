@@ -21,6 +21,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
+ * Renders a given color as the background of a panel.
  *
  * @author Ian Martinez
  */

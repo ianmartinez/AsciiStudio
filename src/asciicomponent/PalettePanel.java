@@ -162,8 +162,8 @@ public class PalettePanel extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        paletteTabs = new javax.swing.JTabbedPane();
+        colorsTab = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         backgroundColorButton = new javax.swing.JButton();
@@ -173,14 +173,14 @@ public class PalettePanel extends javax.swing.JPanel {
         overrideImageCheckbox = new javax.swing.JCheckBox();
         fontColorPanel = new asciicomponent.ColorPanel();
         fontColorButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        fontTab = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         fontFamiliesComboBox = new javax.swing.JComboBox<>();
         fontSizeSpinner = new javax.swing.JSpinner();
         fontBoldCheckbox = new javax.swing.JCheckBox();
         fontItalicCheckbox = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
+        weightsPhraseTab = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         useWeightsRadioButton = new javax.swing.JRadioButton();
         usePhraseRadioButton = new javax.swing.JRadioButton();
@@ -192,7 +192,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
-        jPanel1.setLayout(flowLayout1);
+        colorsTab.setLayout(flowLayout1);
 
         jPanel7.setMinimumSize(new java.awt.Dimension(200, 45));
         jPanel7.setPreferredSize(new java.awt.Dimension(270, 30));
@@ -246,7 +246,7 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel7.add(backgroundColorPanel, gridBagConstraints);
 
-        jPanel1.add(jPanel7);
+        colorsTab.add(jPanel7);
 
         jPanel9.setMinimumSize(new java.awt.Dimension(200, 45));
         jPanel9.setPreferredSize(new java.awt.Dimension(340, 30));
@@ -302,11 +302,11 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel9.add(fontColorButton, gridBagConstraints);
 
-        jPanel1.add(jPanel9);
+        colorsTab.add(jPanel9);
 
-        jTabbedPane1.addTab("Colors", jPanel1);
+        paletteTabs.addTab("Colors", colorsTab);
 
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        fontTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jPanel12.setMinimumSize(new java.awt.Dimension(300, 45));
         jPanel12.setPreferredSize(new java.awt.Dimension(450, 30));
@@ -349,11 +349,11 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 3);
         jPanel12.add(fontItalicCheckbox, gridBagConstraints);
 
-        jPanel2.add(jPanel12);
+        fontTab.add(jPanel12);
 
-        jTabbedPane1.addTab("Font", jPanel2);
+        paletteTabs.addTab("Font", fontTab);
 
-        jPanel3.setLayout(new java.awt.GridLayout(0, 1, 5, 5));
+        weightsPhraseTab.setLayout(new java.awt.GridLayout(0, 1, 5, 5));
 
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -366,7 +366,7 @@ public class PalettePanel extends javax.swing.JPanel {
         usePhraseRadioButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
         jPanel4.add(usePhraseRadioButton);
 
-        jPanel3.add(jPanel4);
+        weightsPhraseTab.add(jPanel4);
 
         jPanel13.setMinimumSize(new java.awt.Dimension(600, 45));
         jPanel13.setPreferredSize(new java.awt.Dimension(520, 30));
@@ -391,11 +391,11 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel13.add(weightsPhraseValueTextField, gridBagConstraints);
 
-        jPanel3.add(jPanel13);
+        weightsPhraseTab.add(jPanel13);
 
-        jTabbedPane1.addTab("Weights/Phrase", jPanel3);
+        paletteTabs.addTab("Weights/Phrase", weightsPhraseTab);
 
-        add(jTabbedPane1);
+        add(paletteTabs);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
@@ -418,28 +418,28 @@ public class PalettePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;
     private asciicomponent.ColorPanel backgroundColorPanel;
+    private javax.swing.JPanel colorsTab;
     private javax.swing.JCheckBox fontBoldCheckbox;
     private javax.swing.JButton fontColorButton;
     private asciicomponent.ColorPanel fontColorPanel;
     private javax.swing.JComboBox<String> fontFamiliesComboBox;
     private javax.swing.JCheckBox fontItalicCheckbox;
     private javax.swing.JSpinner fontSizeSpinner;
+    private javax.swing.JPanel fontTab;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JCheckBox overrideImageCheckbox;
+    private javax.swing.JTabbedPane paletteTabs;
     private javax.swing.JRadioButton usePhraseRadioButton;
     private javax.swing.JRadioButton useWeightsRadioButton;
+    private javax.swing.JPanel weightsPhraseTab;
     private javax.swing.JTextField weightsPhraseValueTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -205,6 +205,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         renderHeightLabel = new javax.swing.JLabel();
         progressPanel = new javax.swing.JPanel();
+        progressPanel1 = new asciicomponent.ProgressPanel();
         mainToolbar = new javax.swing.JToolBar();
         importButton = new javax.swing.JButton();
         exportImageButton = new javax.swing.JButton();
@@ -425,21 +426,23 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         sidebarPanel.add(renderHeightPanel, gridBagConstraints);
 
-        javax.swing.GroupLayout progressPanelLayout = new javax.swing.GroupLayout(progressPanel);
-        progressPanel.setLayout(progressPanelLayout);
-        progressPanelLayout.setHorizontalGroup(
-            progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
-        );
-        progressPanelLayout.setVerticalGroup(
-            progressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 306, Short.MAX_VALUE)
-        );
+        progressPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Render Progress", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        progressPanel.setLayout(new java.awt.GridBagLayout());
+
+        progressPanel1.setPreferredSize(new java.awt.Dimension(14, 28));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        progressPanel.add(progressPanel1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         sidebarPanel.add(progressPanel, gridBagConstraints);
 
         sidebarScroll.setViewportView(sidebarPanel);
@@ -662,7 +665,7 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
+            .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
             .addComponent(mainToolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -671,7 +674,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(mainToolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainSplitter)
+                .addComponent(mainSplitter, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -965,6 +968,7 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JLabel originalImageView;
     protected javax.swing.JMenu paletteMenu;
     protected javax.swing.JPanel progressPanel;
+    protected asciicomponent.ProgressPanel progressPanel1;
     protected javax.swing.JButton refreshButton;
     protected javax.swing.JMenuItem refreshMenuItem;
     protected javax.swing.JLabel renderHeightLabel;
