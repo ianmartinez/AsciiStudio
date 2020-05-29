@@ -223,11 +223,19 @@ public class MainWindow extends javax.swing.JFrame {
         paletteMenu = new javax.swing.JMenu();
         importPaletteMenuItem = new javax.swing.JMenuItem();
         exportPaletteMenuItem = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        weightsMenu = new javax.swing.JMenu();
+        standardDarkMenuItem = new javax.swing.JMenuItem();
+        standardLightMenuItem = new javax.swing.JMenuItem();
+        blocksDarkMenuItem = new javax.swing.JMenuItem();
+        blocksLightMenuItem = new javax.swing.JMenuItem();
+        symbolsDarkMenuItem = new javax.swing.JMenuItem();
+        symbolsLightMenuItem = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         invertPaletteMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         resetPaletteMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        previewMenu = new javax.swing.JMenu();
         refreshMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -611,6 +619,29 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         paletteMenu.add(exportPaletteMenuItem);
+        paletteMenu.add(jSeparator5);
+
+        weightsMenu.setText("Weights");
+
+        standardDarkMenuItem.setText("Standard Dark");
+        weightsMenu.add(standardDarkMenuItem);
+
+        standardLightMenuItem.setText("Standard Light");
+        weightsMenu.add(standardLightMenuItem);
+
+        blocksDarkMenuItem.setText("Blocks Dark");
+        weightsMenu.add(blocksDarkMenuItem);
+
+        blocksLightMenuItem.setText("Blocks Light");
+        weightsMenu.add(blocksLightMenuItem);
+
+        symbolsDarkMenuItem.setText("Symbols Dark");
+        weightsMenu.add(symbolsDarkMenuItem);
+
+        symbolsLightMenuItem.setText("Symbols Light");
+        weightsMenu.add(symbolsLightMenuItem);
+
+        paletteMenu.add(weightsMenu);
         paletteMenu.add(jSeparator4);
 
         invertPaletteMenuItem.setText("Invert Palette");
@@ -632,7 +663,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         menuBar.add(paletteMenu);
 
-        jMenu1.setText("Preview");
+        previewMenu.setText("Preview");
 
         refreshMenuItem.setText("Refresh");
         refreshMenuItem.setEnabled(false);
@@ -641,9 +672,9 @@ public class MainWindow extends javax.swing.JFrame {
                 refreshMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(refreshMenuItem);
+        previewMenu.add(refreshMenuItem);
 
-        menuBar.add(jMenu1);
+        menuBar.add(previewMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
@@ -909,6 +940,8 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
     protected javax.swing.JSplitPane beforeAfterSplitter;
+    protected javax.swing.JMenuItem blocksDarkMenuItem;
+    protected javax.swing.JMenuItem blocksLightMenuItem;
     protected javax.swing.JPanel currentFramePanel;
     protected asciicomponent.PalettePanel currentPalette;
     protected javax.swing.JPanel currentPaletteContainer;
@@ -941,14 +974,15 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JLabel jLabel7;
     protected javax.swing.JLabel jLabel8;
     protected javax.swing.JLabel jLabel9;
-    protected javax.swing.JMenu jMenu1;
     protected javax.swing.JPopupMenu.Separator jSeparator1;
     protected javax.swing.JPopupMenu.Separator jSeparator4;
+    protected javax.swing.JPopupMenu.Separator jSeparator5;
     protected javax.swing.JSplitPane mainSplitter;
     protected javax.swing.JToolBar mainToolbar;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JLabel originalImageView;
     protected javax.swing.JMenu paletteMenu;
+    protected javax.swing.JMenu previewMenu;
     protected asciicomponent.ProgressPanel progressPanel;
     protected javax.swing.JPanel progressPanelContainer;
     protected javax.swing.JButton refreshButton;
@@ -969,6 +1003,11 @@ public class MainWindow extends javax.swing.JFrame {
     protected javax.swing.JSplitPane settingsImageSplitter;
     protected javax.swing.JPanel sidebarPanel;
     protected javax.swing.JScrollPane sidebarScroll;
+    protected javax.swing.JMenuItem standardDarkMenuItem;
+    protected javax.swing.JMenuItem standardLightMenuItem;
+    protected javax.swing.JMenuItem symbolsDarkMenuItem;
+    protected javax.swing.JMenuItem symbolsLightMenuItem;
+    protected javax.swing.JMenu weightsMenu;
     protected javax.swing.JLabel widthLabel;
     protected javax.swing.JPanel widthPanel;
     // End of variables declaration//GEN-END:variables

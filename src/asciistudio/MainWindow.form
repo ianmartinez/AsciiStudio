@@ -72,6 +72,45 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportPaletteMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator5">
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="weightsMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Weights"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="standardDarkMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Standard Dark"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="standardLightMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Standard Light"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="blocksDarkMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Blocks Dark"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="blocksLightMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Blocks Light"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="symbolsDarkMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Symbols Dark"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="symbolsLightMenuItem">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Symbols Light"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="invertPaletteMenuItem">
@@ -94,7 +133,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="previewMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Preview"/>
           </Properties>
