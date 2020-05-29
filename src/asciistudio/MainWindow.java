@@ -412,7 +412,8 @@ public class MainWindow extends javax.swing.JFrame {
         progressPanelContainer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Render Progress", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         progressPanelContainer.setLayout(new java.awt.GridBagLayout());
 
-        progressPanel.setPreferredSize(new java.awt.Dimension(14, 28));
+        progressPanel.setMinimumSize(new java.awt.Dimension(39, 60));
+        progressPanel.setPreferredSize(new java.awt.Dimension(28, 42));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;

@@ -88,7 +88,7 @@ public final class Gif {
     public void save(String fileName) throws IOException {
         try (var output = new FileImageOutputStream(new File(fileName));
                 var writer = new GifSequenceWriter(output, frames[0].getImageType(), getDelay(), true)) {
-
+            
             for (var frame : frames) {
                 writer.writeToSequence(frame);
             }

@@ -62,23 +62,12 @@ public class ProgressPanel extends javax.swing.JPanel {
         progressLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
-        setLayout(new java.awt.GridBagLayout());
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        setLayout(new java.awt.BorderLayout(6, 6));
 
         progressLabel.setText("0%");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
-        add(progressLabel, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 6);
-        add(progressBar, gridBagConstraints);
+        add(progressLabel, java.awt.BorderLayout.PAGE_START);
+        add(progressBar, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
 
