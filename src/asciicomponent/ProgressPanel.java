@@ -22,7 +22,9 @@ package asciicomponent;
  * @author Ian Martinez
  */
 public class ProgressPanel extends javax.swing.JPanel {
-    private int lastValue = -1;
+
+    private String stage = "";
+    private int percent;
 
     /**
      * Creates new form ProgressPanel
@@ -36,17 +38,21 @@ public class ProgressPanel extends javax.swing.JPanel {
     }
 
     public void setProgress(int value, int min, int max) {
-        var percent = (int)((value / (double) (max - min)) * 100);
-        
-        if(percent != lastValue) {
-            this.progressBar.setValue(percent);
-            this.progressLabel.setText(percent + "%");        
-            lastValue = percent;
-        }
+        percent = (int) ((value / (double) (max - min)) * 100);
+        this.progressBar.setValue(percent);
+        updateLabel();
     }
-    
+
     public void setProgress(int value) {
         this.setProgress(value, 0, 100);
+    }
+    
+    private void updateLabel() {        
+        if (stage != null && !stage.equals("")) {
+            this.progressLabel.setText(stage + ": " + percent + "%");
+        } else {
+            this.progressLabel.setText(percent + "%");
+        }
     }
 
     /**
@@ -75,4 +81,20 @@ public class ProgressPanel extends javax.swing.JPanel {
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel progressLabel;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the stage
+     */
+    public String getStage() {
+        return stage;
+    }
+
+    /**
+     * @param stage the stage to set
+     */
+    public void setStage(String stage) {
+        this.stage = stage;
+        updateLabel();
+    }
+
 }

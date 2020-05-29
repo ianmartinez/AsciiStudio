@@ -37,7 +37,7 @@ import javax.swing.SwingWorker;
  *
  * @author Ian Martinez
  */
-public class BackgroundRenderer extends SwingWorker<Void, Integer> {
+public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
 
     private final AsciiRenderer renderer; // The renderer
     private final RenderType renderType; // The type of rendering to do
@@ -76,6 +76,7 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
 
     public void useRenderUI(boolean renderUI) {
         if (renderUI) {
+            mainWindow.progressPanel.setStage("Rendering");
             mainWindow.progressPanel.setProgress(0);
 
             mainWindow.enableImport(false);
@@ -87,19 +88,20 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
     }
 
     @Override
-    protected void process(List<Integer> chunks) {
-        int i = chunks.get(chunks.size() - 1);
-        int val = chunks.get(chunks.size() - 1);
-        mainWindow.progressPanel.setProgress(val, 0, max);
+    protected void process(List<RenderProgress> chunks) {
+        RenderProgress progress = chunks.get(chunks.size() - 1);
+        mainWindow.progressPanel.setStage(progress.getStage());
+        mainWindow.progressPanel.setProgress(progress.getProgress(), 0, max);
     }
 
     @Override
     protected Void doInBackground() throws Exception {
         renderer.setProgressWatcher((int progress, int rowCount, int frame) -> {
             var relativeProgress = (frame * rowCount) + progress;
-            publish(relativeProgress);
+            publish(new RenderProgress("Rendering", relativeProgress));
         });
 
+        // Render image as ASCII art
         switch (renderType) {
             case PREVIEW:
             case STILL_IMAGE:
@@ -111,10 +113,14 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
             case GIF:
                 renderedGif = renderer.renderGif(sourceGif);
         }
-        
-        // TODO: File saving in background as well
+
+        // Save if not a preview
+        if (renderType != RenderType.PREVIEW) {
+            saveOutputFile();
+        }
 
         renderer.setProgressWatcher(null);
+        publish(new RenderProgress("", 100));
 
         return null;
     }
@@ -129,8 +135,6 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
                 mainWindow.renderWidthLabel.setText(renderedImage.getWidth() + " px");
                 mainWindow.renderHeightLabel.setText(renderedImage.getHeight() + " px");
                 mainWindow.renderedImageView.setIcon(new StretchIcon(renderedImage));
-            } else {
-                saveOutputFile();
             }
 
             useRenderUI(false);
@@ -156,7 +160,7 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
 
     /**
      * Open a process.
-     * 
+     *
      * @param process the process to open
      */
     private void openProcess(String process) {
@@ -175,7 +179,7 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
             if (null != renderType) {
                 switch (renderType) {
                     case TEXT:
-                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+                        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                         writer.write(renderedText);
                     }
                     break;
@@ -183,7 +187,12 @@ public class BackgroundRenderer extends SwingWorker<Void, Integer> {
                         ImageIO.write(renderedImage, FileUtil.getExt(outputFile, "png"), new File(outputFile));
                         break;
                     case GIF:
+                        renderedGif.setSaveProgressWatcher((int frame, int totalFrames) -> {
+                            var relativeProgress = (int) ((frame / (double) totalFrames) * 100);
+                            publish(new RenderProgress("Saving frame", relativeProgress));
+                        });
                         renderedGif.save(outputFile);
+                        renderedGif.setSaveProgressWatcher(null);
                         break;
                     default:
                         break;
