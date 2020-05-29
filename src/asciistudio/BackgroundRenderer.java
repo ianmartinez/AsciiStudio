@@ -137,7 +137,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
                 mainWindow.renderedImageView.setIcon(new StretchIcon(renderedImage));
             }
 
-        } catch (ExecutionException | InterruptedException e) {
+        } catch (ExecutionException | InterruptedException ex) {
             var renderName = "";
             switch (renderType) {
                 case PREVIEW:
@@ -153,7 +153,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
                     renderName = "GIF";
             }
 
-            JOptionPane.showMessageDialog(mainWindow, "Error rendering " + renderName);
+            JOptionPane.showMessageDialog(mainWindow, "Error rendering " + renderName + "(" + ex.getMessage() + ")");
         }
 
         useRenderUI(false);
