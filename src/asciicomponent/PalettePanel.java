@@ -144,7 +144,7 @@ public class PalettePanel extends javax.swing.JPanel {
         invertedPalette.setFontColor(palette.getBackgroundColor());
         
         if(!palette.isUsingPhrase()) {
-            var reversedWeights = Palette.invertWeightsString(palette.getWeightsString());
+            var reversedWeights = Palette.reverseWeightsString(palette.getWeightsString());
             invertedPalette.setWeights(reversedWeights);
         }
         

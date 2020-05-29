@@ -624,21 +624,51 @@ public class MainWindow extends javax.swing.JFrame {
         weightsMenu.setText("Weights");
 
         standardDarkMenuItem.setText("Standard Dark");
+        standardDarkMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                standardDarkMenuItemActionPerformed(evt);
+            }
+        });
         weightsMenu.add(standardDarkMenuItem);
 
         standardLightMenuItem.setText("Standard Light");
+        standardLightMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                standardLightMenuItemActionPerformed(evt);
+            }
+        });
         weightsMenu.add(standardLightMenuItem);
 
         blocksDarkMenuItem.setText("Blocks Dark");
+        blocksDarkMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blocksDarkMenuItemActionPerformed(evt);
+            }
+        });
         weightsMenu.add(blocksDarkMenuItem);
 
         blocksLightMenuItem.setText("Blocks Light");
+        blocksLightMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blocksLightMenuItemActionPerformed(evt);
+            }
+        });
         weightsMenu.add(blocksLightMenuItem);
 
         symbolsDarkMenuItem.setText("Symbols Dark");
+        symbolsDarkMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                symbolsDarkMenuItemActionPerformed(evt);
+            }
+        });
         weightsMenu.add(symbolsDarkMenuItem);
 
         symbolsLightMenuItem.setText("Symbols Light");
+        symbolsLightMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                symbolsLightMenuItemActionPerformed(evt);
+            }
+        });
         weightsMenu.add(symbolsLightMenuItem);
 
         paletteMenu.add(weightsMenu);
@@ -936,6 +966,30 @@ public class MainWindow extends javax.swing.JFrame {
     private void exportImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportImageButtonActionPerformed
         exportImageMenuItemActionPerformed(evt);
     }//GEN-LAST:event_exportImageButtonActionPerformed
+
+    private void standardDarkMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standardDarkMenuItemActionPerformed
+        
+    }//GEN-LAST:event_standardDarkMenuItemActionPerformed
+
+    private void standardLightMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standardLightMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_standardLightMenuItemActionPerformed
+
+    private void blocksDarkMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blocksDarkMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_blocksDarkMenuItemActionPerformed
+
+    private void blocksLightMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blocksLightMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_blocksLightMenuItemActionPerformed
+
+    private void symbolsDarkMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_symbolsDarkMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_symbolsDarkMenuItemActionPerformed
+
+    private void symbolsLightMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_symbolsLightMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_symbolsLightMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JMenuItem aboutMenuItem;
