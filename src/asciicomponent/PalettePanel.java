@@ -24,9 +24,9 @@ import java.awt.Font;
 import static java.awt.Font.*;
 import java.awt.GraphicsEnvironment;
 import javax.swing.ButtonGroup;
-import javax.swing.JColorChooser;
 
 /**
+ * A panel for modifying a palette.
  *
  * @author Ian Martinez
  */
@@ -133,21 +133,28 @@ public class PalettePanel extends javax.swing.JPanel {
         savePalette();
         return new Palette(palette);
     }
-    
+
+    /**
+     * Reset the palette to its default state.
+     */
     public void resetPalette() {
         setPalette(new Palette());
     }
-    
+
+    /**
+     * Swap the background and font colors of the palette and reverse the
+     * weights if not using a phrase.
+     */
     public void invertPalette() {
         var invertedPalette = new Palette(palette);
         invertedPalette.setBackgroundColor(palette.getFontColor());
         invertedPalette.setFontColor(palette.getBackgroundColor());
-        
-        if(!palette.isUsingPhrase()) {
+
+        if (!palette.isUsingPhrase()) {
             var reversedWeights = Palette.reverseWeightsString(palette.getWeightsString());
             invertedPalette.setWeights(reversedWeights);
         }
-        
+
         setPalette(invertedPalette);
     }
 
@@ -399,7 +406,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
     private void backgroundColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgroundColorButtonActionPerformed
         var newColor = ColorPickerDialog.showDialog(this, "Choose background color", backgroundColorPanel.getColor());
-        
+
         if (newColor != null) {
             backgroundColorPanel.setColor(newColor);
         }
@@ -441,4 +448,5 @@ public class PalettePanel extends javax.swing.JPanel {
     private javax.swing.JPanel weightsPhraseTab;
     private javax.swing.JTextField weightsPhraseValueTextField;
     // End of variables declaration//GEN-END:variables
+
 }

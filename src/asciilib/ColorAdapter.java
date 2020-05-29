@@ -52,4 +52,5 @@ public class ColorAdapter extends XmlAdapter<ColorAdapter.ColorValueType, Color>
             this.blue = blue;
         }
     }
+    
 }

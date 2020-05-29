@@ -21,7 +21,7 @@ import java.awt.Desktop;
 import java.awt.desktop.AboutEvent;
 
 /**
- * Main class
+ * Main class.
  *
  * @author Ian Martinez
  */
@@ -30,20 +30,20 @@ public class AsciiStudio {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {      
+    public static void main(String[] args) {
         // Change the app name in macOS's menu bar
         System.setProperty("apple.awt.application.name", "ASCII Studio");
-        
+
         // Use native menu on macOS
         System.setProperty("apple.laf.useScreenMenuBar", "true");
-        
+
         // Use native look and feel
         try {
-            if(System.getProperty("os.name", "").startsWith("Mac OS")) {        
+            if (System.getProperty("os.name", "").startsWith("Mac OS")) {
                 // Use improved Aqua look and feel over native Java version.
                 // Adds support for dark mode, among other things
                 UIManager.setLookAndFeel("org.violetlib.aqua.AquaLookAndFeel");
-            } else {                
+            } else {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             }
         } catch (Exception e) {
@@ -56,18 +56,18 @@ public class AsciiStudio {
         // Center on screen
         mainWindow.setLocationRelativeTo(null);
         mainWindow.setTitle(App.getAppTitle());
-        
+
         // Configure styling
         App.setRootProperty(mainWindow, "Aqua.windowStyle", "unifiedToolBar");
         App.setProperty(mainWindow.sidebarPanel, "Aqua.backgroundStyle", "vibrantSidebar");
-        
+
         // Set about handler to open the about window
         Desktop.getDesktop().setAboutHandler((AboutEvent e) -> {
             var aboutDialog = new AboutDialog(mainWindow, true);
             aboutDialog.setLocationRelativeTo(mainWindow);
             aboutDialog.setVisible(true);
         });
-        
+
         // Show
         mainWindow.setVisible(true);
     }

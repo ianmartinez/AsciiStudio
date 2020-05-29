@@ -244,7 +244,7 @@ public class AsciiRenderer {
     public Gif renderGif(Gif sourceGif) {
         var renderedGif = new Gif(sourceGif);
         framePos = 0;
-        
+
         for (int i = 0; i < sourceGif.getFrameCount(); i++) {
             phrasePos = 0;
             framePos = i;
@@ -255,7 +255,7 @@ public class AsciiRenderer {
 
             renderedGif.setFrameImage(i, renderedFrame);
         }
-        
+
         framePos = 0;
 
         return renderedGif;

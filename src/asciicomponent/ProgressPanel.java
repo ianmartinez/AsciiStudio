@@ -17,7 +17,7 @@
 package asciicomponent;
 
 /**
- * UI for showing progress.
+ * A UI for showing progress.
  *
  * @author Ian Martinez
  */
@@ -33,21 +33,39 @@ public class ProgressPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * @return the current progress value
+     */
     public int getProgress() {
         return this.progressBar.getValue();
     }
 
+    /**
+     * Set the progress value in a range from min to max.
+     * 
+     * @param value the progress value
+     * @param min the min progress value
+     * @param max the max progress value
+     */
     public void setProgress(int value, int min, int max) {
         percent = (int) ((value / (double) (max - min)) * 100);
         this.progressBar.setValue(percent);
         updateLabel();
     }
 
+    /**
+     * Set the progress value, out of 100.
+     * 
+     * @param value the value
+     */
     public void setProgress(int value) {
         this.setProgress(value, 0, 100);
     }
-    
-    private void updateLabel() {        
+
+    /**
+     * Update the progress label.
+     */
+    private void updateLabel() {
         if (stage != null && !stage.equals("")) {
             this.progressLabel.setText(stage + ": " + percent + "%");
         } else {

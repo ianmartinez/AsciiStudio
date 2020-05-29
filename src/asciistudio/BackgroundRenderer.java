@@ -74,6 +74,12 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
         }
     }
 
+    /**
+     * If the UI should be changed because a render
+     * is in progress.
+     * 
+     * @param renderUI the value
+     */
     public void useRenderUI(boolean renderUI) {
         if (renderUI) {
             mainWindow.progressPanel.setStage("Rendering");
@@ -265,4 +271,5 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
     public void setOpenOutputWhenComplete(boolean openOutputWhenComplete) {
         this.openOutputWhenComplete = openOutputWhenComplete;
     }
+    
 }

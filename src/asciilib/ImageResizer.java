@@ -26,26 +26,45 @@ import java.awt.image.BufferedImage;
  * @author Ian Martinez
  */
 public final class ImageResizer {
+
     private ImageResizer() {} // No constructor
-    
-    public static BufferedImage resize(BufferedImage source, int width, int height) {
+
+    /**
+     * Resize a source image to a given width and height.
+     * 
+     * @param sourceImage the source image
+     * @param width the new width
+     * @param height the new height
+     * 
+     * @return the resized image
+     */
+    public static BufferedImage resize(BufferedImage sourceImage, int width, int height) {
         var resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         var g = resizedImage.createGraphics();
-        
+
         g.setComposite(AlphaComposite.Src);
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-        g.drawImage(source, 0, 0, width, height, null);
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.drawImage(sourceImage, 0, 0, width, height, null);
         g.dispose();
-        
+
         return resizedImage;
     }
-    
+
+    /**
+     * Get a sample of a source image, given a set of sampling parameters
+     * 
+     * @param source the source image
+     * @param params the sampling parameters
+     * 
+     * @return the sampled image
+     */
     public static BufferedImage getSample(BufferedImage source, ImageSamplingParams params) {
-        var sampleWidth = (int)params.getSampleWidth();
-        var sampleHeight = (int)params.getSampleHeight();
-        
+        var sampleWidth = (int) params.getSampleWidth();
+        var sampleHeight = (int) params.getSampleHeight();
+
         return resize(source, sampleWidth, sampleHeight);
     }
+    
 }

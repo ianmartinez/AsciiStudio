@@ -26,6 +26,14 @@ public class ImageSamplingParams {
     private final double originalWidth, originalHeight, fontWidth, fontHeight;
     private double samplingRatio;
 
+    /**
+     * Create a new ImageSamplingParams.
+     * 
+     * @param originalWidth the image's original width
+     * @param originalHeight the image's original height
+     * @param fontWidth the font's width
+     * @param fontHeight the font's height
+     */
     public ImageSamplingParams(double originalWidth,
             double originalHeight,
             double fontWidth,
@@ -115,5 +123,5 @@ public class ImageSamplingParams {
     public void setSamplingRatio(double samplingRatio) {
         this.samplingRatio = samplingRatio;
     }
-    
+
 }

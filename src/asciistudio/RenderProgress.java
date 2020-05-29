@@ -22,13 +22,14 @@ package asciistudio;
  * @author Ian Martinez
  */
 public class RenderProgress {
+
     private String stage;
     private int progress;
     private int max;
-    
+
     /**
      * Create a new RenderProgress.
-     * 
+     *
      * @param stage what stage this progress is a part of
      * @param progress the current progress value
      * @param max the max progress value
@@ -80,4 +81,5 @@ public class RenderProgress {
     public void setMax(int max) {
         this.max = max;
     }
+    
 }

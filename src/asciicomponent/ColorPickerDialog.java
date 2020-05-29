@@ -23,10 +23,12 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 /**
+ * A customized color dialog to fix some rendering issues on macOS.
  *
  * @author Ian Martinez
  */
 public class ColorPickerDialog extends javax.swing.JDialog {
+
     private Color initialColor;
     private boolean hasChosenColor = false;
 
@@ -116,6 +118,15 @@ public class ColorPickerDialog extends javax.swing.JDialog {
             setColor(initialColor);
     }//GEN-LAST:event_resetButtonActionPerformed
 
+    /**
+     * Show a color dialog to the user and have them pick a color from it.
+     * 
+     * @param frame the parent frame of the dialog
+     * @param title the title of the dialog
+     * @param initialColor the initial color
+     * 
+     * @return the color if the user selected a color, null if not
+     */
     public static Color showDialog(JFrame frame, String title, Color initialColor) {
         var colorDialog = new ColorPickerDialog(frame, true);
         colorDialog.setLocationRelativeTo(frame);
@@ -126,7 +137,16 @@ public class ColorPickerDialog extends javax.swing.JDialog {
 
         return colorDialog.hasChosenColor() ? colorDialog.getColor() : null;
     }
-    
+
+    /**
+     * Show a color dialog to the user and have them pick a color from it.
+     * 
+     * @param component the parent component of the dialog
+     * @param title the title of the dialog
+     * @param initialColor the initial color
+     * 
+     * @return the color if the user selected a color, null if not
+     */
     public static Color showDialog(Component component, String title, Color initialColor) {
         var ancestorFrame = (JFrame) SwingUtilities.getWindowAncestor(component);
         return showDialog(ancestorFrame, title, initialColor);
@@ -168,11 +188,12 @@ public class ColorPickerDialog extends javax.swing.JDialog {
     public void setColor(Color color) {
         colorChooser.setColor(color);
     }
-    
+
     /**
      * @return if the user has chosen as color
      */
     public boolean hasChosenColor() {
         return hasChosenColor;
     }
+    
 }

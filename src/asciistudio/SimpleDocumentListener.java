@@ -20,23 +20,26 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 /**
- * Make looking for text changes in a text field less
- * of a PITA than it is in plain Java.
+ * Make looking for text changes in a text field less of a PITA than it is in
+ * plain Java.
  *
  * @author Ian Martinez
  */
 @FunctionalInterface
 public interface SimpleDocumentListener extends DocumentListener {
+
     void update(DocumentEvent e);
 
     @Override
     default void insertUpdate(DocumentEvent e) {
         update(e);
     }
+
     @Override
     default void removeUpdate(DocumentEvent e) {
         update(e);
     }
+
     @Override
     default void changedUpdate(DocumentEvent e) {
         update(e);

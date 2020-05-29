@@ -52,4 +52,5 @@ public class ColorPanel extends JPanel {
         g.setColor(new Color(0, 0, 0, 200));
         g.drawRect(0, 0, getWidth(), getHeight());
     }
+    
 }

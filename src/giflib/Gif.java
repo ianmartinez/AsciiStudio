@@ -26,6 +26,7 @@
  *  - Let IO errors be handled by user of library, not the library itself
  *  - Use GifFrame for storing frames instead of BufferedImage array
  *  - Change delay of GIF
+ *  - Add GifSaveProgressWatcher to watch the progress of a GIF save frame-by-frame (to update a progress bar)
  */
 package giflib;
 
@@ -37,12 +38,22 @@ import static giflib.GifSequenceWriter.getFrames;
 import static java.awt.image.BufferedImage.*;
 import java.util.ArrayList;
 
+/**
+ * A GIF that can be modified in place and opened and saved to the disk.
+ */
 public final class Gif {
 
     private GifFrame[] frames;
     private int averageDelay = -1; // Don't calculate until needed
     private GifSaveProgressWatcher saveProgressWatcher;
 
+    /**
+     * Create a new GIF with an array of image frames and the delay between
+     * them.
+     *
+     * @param images the image frames
+     * @param delay the delay between frames
+     */
     public Gif(BufferedImage[] images, int delay) {
         frames = new GifFrame[images.length];
 
@@ -51,8 +62,13 @@ public final class Gif {
         }
     }
 
-    public Gif(String filename) {
-        open(filename);
+    /**
+     * Create a new GIF from an existing GIF file.
+     *
+     * @param fileName the name of the GIF file
+     */
+    public Gif(String fileName) {
+        open(fileName);
     }
 
     /**
@@ -70,6 +86,13 @@ public final class Gif {
         }
     }
 
+    /**
+     * Get the maximum size of an array of images.
+     *
+     * @param images the images
+     *
+     * @return the maximum size
+     */
     private Dimension maxSize(BufferedImage[] images) {
         int maxW = 0;
         int maxH = 0;
@@ -82,10 +105,23 @@ public final class Gif {
         return new Dimension(maxW, maxH);
     }
 
+    /**
+     * Set the frames of this GIF to the frames of an existing GIF file.
+     *
+     * @param fileName the name of the file to open
+     */
     public void open(String fileName) {
+        averageDelay = -1;
         frames = getFrames(fileName);
     }
 
+    /**
+     * Save a GIF to a file.
+     *
+     * @param fileName the name of the file to save
+     *
+     * @throws IOException if there was an error saving the file
+     */
     public void save(String fileName) throws IOException {
         try (var output = new FileImageOutputStream(new File(fileName));
                 var writer = new GifSequenceWriter(output, frames[0].getImageType(), getDelay(), true)) {
@@ -101,40 +137,94 @@ public final class Gif {
         }
     }
 
+    /**
+     * Get the number of frames.
+     *
+     * @return the number of frames
+     */
     public int getFrameCount() {
         return frames.length;
     }
 
-    public GifFrame getFrame(int pos) {
-        return frames[pos];
+    /**
+     * Get the frame at an index
+     *
+     * @param frameIndex the frame's index
+     *
+     * @return the frame
+     */
+    public GifFrame getFrame(int frameIndex) {
+        return frames[frameIndex];
     }
 
+    /**
+     * Set the frame at an index.
+     *
+     * @param pos the index of the frame to set
+     * @param frame the frame
+     */
     public void setFrame(int pos, GifFrame frame) {
         frames[pos] = frame;
     }
 
-    public BufferedImage getFrameImage(int pos) {
-        return getFrame(pos).getImage();
+    /**
+     * Get the image of a frame at an index.
+     *
+     * @param frameIndex the index of the frame
+     *
+     * @return the image of the frame
+     */
+    public BufferedImage getFrameImage(int frameIndex) {
+        return getFrame(frameIndex).getImage();
     }
 
-    public void setFrameImage(int pos, BufferedImage img) {
-        frames[pos].setImage(img);
+    /**
+     * Set the image of a frame at an index.
+     *
+     * @param frameIndex the index of the frame to set
+     * @param img the image
+     */
+    public void setFrameImage(int frameIndex, BufferedImage img) {
+        frames[frameIndex].setImage(img);
     }
 
-    public int getFrameDelay(int pos) {
-        return frames[pos].getDelay();
+    /**
+     * Get the delay of a frame.
+     *
+     * @param frameIndex the index of the frame
+     *
+     * @return the frame's delay
+     */
+    public int getFrameDelay(int frameIndex) {
+        return frames[frameIndex].getDelay();
     }
 
-    public void setFrameDelay(int pos, int delay) {
-        frames[pos].setDelay(delay);
+    /**
+     * Set the delay of a specific frame.
+     *
+     * @param frameIndex the index of the frame
+     * @param delay the new delay
+     */
+    public void setFrameDelay(int frameIndex, int delay) {
+        frames[frameIndex].setDelay(delay);
     }
 
+    /**
+     * Set every frame to have the same delay.
+     *
+     * @param delay the delay to set
+     */
     public void setAllFramesDelay(int delay) {
         for (var frame : frames) {
             frame.setDelay(delay);
         }
     }
 
+    /**
+     * Get the average delay between frames.
+     *
+     * @return the average frame delay
+     */
     public int getDelay() {
         if (averageDelay == -1) { // Not calculated
             int total = 0;
@@ -149,6 +239,11 @@ public final class Gif {
         return averageDelay;
     }
 
+    /**
+     * Get all of the frame images.
+     *
+     * @return the array of frame images
+     */
     public BufferedImage[] getImages() {
         var images = new ArrayList<BufferedImage>();
 
@@ -172,4 +267,5 @@ public final class Gif {
     public void setSaveProgressWatcher(GifSaveProgressWatcher saveProgressWatcher) {
         this.saveProgressWatcher = saveProgressWatcher;
     }
+
 }

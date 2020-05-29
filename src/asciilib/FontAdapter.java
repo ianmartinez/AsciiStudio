@@ -38,6 +38,7 @@ public class FontAdapter extends XmlAdapter<FontAdapter.FontValueType, Font> {
 
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class FontValueType {
+
         private String family;
         private int style;
         private int size;
@@ -51,4 +52,5 @@ public class FontAdapter extends XmlAdapter<FontAdapter.FontValueType, Font> {
             this.size = size;
         }
     }
+    
 }

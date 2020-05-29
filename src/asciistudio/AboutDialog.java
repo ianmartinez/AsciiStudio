@@ -38,7 +38,7 @@ public class AboutDialog extends javax.swing.JDialog {
         licenseTextArea.setSelectionStart(0);
         licenseTextArea.setSelectionEnd(0);
         changelogTextArea.setSelectionStart(0);
-        changelogTextArea.setSelectionEnd(0);        
+        changelogTextArea.setSelectionEnd(0);
     }
 
     /**
@@ -206,10 +206,10 @@ public class AboutDialog extends javax.swing.JDialog {
         try {
             Desktop.getDesktop().browse(new URI(url));
         } catch (URISyntaxException | IOException ex) {
-            JOptionPane.showMessageDialog(this, "Could not open '" + url + "'");            
+            JOptionPane.showMessageDialog(this, "Could not open '" + url + "'");
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appNameLabel;
     private javax.swing.JPanel buttonPanel;

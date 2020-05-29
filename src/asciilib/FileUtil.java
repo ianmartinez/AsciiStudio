@@ -22,40 +22,40 @@ package asciilib;
  * @author Ian Martinez
  */
 public final class FileUtil {
-    private FileUtil() {} // No constructor
-    
-    
+
+    private FileUtil() { } // No constructor
+
     /**
-     * Get the extension of a file, with a default extension to
-     * fallback on if there is none.
-     * 
+     * Get the extension of a file, with a default extension to fallback on if
+     * there is none.
+     *
      * @param path the file's path
      * @param defaultExt the extension to use if there isn't one already
-     * 
+     *
      * @return the file's extension
      */
     public static String getExt(String path, String defaultExt) {
         int dot = path.lastIndexOf(".");
         return (dot == -1) ? defaultExt : path.substring(dot + 1).toLowerCase();
     }
-    
+
     /**
      * Get the extension of a file.
-     * 
+     *
      * @param path the file's path
-     * 
+     *
      * @return the file's extension
      */
     public static String getExt(String path) {
         int dot = path.lastIndexOf(".");
         return (dot == -1) ? "" : path.substring(dot + 1).toLowerCase();
     }
-    
+
     /**
      * Remove the extension from a file.
-     * 
+     *
      * @param path the file's path
-     * 
+     *
      * @return the file's path, without the extension
      */
     public static String removeExt(String path) {
@@ -66,4 +66,5 @@ public final class FileUtil {
         int dot = path.lastIndexOf(".");
         return (dot == -1) ? path : path.substring(0, dot);
     }
+
 }

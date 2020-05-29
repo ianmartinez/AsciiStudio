@@ -29,34 +29,36 @@ import java.util.Locale;
  * @author Ian Martinez
  */
 public final class FontUtil {
-    private FontUtil() {}
-    
+
+    private FontUtil() { } // No constructor
+
     /**
      * Get all of the available fonts on the system.
-     * 
+     *
      * @param onlyMonospace if only monospace fonts should be included
-     * 
+     *
      * @return the available fonts
      */
     public static ArrayList<String> getAllFontNames(boolean onlyMonospace) {
         var gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        var fontContext = new FontRenderContext(null, RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT, RenderingHints.VALUE_FRACTIONALMETRICS_DEFAULT);   
+        var fontContext = new FontRenderContext(null, RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT, RenderingHints.VALUE_FRACTIONALMETRICS_DEFAULT);
         var fontNames = new ArrayList<String>();
         var allFonts = gEnv.getAllFonts();
-        
+
         for (Font font : allFonts) {
-            var fontName = font.getFontName(Locale.US);            
+            var fontName = font.getFontName(Locale.US);
             if (onlyMonospace) {
                 var iWidth = font.getStringBounds("i", fontContext).getWidth();
                 var mWidth = font.getStringBounds("m", fontContext).getWidth();
-                
-                if(iWidth == mWidth)
+
+                if (iWidth == mWidth) {
                     fontNames.add(fontName);
+                }
             } else {
                 fontNames.add(fontName);
             }
         }
-        
+
         return fontNames;
     }
 }

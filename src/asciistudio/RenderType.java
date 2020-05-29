@@ -17,8 +17,7 @@
 package asciistudio;
 
 /**
- * The type of rendering that the Background renderer
- * is doing.
+ * The type of rendering that the Background renderer is doing.
  *
  * @author Ian Martinez
  */

@@ -31,5 +31,5 @@ public interface RenderProgressWatcher {
      * @param frame the frame the renderer is rendering
      */
     public void update(int progress, int rowCount, int frame);
-    
+
 }
