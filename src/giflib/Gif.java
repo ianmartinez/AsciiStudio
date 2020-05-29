@@ -90,13 +90,14 @@ public final class Gif {
         try (var output = new FileImageOutputStream(new File(fileName));
                 var writer = new GifSequenceWriter(output, frames[0].getImageType(), getDelay(), true)) {
 
-            for (var frame : frames) {
+            for (int i = 0; i < frames.length; i++) {
+                var frame = frames[i];
                 writer.writeToSequence(frame);
+
+                if (saveProgressWatcher != null) {
+                    saveProgressWatcher.update(i, frames.length);
+                }
             }
-        }
-        
-        if(saveProgressWatcher != null) {
-            
         }
     }
 
