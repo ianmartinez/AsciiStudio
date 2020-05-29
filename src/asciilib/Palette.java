@@ -35,12 +35,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Palette {
 
     // Common weights that are used
-    public final String standardDarkWeights = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
-    public final String standardLightWeights = reverseWeightsString(standardDarkWeights);
-    public final String blocksDarkWeights = "░▒▓█";
-    public final String blocksLightWeights = reverseWeightsString(blocksDarkWeights);
-    public final String symbolsDarkWeights = ".*^%&#@";
-    public final String symbolsLightWeights = reverseWeightsString(symbolsDarkWeights);
+    public static final String STANDARD_DARK_WEIGHTS = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+    public static final String STANDARD_LIGHT_WEIGHTS = reverseWeightsString(STANDARD_DARK_WEIGHTS);
+    public static final String BLOCKS_DARK_WEIGHTS = "░▒▓█";
+    public static final String BLOCKS_LIGHT_WEIGHTS = reverseWeightsString(BLOCKS_DARK_WEIGHTS);
+    public static final String SYMBOLS_DARK_WEIGHTS = ".*^%&#@";
+    public static final String SYMBOLS_LIGHT_WEIGHTS = reverseWeightsString(SYMBOLS_DARK_WEIGHTS);
 
     /**
      * The palette settings that all other palettes derive from.
@@ -52,7 +52,7 @@ public class Palette {
     private Color backgroundColor = Color.BLACK;
     private Color fontColor = Color.WHITE;
     private Font font = new Font("Monospaced", Font.BOLD, 12);
-    private String[] weights = standardDarkWeights.split("");
+    private String[] weights = STANDARD_DARK_WEIGHTS.split("");
 
     /**
      * Create a new palette that derives from the base palette.
