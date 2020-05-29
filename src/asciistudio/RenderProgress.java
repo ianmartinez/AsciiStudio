@@ -24,10 +24,12 @@ package asciistudio;
 public class RenderProgress {
     private String stage;
     private int progress;
+    private int max;
     
-    public RenderProgress(String stage, int progress) {
+    public RenderProgress(String stage, int progress, int max) {
         this.stage = stage;
         this.progress = progress;
+        this.max = max;
     }
 
     /**
@@ -56,5 +58,19 @@ public class RenderProgress {
      */
     public void setProgress(int progress) {
         this.progress = progress;
+    }
+
+    /**
+     * @return the max
+     */
+    public int getMax() {
+        return max;
+    }
+
+    /**
+     * @param max the max to set
+     */
+    public void setMax(int max) {
+        this.max = max;
     }
 }

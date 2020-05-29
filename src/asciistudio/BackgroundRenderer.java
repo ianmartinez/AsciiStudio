@@ -46,7 +46,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
     private BufferedImage sourceImage; // The image to use for rendering, if renderType != GIF
     private Gif sourceGif; // The GIF to use for rendering, if renderType == GIF
     private String outputFile; // The output file, if applicable
-    private int max; // The max progress value
+    private int renderMax; // The renderMax progress value
 
     private BufferedImage renderedImage; // The rendered image, if rendering a PREVIEW or STILL_IMAGE
     private String renderedText; // The rendered text, if rendering TEXT
@@ -62,7 +62,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
     }
 
     /**
-     * @return the max progress value
+     * @return the renderMax progress value
      */
     private int getMax() {
         var rows = renderer.getSamplingParams().getSampleHeight();
@@ -91,14 +91,14 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
     protected void process(List<RenderProgress> chunks) {
         RenderProgress progress = chunks.get(chunks.size() - 1);
         mainWindow.progressPanel.setStage(progress.getStage());
-        mainWindow.progressPanel.setProgress(progress.getProgress(), 0, max);
+        mainWindow.progressPanel.setProgress(progress.getProgress(), 0, progress.getMax());
     }
 
     @Override
     protected Void doInBackground() throws Exception {
         renderer.setProgressWatcher((int progress, int rowCount, int frame) -> {
             var relativeProgress = (frame * rowCount) + progress;
-            publish(new RenderProgress("Rendering", relativeProgress));
+            publish(new RenderProgress("Rendering", relativeProgress, renderMax));
         });
 
         // Render image as ASCII art
@@ -120,7 +120,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
         }
 
         renderer.setProgressWatcher(null);
-        publish(new RenderProgress("", 100));
+        publish(new RenderProgress("", 100, 100));
 
         return null;
     }
@@ -189,7 +189,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
                     case GIF:
                         renderedGif.setSaveProgressWatcher((int frame, int totalFrames) -> {
                             var relativeProgress = (int) ((frame / (double) totalFrames) * 100);
-                            publish(new RenderProgress("Saving frame", relativeProgress));
+                            publish(new RenderProgress("Saving frame", relativeProgress, 100));
                         });
                         renderedGif.save(outputFile);
                         renderedGif.setSaveProgressWatcher(null);
@@ -233,7 +233,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
      */
     public void setSourceImage(BufferedImage sourceImage) {
         this.sourceImage = sourceImage;
-        this.max = getMax();
+        this.renderMax = getMax();
     }
 
     /**
@@ -248,7 +248,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
      */
     public void setSourceGif(Gif sourceGif) {
         this.sourceGif = sourceGif;
-        this.max = getMax();
+        this.renderMax = getMax();
     }
 
     /**
