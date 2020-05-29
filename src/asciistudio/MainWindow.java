@@ -21,13 +21,9 @@ import asciilib.ImageSamplingParams;
 import asciilib.Palette;
 import asciilib.FileUtil;
 import giflib.Gif;
-import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -139,6 +135,26 @@ public class MainWindow extends javax.swing.JFrame {
     public void enableImport(boolean enable) {
         importMenuItem.setEnabled(enable);
         importButton.setEnabled(enable);
+    }
+
+    public static File getSelectedFileWithExtension(JFileChooser fileChooser) {
+        var file = fileChooser.getSelectedFile();
+
+        if (fileChooser.getFileFilter() instanceof FileNameExtensionFilter) {
+            String[] filterExts = ((FileNameExtensionFilter) fileChooser.getFileFilter()).getExtensions();
+            String normalizedName = file.getName().toLowerCase();
+
+            for (var ext : filterExts) { // If it already has a valid extension
+                if (normalizedName.endsWith('.' + ext.toLowerCase())) {
+                    return file; // if yes, return as-is
+                }
+            }
+
+            // If not, append the first extension from the selected filter
+            file = new File(file.toString() + '.' + filterExts[0]);
+        }
+
+        return file;
     }
 
     /**
@@ -824,22 +840,13 @@ public class MainWindow extends javax.swing.JFrame {
             if (exportTextDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
                 var renderer = new AsciiRenderer(currentPalette.getPalette(), samplingParams);
-                var outputPath = exportTextDialog.getSelectedFile().getAbsolutePath();
-
-                // Add extension if it was not given
-                if (!outputPath.contains(".")) {
-                    var filter = (FileNameExtensionFilter) exportTextDialog.getFileFilter();
-
-                    if (filter != null) {
-                        outputPath += "." + filter.getExtensions()[0];
-                    }
-                }
+                var outputFile = getSelectedFileWithExtension(exportTextDialog); 
 
                 // Render the text and save to file on a background thread
                 var renderTask = new BackgroundRenderer(renderer, RenderType.TEXT, this);
                 renderTask.setSourceImage(sourceCurrentFrame);
                 renderTask.useRenderUI(true);
-                renderTask.setOutputFile(outputPath);
+                renderTask.setOutputFile(outputFile.getAbsolutePath());
                 renderTask.execute();
 
                 exportDirectoryChanged = !exportTextDialog.getCurrentDirectory().equals(currentDirectory);
@@ -869,15 +876,8 @@ public class MainWindow extends javax.swing.JFrame {
             if (exportImageDialog.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 refreshSampleParams();
                 var renderer = new AsciiRenderer(currentPalette.getPalette(), samplingParams);
-                var outputPath = exportImageDialog.getSelectedFile().getAbsolutePath();
-
-                // Add extension if it was not given
-                if (!outputPath.contains(".")) {
-                    var filter = (FileNameExtensionFilter) exportImageDialog.getFileFilter();
-                    if (filter != null) {
-                        outputPath += "." + filter.getExtensions()[0];
-                    }
-                }
+                var outputFile = getSelectedFileWithExtension(exportImageDialog); 
+                var outputPath = outputFile.getAbsolutePath();
                 
                 // Render the image and save to file on a background thread
                 var ext = FileUtil.getExt(outputPath);
