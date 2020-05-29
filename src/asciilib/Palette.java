@@ -44,7 +44,7 @@ public class Palette {
     private Color backgroundColor = Color.BLACK;
     private Color fontColor = Color.WHITE;
     private Font font = new Font("Monospaced", Font.BOLD, 12);
-    private String[] weights = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".split("");
+    private String[] weights = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$".split("");
 
     /**
      * Create a new palette that derives from the base palette.
