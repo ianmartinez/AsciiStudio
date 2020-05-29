@@ -120,7 +120,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
         }
 
         renderer.setProgressWatcher(null);
-        publish(new RenderProgress("", 100, 100));
+        publish(new RenderProgress("Finished", 100, 100));
 
         return null;
     }
@@ -137,7 +137,6 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
                 mainWindow.renderedImageView.setIcon(new StretchIcon(renderedImage));
             }
 
-            useRenderUI(false);
         } catch (ExecutionException | InterruptedException e) {
             var renderName = "";
             switch (renderType) {
@@ -156,6 +155,8 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
 
             JOptionPane.showMessageDialog(mainWindow, "Error rendering " + renderName);
         }
+
+        useRenderUI(false);
     }
 
     /**
@@ -189,7 +190,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
                     case GIF:
                         renderedGif.setSaveProgressWatcher((int frame, int totalFrames) -> {
                             var relativeProgress = (int) ((frame / (double) totalFrames) * 100);
-                            publish(new RenderProgress("Saving frame", relativeProgress, 100));
+                            publish(new RenderProgress("Saving frames", relativeProgress, 100));
                         });
                         renderedGif.save(outputFile);
                         renderedGif.setSaveProgressWatcher(null);
