@@ -41,6 +41,7 @@ public final class Gif {
 
     private GifFrame[] frames;
     private int averageDelay = -1; // Don't calculate until needed
+    private GifSaveProgressWatcher saveProgressWatcher;
 
     public Gif(BufferedImage[] images, int delay) {
         frames = new GifFrame[images.length];
@@ -88,10 +89,14 @@ public final class Gif {
     public void save(String fileName) throws IOException {
         try (var output = new FileImageOutputStream(new File(fileName));
                 var writer = new GifSequenceWriter(output, frames[0].getImageType(), getDelay(), true)) {
-            
+
             for (var frame : frames) {
                 writer.writeToSequence(frame);
             }
+        }
+        
+        if(saveProgressWatcher != null) {
+            
         }
     }
 
@@ -151,5 +156,19 @@ public final class Gif {
         }
 
         return images.toArray(new BufferedImage[images.size()]);
+    }
+
+    /**
+     * @return the saveProgressWatcher
+     */
+    public GifSaveProgressWatcher getSaveProgressWatcher() {
+        return saveProgressWatcher;
+    }
+
+    /**
+     * @param saveProgressWatcher the saveProgressWatcher to set
+     */
+    public void setSaveProgressWatcher(GifSaveProgressWatcher saveProgressWatcher) {
+        this.saveProgressWatcher = saveProgressWatcher;
     }
 }

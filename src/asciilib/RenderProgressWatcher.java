@@ -21,7 +21,7 @@ package asciilib;
  *
  * @author Ian Martinez
  */
-public interface ProgressWatcher {
+public interface RenderProgressWatcher {
 
     /**
      * Function to call to update the progress of a render.

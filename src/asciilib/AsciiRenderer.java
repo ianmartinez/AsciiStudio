@@ -39,7 +39,7 @@ public class AsciiRenderer {
     private final ImageSamplingParams samplingParams;
     private int phrasePos = 0;
     private int framePos = 0;
-    private ProgressWatcher progressWatcher;
+    private RenderProgressWatcher progressWatcher;
 
     /**
      * Create a new ASCII renderer with a palette and a sampling parameters.
@@ -60,8 +60,8 @@ public class AsciiRenderer {
      * @param rowCount the number of rows to process
      */
     private void updateProgress(int progress, int rowCount) {
-        if (getProgressWatcher() != null) {
-            getProgressWatcher().update(progress, rowCount, framePos);
+        if (progressWatcher != null) {
+            progressWatcher.update(progress, rowCount, framePos);
         }
     }
 
@@ -321,14 +321,14 @@ public class AsciiRenderer {
     /**
      * @return the progressWatcher
      */
-    public ProgressWatcher getProgressWatcher() {
+    public RenderProgressWatcher getProgressWatcher() {
         return progressWatcher;
     }
 
     /**
      * @param progressWatcher the progressWatcher to set
      */
-    public void setProgressWatcher(ProgressWatcher progressWatcher) {
+    public void setProgressWatcher(RenderProgressWatcher progressWatcher) {
         this.progressWatcher = progressWatcher;
     }
 
