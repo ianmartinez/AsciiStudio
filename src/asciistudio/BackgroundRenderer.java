@@ -153,7 +153,7 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
                     renderName = "GIF";
             }
 
-            JOptionPane.showMessageDialog(mainWindow, "Error rendering " + renderName + "(" + ex.getMessage() + ")");
+            JOptionPane.showMessageDialog(mainWindow, "Error rendering " + renderName + " (" + ex.getMessage() + ")");
         }
 
         useRenderUI(false);
