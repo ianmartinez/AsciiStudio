@@ -26,6 +26,13 @@ public class RenderProgress {
     private int progress;
     private int max;
     
+    /**
+     * Create a new RenderProgress.
+     * 
+     * @param stage what stage this progress is a part of
+     * @param progress the current progress value
+     * @param max the max progress value
+     */
     public RenderProgress(String stage, int progress, int max) {
         this.stage = stage;
         this.progress = progress;
