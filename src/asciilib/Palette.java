@@ -34,6 +34,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement
 public class Palette {
 
+    // Common weights that are used
+    public final String standardDarkWeights = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+    public final String standardLightWeights = reverseWeightsString(standardDarkWeights);
+    public final String blocksDarkWeights = "░▒▓█";
+    public final String blocksLightWeights = reverseWeightsString(blocksDarkWeights);
+    public final String symbolsDarkWeights = ".*^%&#@";
+    public final String symbolsLightWeights = reverseWeightsString(symbolsDarkWeights);
+
     /**
      * The palette settings that all other palettes derive from.
      */
@@ -44,7 +52,7 @@ public class Palette {
     private Color backgroundColor = Color.BLACK;
     private Color fontColor = Color.WHITE;
     private Font font = new Font("Monospaced", Font.BOLD, 12);
-    private String[] weights = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$".split("");
+    private String[] weights = standardDarkWeights.split("");
 
     /**
      * Create a new palette that derives from the base palette.
@@ -62,7 +70,7 @@ public class Palette {
 
     /**
      * Create a new palette that derives from another palette.
-     * 
+     *
      * @param otherPalette the palette to derive from
      */
     public Palette(Palette otherPalette) {
@@ -192,9 +200,9 @@ public class Palette {
 
     /**
      * Get the weight at a given position.
-     * 
+     *
      * @param pos the weight index
-     * 
+     *
      * @return the string for the weight at that index
      */
     public String getWeight(int pos) {
@@ -226,10 +234,10 @@ public class Palette {
 
     /**
      * Get the dimensions of a string using this palette.
-     * 
+     *
      * @param g the graphics the string will be rendered with
      * @param s the string to measure
-     * 
+     *
      * @return the string's dimensions
      */
     public Dimension getStringDimensions(Graphics g, String s) {
@@ -239,13 +247,12 @@ public class Palette {
         return new Dimension((int) bounds.getWidth(), (int) bounds.getHeight());
     }
 
-
     /**
      * Get the width of a string using this palette.
-     * 
+     *
      * @param g the graphics the string will be rendered with
      * @param s the string to measure
-     * 
+     *
      * @return the string's width
      */
     public int getStringWidth(Graphics g, String s) {
@@ -257,10 +264,10 @@ public class Palette {
 
     /**
      * Get the height of a string using this palette.
-     * 
+     *
      * @param g the graphics the string will be rendered with
      * @param s the string to measure
-     * 
+     *
      * @return the string's height
      */
     public int getStringHeight(Graphics g, String s) {
@@ -272,28 +279,29 @@ public class Palette {
 
     /**
      * Get the max value in an array.
-     * 
+     *
      * @param arr the array to search through
-     * 
+     *
      * @return the max value
      */
     private static int maxVal(int[] arr) {
         int max = arr[0];
 
-        for (int i = 1; i < arr.length; i++) 
-            if (arr[i] > max) 
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
                 max = arr[i];
-        
+            }
+        }
+
         return max;
     }
-    
+
     /**
-     * Import an XML file to create a palette.
-     * If an exception occurred while parsing the file,
-     * null is returned.
-     * 
+     * Import an XML file to create a palette. If an exception occurred while
+     * parsing the file, null is returned.
+     *
      * @param filePath the XML file representing a palette
-     * 
+     *
      * @return a new palette from the XML file
      */
     public static Palette importXml(String filePath) {
@@ -301,27 +309,42 @@ public class Palette {
             File file = new File(filePath);
             JAXBContext context = JAXBContext.newInstance(Palette.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            Palette palette = (Palette)unmarshaller.unmarshal(file);
-            
+            Palette palette = (Palette) unmarshaller.unmarshal(file);
+
             return palette;
         } catch (JAXBException ex) {
             return null;
         }
     }
-    
+
     /**
      * Export this palette to an XML file.
-     * 
+     *
      * @param filePath the path to export the file to
-     * 
+     *
      * @throws JAXBException if there was an exception exporting the XML file
      */
     public void exportXml(String filePath) throws JAXBException {
         File file = new File(filePath);
-           
+
         JAXBContext context = JAXBContext.newInstance(Palette.class);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(this, file);
     }
+
+    /**
+     * Reverse a weights string.
+     * 
+     * @param weightsString the weights string to reverse
+     * 
+     * @return the reversed weights string
+     */
+    public static String reverseWeightsString(String weightsString) {
+        var reverseStrBuilder = new StringBuilder(weightsString);
+        reverseStrBuilder.reverse();
+        
+        return reverseStrBuilder.toString();
+    }
+
 }
