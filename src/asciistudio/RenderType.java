@@ -17,12 +17,14 @@
 package asciistudio;
 
 /**
+ * The type of rendering that the Background renderer
+ * is doing.
  *
  * @author Ian Martinez
  */
 public enum RenderType {
-    PREVIEW,
-    TEXT,
-    GIF,
-    STILL_IMAGE
+    PREVIEW, // Rendering to the preview panel
+    TEXT, // Rendering to a text file
+    GIF, // Rendering to an animated GIF
+    STILL_IMAGE // Rendering to a still image (PNG)
 }
