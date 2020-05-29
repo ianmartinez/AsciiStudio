@@ -6,7 +6,8 @@ Version 4.0 (May 29, 2020)
    • Split original-rendered pane
    • Import and export weights
    • Resize image before rendering by setting a sample ratio
-   • Multi-threaded image rendering
+   • Multi-threaded image rendering and saving
+   • Add weights menu, which has several common weight sets 
    • New program icon
 
 Version 3.1 (August 18, 2018)
