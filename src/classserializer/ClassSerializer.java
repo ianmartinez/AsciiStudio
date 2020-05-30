@@ -17,6 +17,7 @@
 package classserializer;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -33,7 +34,8 @@ import java.util.Properties;
 public class ClassSerializer {
 
     private boolean skipUnknownTypes = false;
-    private ArrayList<TypeSerializer> typeSerializers = new ArrayList<>();
+    private boolean ignoreMissingValues = false;
+    private final ArrayList<TypeSerializer> typeSerializers = new ArrayList<>();
 
     public ClassSerializer() {
 
@@ -45,11 +47,29 @@ public class ClassSerializer {
             try (var propertyStream = new FileInputStream(fileName)) {
                 properties.load(propertyStream);
             }
-            
+
             for (Field field : targetClassType.getDeclaredFields()) {
-                if (!Modifier.isStatic(field.getModifiers())) {                   
+                if (!Modifier.isStatic(field.getModifiers())) {
                     field.set(targetObject, getValue(properties, field.getName(), field.getType()));
                 }
+            }
+        } catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException e) {
+            throw new RuntimeException("Error loading class from file: " + e, e);
+        }
+    }
+    
+    public void write(Class<?> targetClassType, Object targetObject, String fileName) {
+        try {
+            var properties = new Properties();
+
+            for (Field field : targetClassType.getDeclaredFields()) {
+                if (!Modifier.isStatic(field.getModifiers())) {
+                    setValue(properties, field.getName(), field.getType(), field.get(targetObject));
+                }
+            }            
+            
+            try (var propertyStream = new FileOutputStream(fileName)) {
+                properties.store(propertyStream, "Serialized: " + targetClassType.getName());
             }
         } catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException e) {
             throw new RuntimeException("Error loading class from file: " + e, e);
@@ -59,8 +79,8 @@ public class ClassSerializer {
     private Object getValue(Properties properties, String name, Class<?> type) {
         var value = properties.getProperty(name);
 
-        if (value == null) {
-            throw new IllegalArgumentException("Missing configuration value: " + name);
+        if (value == null && !ignoreMissingValues) {
+            throw new IllegalArgumentException("Missing value with name: " + name);
         } else if (type == String.class) {
             return value;
         } else if (type == boolean.class) {
@@ -77,18 +97,31 @@ public class ClassSerializer {
             }
         }
 
-        if (skipUnknownTypes) {
+        if (skipUnknownTypes || value == null) {
             return null;
         } else {
             throw new IllegalArgumentException("Unknown type in class: " + type.getName());
         }
     }
-    
+
     private void setValue(Properties properties, String name, Class<?> type, Object value) {
-    }
+        String serializedValue = null;
 
-    public void write(Class<?> sourceClass, String fileName) {
+        if (type == String.class || type == boolean.class || type == int.class || type == float.class) {
+            serializedValue = value.toString();
+        } else { // Try to find a serializer for the type and parse it
+            for (var serializer : typeSerializers) {
+                if (serializer.matches(type)) {
+                    serializedValue = serializer.serialize(value);
+                }
+            }
+        }
 
+        if (serializedValue != null) {
+            properties.setProperty(name, serializedValue);
+        } else if (!skipUnknownTypes) {
+            throw new IllegalArgumentException("Unknown type in class: " + type.getName());
+        }
     }
 
     /**
@@ -105,6 +138,20 @@ public class ClassSerializer {
         this.skipUnknownTypes = skipUnknownTypes;
     }
 
+    /**
+     * @return if missing values should be ignored when reading
+     */
+    public boolean ignoresMissingValues() {
+        return ignoreMissingValues;
+    }
+
+    /**
+     * @param ignoreMissingValues if missing values should be ignored when reading
+     */
+    public void setIgnoreMissingValues(boolean ignoreMissingValues) {
+        this.ignoreMissingValues = ignoreMissingValues;
+    }
+
     public ArrayList<TypeSerializer> getTypeSerializers() {
         return typeSerializers;
     }
@@ -114,9 +161,9 @@ public class ClassSerializer {
     }
 
     public void removeSerializer(TypeSerializer... serializers) {
-        for(var serializer: serializers) {
+        for (var serializer : serializers) {
             typeSerializers.remove(serializer);
-        }        
+        }
     }
 
     public TypeSerializer getSerializerFor(Class<?> type) {
