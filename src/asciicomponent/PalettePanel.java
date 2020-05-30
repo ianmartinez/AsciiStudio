@@ -51,6 +51,7 @@ public class PalettePanel extends javax.swing.JPanel {
         weightsPhraseValueTextField.getDocument().addDocumentListener((SimpleDocumentListener) e -> {
             palette.setWeightsString(weightsPhraseValueTextField.getText());
         });
+        
     }
 
     /**
@@ -170,11 +171,11 @@ public class PalettePanel extends javax.swing.JPanel {
 
         paletteTabs = new javax.swing.JTabbedPane();
         colorsTab = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        backgroundColorContainer = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         backgroundColorButton = new javax.swing.JButton();
         backgroundColorPanel = new asciicomponent.ColorPanel();
-        jPanel9 = new javax.swing.JPanel();
+        fontColorContainer = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         overrideImageCheckbox = new javax.swing.JCheckBox();
         fontColorPanel = new asciicomponent.ColorPanel();
@@ -196,15 +197,16 @@ public class PalettePanel extends javax.swing.JPanel {
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(0, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
         colorsTab.setLayout(flowLayout1);
 
-        jPanel7.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel7.setPreferredSize(new java.awt.Dimension(270, 30));
+        backgroundColorContainer.setMinimumSize(new java.awt.Dimension(200, 45));
+        backgroundColorContainer.setOpaque(false);
+        backgroundColorContainer.setPreferredSize(new java.awt.Dimension(270, 30));
         java.awt.GridBagLayout jPanel7Layout = new java.awt.GridBagLayout();
         jPanel7Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
-        jPanel7.setLayout(jPanel7Layout);
+        backgroundColorContainer.setLayout(jPanel7Layout);
 
         jLabel4.setFont(jLabel4.getFont().deriveFont(jLabel4.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel4.setText("Background Color:");
@@ -214,7 +216,7 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
-        jPanel7.add(jLabel4, gridBagConstraints);
+        backgroundColorContainer.add(jLabel4, gridBagConstraints);
 
         backgroundColorButton.setText("...");
         backgroundColorButton.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +229,7 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel7.add(backgroundColorButton, gridBagConstraints);
+        backgroundColorContainer.add(backgroundColorButton, gridBagConstraints);
 
         backgroundColorPanel.setColor(new java.awt.Color(255, 255, 255));
         backgroundColorPanel.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -240,7 +242,7 @@ public class PalettePanel extends javax.swing.JPanel {
         );
         backgroundColorPanelLayout.setVerticalGroup(
             backgroundColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
+            .addGap(0, 24, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -250,15 +252,16 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel7.add(backgroundColorPanel, gridBagConstraints);
+        backgroundColorContainer.add(backgroundColorPanel, gridBagConstraints);
 
-        colorsTab.add(jPanel7);
+        colorsTab.add(backgroundColorContainer);
 
-        jPanel9.setMinimumSize(new java.awt.Dimension(200, 45));
-        jPanel9.setPreferredSize(new java.awt.Dimension(340, 30));
+        fontColorContainer.setMinimumSize(new java.awt.Dimension(200, 45));
+        fontColorContainer.setOpaque(false);
+        fontColorContainer.setPreferredSize(new java.awt.Dimension(340, 30));
         java.awt.GridBagLayout jPanel9Layout = new java.awt.GridBagLayout();
         jPanel9Layout.columnWeights = new double[] {1.0, 0.0, 0.0, 0.0};
-        jPanel9.setLayout(jPanel9Layout);
+        fontColorContainer.setLayout(jPanel9Layout);
 
         jLabel5.setFont(jLabel5.getFont().deriveFont(jLabel5.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel5.setText("Font Color:");
@@ -268,14 +271,15 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
-        jPanel9.add(jLabel5, gridBagConstraints);
+        fontColorContainer.add(jLabel5, gridBagConstraints);
 
         overrideImageCheckbox.setToolTipText("");
+        overrideImageCheckbox.setDoubleBuffered(true);
         overrideImageCheckbox.setLabel("Override image");
         overrideImageCheckbox.setMinimumSize(new java.awt.Dimension(130, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel9.add(overrideImageCheckbox, gridBagConstraints);
+        fontColorContainer.add(overrideImageCheckbox, gridBagConstraints);
 
         fontColorPanel.setPreferredSize(new java.awt.Dimension(100, 30));
 
@@ -287,7 +291,7 @@ public class PalettePanel extends javax.swing.JPanel {
         );
         fontColorPanelLayout.setVerticalGroup(
             fontColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
+            .addGap(0, 24, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -295,7 +299,7 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 3);
-        jPanel9.add(fontColorPanel, gridBagConstraints);
+        fontColorContainer.add(fontColorPanel, gridBagConstraints);
 
         fontColorButton.setText("...");
         fontColorButton.addActionListener(new java.awt.event.ActionListener() {
@@ -306,13 +310,13 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel9.add(fontColorButton, gridBagConstraints);
+        fontColorContainer.add(fontColorButton, gridBagConstraints);
 
-        colorsTab.add(jPanel9);
+        colorsTab.add(fontColorContainer);
 
         paletteTabs.addTab("Colors", colorsTab);
 
-        fontTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        fontTab.setLayout(new java.awt.FlowLayout(0));
 
         jPanel12.setMinimumSize(new java.awt.Dimension(300, 45));
         jPanel12.setPreferredSize(new java.awt.Dimension(450, 30));
@@ -423,10 +427,12 @@ public class PalettePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backgroundColorButton;
+    private javax.swing.JPanel backgroundColorContainer;
     private asciicomponent.ColorPanel backgroundColorPanel;
     private javax.swing.JPanel colorsTab;
     private javax.swing.JCheckBox fontBoldCheckbox;
     private javax.swing.JButton fontColorButton;
+    private javax.swing.JPanel fontColorContainer;
     private asciicomponent.ColorPanel fontColorPanel;
     private javax.swing.JComboBox<String> fontFamiliesComboBox;
     private javax.swing.JCheckBox fontItalicCheckbox;
@@ -439,8 +445,6 @@ public class PalettePanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JCheckBox overrideImageCheckbox;
     private javax.swing.JTabbedPane paletteTabs;
     private javax.swing.JRadioButton usePhraseRadioButton;

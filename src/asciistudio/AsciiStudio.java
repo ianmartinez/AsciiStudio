@@ -63,9 +63,9 @@ public class AsciiStudio {
         App.setRootProperty(mainWindow, "Aqua.windowStyle", "unifiedToolBar");
         App.setProperty(mainWindow.sidebarPanel, "Aqua.backgroundStyle", "vibrantSidebar");
 
-        // Set about handler to open the about window
+        // Set about handler to open the about window on macOS
         if(Platform.isMac()) {
-            Desktop.getDesktop().setAboutHandler((AboutEvent e) -> {
+            Desktop.getDesktop().setAboutHandler((AboutEvent aboutEvent) -> {
                 var aboutDialog = new AboutDialog(mainWindow, true);
                 aboutDialog.setLocationRelativeTo(mainWindow);
                 aboutDialog.setVisible(true);

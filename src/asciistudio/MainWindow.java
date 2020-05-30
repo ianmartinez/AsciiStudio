@@ -24,6 +24,7 @@ import giflib.Gif;
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -35,7 +36,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Ian Martinez
  */
-public class MainWindow extends javax.swing.JFrame {
+public final class MainWindow extends javax.swing.JFrame {
 
     public String sourceImagePath = ""; // The source image's location
     public boolean isGif = false; // If the source image is a GIF or still image
@@ -85,8 +86,16 @@ public class MainWindow extends javax.swing.JFrame {
         // Hide tooltips
         originalImageView.setToolTipText(null);
         renderedImageView.setToolTipText(null);
-        
-        progressPanelContainer.setBorder(javax.swing.BorderFactory.createTitledBorder("Render Progress"));        
+
+        // Set render progress border
+        progressPanelContainer.setBorder(javax.swing.BorderFactory.createTitledBorder("Render Progress"));
+
+        // Set icon
+        try {
+            this.setIconImage(ImageIO.read(getClass().getResource("/asciiicons/48.png")));
+        } catch (IOException ex) {
+            System.out.println("Couldn't load icon.");
+        }
     }
 
     private void refreshSampleParams() {
