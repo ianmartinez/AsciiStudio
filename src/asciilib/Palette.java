@@ -140,14 +140,7 @@ public class Palette {
     public String[] getWeights() {
         return weights;
     }
-
-    /**
-     * @param weights the weights to set
-     */
-    public void setWeights(String[] weights) {
-        this.weights = weights;
-    }
-
+    
     /**
      * @return the usingPhrase
      */
@@ -172,10 +165,10 @@ public class Palette {
     /**
      * Set the weights array from a string
      *
-     * @param weights the weights to set
+     * @param weightsString the weightsString to set
      */
-    public void setWeights(String weights) {
-        this.setWeights(weights.split(""));
+    public void setWeightsString(String weightsString) {
+        weights = weightsString.split("");
     }
 
     /**
@@ -295,6 +288,7 @@ public class Palette {
         try {
             var palette = new Palette();
             var serializer = new ClassSerializer();
+            serializer.setIgnoreMissingValues(true);
             serializer.addSerializer(new FontSerializer(), new ColorSerializer());
             serializer.read(Palette.class, palette, filePath);
 
@@ -312,8 +306,9 @@ public class Palette {
     public void exportFile(String filePath) {
         var palette = new Palette();
         var serializer = new ClassSerializer();
+        serializer.setSkipUnknownTypes(true);
         serializer.addSerializer(new FontSerializer(), new ColorSerializer());
-        serializer.write(Palette.class, palette, filePath);
+        serializer.write(Palette.class, this, filePath);
     }
 
     /**

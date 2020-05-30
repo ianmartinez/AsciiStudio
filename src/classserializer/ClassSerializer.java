@@ -25,10 +25,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 import java.beans.*;
+import java.lang.reflect.InvocationTargetException;
 
 /**
- * Provide a simple way of serializing and deserializing classes without any
- * complicated dependencies like JAXB.
+ * Provide a simple way of serializing and deserializing classes via properties
+ * without any complicated dependencies like JAXB.
  *
  * @author Ian Martinez
  */
@@ -48,14 +49,20 @@ public class ClassSerializer {
             try (var propertyStream = new FileInputStream(fileName)) {
                 properties.load(propertyStream);
             }
-
-            for (Field field : targetClassType.getDeclaredFields()) {
-                if (!Modifier.isStatic(field.getModifiers())) {
-                    field.set(targetObject, getValue(properties, field.getName(), field.getType()));
+            
+            var propertyDescriptors = Introspector.getBeanInfo(targetClassType).getPropertyDescriptors();
+            for (var descriptor : propertyDescriptors) {
+                if (descriptor.getReadMethod() != null && !descriptor.getName().equals("class")) {
+                    var writeMethod = descriptor.getWriteMethod();
+                    if (isSerializable(descriptor)) {
+                        var value = getValue(properties, descriptor.getName(), descriptor.getPropertyType());
+                        if(value != null)
+                            writeMethod.invoke(targetObject, value);
+                    }
                 }
             }
-        } catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException e) {
-            throw new RuntimeException("Error loading class from file: " + e, e);
+        } catch (IntrospectionException | IOException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            throw new RuntimeException("Error reading class from file '" + e + "'", e);
         }
     }
 
@@ -63,11 +70,11 @@ public class ClassSerializer {
         try {
             var properties = new Properties();
             var propertyDescriptors = Introspector.getBeanInfo(targetClassType).getPropertyDescriptors();
-            
+
             for (var descriptor : propertyDescriptors) {
                 if (descriptor.getReadMethod() != null && !descriptor.getName().equals("class")) {
                     var readMethod = descriptor.getReadMethod();
-                    if (readMethod != null) {
+                    if (isSerializable(descriptor)) {
                         setValue(properties, descriptor.getName(), descriptor.getPropertyType(), readMethod.invoke(targetObject));
                     }
                 }
@@ -76,9 +83,13 @@ public class ClassSerializer {
             try (var propertyStream = new FileOutputStream(fileName)) {
                 properties.store(propertyStream, "Serialized: " + targetClassType.getName());
             }
-        } catch (Exception e) {
-            throw new RuntimeException("Error loading class from file: " + e, e);
+        } catch (IntrospectionException | IOException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            throw new RuntimeException("Error writing class '" + targetClassType.getName() + "' to file '" + e + "'", e);
         }
+    }
+    
+    private boolean isSerializable(PropertyDescriptor descriptor) {
+        return (descriptor.getReadMethod() != null) && (descriptor.getWriteMethod() != null);
     }
 
     private Object getValue(Properties properties, String name, Class<?> type) {

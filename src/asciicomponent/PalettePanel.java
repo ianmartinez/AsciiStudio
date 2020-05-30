@@ -49,7 +49,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
         // Add event listeners
         weightsPhraseValueTextField.getDocument().addDocumentListener((SimpleDocumentListener) e -> {
-            palette.setWeights(weightsPhraseValueTextField.getText());
+            palette.setWeightsString(weightsPhraseValueTextField.getText());
         });
     }
 
@@ -123,7 +123,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
         // Weights/phrase
         palette.setUsingPhrase(usePhraseRadioButton.isSelected());
-        palette.setWeights(weightsPhraseValueTextField.getText());
+        palette.setWeightsString(weightsPhraseValueTextField.getText());
     }
 
     /**
@@ -152,7 +152,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
         if (!palette.isUsingPhrase()) {
             var reversedWeights = Palette.reverseWeightsString(palette.getWeightsString());
-            invertedPalette.setWeights(reversedWeights);
+            invertedPalette.setWeightsString(reversedWeights);
         }
 
         setPalette(invertedPalette);

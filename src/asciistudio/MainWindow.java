@@ -163,7 +163,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private void changeWeightsString(String weightsString) {
         var newPalette = new Palette(currentPalette.getPalette());
-        newPalette.setWeights(weightsString);
+        newPalette.setWeightsString(weightsString);
         currentPalette.setPalette(newPalette);
     }
 
