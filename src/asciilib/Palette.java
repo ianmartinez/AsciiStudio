@@ -61,7 +61,7 @@ public class Palette {
             font = basePalette.getFont();
             weights = basePalette.getWeights();
         } else { // Init base palette
-            if(Platform.isWindows()) {
+            if (Platform.isWindows()) {
                 // Set a better default font on Windows
                 font = new Font("Consolas", Font.BOLD, 12);
             }
@@ -144,7 +144,7 @@ public class Palette {
     public String[] getWeights() {
         return weights;
     }
-    
+
     /**
      * @return the usingPhrase
      */
@@ -193,6 +193,13 @@ public class Palette {
         return weights[pos];
     }
 
+    /**
+     * Get the ratio between the font height and the font width.
+     *
+     * @param g the graphics the font will be rendered with
+     *
+     * @return the font ratio
+     */
     public int getFontRatio(Graphics g) {
         var metrics = g.getFontMetrics(font);
         return (int) (metrics.getHeight() / maxVal(metrics.getWidths()));

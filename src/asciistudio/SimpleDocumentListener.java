@@ -44,4 +44,5 @@ public interface SimpleDocumentListener extends DocumentListener {
     default void changedUpdate(DocumentEvent e) {
         update(e);
     }
+
 }

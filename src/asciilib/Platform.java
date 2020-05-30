@@ -23,18 +23,20 @@ package asciilib;
  */
 public final class Platform {
 
+    private Platform() {} // No constructor
+
     /**
      * @return if the application is running on a Mac
      */
     public static boolean isMac() {
         return System.getProperty("os.name", "").startsWith("Mac OS");
     }
-        
+
     /**
      * @return if the application is running on Windows
      */
     public static boolean isWindows() {
         return System.getProperty("os.name", "").startsWith("Windows");
     }
-    
+
 }
