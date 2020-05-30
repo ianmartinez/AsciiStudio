@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 
 /**
@@ -38,15 +39,16 @@ public class ClassSerializer {
 
     }
 
-    public void read(Class<?> targetClass, String fileName) {
+    public void read(Class<?> targetClassType, Object targetObject, String fileName) {
         try {
-            var props = new Properties();
-            try (FileInputStream propStream = new FileInputStream(fileName)) {
-                props.load(propStream);
+            var properties = new Properties();
+            try (var propertyStream = new FileInputStream(fileName)) {
+                properties.load(propertyStream);
             }
-            for (Field field : targetClass.getDeclaredFields()) {
-                if (Modifier.isStatic(field.getModifiers())) {
-                    field.set(null, getValue(props, field.getName(), field.getType()));
+            
+            for (Field field : targetClassType.getDeclaredFields()) {
+                if (!Modifier.isStatic(field.getModifiers())) {                   
+                    field.set(targetObject, getValue(properties, field.getName(), field.getType()));
                 }
             }
         } catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException e) {
@@ -54,7 +56,7 @@ public class ClassSerializer {
         }
     }
 
-    public Object getValue(Properties properties, String name, Class<?> type) {
+    private Object getValue(Properties properties, String name, Class<?> type) {
         var value = properties.getProperty(name);
 
         if (value == null) {
@@ -81,6 +83,9 @@ public class ClassSerializer {
             throw new IllegalArgumentException("Unknown type in class: " + type.getName());
         }
     }
+    
+    private void setValue(Properties properties, String name, Class<?> type, Object value) {
+    }
 
     public void write(Class<?> sourceClass, String fileName) {
 
@@ -104,12 +109,14 @@ public class ClassSerializer {
         return typeSerializers;
     }
 
-    public void addSerializer(TypeSerializer serializer) {
-        typeSerializers.add(serializer);
+    public void addSerializer(TypeSerializer... serializers) {
+        typeSerializers.addAll(Arrays.asList(serializers));
     }
 
-    public void removeSerializer(TypeSerializer serializer) {
-        typeSerializers.remove(serializer);
+    public void removeSerializer(TypeSerializer... serializers) {
+        for(var serializer: serializers) {
+            typeSerializers.remove(serializer);
+        }        
     }
 
     public TypeSerializer getSerializerFor(Class<?> type) {
