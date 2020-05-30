@@ -19,8 +19,6 @@ package classserializer;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
@@ -28,36 +26,57 @@ import java.beans.*;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * Provide a simple way of serializing and deserializing classes via properties
+ * Provides a simple way of serializing and deserializing classes via properties
  * without any complicated dependencies like JAXB.
+ *
+ * It will serialize every property that has both a getter and a setter into a
+ * Java properties file. By default it includes support for just primitives, but
+ * it can easily be extended by adding classes that implement the interface
+ * TypeSerializer to support additional types.
+ *
  *
  * @author Ian Martinez
  */
-public class ClassSerializer {
+public final class ClassSerializer {
 
     private boolean skipUnknownTypes = true;
     private boolean ignoreMissingValues = false;
     private final ArrayList<TypeSerializer> typeSerializers = new ArrayList<>();
 
-    public ClassSerializer() {
-
+    /**
+     * Create a ClassSerializer to serialize a class.
+     *
+     * @param serializers any additional serializers you want to use
+     */
+    public ClassSerializer(TypeSerializer... serializers) {
+        addSerializers(serializers);
     }
 
+    /**
+     * Read a properties file containing all of the serializable values of a
+     * class and set all of the serializable properties in that class to the
+     * values parsed from the properties file.
+     *
+     * @param targetClassType the type of the class
+     * @param targetObject the instance of the class to be written to
+     * @param fileName the location of the properties file to read
+     */
     public void read(Class<?> targetClassType, Object targetObject, String fileName) {
         try {
             var properties = new Properties();
             try (var propertyStream = new FileInputStream(fileName)) {
                 properties.load(propertyStream);
             }
-            
+
             var propertyDescriptors = Introspector.getBeanInfo(targetClassType).getPropertyDescriptors();
             for (var descriptor : propertyDescriptors) {
                 if (descriptor.getReadMethod() != null && !descriptor.getName().equals("class")) {
                     var writeMethod = descriptor.getWriteMethod();
                     if (isSerializable(descriptor)) {
                         var value = getValue(properties, descriptor.getName(), descriptor.getPropertyType());
-                        if(value != null)
+                        if (value != null) {
                             writeMethod.invoke(targetObject, value);
+                        }
                     }
                 }
             }
@@ -66,6 +85,15 @@ public class ClassSerializer {
         }
     }
 
+    /**
+     * Write a properties file containing all of the serializable values in a
+     * given class instance.
+     *
+     * @param targetClassType the type of the class
+     * @param targetObject the instance of the class whose values are to be
+     * serialized
+     * @param fileName the location to save the properties file
+     */
     public void write(Class<?> targetClassType, Object targetObject, String fileName) {
         try {
             var properties = new Properties();
@@ -87,16 +115,32 @@ public class ClassSerializer {
             throw new RuntimeException("Error writing class '" + targetClassType.getName() + "' to file '" + e + "'", e);
         }
     }
-    
-    private boolean isSerializable(PropertyDescriptor descriptor) {
+
+    /**
+     * If a property is serializable (i.e. has both a getter and a setter)
+     *
+     * @param descriptor the property descriptor
+     *
+     * @return true if the property is serializable, false if not
+     */
+    public boolean isSerializable(PropertyDescriptor descriptor) {
         return (descriptor.getReadMethod() != null) && (descriptor.getWriteMethod() != null);
     }
 
+    /**
+     * Get the deserialized value by a name in a properties list.
+     *
+     * @param properties the properties list
+     * @param name the name of the property
+     * @param type the type of the value to be returned
+     *
+     * @return the value that was parsed from the properties list
+     */
     private Object getValue(Properties properties, String name, Class<?> type) {
         var value = properties.getProperty(name);
 
         if (value == null && !ignoreMissingValues) {
-            throw new IllegalArgumentException("Missing value with name: " + name);
+            throw new IllegalArgumentException("Missing value with name '" + name + "'");
         } else if (type == String.class) {
             return value;
         } else if (type == boolean.class) {
@@ -116,10 +160,18 @@ public class ClassSerializer {
         if (skipUnknownTypes || value == null) {
             return null;
         } else {
-            throw new IllegalArgumentException("Unknown type in class: " + type.getName());
+            throw new IllegalArgumentException("Unknown type in class: '" + type.getName() + "'");
         }
     }
 
+    /**
+     * Set the value of a property in a properties list to a serialized value.
+     *
+     * @param properties the properties list
+     * @param name the name of the property
+     * @param type the type of value being serialized
+     * @param value the value to serialize
+     */
     private void setValue(Properties properties, String name, Class<?> type, Object value) {
         String serializedValue = null;
 
@@ -136,7 +188,7 @@ public class ClassSerializer {
         if (serializedValue != null) {
             properties.setProperty(name, serializedValue);
         } else if (!skipUnknownTypes) {
-            throw new IllegalArgumentException("Unknown type in class: " + type.getName());
+            throw new IllegalArgumentException("Unknown type in class '" + type.getName() + "'");
         }
     }
 
@@ -169,20 +221,42 @@ public class ClassSerializer {
         this.ignoreMissingValues = ignoreMissingValues;
     }
 
+    /**
+     * Get the available TypeSerializers.
+     *
+     * @return the TypeSerializers that can be used
+     */
     public ArrayList<TypeSerializer> getTypeSerializers() {
         return typeSerializers;
     }
 
-    public void addSerializer(TypeSerializer... serializers) {
+    /**
+     * Add a set of serializers.
+     *
+     * @param serializers the serializers to add
+     */
+    public void addSerializers(TypeSerializer... serializers) {
         typeSerializers.addAll(Arrays.asList(serializers));
     }
 
-    public void removeSerializer(TypeSerializer... serializers) {
+    /**
+     * Remove a set of serializers.
+     *
+     * @param serializers the serializers to remove
+     */
+    public void removeSerializers(TypeSerializer... serializers) {
         for (var serializer : serializers) {
             typeSerializers.remove(serializer);
         }
     }
 
+    /**
+     * Get a serializer for a given type.
+     *
+     * @param type the type to serialize
+     *
+     * @return the serializer, null if none could be found matching the type
+     */
     public TypeSerializer getSerializerFor(Class<?> type) {
         for (var serializer : typeSerializers) {
             if (serializer.matches(type)) {
@@ -192,4 +266,5 @@ public class ClassSerializer {
 
         return null;
     }
+
 }

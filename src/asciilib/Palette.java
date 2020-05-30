@@ -20,7 +20,6 @@ import classserializer.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 /**
  * Represents the palette used to render a ASCII image.
@@ -287,9 +286,8 @@ public class Palette {
     public static Palette importFile(String filePath) {
         try {
             var palette = new Palette();
-            var serializer = new ClassSerializer();
+            var serializer = new ClassSerializer(new FontSerializer(), new ColorSerializer());
             serializer.setIgnoreMissingValues(true);
-            serializer.addSerializer(new FontSerializer(), new ColorSerializer());
             serializer.read(Palette.class, palette, filePath);
 
             return palette;
@@ -304,10 +302,8 @@ public class Palette {
      * @param filePath the path to export the file to
      */
     public void exportFile(String filePath) {
-        var palette = new Palette();
-        var serializer = new ClassSerializer();
+        var serializer = new ClassSerializer(new FontSerializer(), new ColorSerializer());
         serializer.setSkipUnknownTypes(true);
-        serializer.addSerializer(new FontSerializer(), new ColorSerializer());
         serializer.write(Palette.class, this, filePath);
     }
 
