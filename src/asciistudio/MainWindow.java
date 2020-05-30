@@ -262,6 +262,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainSplitter.setResizeWeight(1.0);
         mainSplitter.setDoubleBuffered(true);
 
+        settingsImageSplitter.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         settingsImageSplitter.setDividerLocation(105);
         settingsImageSplitter.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
@@ -278,6 +279,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         settingsImageSplitter.setLeftComponent(currentPaletteContainer);
 
+        beforeAfterSplitter.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         beforeAfterSplitter.setDividerLocation(350);
         beforeAfterSplitter.setResizeWeight(0.5);
 

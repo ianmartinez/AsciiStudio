@@ -28,7 +28,7 @@ public class ImageSamplingParams {
 
     /**
      * Create a new ImageSamplingParams.
-     * 
+     *
      * @param originalWidth the image's original width
      * @param originalHeight the image's original height
      * @param fontWidth the font's width
@@ -107,7 +107,13 @@ public class ImageSamplingParams {
      * @return the font ratio
      */
     public int getHeightRatio() {
-        return Math.max(1, (int) Math.round(fontHeight / fontWidth));
+        // Windows doesn't need calculation for some reason,
+        // but other platforms do
+        if (Platform.isWindows()) {
+            return 1;
+        } else {
+            return Math.max(1, (int) Math.round(fontHeight / fontWidth));
+        }
     }
 
     /**
