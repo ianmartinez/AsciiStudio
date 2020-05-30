@@ -3,30 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/AsciiRenderer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/PalettePanel.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ImageResizer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AsciiStudio.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ProgressPanel.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/Gif.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FontUtil.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/nbproject/project.xml</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/BackgroundRenderer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ImageSamplingParams.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AboutDialog.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/App.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/Palette.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ColorPickerDialog.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifSequenceWriter.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ColorAdapter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ColorPanel.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/StretchIcon.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ProgressWatcher.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/build.xml</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FileUtil.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FontAdapter.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/RenderProgress.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/RenderType.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/MainWindow.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifFrame.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/SimpleDocumentListener.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/nbproject/build-impl.xml</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/AsciiRenderer.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifSaveProgressWatcher.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ImageResizer.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FontUtil.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AboutDialog.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/manifest.mf</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ColorPickerDialog.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ColorAdapter.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/RenderProgressWatcher.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/StretchIcon.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/MainWindow.java</file>
         </group>
     </open-files>
 </project-private>
