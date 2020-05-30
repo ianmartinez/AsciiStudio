@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
-import java.beans.*;
 import java.lang.reflect.InvocationTargetException;
+import java.beans.*;
 
 /**
  * Provides a simple way of serializing and deserializing classes via properties
