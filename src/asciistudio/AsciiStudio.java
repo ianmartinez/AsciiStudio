@@ -49,6 +49,7 @@ public class AsciiStudio {
         } catch (Exception e) {
             // Couldn't load native look and feel, so just continue with
             // default.
+            e.printStackTrace();
         }
 
         // Launch main window
