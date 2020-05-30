@@ -24,6 +24,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
+import java.beans.*;
 
 /**
  * Provide a simple way of serializing and deserializing classes without any
@@ -33,7 +34,7 @@ import java.util.Properties;
  */
 public class ClassSerializer {
 
-    private boolean skipUnknownTypes = false;
+    private boolean skipUnknownTypes = true;
     private boolean ignoreMissingValues = false;
     private final ArrayList<TypeSerializer> typeSerializers = new ArrayList<>();
 
@@ -57,21 +58,25 @@ public class ClassSerializer {
             throw new RuntimeException("Error loading class from file: " + e, e);
         }
     }
-    
+
     public void write(Class<?> targetClassType, Object targetObject, String fileName) {
         try {
             var properties = new Properties();
-
-            for (Field field : targetClassType.getDeclaredFields()) {
-                if (!Modifier.isStatic(field.getModifiers())) {
-                    setValue(properties, field.getName(), field.getType(), field.get(targetObject));
-                }
-            }            
+            var propertyDescriptors = Introspector.getBeanInfo(targetClassType).getPropertyDescriptors();
             
+            for (var descriptor : propertyDescriptors) {
+                if (descriptor.getReadMethod() != null && !descriptor.getName().equals("class")) {
+                    var readMethod = descriptor.getReadMethod();
+                    if (readMethod != null) {
+                        setValue(properties, descriptor.getName(), descriptor.getPropertyType(), readMethod.invoke(targetObject));
+                    }
+                }
+            }
+
             try (var propertyStream = new FileOutputStream(fileName)) {
                 properties.store(propertyStream, "Serialized: " + targetClassType.getName());
             }
-        } catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Error loading class from file: " + e, e);
         }
     }
@@ -146,7 +151,8 @@ public class ClassSerializer {
     }
 
     /**
-     * @param ignoreMissingValues if missing values should be ignored when reading
+     * @param ignoreMissingValues if missing values should be ignored when
+     * reading
      */
     public void setIgnoreMissingValues(boolean ignoreMissingValues) {
         this.ignoreMissingValues = ignoreMissingValues;

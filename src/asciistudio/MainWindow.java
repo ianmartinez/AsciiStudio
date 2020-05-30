@@ -29,7 +29,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.xml.bind.JAXBException;
 
 /**
  * The main window.
@@ -859,7 +858,7 @@ public class MainWindow extends javax.swing.JFrame {
         try {
             if (importPaletteDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 var filePath = importPaletteDialog.getSelectedFile().getAbsolutePath();
-                var importedPalette = Palette.importXml(filePath);
+                var importedPalette = Palette.importFile(filePath);
 
                 if (importedPalette != null) {
                     currentPalette.setPalette(importedPalette);
@@ -886,9 +885,9 @@ public class MainWindow extends javax.swing.JFrame {
                     }
                 }
 
-                currentPalette.getPalette().exportXml(outputPath);
+                currentPalette.getPalette().exportFile(outputPath);
             }
-        } catch (HeadlessException | JAXBException ex) {
+        } catch (HeadlessException ex) {
             JOptionPane.showMessageDialog(this, "Error exporting " + exportPaletteDialog.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_exportPaletteMenuItemActionPerformed

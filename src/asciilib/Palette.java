@@ -16,14 +16,11 @@
  */
 package asciilib;
 
+import classserializer.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import javax.xml.bind.*;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * Represents the palette used to render a ASCII image.
@@ -31,7 +28,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *
  * @author Ian Martinez
  */
-@XmlRootElement
 public class Palette {
 
     // Common weights that are used
@@ -85,7 +81,6 @@ public class Palette {
     /**
      * @return the overridingImageColors
      */
-    @XmlElement(name = "overide-image-colors")
     public boolean isOverridingImageColors() {
         return overridingImageColors;
     }
@@ -100,8 +95,6 @@ public class Palette {
     /**
      * @return the backgroundColor
      */
-    @XmlElement(name = "background-color")
-    @XmlJavaTypeAdapter(ColorAdapter.class)
     public Color getBackgroundColor() {
         return backgroundColor;
     }
@@ -116,8 +109,6 @@ public class Palette {
     /**
      * @return the fontColor
      */
-    @XmlElement(name = "font-color")
-    @XmlJavaTypeAdapter(ColorAdapter.class)
     public Color getFontColor() {
         return fontColor;
     }
@@ -132,8 +123,6 @@ public class Palette {
     /**
      * @return the font
      */
-    @XmlElement(name = "font")
-    @XmlJavaTypeAdapter(FontAdapter.class)
     public Font getFont() {
         return font;
     }
@@ -148,7 +137,6 @@ public class Palette {
     /**
      * @return the weights
      */
-    @XmlElement(name = "weights")
     public String[] getWeights() {
         return weights;
     }
@@ -163,7 +151,6 @@ public class Palette {
     /**
      * @return the usingPhrase
      */
-    @XmlElement(name = "using-phrase")
     public boolean isUsingPhrase() {
         return usingPhrase;
     }
@@ -297,53 +284,49 @@ public class Palette {
     }
 
     /**
-     * Import an XML file to create a palette. If an exception occurred while
-     * parsing the file, null is returned.
+     * Import a file to create a palette. If an exception occurred while parsing
+     * the file, null is returned.
      *
-     * @param filePath the XML file representing a palette
+     * @param filePath the file representing a palette
      *
-     * @return a new palette from the XML file
+     * @return a new palette from the file
      */
-    public static Palette importXml(String filePath) {
+    public static Palette importFile(String filePath) {
         try {
-            File file = new File(filePath);
-            JAXBContext context = JAXBContext.newInstance(Palette.class);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            Palette palette = (Palette) unmarshaller.unmarshal(file);
+            var palette = new Palette();
+            var serializer = new ClassSerializer();
+            serializer.addSerializer(new FontSerializer(), new ColorSerializer());
+            serializer.read(Palette.class, palette, filePath);
 
             return palette;
-        } catch (JAXBException ex) {
+        } catch (Exception ex) {
             return null;
         }
     }
 
     /**
-     * Export this palette to an XML file.
+     * Export this palette to a file.
      *
      * @param filePath the path to export the file to
-     *
-     * @throws JAXBException if there was an exception exporting the XML file
      */
-    public void exportXml(String filePath) throws JAXBException {
-        File file = new File(filePath);
-
-        JAXBContext context = JAXBContext.newInstance(Palette.class);
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(this, file);
+    public void exportFile(String filePath) {
+        var palette = new Palette();
+        var serializer = new ClassSerializer();
+        serializer.addSerializer(new FontSerializer(), new ColorSerializer());
+        serializer.write(Palette.class, palette, filePath);
     }
 
     /**
      * Reverse a weights string.
-     * 
+     *
      * @param weightsString the weights string to reverse
-     * 
+     *
      * @return the reversed weights string
      */
     public static String reverseWeightsString(String weightsString) {
         var reverseStrBuilder = new StringBuilder(weightsString);
         reverseStrBuilder.reverse();
-        
+
         return reverseStrBuilder.toString();
     }
 
