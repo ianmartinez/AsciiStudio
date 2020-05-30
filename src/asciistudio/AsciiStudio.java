@@ -16,6 +16,7 @@
  */
 package asciistudio;
 
+import asciilib.Platform;
 import javax.swing.UIManager;
 import java.awt.Desktop;
 import java.awt.desktop.AboutEvent;
@@ -39,7 +40,7 @@ public class AsciiStudio {
 
         // Use native look and feel
         try {
-            if (System.getProperty("os.name", "").startsWith("Mac OS")) {
+            if (Platform.isMac()) {
                 // Use improved Aqua look and feel over native Java version.
                 // Adds support for dark mode, among other things
                 UIManager.setLookAndFeel("org.violetlib.aqua.AquaLookAndFeel");
@@ -63,11 +64,13 @@ public class AsciiStudio {
         App.setProperty(mainWindow.sidebarPanel, "Aqua.backgroundStyle", "vibrantSidebar");
 
         // Set about handler to open the about window
-        Desktop.getDesktop().setAboutHandler((AboutEvent e) -> {
-            var aboutDialog = new AboutDialog(mainWindow, true);
-            aboutDialog.setLocationRelativeTo(mainWindow);
-            aboutDialog.setVisible(true);
-        });
+        if(Platform.isMac()) {
+            Desktop.getDesktop().setAboutHandler((AboutEvent e) -> {
+                var aboutDialog = new AboutDialog(mainWindow, true);
+                aboutDialog.setLocationRelativeTo(mainWindow);
+                aboutDialog.setVisible(true);
+            });
+        }
 
         // Show
         mainWindow.setVisible(true);

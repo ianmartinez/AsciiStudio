@@ -85,6 +85,8 @@ public class MainWindow extends javax.swing.JFrame {
         // Hide tooltips
         originalImageView.setToolTipText(null);
         renderedImageView.setToolTipText(null);
+        
+        progressPanelContainer.setBorder(javax.swing.BorderFactory.createTitledBorder("Render Progress"));        
     }
 
     private void refreshSampleParams() {
@@ -443,7 +445,6 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         sidebarPanel.add(renderHeightPanel, gridBagConstraints);
 
-        progressPanelContainer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Render Progress", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         progressPanelContainer.setLayout(new java.awt.GridBagLayout());
 
         progressPanel.setMinimumSize(new java.awt.Dimension(39, 60));
@@ -481,7 +482,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         mainToolbar.add(importButton);
 
-        exportImageButton.setIcon(new javax.swing.ImageIcon("/Users/ianmartinez/GitHub/taiga-icons/png/32/filetype-image.png")); // NOI18N
+        exportImageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/filetype-image.png"))); // NOI18N
         exportImageButton.setText("Export Image");
         exportImageButton.setEnabled(false);
         exportImageButton.setFocusable(false);

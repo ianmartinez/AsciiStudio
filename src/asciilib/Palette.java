@@ -60,6 +60,11 @@ public class Palette {
             fontColor = basePalette.getFontColor();
             font = basePalette.getFont();
             weights = basePalette.getWeights();
+        } else { // Init base palette
+            if(Platform.isWindows()) {
+                // Set a better default font on Windows
+                font = new Font("Consolas", Font.BOLD, 12);
+            }
         }
     }
 
