@@ -1,5 +1,5 @@
-Version 4.0 (May 29, 2020)
-   • Updated to Java 13
+Version 4.0 (May 31, 2020)
+   • Updated to Java 14
    • Completely redesigned UI
    • A more native UI on macOS, including support for dark mode
    • GUI showing the progress of converting an image
