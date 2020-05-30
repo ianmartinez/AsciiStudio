@@ -15,23 +15,26 @@
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifSequenceWriter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ColorPanel.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/build.xml</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/classserializer/ClassSerializer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FileUtil.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FontAdapter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/RenderProgress.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/RenderType.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifFrame.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/classserializer/ColorSerializer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/SimpleDocumentListener.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/nbproject/build-impl.xml</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/AsciiRenderer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/giflib/GifSaveProgressWatcher.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ImageResizer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/FontUtil.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/classserializer/FontSerializer.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/AboutDialog.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/manifest.mf</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciicomponent/ColorPickerDialog.java</file>
-            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/ColorAdapter.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciilib/RenderProgressWatcher.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/StretchIcon.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/classserializer/TypeSerializer.java</file>
+            <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/module-info.java</file>
             <file>file:/Users/ianmartinez/GitHub/ASCII-Studio/src/asciistudio/MainWindow.java</file>
         </group>
     </open-files>
