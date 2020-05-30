@@ -57,7 +57,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="importPaletteMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Import Palette"/>
+                <Property name="text" type="java.lang.String" value="Import Palette..."/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
@@ -66,7 +66,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exportPaletteMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Export Palette"/>
+                <Property name="text" type="java.lang.String" value="Export Palette..."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportPaletteMenuItemActionPerformed"/>

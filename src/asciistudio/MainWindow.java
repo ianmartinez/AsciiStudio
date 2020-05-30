@@ -625,7 +625,7 @@ public final class MainWindow extends javax.swing.JFrame {
 
         paletteMenu.setText("Palette");
 
-        importPaletteMenuItem.setText("Import Palette");
+        importPaletteMenuItem.setText("Import Palette...");
         importPaletteMenuItem.setToolTipText("");
         importPaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -634,7 +634,7 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         paletteMenu.add(importPaletteMenuItem);
 
-        exportPaletteMenuItem.setText("Export Palette");
+        exportPaletteMenuItem.setText("Export Palette...");
         exportPaletteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exportPaletteMenuItemActionPerformed(evt);
