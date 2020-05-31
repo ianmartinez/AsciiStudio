@@ -1,7 +1,7 @@
 Version 4.0 (May 30, 2020)
    • Updated to Java 14
    • Completely redesigned UI
-   • A more native UI on macOS, including support for dark mode
+   • A more native UI on macOS
    • GUI showing the progress of converting an image
    • Split original-rendered pane
    • Import and export weights
