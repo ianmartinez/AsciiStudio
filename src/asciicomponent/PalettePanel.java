@@ -18,11 +18,13 @@ package asciicomponent;
 
 import asciilib.FontUtil;
 import asciilib.Palette;
+import asciilib.Platform;
 import asciistudio.SimpleDocumentListener;
 import java.awt.Color;
 import java.awt.Font;
 import static java.awt.Font.*;
 import java.awt.GraphicsEnvironment;
+import java.awt.SystemColor;
 import javax.swing.ButtonGroup;
 
 /**
@@ -52,6 +54,28 @@ public class PalettePanel extends javax.swing.JPanel {
             palette.setWeightsString(weightsPhraseValueTextField.getText());
         });
         
+        // Add platform specific styling
+        if(Platform.isWindows()) {
+            // Tab pages on Windows use the window color,
+            // not the control color
+            
+            // Colors tab
+            colorsTab.setBackground(SystemColor.window);
+            overrideImageCheckbox.setBackground(SystemColor.window);
+            
+            // Font tab
+            fontTab.setBackground(SystemColor.window);
+            fontContainer.setBackground(SystemColor.window);
+            fontBoldCheckbox.setBackground(SystemColor.window);
+            fontItalicCheckbox.setBackground(SystemColor.window);
+            
+            // Weights/phrase tab
+            weightsPhraseTab.setBackground(SystemColor.window);
+            weightsPhraseRadioButtonContainer.setBackground(SystemColor.window);
+            weightsPhraseValueContainer.setBackground(SystemColor.window);
+            useWeightsRadioButton.setBackground(SystemColor.window);
+            usePhraseRadioButton.setBackground(SystemColor.window);
+        }
     }
 
     /**
@@ -181,23 +205,23 @@ public class PalettePanel extends javax.swing.JPanel {
         fontColorPanel = new asciicomponent.ColorPanel();
         fontColorButton = new javax.swing.JButton();
         fontTab = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
+        fontContainer = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         fontFamiliesComboBox = new javax.swing.JComboBox<>();
         fontSizeSpinner = new javax.swing.JSpinner();
         fontBoldCheckbox = new javax.swing.JCheckBox();
         fontItalicCheckbox = new javax.swing.JCheckBox();
         weightsPhraseTab = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        weightsPhraseRadioButtonContainer = new javax.swing.JPanel();
         useWeightsRadioButton = new javax.swing.JRadioButton();
         usePhraseRadioButton = new javax.swing.JRadioButton();
-        jPanel13 = new javax.swing.JPanel();
+        weightsPhraseValueContainer = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         weightsPhraseValueTextField = new javax.swing.JTextField();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(0, 10, 10);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
         colorsTab.setLayout(flowLayout1);
 
@@ -316,13 +340,13 @@ public class PalettePanel extends javax.swing.JPanel {
 
         paletteTabs.addTab("Colors", colorsTab);
 
-        fontTab.setLayout(new java.awt.FlowLayout(0));
+        fontTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jPanel12.setMinimumSize(new java.awt.Dimension(300, 45));
-        jPanel12.setPreferredSize(new java.awt.Dimension(450, 30));
+        fontContainer.setMinimumSize(new java.awt.Dimension(300, 45));
+        fontContainer.setPreferredSize(new java.awt.Dimension(450, 30));
         java.awt.GridBagLayout jPanel12Layout = new java.awt.GridBagLayout();
         jPanel12Layout.columnWeights = new double[] {1.0, 0.0, 0.0};
-        jPanel12.setLayout(jPanel12Layout);
+        fontContainer.setLayout(jPanel12Layout);
 
         jLabel8.setFont(jLabel8.getFont().deriveFont(jLabel8.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel8.setText("Font:");
@@ -332,55 +356,55 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
-        jPanel12.add(jLabel8, gridBagConstraints);
+        fontContainer.add(jLabel8, gridBagConstraints);
 
         fontFamiliesComboBox.setMinimumSize(new java.awt.Dimension(150, 27));
         fontFamiliesComboBox.setPreferredSize(new java.awt.Dimension(150, 27));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel12.add(fontFamiliesComboBox, gridBagConstraints);
+        fontContainer.add(fontFamiliesComboBox, gridBagConstraints);
 
         fontSizeSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1000, 1));
         fontSizeSpinner.setMinimumSize(new java.awt.Dimension(70, 26));
         fontSizeSpinner.setPreferredSize(new java.awt.Dimension(25, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel12.add(fontSizeSpinner, gridBagConstraints);
+        fontContainer.add(fontSizeSpinner, gridBagConstraints);
 
         fontBoldCheckbox.setText("Bold");
         fontBoldCheckbox.setMinimumSize(new java.awt.Dimension(70, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel12.add(fontBoldCheckbox, gridBagConstraints);
+        fontContainer.add(fontBoldCheckbox, gridBagConstraints);
 
         fontItalicCheckbox.setText("Italic");
         fontItalicCheckbox.setMinimumSize(new java.awt.Dimension(70, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 3);
-        jPanel12.add(fontItalicCheckbox, gridBagConstraints);
+        fontContainer.add(fontItalicCheckbox, gridBagConstraints);
 
-        fontTab.add(jPanel12);
+        fontTab.add(fontContainer);
 
         paletteTabs.addTab("Font", fontTab);
 
         weightsPhraseTab.setLayout(new java.awt.GridLayout(0, 1, 5, 5));
 
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
+        weightsPhraseRadioButtonContainer.setLayout(new javax.swing.BoxLayout(weightsPhraseRadioButtonContainer, javax.swing.BoxLayout.LINE_AXIS));
 
         useWeightsRadioButton.setSelected(true);
         useWeightsRadioButton.setText("Use Weights");
         useWeightsRadioButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
-        jPanel4.add(useWeightsRadioButton);
+        weightsPhraseRadioButtonContainer.add(useWeightsRadioButton);
 
         usePhraseRadioButton.setText("Use Phrase");
         usePhraseRadioButton.setMargin(new java.awt.Insets(3, 3, 3, 3));
-        jPanel4.add(usePhraseRadioButton);
+        weightsPhraseRadioButtonContainer.add(usePhraseRadioButton);
 
-        weightsPhraseTab.add(jPanel4);
+        weightsPhraseTab.add(weightsPhraseRadioButtonContainer);
 
-        jPanel13.setMinimumSize(new java.awt.Dimension(600, 45));
-        jPanel13.setPreferredSize(new java.awt.Dimension(520, 30));
-        jPanel13.setLayout(new java.awt.GridBagLayout());
+        weightsPhraseValueContainer.setMinimumSize(new java.awt.Dimension(600, 45));
+        weightsPhraseValueContainer.setPreferredSize(new java.awt.Dimension(520, 30));
+        weightsPhraseValueContainer.setLayout(new java.awt.GridBagLayout());
 
         jLabel9.setFont(jLabel9.getFont().deriveFont(jLabel9.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel9.setText("Value:");
@@ -390,7 +414,7 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(3, 9, 3, 9);
-        jPanel13.add(jLabel9, gridBagConstraints);
+        weightsPhraseValueContainer.add(jLabel9, gridBagConstraints);
 
         weightsPhraseValueTextField.setMinimumSize(new java.awt.Dimension(150, 26));
         weightsPhraseValueTextField.setPreferredSize(new java.awt.Dimension(150, 26));
@@ -399,9 +423,9 @@ public class PalettePanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel13.add(weightsPhraseValueTextField, gridBagConstraints);
+        weightsPhraseValueContainer.add(weightsPhraseValueTextField, gridBagConstraints);
 
-        weightsPhraseTab.add(jPanel13);
+        weightsPhraseTab.add(weightsPhraseValueContainer);
 
         paletteTabs.addTab("Weights/Phrase", weightsPhraseTab);
 
@@ -434,6 +458,7 @@ public class PalettePanel extends javax.swing.JPanel {
     private javax.swing.JButton fontColorButton;
     private javax.swing.JPanel fontColorContainer;
     private asciicomponent.ColorPanel fontColorPanel;
+    private javax.swing.JPanel fontContainer;
     private javax.swing.JComboBox<String> fontFamiliesComboBox;
     private javax.swing.JCheckBox fontItalicCheckbox;
     private javax.swing.JSpinner fontSizeSpinner;
@@ -442,14 +467,13 @@ public class PalettePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JCheckBox overrideImageCheckbox;
     private javax.swing.JTabbedPane paletteTabs;
     private javax.swing.JRadioButton usePhraseRadioButton;
     private javax.swing.JRadioButton useWeightsRadioButton;
+    private javax.swing.JPanel weightsPhraseRadioButtonContainer;
     private javax.swing.JPanel weightsPhraseTab;
+    private javax.swing.JPanel weightsPhraseValueContainer;
     private javax.swing.JTextField weightsPhraseValueTextField;
     // End of variables declaration//GEN-END:variables
 
