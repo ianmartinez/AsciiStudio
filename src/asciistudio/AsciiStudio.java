@@ -37,6 +37,8 @@ public class AsciiStudio {
 
         // Use native menu on macOS
         System.setProperty("apple.laf.useScreenMenuBar", "true");
+        // Use dark mode on macOS
+        System.setProperty("apple.awt.application.appearance", "system");
 
         // Use native look and feel
         try {

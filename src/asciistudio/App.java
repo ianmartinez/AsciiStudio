@@ -27,7 +27,7 @@ public final class App {
 
     private App() { } // No constructor
     
-    public static final double APP_VERSION = 4.0;
+    public static final double APP_VERSION = 5.0;
 
     public static String getAppTitle() {
         return "ASCII Studio " + APP_VERSION;

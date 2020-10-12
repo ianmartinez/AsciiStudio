@@ -1,3 +1,10 @@
+Version 5.0 (TBD)
+   • Dark mode support on macOS
+   • Sharper icons
+   • Updated to Java 15
+   • Updated to VAqua 8
+   • Improved look for macOS Big Sur
+
 Version 4.0 (May 30, 2020)
    • Updated to Java 14
    • Completely redesigned UI
