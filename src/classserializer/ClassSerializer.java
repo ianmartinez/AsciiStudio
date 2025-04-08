@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Ian Martinez
+ * Copyright (C) 2025 Ian Martinez
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -144,11 +144,11 @@ public final class ClassSerializer {
         } else if (type == String.class) {
             return value;
         } else if (type == boolean.class) {
-            return Boolean.parseBoolean(value);
+            return Boolean.valueOf(value);
         } else if (type == int.class) {
-            return Integer.parseInt(value);
+            return Integer.valueOf(value);
         } else if (type == float.class) {
-            return Float.parseFloat(value);
+            return Float.valueOf(value);
         } else { // Try to find a serializer for the type and parse it
             for (var serializer : typeSerializers) {
                 if (serializer.matches(type)) {

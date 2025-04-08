@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Ian Martinez
+ * Copyright (C) 2025 Ian Martinez
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,9 +17,12 @@
 package asciistudio;
 
 import asciilib.Platform;
-import javax.swing.UIManager;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.Desktop;
 import java.awt.desktop.AboutEvent;
+import java.util.Collections;
 
 /**
  * Main class.
@@ -34,23 +37,24 @@ public class AsciiStudio {
     public static void main(String[] args) {
         // Change the app name in macOS's menu bar
         System.setProperty("apple.awt.application.name", "ASCII Studio");
-
         // Use native menu on macOS
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         // Use dark mode on macOS
         System.setProperty("apple.awt.application.appearance", "system");
 
-        // Use native look and feel
+        // Load FlatLaf dark macOS look and feel
         try {
+            FlatLaf.setGlobalExtraDefaults(Collections.singletonMap("@accentColor", "#2493d4"));
+            // Don't theme titlebar
+            System.setProperty("flatlaf.useWindowDecorations", "false");
+            
             if (Platform.isMac()) {
-                // Use improved Aqua look and feel over native Java version.
-                // Adds support for dark mode, among other things
-                UIManager.setLookAndFeel("org.violetlib.aqua.AquaLookAndFeel");
-            } else {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                FlatMacDarkLaf.setup();
+            } else {               
+                FlatDarkLaf.setup(); 
             }
         } catch (Exception e) {
-            // Couldn't load native look and feel, so just continue with
+            // Couldn't load look and feel, so just continue with
             // default.
             e.printStackTrace();
         }
@@ -61,12 +65,8 @@ public class AsciiStudio {
         mainWindow.setLocationRelativeTo(null);
         mainWindow.setTitle(App.getAppTitle());
 
-        // Configure styling
-        App.setRootProperty(mainWindow, "Aqua.windowStyle", "unifiedToolBar");
-        App.setProperty(mainWindow.sidebarPanel, "Aqua.backgroundStyle", "vibrantSidebar");
-
         // Set about handler to open the about window on macOS
-        if(Platform.isMac()) {
+        if (Platform.isMac()) {
             Desktop.getDesktop().setAboutHandler((AboutEvent aboutEvent) -> {
                 var aboutDialog = new AboutDialog(mainWindow, true);
                 aboutDialog.setLocationRelativeTo(mainWindow);

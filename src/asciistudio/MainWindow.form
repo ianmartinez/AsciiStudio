@@ -1664,7 +1664,7 @@
         <Component class="javax.swing.JButton" name="importPaletteButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/asciiicons/document-import.png"/>
+              <Image iconType="3" name="/asciiicons/palette-import.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Import Palette"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -1678,7 +1678,7 @@
         <Component class="javax.swing.JButton" name="exportPaletteButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/asciiicons/document-export.png"/>
+              <Image iconType="3" name="/asciiicons/palette-import.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Export Palette"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -1706,7 +1706,7 @@
         <Component class="javax.swing.JButton" name="invertPaletteButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/asciiicons/inverse.png"/>
+              <Image iconType="3" name="/asciiicons/invert.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Invert Palette"/>
             <Property name="focusable" type="boolean" value="false"/>

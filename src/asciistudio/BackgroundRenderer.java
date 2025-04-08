@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Ian Martinez
+ * Copyright (C) 2025 Ian Martinez
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,9 +75,8 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
     }
 
     /**
-     * If the UI should be changed because a render
-     * is in progress.
-     * 
+     * If the UI should be changed because a render is in progress.
+     *
      * @param renderUI the value
      */
     public void useRenderUI(boolean renderUI) {
@@ -109,14 +108,11 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
 
         // Render image as ASCII art
         switch (renderType) {
-            case PREVIEW:
-            case STILL_IMAGE:
+            case PREVIEW, STILL_IMAGE ->
                 renderedImage = renderer.renderImage(sourceImage);
-                break;
-            case TEXT:
+            case TEXT ->
                 renderedText = renderer.renderText(sourceImage);
-                break;
-            case GIF:
+            case GIF ->
                 renderedGif = renderer.renderGif(sourceGif);
         }
 
@@ -146,16 +142,13 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
         } catch (ExecutionException | InterruptedException ex) {
             var renderName = "";
             switch (renderType) {
-                case PREVIEW:
+                case PREVIEW ->
                     renderName = "preview";
-                    break;
-                case STILL_IMAGE:
+                case STILL_IMAGE ->
                     renderName = "image";
-                    break;
-                case TEXT:
+                case TEXT ->
                     renderName = "text";
-                    break;
-                case GIF:
+                case GIF ->
                     renderName = "GIF";
             }
 
@@ -185,24 +178,23 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
         try {
             if (null != renderType) {
                 switch (renderType) {
-                    case TEXT:
+                    case TEXT -> {
                         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-                        writer.write(renderedText);
+                            writer.write(renderedText);
+                        }
                     }
-                    break;
-                    case STILL_IMAGE:
+                    case STILL_IMAGE ->
                         ImageIO.write(renderedImage, FileUtil.getExt(outputFile, "png"), new File(outputFile));
-                        break;
-                    case GIF:
+                    case GIF -> {
                         renderedGif.setSaveProgressWatcher((int frame, int totalFrames) -> {
                             var relativeProgress = (int) ((frame / (double) totalFrames) * 100);
                             publish(new RenderProgress("Saving frames", relativeProgress, 100));
                         });
                         renderedGif.save(outputFile);
                         renderedGif.setSaveProgressWatcher(null);
-                        break;
-                    default:
-                        break;
+                    }
+                    default -> {
+                    }
                 }
             }
 
@@ -271,5 +263,5 @@ public class BackgroundRenderer extends SwingWorker<Void, RenderProgress> {
     public void setOpenOutputWhenComplete(boolean openOutputWhenComplete) {
         this.openOutputWhenComplete = openOutputWhenComplete;
     }
-    
+
 }

@@ -6,5 +6,5 @@ jpackage --input 'dist/' \
   --type 'dmg' \
   --java-options '--enable-preview' \
   --app-version '4.1' \
-  --copyright 'Copyright © 2016-2020 Ian Martinez' \
+  --copyright 'Copyright © 2016-2025 Ian Martinez' \
   --dest 'release/'

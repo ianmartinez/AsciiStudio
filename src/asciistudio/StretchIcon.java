@@ -338,4 +338,5 @@ public class StretchIcon extends ImageIcon {
     public int getIconHeight() {
         return 0;
     }
+    
 }

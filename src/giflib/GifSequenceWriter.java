@@ -257,8 +257,8 @@ public class GifSequenceWriter implements AutoCloseable {
                         if (nodeItem.getNodeName().equals("ImageDescriptor")) {
                             NamedNodeMap map = nodeItem.getAttributes();
 
-                            x = Integer.valueOf(map.getNamedItem("imageLeftPosition").getNodeValue());
-                            y = Integer.valueOf(map.getNamedItem("imageTopPosition").getNodeValue());
+                            x = Integer.parseInt(map.getNamedItem("imageLeftPosition").getNodeValue());
+                            y = Integer.parseInt(map.getNamedItem("imageTopPosition").getNodeValue());
                         }
                     }
 
@@ -302,7 +302,7 @@ public class GifSequenceWriter implements AutoCloseable {
             }
 
             return fs;
-        } catch (Exception ex) {
+        } catch (IOException | NumberFormatException | DOMException ex) {
             return null;
         }
     }

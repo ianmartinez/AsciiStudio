@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Ian Martinez
+ * Copyright (C) 2025 Ian Martinez
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,13 +18,10 @@ package asciicomponent;
 
 import asciilib.FontUtil;
 import asciilib.Palette;
-import asciilib.Platform;
 import asciistudio.SimpleDocumentListener;
 import java.awt.Color;
 import java.awt.Font;
 import static java.awt.Font.*;
-import java.awt.GraphicsEnvironment;
-import java.awt.SystemColor;
 import javax.swing.ButtonGroup;
 
 /**
@@ -53,29 +50,6 @@ public class PalettePanel extends javax.swing.JPanel {
         weightsPhraseValueTextField.getDocument().addDocumentListener((SimpleDocumentListener) e -> {
             palette.setWeightsString(weightsPhraseValueTextField.getText());
         });
-        
-        // Add platform specific styling
-        if(Platform.isWindows()) {
-            // Tab pages on Windows use the window color,
-            // not the control color
-            
-            // Colors tab
-            colorsTab.setBackground(SystemColor.window);
-            overrideImageCheckbox.setBackground(SystemColor.window);
-            
-            // Font tab
-            fontTab.setBackground(SystemColor.window);
-            fontContainer.setBackground(SystemColor.window);
-            fontBoldCheckbox.setBackground(SystemColor.window);
-            fontItalicCheckbox.setBackground(SystemColor.window);
-            
-            // Weights/phrase tab
-            weightsPhraseTab.setBackground(SystemColor.window);
-            weightsPhraseRadioButtonContainer.setBackground(SystemColor.window);
-            weightsPhraseValueContainer.setBackground(SystemColor.window);
-            useWeightsRadioButton.setBackground(SystemColor.window);
-            usePhraseRadioButton.setBackground(SystemColor.window);
-        }
     }
 
     /**
@@ -88,7 +62,6 @@ public class PalettePanel extends javax.swing.JPanel {
 
         // Load font combo with current selection from the palette
         fontFamiliesComboBox.removeAllItems();
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
         var allFonts = FontUtil.getAllFontNames(true);
         for (String fontName : allFonts) {
@@ -221,7 +194,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(0, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
         colorsTab.setLayout(flowLayout1);
 
@@ -340,7 +313,7 @@ public class PalettePanel extends javax.swing.JPanel {
 
         paletteTabs.addTab("Colors", colorsTab);
 
-        fontTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        fontTab.setLayout(new java.awt.FlowLayout(0));
 
         fontContainer.setMinimumSize(new java.awt.Dimension(300, 45));
         fontContainer.setPreferredSize(new java.awt.Dimension(450, 30));

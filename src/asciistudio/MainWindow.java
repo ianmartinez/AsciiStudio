@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Ian Martinez
+ * Copyright (C) 2025 Ian Martinez
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -86,6 +86,10 @@ public final class MainWindow extends javax.swing.JFrame {
         // Hide tooltips
         originalImageView.setToolTipText(null);
         renderedImageView.setToolTipText(null);
+        
+        
+        // Disable glitchy floating toolbar
+        mainToolbar.setFloatable(false);
 
         // Set render progress border
         progressPanelContainer.setBorder(javax.swing.BorderFactory.createTitledBorder("Render Progress"));
@@ -93,6 +97,18 @@ public final class MainWindow extends javax.swing.JFrame {
         // Set icon
         try {
             this.setIconImage(ImageIO.read(getClass().getResource("/asciiicons/48.png")));
+            
+            int FIXED_ICON_SIZE = 32;
+            importButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/document-open.png"), FIXED_ICON_SIZE));
+            exportTextButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/filetype-text.png"), FIXED_ICON_SIZE));
+            importButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/document-open.png"), FIXED_ICON_SIZE));
+            exportImageButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/filetype-image.png"), FIXED_ICON_SIZE));
+            exportTextButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/filetype-text.png"), FIXED_ICON_SIZE));
+            importPaletteButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/palette-import.png"), FIXED_ICON_SIZE));
+            exportPaletteButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/palette-export.png"), FIXED_ICON_SIZE));
+            resetPaletteButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/edit-clear.png"), FIXED_ICON_SIZE));
+            invertPaletteButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/invert.png"), FIXED_ICON_SIZE));
+            refreshButton.setIcon(new FixedIcon(getClass().getResource("/asciiicons/refresh.png"), FIXED_ICON_SIZE));
         } catch (IOException ex) {
             System.out.println("Couldn't load icon.");
         }
@@ -150,8 +166,8 @@ public final class MainWindow extends javax.swing.JFrame {
     public static File getSelectedFileWithExtension(JFileChooser fileChooser) {
         var file = fileChooser.getSelectedFile();
 
-        if (fileChooser.getFileFilter() instanceof FileNameExtensionFilter) {
-            String[] filterExts = ((FileNameExtensionFilter) fileChooser.getFileFilter()).getExtensions();
+        if (fileChooser.getFileFilter() instanceof FileNameExtensionFilter fileNameExtensionFilter) {
+            String[] filterExts = fileNameExtensionFilter.getExtensions();
             String normalizedName = file.getName().toLowerCase();
 
             for (var ext : filterExts) { // If it already has a valid extension
@@ -519,7 +535,7 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         mainToolbar.add(exportTextButton);
 
-        importPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/document-import.png"))); // NOI18N
+        importPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/palette-import.png"))); // NOI18N
         importPaletteButton.setText("Import Palette");
         importPaletteButton.setFocusable(false);
         importPaletteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -531,7 +547,7 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         mainToolbar.add(importPaletteButton);
 
-        exportPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/document-export.png"))); // NOI18N
+        exportPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/palette-import.png"))); // NOI18N
         exportPaletteButton.setText("Export Palette");
         exportPaletteButton.setFocusable(false);
         exportPaletteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -555,7 +571,7 @@ public final class MainWindow extends javax.swing.JFrame {
         });
         mainToolbar.add(resetPaletteButton);
 
-        invertPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/inverse.png"))); // NOI18N
+        invertPaletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asciiicons/invert.png"))); // NOI18N
         invertPaletteButton.setText("Invert Palette");
         invertPaletteButton.setFocusable(false);
         invertPaletteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -817,7 +833,7 @@ public final class MainWindow extends javax.swing.JFrame {
                     // Set the export image dialog to export PNG by default
                     exportImageDialog.setFileFilter(pngImageFilter);
                 }
-            } catch (Exception e) {
+            } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "Error importing " + importedPath);
             }
 
